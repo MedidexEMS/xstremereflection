@@ -1,5 +1,15 @@
 <?php
 
+//Home //
+
+Route::get('/', [
+    'as' => 'home',
+    'uses' => 'HomeController@index'
+]);
+//EndHome//
+
+
+
 /**
  * Authentication
  */
@@ -43,7 +53,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
      * Dashboard
      */
 
-    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
     /**
      * User Profile
