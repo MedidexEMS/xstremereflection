@@ -64,7 +64,7 @@
     <!-- begin #home -->
     <div id="home" class="content has-bg home">
         <!-- begin content-bg -->
-        <div class="content-bg" style="background-image: url(../assets/img/detail.jpg);"
+        <div class="content-bg" style="background-image: url(../assets/img/detail.png);"
              data-paroller="true"
              data-paroller-factor="0.5"
              data-paroller-factor-xs="0.25">
@@ -72,7 +72,7 @@
         <!-- end content-bg -->
         <!-- begin container -->
         <div class="container home-content">
-            <h1>Welcome to <span class="text-blue">X</span><span class="text-blue-transparent-6">streme</span><span class="text-blue">R</span><span class="text-blue-transparent-8">eflection</span></h1>
+            <h1>Welcome to <span class="text-blue">X</span><span class="text-blue-transparent-6">treme</span><span class="text-blue">R</span><span class="text-blue-transparent-8">eflection</span></h1>
             <h3>Your one stop shop for onsite or garage auto detailing.</h3>
             <p>
                 Our detail specialist network will provide the best work guaranteed.<br/>
@@ -91,8 +91,7 @@
         <div class="container" data-animation="true" data-animation-type="fadeInDown">
             <h2 class="content-title">About Us</h2>
             <p class="content-desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
-                sed bibendum turpis luctus eget
+                Xtreme Reflection is an Auto Detail shop which originated in South Shore, Ky along the Ohio River. We built a large network of Auto Detailers across the nation which share the same core values. We provide exceptional work and wont settle for less, our goal is to take care of your vehicle just like it is our own.
             </p>
             <!-- begin row -->
             <div class="row">
@@ -102,19 +101,13 @@
                     <div class="about">
                         <h3 class="mb-3">Our Story</h3>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Vestibulum posuere augue eget ante porttitor fringilla.
-                            Aliquam laoreet, sem eu dapibus congue, velit justo ullamcorper urna,
-                            non rutrum dolor risus non sapien. Vivamus vel tincidunt quam.
-                            Donec ultrices nisl ipsum, sed elementum ex dictum nec.
+                            Xtreme Reflection started its Business in the Ky, Wv, Oh areas where we
+                            became know for the flawless auto detailing we provided. We knew there was
+                            other Auto Detail Specialist out there just like us. We decided to network with
+                            those professionals and build a one stop shop delivered to your door step. Allowing
+                            us to provide the best Auto Detailing Service Nationwide!!!
                         </p>
-                        <p>
-                            In non libero at orci rutrum viverra at ac felis.
-                            Curabitur a efficitur libero, eu finibus quam.
-                            Pellentesque pretium ante vitae est molestie, ut faucibus tortor commodo.
-                            Donec gravida, eros ac pretium cursus, est erat dapibus quam,
-                            sit amet dapibus nisl magna sit amet orci.
-                        </p>
+
                     </div>
                     <!-- end about -->
                 </div>
@@ -126,7 +119,7 @@
                     <div class="about-author">
                         <div class="quote">
                             <i class="fa fa-quote-left"></i>
-                            <h3>We work harder,<br /><span>to let our user keep simple</span></h3>
+                            <h3>Flawless,<br /><span>is our goal.</span></h3>
                             <i class="fa fa-quote-right"></i>
                         </div>
                         <div class="author">
@@ -134,8 +127,8 @@
                                 <img src="../assets/img/user/user-1.jpg" alt="Sean Ngu" />
                             </div>
                             <div class="info">
-                                Sean Ngu
-                                <small>Front End Developer</small>
+                                Josh Blevins
+                                <small>Owner</small>
                             </div>
                         </div>
                     </div>
@@ -144,31 +137,31 @@
                 <!-- end col-4 -->
                 <!-- begin col-4 -->
                 <div class="col-md-4 col-sm-12">
-                    <h3 class="mb-3">Our Experience</h3>
+                    <h3 class="mb-3">Our Products</h3>
                     <!-- begin skills -->
                     <div class="skills">
-                        <div class="skills-name">Front End</div>
+                        <div class="skills-name">Auto Detail</div>
                         <div class="progress mb-3">
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-theme" style="width: 95%">
                                 <span class="progress-number">95%</span>
                             </div>
                         </div>
-                        <div class="skills-name">Programming</div>
+                        <div class="skills-name">Watercraft </div>
                         <div class="progress mb-3">
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-theme" style="width: 90%">
-                                <span class="progress-number">90%</span>
+                                <span class="progress-number">50%</span>
                             </div>
                         </div>
-                        <div class="skills-name">Database Design</div>
+                        <div class="skills-name">RV</div>
                         <div class="progress mb-3">
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-theme" style="width: 85%">
-                                <span class="progress-number">85%</span>
+                                <span class="progress-number">25%</span>
                             </div>
                         </div>
-                        <div class="skills-name">Wordpress</div>
+                        <div class="skills-name">Motorcycle</div>
                         <div class="progress mb-3">
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-theme" style="width: 80%">
-                                <span class="progress-number">80%</span>
+                                <span class="progress-number">20%</span>
                             </div>
                         </div>
                     </div>
@@ -196,37 +189,30 @@
             <!-- begin row -->
             <div class="row">
                 <!-- begin col-3 -->
-                <div class="col-md-3 milestone-col">
+                <div class="col-md-4 milestone-col">
                     <div class="milestone">
-                        <div class="number" data-animation="true" data-animation-type="number" data-final-number="1292">1,292</div>
-                        <div class="title">Themes & Template</div>
+                        <div class="number" data-animation="true" data-animation-type="number" data-final-number="1292">10,292</div>
+                        <div class="title">Vehicles Detailed</div>
                     </div>
                 </div>
                 <!-- end col-3 -->
                 <!-- begin col-3 -->
-                <div class="col-md-3 milestone-col">
+                <div class="col-md-4 milestone-col">
                     <div class="milestone">
-                        <div class="number" data-animation="true" data-animation-type="number" data-final-number="9039">9,039</div>
-                        <div class="title">Registered Members</div>
+                        <div class="number" data-animation="true" data-animation-type="number" data-final-number="9039">10,124</div>
+                        <div class="title">Satisfied Customers</div>
                     </div>
                 </div>
                 <!-- end col-3 -->
                 <!-- begin col-3 -->
-                <div class="col-md-3 milestone-col">
+                <div class="col-md-4 milestone-col">
                     <div class="milestone">
                         <div class="number" data-animation="true" data-animation-type="number" data-final-number="89291">89,291</div>
-                        <div class="title">Items Sold</div>
+                        <div class="title">Car Products Sold</div>
                     </div>
                 </div>
                 <!-- end col-3 -->
-                <!-- begin col-3 -->
-                <div class="col-md-3 milestone-col">
-                    <div class="milestone">
-                        <div class="number" data-animation="true" data-animation-type="number" data-final-number="129">129</div>
-                        <div class="title">Theme Authors</div>
-                    </div>
-                </div>
-                <!-- end col-3 -->
+
             </div>
             <!-- end row -->
         </div>
@@ -253,9 +239,9 @@
                             <img src="../assets/img/user/user-1.jpg" alt="Ryan Teller" />
                         </div>
                         <div class="info">
-                            <h3 class="name">Ryan Teller</h3>
+                            <h3 class="name">XtremeReflection</h3>
                             <div class="title text-primary">FOUNDER</div>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
+                            <p>South Shore, Ky</p>
                             <div class="social">
                                 <a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
                                 <a href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
@@ -274,9 +260,9 @@
                             <img src="../assets/img/user/user-2.jpg" alt="Jonny Cash" />
                         </div>
                         <div class="info">
-                            <h3 class="name">Johnny Cash</h3>
-                            <div class="title text-primary">WEB DEVELOPER</div>
-                            <p>Donec quam felis, ultricies nec, pellentesque eu sem. Nulla consequat massa vierra quis enim.</p>
+                            <h3 class="name">Fleet Detailing LLC</h3>
+                            <div class="title text-primary">Indianapolis, In</div>
+                            <p></p>
                             <div class="social">
                                 <a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
                                 <a href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
@@ -295,9 +281,9 @@
                             <img src="../assets/img/user/user-3.jpg" alt="Mia Donovan" />
                         </div>
                         <div class="info">
-                            <h3 class="name">Mia Donovan</h3>
-                            <div class="title text-primary">WEB DESIGNER</div>
-                            <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean ligula imperdiet. </p>
+                            <h3 class="name">Glimmer and Shine Auto Detailing</h3>
+                            <div class="title text-primary">Fort Worth, Tx</div>
+                            <p> </p>
                             <div class="social">
                                 <a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
                                 <a href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
@@ -448,10 +434,8 @@
                     <div class="icon-large text-primary">
                         <i class="fa fa-binoculars"></i>
                     </div>
-                    <h3>CHECK OUT OUR ADMIN THEME!</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus faucibus magna eu lacinia eleifend.
-                    </p>
+                    <h3>CHECK OUT OUR FLAWLESS WORK!</h3>
+
                 </div>
                 <!-- end col-9 -->
                 <!-- begin col-3 -->
@@ -471,10 +455,6 @@
         <!-- begin container -->
         <div class="container" data-animation="true" data-animation-type="fadeInDown">
             <h2 class="content-title">Our Latest Work</h2>
-            <p class="content-desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
-                sed bibendum turpis luctus eget
-            </p>
             <!-- begin row -->
             <div class="row row-space-10">
                 <!-- begin col-3 -->
@@ -482,11 +462,11 @@
                     <!-- begin work -->
                     <div class="work">
                         <div class="image">
-                            <a href="#"><img src="../assets/img/work/work-img-1.jpg" alt="Work 1" /></a>
+                            <a href="#"><img src="../assets/img/truck1.png" alt="Work 1" /></a>
                         </div>
                         <div class="desc">
-                            <span class="desc-title">Aliquam molestie</span>
-                            <span class="desc-text">Lorem ipsum dolor sit amet</span>
+                            <span class="desc-title">Daniels Autobody</span>
+                            <span class="desc-text">Portsmouth, Ohio</span>
                         </div>
                     </div>
                     <!-- end work -->
@@ -497,11 +477,11 @@
                     <!-- begin work -->
                     <div class="work">
                         <div class="image">
-                            <a href="#"><img src="../assets/img/work/work-img-2.jpg" alt="Work 2" /></a>
+                            <a href="#"><img src="../assets/img/suv1.jpg" alt="Work 2" /></a>
                         </div>
                         <div class="desc">
-                            <span class="desc-title">Quisque at pulvinar lacus</span>
-                            <span class="desc-text">Lorem ipsum dolor sit amet</span>
+                            <span class="desc-title">Coles Park Auto</span>
+                            <span class="desc-text">West Portsmouth, Ohio</span>
                         </div>
                     </div>
                     <!-- end work -->
@@ -512,11 +492,11 @@
                     <!-- begin work -->
                     <div class="work">
                         <div class="image">
-                            <a href="#"><img src="../assets/img/work/work-img-3.jpg" alt="Work 3" /></a>
+                            <a href="#"><img src="../assets/img/jeep1.jpg" alt="Work 3" /></a>
                         </div>
                         <div class="desc">
-                            <span class="desc-title">Vestibulum et erat ornare</span>
-                            <span class="desc-text">Lorem ipsum dolor sit amet</span>
+                            <span class="desc-title">Private Owner</span>
+                            <span class="desc-text">South Shore, Ky</span>
                         </div>
                     </div>
                     <!-- end work -->
@@ -527,11 +507,11 @@
                     <!-- begin work -->
                     <div class="work">
                         <div class="image">
-                            <a href="#"><img src="../assets/img/work/work-img-4.jpg" alt="Work 4" /></a>
+                            <a href="#"><img src="../assets/img/engine.jpg" alt="Work 4" /></a>
                         </div>
                         <div class="desc">
-                            <span class="desc-title">Sed vitae mollis magna</span>
-                            <span class="desc-text">Lorem ipsum dolor sit amet</span>
+                            <span class="desc-title">Private Owner</span>
+                            <span class="desc-text">South Shore, Ky</span>
                         </div>
                     </div>
                     <!-- end work -->
@@ -546,11 +526,11 @@
                     <!-- begin work -->
                     <div class="work">
                         <div class="image">
-                            <a href="#"><img src="../assets/img/work/work-img-5.jpg" alt="Work 5" /></a>
+                            <a href="#"><img src="../assets/img/boat.jpg" alt="Work 5" /></a>
                         </div>
                         <div class="desc">
-                            <span class="desc-title">Suspendisse at mattis odio</span>
-                            <span class="desc-text">Lorem ipsum dolor sit amet</span>
+                            <span class="desc-title">Private Owner</span>
+                            <span class="desc-text">Winfield, Wv</span>
                         </div>
                     </div>
                     <!-- end work -->
@@ -561,11 +541,11 @@
                     <!-- begin work -->
                     <div class="work">
                         <div class="image">
-                            <a href="#"><img src="../assets/img/work/work-img-6.jpg" alt="Work 6" /></a>
+                            <a href="#"><img src="../assets/img/suv2.jpg" alt="Work 6" /></a>
                         </div>
                         <div class="desc">
-                            <span class="desc-title">Aliquam vitae commodo diam</span>
-                            <span class="desc-text">Lorem ipsum dolor sit amet</span>
+                            <span class="desc-title">Private Owner</span>
+                            <span class="desc-text">Culloden, Wv</span>
                         </div>
                     </div>
                     <!-- end work -->
@@ -576,11 +556,11 @@
                     <!-- begin work -->
                     <div class="work">
                         <div class="image">
-                            <a href="#"><img src="../assets/img/work/work-img-7.jpg" alt="Work 7" /></a>
+                            <a href="#"><img src="../assets/img/suv3.jpg" alt="Work 7" /></a>
                         </div>
                         <div class="desc">
-                            <span class="desc-title">Phasellus eu vehicula lorem</span>
-                            <span class="desc-text">Lorem ipsum dolor sit amet</span>
+                            <span class="desc-title">Private Owner</span>
+                            <span class="desc-text">South Shore, Ky</span>
                         </div>
                     </div>
                     <!-- end work -->
@@ -591,11 +571,11 @@
                     <!-- begin work -->
                     <div class="work">
                         <div class="image">
-                            <a href="#"><img src="../assets/img/work/work-img-8.jpg" alt="Work 8" /></a>
+                            <a href="#"><img src="../assets/img/headlight.jpg" alt="Work 8" /></a>
                         </div>
                         <div class="desc">
-                            <span class="desc-title">Morbi bibendum pellentesque</span>
-                            <span class="desc-text">Lorem ipsum dolor sit amet</span>
+                            <span class="desc-title">Private Owner</span>
+                            <span class="desc-text">Lancaster, Ohio</span>
                         </div>
                     </div>
                     <!-- end work -->
