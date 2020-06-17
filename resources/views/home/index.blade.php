@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>XstremeReflection | Auto Detail at it's Best</title>
+    <title>XtremeReflection | Auto Detail at it's Best</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -23,7 +23,7 @@
             <a href="index.html" class="navbar-brand">
                 <span class="brand-logo"></span>
                 <span class="brand-text">
-						<span class="text-primary">Xstreme</span> Reflection
+						<span class="text-primary">Xtreme</span> Reflection
 					</span>
             </a>
             <!-- end navbar-brand -->
