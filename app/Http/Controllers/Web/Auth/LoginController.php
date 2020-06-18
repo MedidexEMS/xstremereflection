@@ -117,7 +117,7 @@ class LoginController extends Controller
             return redirect()->to($request->get('to'));
         }
 
-        return redirect()->intended();
+        return redirect()->route("dashboard");
     }
 
     /**

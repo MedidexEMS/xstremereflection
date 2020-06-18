@@ -9,7 +9,8 @@
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-    <link href="../assets/css/opp.min.css" rel="stylesheet" />
+    <link href="/assets/css/opp.min.css" rel="stylesheet" />
+
     <!-- ================== END BASE CSS STYLE ================== -->
 </head>
 <body data-spy="scroll" data-target="#header" data-offset="51">
@@ -53,6 +54,7 @@
                     <li class="nav-item"><a class="nav-link" href="#client" data-click="scroll-to-target">CLIENT</a></li>
                     <li class="nav-item"><a class="nav-link" href="#pricing" data-click="scroll-to-target">PRICING</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact" data-click="scroll-to-target">CONTACT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login" >SIGN IN</a></li>
                 </ul>
             </div>
             <!-- end navbar-collapse -->
@@ -654,101 +656,30 @@
     <div id="pricing" class="content" data-scrollview="true">
         <!-- begin container -->
         <div class="container">
-            <h2 class="content-title">Our Price</h2>
-            <p class="content-desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
-                sed bibendum turpis luctus eget
-            </p>
+            <h2 class="content-title ">Our Packages </h2>
+
             <!-- begin pricing-table -->
-            <ul class="pricing-table pricing-col-4">
-                <li data-animation="true" data-animation-type="fadeInUp">
-                    <div class="pricing-container">
-                        <h3>Starter</h3>
-                        <div class="price">
-                            <div class="price-figure">
-                                <span class="price-number">$34.99</span>
+            <ul class="pricing-table pricing-col-12">
+                @foreach($packages as $package)
+                    <li @if($package->most_purchased) class="highlight" @endif data-animation="true" data-animation-type="fadeInUp">
+                        <div class="pricing-container">
+                            <h3>{{$package->description}}</h3>
+                            <div class="price">
+                                <div class="price-figure">
+                                    <span class="price-number">${{$package->cost}}</span>
+                                </div>
+                            </div>
+                            <ul class="features">
+                                @foreach($package->items as $row)
+                                    <li>{{$row->desc->description}}</li>
+                                @endforeach
+                            </ul>
+                            <div class="footer">
+                                <a href="#" class="btn btn-inverse btn-theme btn-block">Buy Now</a>
                             </div>
                         </div>
-                        <ul class="features">
-                            <li>Full exterior hand wash</li>
-                            <li>Tire dressing and rim cleaning</li>
-                            <li>Exterior window cleaning</li>
-                            <li>Thorough interior and trunk vacuum</li>
-                            <li>Interior wipe down</li>
-                            <li>Door jambs cleaned</li>
-                            <li>Window cleaning inside</li>
-                            <li>Glossy exterior finish</li>
-                        </ul>
-                        <div class="footer">
-                            <a href="#" class="btn btn-inverse btn-theme btn-block">Buy Now</a>
-                        </div>
-                    </div>
-                </li>
-                <li data-animation="true" data-animation-type="fadeInUp">
-                    <div class="pricing-container">
-                        <h3>Basic</h3>
-                        <div class="price">
-                            <div class="price-figure">
-                                <span class="price-number">$9.99</span>
-                                <span class="price-tenure">per month</span>
-                            </div>
-                        </div>
-                        <ul class="features">
-                            <li>2GB Storage</li>
-                            <li>5 Clients</li>
-                            <li>10 Active Projects</li>
-                            <li>10 Colors</li>
-                            <li>Free Goodies</li>
-                            <li>24/7 Email support</li>
-                        </ul>
-                        <div class="footer">
-                            <a href="#" class="btn btn-inverse btn-theme btn-block">Buy Now</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="highlight" data-animation="true" data-animation-type="fadeInUp">
-                    <div class="pricing-container">
-                        <h3>Premium</h3>
-                        <div class="price">
-                            <div class="price-figure">
-                                <span class="price-number">$19.99</span>
-                                <span class="price-tenure">per month</span>
-                            </div>
-                        </div>
-                        <ul class="features">
-                            <li>5GB Storage</li>
-                            <li>10 Clients</li>
-                            <li>20 Active Projects</li>
-                            <li>20 Colors</li>
-                            <li>Free Goodies</li>
-                            <li>24/7 Email support</li>
-                        </ul>
-                        <div class="footer">
-                            <a href="#" class="btn btn-primary btn-theme btn-block">Buy Now</a>
-                        </div>
-                    </div>
-                </li>
-                <li data-animation="true" data-animation-type="fadeInUp">
-                    <div class="pricing-container">
-                        <h3>Lifetime</h3>
-                        <div class="price">
-                            <div class="price-figure">
-                                <span class="price-number">$999</span>
-                            </div>
-                        </div>
-                        <ul class="features">
-                            <li>Unlimited Storage</li>
-                            <li>Unlimited Clients</li>
-                            <li>Unlimited Projects</li>
-                            <li>Unlimited Colors</li>
-                            <li>Free Goodies</li>
-                            <li>24/7 Email support</li>
-                        </ul>
-                        <div class="footer">
-                            <a href="#" class="btn btn-inverse btn-theme btn-block">Buy Now</a>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                @endforeach
             </ul>
         </div>
         <!-- end container -->
@@ -761,26 +692,25 @@
         <div class="container">
             <h2 class="content-title">Contact Us</h2>
             <p class="content-desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
-                sed bibendum turpis luctus eget
+
             </p>
             <!-- begin row -->
             <div class="row">
                 <!-- begin col-6 -->
                 <div class="col-lg-6" data-animation="true" data-animation-type="fadeInLeft">
-                    <h3>If you have a project you would like to discuss, get in touch with us.</h3>
+                    <h3>If you have a vehicle you would like detailed and have questions contact us today.</h3>
                     <p>
-                        Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus.
+
                     </p>
                     <p>
-                        <strong>SeanTheme Studio, Inc</strong><br />
-                        795 Folsom Ave, Suite 600<br />
-                        San Francisco, CA 94107<br />
-                        P: (123) 456-7890<br />
+                        <strong>XtremeReflection</strong><br />
+                        4663 State Route 784<br />
+                        South Shore, Ky 41175<br />
+                        P: ‪(740) 207-2847‬<br />
                     </p>
                     <p>
-                        <span class="phone">+11 (0) 123 456 78</span><br />
-                        <a href="mailto:hello@emailaddress.com" class="text-primary">seanthemes@support.com</a>
+                        <span class="phone">‪(740) 207-2847‬</span><br />
+                        <a href="mailto:hello@emailaddress.com" class="text-primary">sales@xtremereflection.app</a>
                     </p>
                 </div>
                 <!-- end col-6 -->
@@ -808,7 +738,7 @@
                         <div class="form-group row m-b-15">
                             <label class="col-form-label col-md-3 text-md-right"></label>
                             <div class="col-md-9 text-left">
-                                <button type="submit" class="btn btn-theme btn-primary btn-block">Send Message</button>
+                                <button type="submit" class="btn btn-theme btn-primary btn-block" disabled>Send Message</button>
                             </div>
                         </div>
                     </form>
@@ -826,11 +756,10 @@
         <div class="container">
             <div class="footer-brand">
                 <div class="footer-brand-logo"></div>
-                Color Admin
+                XtremeReflection
             </div>
             <p>
-                &copy; Copyright Color Admin 2019 <br />
-                An admin & front end theme with serious impact. Created by <a href="#">SeanTheme</a>
+                &copy; Copyright XtremeReflection 2020 <br />
             </p>
             <p class="social-list">
                 <a href="#"><i class="fab fa-facebook-f fa-fw"></i></a>
@@ -848,18 +777,18 @@
         <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
         <div class="theme-panel-content">
             <ul class="theme-list clearfix">
-                <li><a href="javascript:;" class="bg-red" data-theme="red" data-theme-file="../assets/css/one-page-parallax/theme/red.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red" data-original-title="" title="">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-pink" data-theme="pink" data-theme-file="../assets/css/one-page-parallax/theme/pink.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Pink" data-original-title="" title="">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-orange" data-theme="orange" data-theme-file="../assets/css/one-page-parallax/theme/orange.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Orange" data-original-title="" title="">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-yellow" data-theme="yellow" data-theme-file="../assets/css/one-page-parallax/theme/yellow.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Yellow" data-original-title="" title="">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-lime" data-theme="lime" data-theme-file="../assets/css/one-page-parallax/theme/lime.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Lime" data-original-title="" title="">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-green" data-theme="green" data-theme-file="../assets/css/one-page-parallax/theme/green.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Green" data-original-title="" title="">&nbsp;</a></li>
-                <li class="active"><a href="javascript:;" class="bg-teal" data-theme-file="../assets/css/one-page-parallax/theme/teal.min.css" data-theme="default" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Default" data-original-title="" title="">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-aqua" data-theme="aqua" data-theme-file="../assets/css/one-page-parallax/theme/aqua.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Aqua" data-original-title="" title="">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-blue" data-theme="blue" data-theme-file="../assets/css/one-page-parallax/theme/blue.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue" data-original-title="" title="">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-purple" data-theme="purple" data-theme-file="../assets/css/one-page-parallax/theme/purple.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Purple" data-original-title="" title="">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-indigo" data-theme="indigo" data-theme-file="../assets/css/one-page-parallax/theme/indigo.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Indigo" data-original-title="" title="">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-black" data-theme="black" data-theme-file="../assets/css/one-page-parallax/theme/black.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Black" data-original-title="" title="">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-red" data-theme="red" data-theme-file="/assets/css/theme/red.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red" data-original-title="" title="">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-pink" data-theme="pink" data-theme-file="/assets/css/theme/pink.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Pink" data-original-title="" title="">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-orange" data-theme="orange" data-theme-file="/assets/css/theme/orange.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Orange" data-original-title="" title="">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-yellow" data-theme="yellow" data-theme-file="/assets/css/theme/yellow.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Yellow" data-original-title="" title="">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-lime" data-theme="lime" data-theme-file="/assets/css/theme/lime.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Lime" data-original-title="" title="">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-green" data-theme="green" data-theme-file="/assets/css/theme/green.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Green" data-original-title="" title="">&nbsp;</a></li>
+                <li class="active"><a href="javascript:;" class="bg-teal" data-theme-file="/assets/css/theme/teal.min.css" data-theme="theme-selector" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Default" data-original-title="" title="">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-aqua" data-theme="aqua" data-theme-file="/assets/css/theme/aqua.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Aqua" data-original-title="" title="">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-blue" data-theme="blue" data-theme-file="/assets/css/theme/blue.min.css" data-click="default" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue" data-original-title="" title="">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-purple" data-theme="purple" data-theme-file="/assets/css/theme/purple.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Purple" data-original-title="" title="">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-indigo" data-theme="indigo" data-theme-file="/assets/css/theme/indigo.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Indigo" data-original-title="" title="">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-black" data-theme="black" data-theme-file="/assets/css/theme/black.min.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Black" data-original-title="" title="">&nbsp;</a></li>
             </ul>
         </div>
     </div>

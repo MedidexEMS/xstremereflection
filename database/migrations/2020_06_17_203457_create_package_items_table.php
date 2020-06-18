@@ -16,10 +16,8 @@ class CreatePackageItemsTable extends Migration
         Schema::create('package_items', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('company_id');
-            $table->string('description');
-            $table->decimal('charge',7, 2);
-            $table->boolean('status')->default(1);
+            $table->integer('packageId');
+            $table->integer('serviceId');
         });
     }
 
