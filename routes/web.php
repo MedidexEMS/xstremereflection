@@ -197,6 +197,12 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 });
 
 
+    /**
+    * Packages
+     */
+
+    Route::get('packages', 'PackageController@index')->name('packages');
+    Route::get('packages/create', 'PackageController@create');
 /**
  * Installation
  */

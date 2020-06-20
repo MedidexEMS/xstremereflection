@@ -8,10 +8,10 @@
     <meta content="" name="author" />
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
-    <link href="/assets/css/theme/blue.css" id="theme" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <link href="/assets/css/opp.min.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+    <link href="/assets/css/theme/blue.min.css" id="theme" rel="stylesheet" />
 
     <!-- ================== END BASE CSS STYLE ================== -->
 </head>
@@ -43,18 +43,19 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link active" href="#home" data-click="scroll-to-target" data-scroll-target="#home">HOME <b class="caret"></b></a>
                         <div class="dropdown-menu dropdown-menu-left animated fadeInDown">
-                            <a class="dropdown-item" href="index.html">Page with Transparent Header</a>
-                            <a class="dropdown-item" href="index_inverse_header.html">Page with Inverse Header</a>
+                            <a class="dropdown-item" href="index.html">All Services</a>
+                            <a class="dropdown-item" href="index_inverse_header.html">Blog / Tutorials</a>
                             <a class="dropdown-item" href="index_default_header.html">Page with White Header</a>
                             <a class="dropdown-item" href="extra_element.html">Extra Element</a>
                         </div>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#about" data-click="scroll-to-target">ABOUT</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team" data-click="scroll-to-target">TEAM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team" data-click="scroll-to-target">PARTNERS</a></li>
                     <li class="nav-item"><a class="nav-link" href="#service" data-click="scroll-to-target">SERVICES</a></li>
                     <li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">WORK</a></li>
                     <li class="nav-item"><a class="nav-link" href="#client" data-click="scroll-to-target">CLIENT</a></li>
                     <li class="nav-item"><a class="nav-link" href="#pricing" data-click="scroll-to-target">PRICING</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products" data-click="scroll-to-target">PRODUCTS</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact" data-click="scroll-to-target">CONTACT</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login" >SIGN IN</a></li>
                 </ul>
@@ -349,7 +350,7 @@
                         <div class="icon" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-cog"></i></div>
                         <div class="info">
                             <h4 class="title">On Site Completion</h4>
-                            <p class="desc">Duis in lorem placerat, iaculis nisi vitae, ultrices tortor. Vestibulum molestie ipsum nulla. Maecenas nec hendrerit eros, sit amet maximus leo.</p>
+                            <p class="desc">Our detail specialist will come to your door and provide the same experience you would have in our garage while you wait in the comfort of your home.</p>
                         </div>
                     </div>
                 </div>
@@ -360,7 +361,7 @@
                         <div class="icon" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-paint-brush"></i></div>
                         <div class="info">
                             <h4 class="title">Garage Drop Off</h4>
-                            <p class="desc">Etiam nulla turpis, gravida et orci ac, viverra commodo ipsum. Donec nec mauris faucibus, congue nisi sit amet, lobortis arcu.</p>
+                            <p class="desc">Drop your vehicle off at one of our approved garages, our detail specialists will put our professional shine on your vehicle.</p>
                         </div>
                     </div>
                 </div>
@@ -371,7 +372,7 @@
                         <div class="icon" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-file"></i></div>
                         <div class="info">
                             <h4 class="title">Exterior Paint Correction</h4>
-                            <p class="desc">Ut vel laoreet tortor. Donec venenatis ex velit, eget bibendum purus accumsan cursus. Curabitur pulvinar iaculis diam.</p>
+                            <p class="desc">Our detail specialists are trained to complete minor paint correction issues. They are not miricle workers but some have described them as such.</p>
                         </div>
                     </div>
                 </div>
@@ -386,7 +387,7 @@
                         <div class="icon" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-code"></i></div>
                         <div class="info">
                             <h4 class="title">Headlight Restoration</h4>
-                            <p class="desc">Aenean et elementum dui. Aenean massa enim, suscipit ut molestie quis, pretium sed orci. Ut faucibus egestas mattis.</p>
+                            <p class="desc">Are your headlights foggy or hazy? Don't buy new, let our specialist restore there clarity.</p>
                         </div>
                     </div>
                 </div>
@@ -397,7 +398,7 @@
                         <div class="icon" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-shopping-cart"></i></div>
                         <div class="info">
                             <h4 class="title">Auto / Boat / RV Detailing</h4>
-                            <p class="desc">Quisque gravida metus in sollicitudin feugiat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                            <p class="desc">Our specialist don't stop at cars, trucks, and SUVS, we love recreational vehicles to. Let us help protect your recreational vehicle to extend it's beauty.</p>
                         </div>
                     </div>
                 </div>
@@ -408,7 +409,7 @@
                         <div class="icon" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-heart"></i></div>
                         <div class="info">
                             <h4 class="title">DIY Products</h4>
-                            <p class="desc">Integer consectetur, massa id mattis tincidunt, sapien erat malesuada turpis, nec vehicula lacus felis nec libero. Fusce non lorem nisl.</p>
+                            <p class="desc">Our specialist enjoy doing the work so you dont have to. Purchase products to keep the shine of our professional work inbetween your detail schedule.</p>
                         </div>
                     </div>
                 </div>
@@ -661,7 +662,7 @@
             <h2 class="content-title ">Our Packages </h2>
 
             <!-- begin pricing-table -->
-            <ul class="pricing-table pricing-col-12">
+            <ul class="pricing-table pricing-col-4">
                 @foreach($packages as $package)
                     <li @if($package->most_purchased) class="highlight" @endif data-animation="true" data-animation-type="fadeInUp">
                         <div class="pricing-container">
@@ -673,7 +674,9 @@
                             </div>
                             <ul class="features">
                                 @foreach($package->items as $row)
-                                    <li>{{$row->desc->description}}</li>
+                                    <li>{{$row->desc->description}}
+                                    <span>{!!  $row->desc->type->icon ?? '' !!}</span>
+                                    </li>
                                 @endforeach
                             </ul>
                             <div class="footer">

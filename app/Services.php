@@ -8,8 +8,8 @@ class Services extends Model
 {
     protected $table = 'services';
 
-    public function package ()
+    public function type ()
     {
-        return $this->belongsTo(Package::class, 'serviceId');
+        return $this->belongsTo(ServiceTypes::class, 'serviceTypeId');
     }
 }

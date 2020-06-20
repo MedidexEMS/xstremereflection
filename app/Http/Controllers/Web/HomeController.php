@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index ()
     {
-        $packages = Package::with('items')->where('companyId', 1)->where('status', 1)->get();
+        $packages = Package::with('items', 'items.desc', 'items.desc.type')->where('companyId', 1)->where('status', 1)->get();
 
         $services = Services::get();
 

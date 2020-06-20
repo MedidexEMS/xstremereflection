@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
 @section('page-title', __('Dashboard'))
 @section('page-heading', __('Dashboard'))
@@ -13,15 +13,23 @@
     @include('partials.messages')
 
 <div class="row">
+
+    @role('Admin')
     @foreach (\Vanguard\Plugins\Vanguard::availableWidgets(auth()->user()) as $widget)
         @if ($widget->width)
             <div class="col-md-{{ $widget->width }}">
-        @endif
-            {!! app()->call([$widget, 'render']) !!}
-        @if($widget->width)
+                @endif
+                {!! app()->call([$widget, 'render']) !!}
+                @if($widget->width)
             </div>
         @endif
     @endforeach
+    @endrole
+
+    @role('business_admin')
+        @include('dashboard.businessAdminIndex')
+    @endrole
+
 </div>
 
 @stop
