@@ -623,8 +623,8 @@
                     <div class="carousel-item">
                         <blockquote>
                             <i class="fa fa-quote-left"></i>
-
-                            <i class="fa fa-quote-right"></i>
+                            Very good detail er and really takes pride in doing the best job possible.
+                                    <i class="fa fa-quote-right"></i>
                         </blockquote>
                         <div class="name"> — <span class="text-primary">Joe Smith</span>, Winfield, Wv</div>
                     </div>
@@ -654,7 +654,53 @@
         <!-- end containter -->
     </div>
     <!-- end #client -->
+    <!-- begin #products -->
+    <div id="products" class="content" data-scrollview="true">
+        <!-- begin content-bg -->
+        <div class="content-bg"
+             data-paroller-factor="0.5"
+             data-paroller-factor-md="0.01"
+             data-paroller-factor-xs="0.01">
+        </div>
+        <!-- end content-bg -->
+        <!-- begin container -->
+        <div class="container" data-animation="true" data-animation-type="fadeInUp">
+            <!-- begin carousel -->
+            <div class="carousel testimonials slide" data-ride="carousel" id="recProducts">
+                <!-- begin carousel-inner -->
+                <div class="carousel-inner text-center">
+                    <!-- begin item -->
+                    <div class="carousel-item active">
+                        <a href="https://click.linksynergy.com/fs-bin/click?id=4kQkcwG*/sk&offerid=313980.180&subid=0&type=4"><IMG border="0"   alt="Auto Detailing Supplies Inc." src="https://ad.linksynergy.com/fs-bin/show?id=4kQkcwG*/sk&bids=313980.180&subid=0&type=4&gridnum=16"></a><IMG border="0"   alt="Smart Wax" src="https://ad.linksynergy.com/fs-bin/show?id=4kQkcwG*/sk&bids=313980.198&subid=0&type=4&gridnum=16"></a>
 
+                    </div>
+                    <!-- end item -->
+                    <!-- begin item -->
+                    <div class="carousel-item">
+                        <a href="https://click.linksynergy.com/fs-bin/click?id=4kQkcwG*/sk&offerid=313980.188&subid=0&type=4"><IMG border="0"   alt="Auto Detailing Supplies Inc." src="https://ad.linksynergy.com/fs-bin/show?id=4kQkcwG*/sk&bids=313980.188&subid=0&type=4&gridnum=16"></a><IMG border="0"   alt="Smart Wax" src="https://ad.linksynergy.com/fs-bin/show?id=4kQkcwG*/sk&bids=313980.198&subid=0&type=4&gridnum=16"></a>
+                    </div>
+                    <!-- end item -->
+                    <!-- begin item -->
+                    <div class="carousel-item">
+                        <a href="https://click.linksynergy.com/fs-bin/click?id=4kQkcwG*/sk&offerid=313980.198&subid=0&type=4"><IMG border="0"   alt="Smart Wax" src="https://ad.linksynergy.com/fs-bin/show?id=4kQkcwG*/sk&bids=313980.198&subid=0&type=4&gridnum=16"></a>
+
+                    </div>
+                    <!-- end item -->
+                </div>
+                <!-- end carousel-inner -->
+                <!-- begin carousel-indicators -->
+                <ol class="carousel-indicators m-b-0">
+                    <li data-target="#testimonials" data-slide-to="0" class="active"></li>
+                    <li data-target="#testimonials" data-slide-to="1" class=""></li>
+                    <li data-target="#testimonials" data-slide-to="2" class=""></li>
+                </ol>
+                <!-- end carousel-indicators -->
+            </div>
+            <!-- end carousel -->
+        </div>
+        <!-- end containter -->
+    </div>
+    <!-- end #products -->
     <!-- begin #pricing -->
     <div id="pricing" class="content" data-scrollview="true">
         <!-- begin container -->

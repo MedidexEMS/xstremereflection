@@ -12,10 +12,18 @@
 @section('content')
     @include('partials.messages')
 
+    <div class="row">
+        <div class="d-flex justify-content-center col-lg-10">
+            @include('packages.partials.form')
+        </div>
+    </div>
 
 
 @stop
 
 @section('scripts')
+
+
+
 
 @stop

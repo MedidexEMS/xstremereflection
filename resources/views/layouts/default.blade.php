@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="/assets/corona/css/modern-vertical/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="/assets/corona/images/favicon.png" />
+    <link rel="stylesheet" href="/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
 
     @yield('styles')
 
@@ -46,13 +48,14 @@
     <script src="/assets/corona/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="/assets/corona/vendors/chart.js/Chart.min.js"></script>
-    <script src="/assets/corona/vendors/progressbar.js/progressbar.min.js"></script>
-    <script src="/assets/corona/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="/assets/corona/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="/assets/corona/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+    <script src="/assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
+    <script src="/assets/vendors/select2/select2.min.js"></script>
+    <script src="/assets/js/select2.js"></script>
     <script src="/assets/corona/js/off-canvas.js"></script>
     <script src="/assets/corona/js/hoverable-collapse.js"></script>
     <script src="/assets/corona/js/misc.js"></script>
