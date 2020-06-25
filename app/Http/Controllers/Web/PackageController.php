@@ -4,9 +4,18 @@ namespace Vanguard\Http\Controllers\Web;
 use Vanguard\Http\Controllers\Controller;
 use Vanguard\Package;
 
+use Illuminate\Http\Request;
+use Vanguard\packageItem;
+use Vanguard\Services;
+
 
 class PackageController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +35,8 @@ class PackageController extends Controller
      */
     public function create()
     {
-        return view('packages.create');
+        $services   = Services::where('company_id', auth()->user()->companyId)->orWhere('company_id', 0)->get();
+        return view('packages.create', compact('services'));
     }
 
     /**
@@ -37,7 +47,26 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        $package = new Package;
+
+        $package->companyId = auth()->user()->companyId;
+        $package->description = $request->description;
+        $package->cost = $request->cost;
+        $package->save();
+
+        //dd($request->package_items);
+
+        foreach($request->package_items as $item)
+        {
+            $pi = new packageItem;
+
+            $pi->packageId = $package->id;
+            $pi->serviceId = $item;
+            $pi->save();
+        }
+
     }
 
     /**
@@ -59,7 +88,11 @@ class PackageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $package = Package::with('items')->find($id);
+        $services   = Services::where('company_id', auth()->user()->companyId)->orWhere('company_id', 0)->get();
+
+
+        return view('packages.edit', compact('package', 'services'));
     }
 
     /**
@@ -71,7 +104,23 @@ class PackageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $package = Package::find($id);
+
+        $package->companyId = auth()->user()->companyId;
+        $package->description = $request->description;
+        $package->cost = $request->cost;
+        $package->save();
+
+        //dd($request->package_items);
+
+        foreach($request->package_items as $item)
+        {
+            $pi = new packageItem;
+
+            $pi->packageId = $package->id;
+            $pi->serviceId = $item;
+            $pi->save();
+        }
     }
 
     /**

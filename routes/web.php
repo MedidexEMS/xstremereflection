@@ -203,6 +203,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::get('packages', 'PackageController@index')->name('packages');
     Route::get('packages/create', 'PackageController@create');
+    Route::post('package/store', 'PackageController@store');
+    Route::get('package/edit/{id}', 'PackageController@edit');
+    Route::put('package/store/{id}', 'PackageController@update');
+
 /**
  * Installation
  */

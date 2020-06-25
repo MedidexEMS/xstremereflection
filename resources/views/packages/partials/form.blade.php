@@ -1,4 +1,4 @@
-<form action="" id="addPackageForm" method="post">
+<form action="/package/store" id="addPackageForm" method="post">
     @csrf
     <fieldset>
         <div class="form-group">
@@ -15,12 +15,10 @@
         </div>
         <div class="form-group">
             <label>Select services which are included in this package.</label>
-            <select class="js-example-basic-multiple" multiple="multiple" style="width:100%">
-                <option value="AL">Alabama</option>
-                <option value="WY">Wyoming</option>
-                <option value="AM">America</option>
-                <option value="CA">Canada</option>
-                <option value="RU">Russia</option>
+            <select class="js-example-basic-multiple" name="package_items[]" multiple="multiple" style="width:100%">
+                @foreach($services as $service)
+                <option value="{{$service->id}}">{{$service->description}}</option>
+                @endforeach
             </select>
         </div>
         <input class="btn btn-primary" type="submit" value="Submit">

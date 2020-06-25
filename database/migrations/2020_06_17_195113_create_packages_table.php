@@ -18,7 +18,6 @@ class CreatePackagesTable extends Migration
             $table->timestamps();
             $table->integer('companyId');
             $table->string('description');
-            $table->string('package_items');
             $table->decimal('cost', 7, 2);
             $table->boolean('status')->default(1);
         });

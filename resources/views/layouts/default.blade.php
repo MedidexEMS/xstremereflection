@@ -30,7 +30,7 @@
 
     @hook('app:styles')
 </head>
-<body style="height: 100%">
+<body >
     <div class="container-scroller">
         @include('partials.defaultNavBar')
         <div class="container-fluid page-body-wrapper">
@@ -40,8 +40,6 @@
                     @yield('content')
                 </div>
             </div>
-
-
         </div>
     </div>
 
