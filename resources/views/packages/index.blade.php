@@ -12,7 +12,9 @@
 @section('content')
 @include('partials.messages')
 
-
+<div class="row">
+    @include('packages.partials.package')
+</div>
 
 @stop
 

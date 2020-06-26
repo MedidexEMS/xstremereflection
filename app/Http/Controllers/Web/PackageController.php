@@ -23,7 +23,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $packages = Package::where('companyId', auth()->user()->companyId)->get();
+        $packages = Package::where('companyId', auth()->user()->companyId)->orWhere('companyId', 0)->get();
 
         return view('packages.index', compact('packages'));
     }
