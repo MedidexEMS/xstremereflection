@@ -732,6 +732,10 @@
                     </li>
                 @endforeach
             </ul>
+
+            <p>
+                ** Additional charges apply** Heavily soiled, medium SUV/Trucks, Large SUV/Trucks, Some Paint Correction.
+            </p>
         </div>
         <!-- end container -->
     </div>
