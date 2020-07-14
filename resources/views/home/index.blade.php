@@ -719,9 +719,20 @@
                                 </div>
                             </div>
                             <ul class="features">
+                                @if($package->includes)
+                                    <?php $array = explode(',', $package->includes) ?>
+                                    @foreach($array as $included)
+
+                                    <?php $includedPackage = \Vanguard\Package::find($included); ?>
+                                        <li>Plus {{$includedPackage->description}} Package
+                                            <span></span>
+                                        </li>
+                                    @endforeach
+                                @endif
+
                                 @foreach($package->items as $row)
                                     <li>{{$row->desc->description}}
-                                    <span>{!!  $row->desc->type->icon ?? '' !!}</span>
+                                    <span>{!!  $row->desc->type->icon ?? '' !!} </span>
                                     </li>
                                 @endforeach
                             </ul>

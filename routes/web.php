@@ -1,4 +1,11 @@
 <?php
+//resources//
+Route::resources([
+    'invoice' => 'InvoiceController',
+
+]);
+//
+
 
 //Home //
 
@@ -7,6 +14,14 @@ Route::get('/', [
     'uses' => 'HomeController@index'
 ]);
 //EndHome//
+
+//Package Ajax//
+
+Route::get('/packageData/{id}', function ($id){
+    $package = Vanguard\Package::find($id);
+
+    return $package->toJson();
+});
 
 
 
@@ -207,6 +222,15 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('package/edit/{id}', 'PackageController@edit');
     Route::put('package/store/{id}', 'PackageController@update');
 
+
+
+/**
+ *Estimates
+ */
+    Route::post('estimate/store', 'EstimateController@store');
+    Route::get('/customer/form', 'CustomerController@customerForm');
+    Route::get('/estimate/{id}/show', 'EstimateController@show')->name('estimate.show');
+    Route::post('/estimate/{id}/addPackage', 'EstimateController@addPackage');
 /**
  * Installation
  */

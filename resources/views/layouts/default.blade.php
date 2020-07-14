@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('page-title') - {{ setting('app_name') }}</title>
     <!-- plugins:css -->
+    <link href="/assets/css/opp.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/corona/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/assets/corona/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
@@ -25,7 +26,11 @@
     <link rel="shortcut icon" href="/assets/corona/images/favicon.png" />
     <link rel="stylesheet" href="/assets/vendors/select2/select2.min.css">
     <link rel="stylesheet" href="/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
-
+    <link href="/assets/css/theme/blue.min.css" id="theme" rel="stylesheet" />
+    <style>
+        .select2-search { background-color: #0a0a0a; }
+        .select2-results { background-color: #0a0a0a; }
+    </style>
     @yield('styles')
 
     @hook('app:styles')
@@ -36,12 +41,13 @@
         <div class="container-fluid page-body-wrapper">
             @include('partials.defaultNavBarTop')
             <div class="main-panel">
-                <div class="content-wrapper">
+                <div class="content-wrapper ">
                     @yield('content')
                 </div>
             </div>
         </div>
     </div>
+    @include('invoice.partials.customerModal')
 
     <script src="/assets/corona/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
@@ -62,6 +68,32 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="/assets/corona/js/dashboard.js"></script>
+
+    <script>
+        $('#customerModal').on('show.bs.modal', function (){
+            $('#customerInvoiceForm').load('/customer/form', function () {
+                $( "#newCustomer" ).hide();
+            });
+
+
+        });
+
+        function customerChange() {
+            var customer = document.getElementById("customer").value;
+
+            if(customer == 0){
+                console.log('New Customer')
+                $( "#newCustomer" ).show();
+            }
+            else {
+                console.log('Existing Customer')
+                $( "#newCustomer" ).hide();
+            }
+        }
+
+    </script>
+
+
     @yield('scripts')
 
     @hook('app:scripts')

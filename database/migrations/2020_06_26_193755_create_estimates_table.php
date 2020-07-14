@@ -24,7 +24,7 @@ class CreateEstimatesTable extends Migration
             $table->string('zip')->nullable();
             $table->time('arrivalTime')->nullable();
             $table->time('estimatedCompleteTime')->nullable();
-            $table->integer('status');
+            $table->integer('status')->default('1');
             $table->year('vehicleYear')->nullable();
             $table->string('vehicleMake')->nullable();
             $table->string('vehicleModel')->nullable();

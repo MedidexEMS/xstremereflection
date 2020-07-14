@@ -71,6 +71,7 @@ class Kernel extends HttpKernel
         'verify-2fa-phone' => \Vanguard\Http\Middleware\VerifyTwoFactorPhone::class,
         'password-reset' => \Vanguard\Http\Middleware\PasswordResetEnabled::class,
         'banned' => \Vanguard\Http\Middleware\CheckIfBanned::class,
+        'company' => \Vanguard\Http\Middleware\Company::class,
     ];
 
     /**
