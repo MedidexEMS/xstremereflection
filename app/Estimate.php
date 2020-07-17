@@ -10,4 +10,9 @@ class Estimate extends Model
     {
         return $this->hasMany(EstimatePackage::class, 'estimateId');
     }
+
+    public function vehicle()
+    {
+        return $this->hasOne(EstimateVehicle::class, 'estimateId');
+    }
 }

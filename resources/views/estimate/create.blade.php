@@ -13,13 +13,13 @@
     @include('partials.messages')
     <div class="row mb-4">
         <div class="col">
-            <button type="buttom"  class="btn btn-primary" style="width: 100%">Send for Approval</button>
+            <button type="button"  class="btn btn-primary" style="width: 100%">Send for Approval</button>
         </div>
         <div class="col">
-            <button type="buttom"  class="btn btn-primary" style="width: 100%">Convert to Invoice</button>
+            <button type="button"  class="btn btn-primary" style="width: 100%">Convert to Invoice</button>
         </div>
         <div class="col">
-            <button type="buttom"  class="btn btn-danger" style="width: 100%">Void</button>
+            <button type="button"  class="btn btn-danger" style="width: 100%">Void</button>
         </div>
     </div>
     <div class="row">
@@ -53,6 +53,7 @@
 @stop
 
 @include('invoice.partials.itemModal')
+@include('invoice.partials.vehicleModal')
 
 
 @section('scripts')
@@ -82,6 +83,51 @@
             }else if(discountType = 2){
 
             }
+        }
+        $('#vehicleModal').on('show.bs.modal', function (){
+
+            $( "#newVehicleForm" ).hide();
+        });
+
+        function vehicleUpdate(){
+            var vehicleId = document.getElementById("vehicleId").value;
+
+            if(vehicleId == 0){
+
+                $( "#newVehicleForm" ).show();
+                $( "#addCustomerVehicle").hide();
+            }
+            else {
+                console.log('Existing Customer')
+                $( "#newVehicleForm" ).hide();
+                $( "#addCustomerVehicle").show();
+            }
+
+        }
+
+        function vinUpdate (){
+            var vin = document.getElementById("vin").value;
+
+            $.ajax({
+
+                type:'GET',
+
+                url:'/vin-api/'+ vin,
+
+                success:function(data){
+                    var vehicle = JSON.parse(data);
+                    $('#make').attr('value', vehicle.specification.make);
+                    $('#model').attr('value', vehicle.specification.model);
+                    $('#trim').attr('value', vehicle.specification.trim_level);
+                    $('#style').attr('value', vehicle.specification.style);
+
+                    var width = vehicle;
+
+                    console.log(width.replace(/[^0-9\.]+/g,""));
+
+                }
+
+            });
         }
     </script>
 

@@ -231,7 +231,38 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/customer/form', 'CustomerController@customerForm');
     Route::get('/estimate/{id}/show', 'EstimateController@show')->name('estimate.show');
     Route::post('/estimate/{id}/addPackage', 'EstimateController@addPackage');
-/**
+
+use GuzzleHttp\Client;
+
+Route::get('/vin-api/{vin}', function($vin) {
+    //dd($vin);
+    $headers = [
+       'Content-Type' => 'application/json',
+       'x-rapidapi-host' => 'vindecoder.p.rapidapi.com',
+       'x-rapidapi-key' => '6797e8dda6msh238d7561690a0e3p1c0cb0jsn907db54b4db9',
+    ];
+    $params = [
+    'Content-Type' => 'application/json',
+       'vin' => $vin,
+
+    ];
+
+    $client = new Client([
+        'headers' => $headers,
+        'query' => $params
+    ]);
+
+    $response = $client->request('GET', "https://vindecoder.p.rapidapi.com/decode_vin");
+    //dd($response);
+    $statusCode = $response->getStatusCode();
+    $body = $response->getBody()->getContents();
+
+    //dd($body);
+
+    return $body;
+});
+
+    /**
  * Installation
  */
 

@@ -16,6 +16,14 @@ class CreateCustomerVehiclesTable extends Migration
         Schema::create('customer_vehicles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('customerId');
+            $table->year('year');
+            $table->string('make', 60);
+            $table->string('model', 60);
+            $table->string('trim', 60);
+            $table->integer('color');
+            $table->integer('customerCondition')->nullable();
+            $table->integer('technicianCondition')->nullable();
         });
     }
 

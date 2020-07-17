@@ -16,6 +16,14 @@ class CreateEstimateServicesTable extends Migration
         Schema::create('estimate_services', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('estimateId');
+            $table->integer('quanity')->default(1);
+            $table->integer('serviceId');
+            $table->integer('discount')->default(0);
+            $table->integer('discountType');
+            $table->decimal('listPrice', 6, 2);
+            $table->decimal('chargedPrice', 7, 2);
+            $table->boolean('status')->default(1);
         });
     }
 
