@@ -50,7 +50,6 @@
                         </div>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#about" data-click="scroll-to-target">ABOUT</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team" data-click="scroll-to-target">PARTNERS</a></li>
                     <li class="nav-item"><a class="nav-link" href="#service" data-click="scroll-to-target">SERVICES</a></li>
                     <li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">WORK</a></li>
                     <li class="nav-item"><a class="nav-link" href="#client" data-click="scroll-to-target">CLIENT</a></li>
@@ -226,84 +225,7 @@
     <!-- end #milestone -->
 
     <!-- begin #team -->
-    <div id="team" class="content" data-scrollview="true">
-        <!-- begin container -->
-        <div class="container">
-            <h2 class="content-title">Our Team</h2>
-            <p class="content-desc">
-                Phasellus suscipit nisi hendrerit metus pharetra dignissim. Nullam nunc ante, viverra quis<br />
-                ex non, porttitor iaculis nisi.
-            </p>
-            <!-- begin row -->
-            <div class="row">
-                <!-- begin col-4 -->
-                <div class="col-md-4 col-sm-12">
-                    <!-- begin team -->
-                    <div class="team">
-                        <div class="image" data-animation="true" data-animation-type="flipInX">
-                            <img src="../assets/img/user/user-1.jpg" alt="Ryan Teller" />
-                        </div>
-                        <div class="info">
-                            <h3 class="name">XtremeReflection</h3>
-                            <div class="title text-primary">FOUNDER</div>
-                            <p>South Shore, Ky</p>
-                            <div class="social">
-                                <a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-                                <a href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-                                <a href="#"><i class="fab fa-google-plus-g fa-lg fa-fw"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end team -->
-                </div>
-                <!-- end col-4 -->
-                <!-- begin col-4 -->
-                <div class="col-md-4 col-sm-12">
-                    <!-- begin team -->
-                    <div class="team">
-                        <div class="image" data-animation="true" data-animation-type="flipInX">
-                            <img src="../assets/img/user/user-2.jpg" alt="Jonny Cash" />
-                        </div>
-                        <div class="info">
-                            <h3 class="name">Fleet Detailing LLC</h3>
-                            <div class="title text-primary">Indianapolis, In</div>
-                            <p></p>
-                            <div class="social">
-                                <a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-                                <a href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-                                <a href="#"><i class="fab fa-google-plus-g fa-lg fa-fw"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end team -->
-                </div>
-                <!-- end col-4 -->
-                <!-- begin col-4 -->
-                <div class="col-md-4 col-sm-12">
-                    <!-- begin team -->
-                    <div class="team">
-                        <div class="image" data-animation="true" data-animation-type="flipInX">
-                            <img src="../assets/img/user/user-3.jpg" alt="Mia Donovan" />
-                        </div>
-                        <div class="info">
-                            <h3 class="name">Glimmer and Shine Auto Detailing</h3>
-                            <div class="title text-primary">Fort Worth, Tx</div>
-                            <p> </p>
-                            <div class="social">
-                                <a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-                                <a href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-                                <a href="#"><i class="fab fa-google-plus-g fa-lg fa-fw"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end team -->
-                </div>
-                <!-- end col-4 -->
-            </div>
-            <!-- end row -->
-        </div>
-        <!-- end container -->
-    </div>
+
     <!-- end #team -->
 
     <!-- begin #quote -->
