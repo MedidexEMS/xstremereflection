@@ -23,16 +23,16 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6 col-sm-12 grid-margin stretch-card">
+        <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
             @include('invoice.partials.customer')
         </div>
-        <div class="col-6 col-sm-12 grid-margin stretch-card">
+        <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
             @include('invoice.partials.serviceInfo')
         </div>
     </div>
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-xl-12">
             @include('invoice.partials.charges')
         </div>
     </div>
