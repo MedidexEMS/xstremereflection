@@ -231,6 +231,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/customer/form', 'CustomerController@customerForm');
     Route::get('/estimate/{id}/show', 'EstimateController@show')->name('estimate.show');
     Route::post('/estimate/{id}/addPackage', 'EstimateController@addPackage');
+    Route::post('/estimate/addVehicle/{cid}/{eid}', 'EstimateController@addVehicle');
 
 use GuzzleHttp\Client;
 

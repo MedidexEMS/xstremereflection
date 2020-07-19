@@ -7,10 +7,11 @@
     <meta content="" name="description" />
     <meta content="" name="author" />
 
+    <script src="https://kit.fontawesome.com/6c1803817f.js" crossorigin="anonymous"></script>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <link href="/assets/css/opp.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+
     <link href="/assets/css/theme/blue.min.css" id="theme" rel="stylesheet" />
 
     <!-- ================== END BASE CSS STYLE ================== -->

@@ -23,10 +23,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6 grid-margin stretch-card">
+        <div class="col-6 col-sm-12 grid-margin stretch-card">
             @include('invoice.partials.customer')
         </div>
-        <div class="col-6 grid-margin stretch-card">
+        <div class="col-6 col-sm-12 grid-margin stretch-card">
             @include('invoice.partials.serviceInfo')
         </div>
     </div>
@@ -120,6 +120,7 @@
                     $('#model').attr('value', vehicle.specification.model);
                     $('#trim').attr('value', vehicle.specification.trim_level);
                     $('#style').attr('value', vehicle.specification.style);
+                    $('#year').attr('value', vehicle.specification.year);
 
                     var width = vehicle;
 

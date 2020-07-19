@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('page-title') - {{ setting('app_name') }}</title>
     <!-- plugins:css -->
+    <script src="https://kit.fontawesome.com/6c1803817f.js" crossorigin="anonymous"></script>
     <link href="/assets/css/opp.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/corona/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/assets/corona/vendors/css/vendor.bundle.base.css">
@@ -27,6 +28,7 @@
     <link rel="stylesheet" href="/assets/vendors/select2/select2.min.css">
     <link rel="stylesheet" href="/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <link href="/assets/css/theme/blue.min.css" id="theme" rel="stylesheet" />
+
     <style>
         .select2-search { background-color: #0a0a0a; }
         .select2-results { background-color: #0a0a0a; }

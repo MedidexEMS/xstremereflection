@@ -3,24 +3,23 @@
 
             @if($estimate->vehicle)
             <div class="row ">
-                <div class="col-5 col-sm-7 col-xl-8 p-0">
+                <div class="col-xl-12 p-0">
                     <h4 class="mb-1 mb-sm-0">Customer Information</h4>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">
-                        Vehicle Year:
+                        VIN Number: {{$estimate->vehicle->vehicleInfo->vin ?? '?'}}
                     </p>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">
-                        Vehicle Make:
+                        Vehicle Year: {{$estimate->vehicle->vehicleInfo->year}}
                     </p>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">
-                        Vehicle Model:
+                        Vehicle Make: {{$estimate->vehicle->vehicleInfo->make}}
                     </p>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">
-                        Vehicle Color:
+                        Vehicle Model/Style: {{$estimate->vehicle->vehicleInfo->model}} - {{$estimate->vehicle->vehicleInfo->style}}
                     </p>
-                </div>
-
-                <div class="col-4 text-right">
-                    <i class="fas fa-edit"></i>
+                    <p class="mb-0 font-weight-normal d-none d-sm-block">
+                        Vehicle Color: {{$estimate->vehicle->vehicleInfo->color->description ?? ''}}
+                    </p>
                 </div>
             </div>
             @else

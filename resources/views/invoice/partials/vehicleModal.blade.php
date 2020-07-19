@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="newPackageForm" action="/estimate/{{$estimate->id}}/addPackage" method="POST">
+                <form action="/estimate/addVehicle/{{$customer->id}}/{{$estimate->id}}" method="POST">
                     @csrf
                     <div class="form-group mb-2">
                         <label for="vehicleId"> Customer Vehicle <span class="text-danger">*</span></label>
@@ -24,12 +24,16 @@
                     <button type="submit" id="addCustomerVehicle" class="btn btn-primary">Add Vehicle</button>
                 </form>
 
-                <form id="newVehicleForm">
+                <form id="newVehicleForm" action="/estimate/addVehicle/{{$customer->id}}/{{$estimate->id}}" method="POST">
+                    @csrf
                     <div class="form-group mb-2">
                         <label for="discount">Enter Vehicle VIN <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="vin" id="vin" placeholder="Type VIN Here" onchange="vinUpdate()" />
                     </div>
-
+                    <div class="form-group mb-2">
+                        <label for="year">Vehicle Year <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="year" id="year" placeholder="Vehicle Year"  />
+                    </div>
                     <div class="form-group mb-2">
                         <label for="make">Vehicle Make <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="make" id="make" placeholder="Vehicle Make"  />
@@ -48,11 +52,21 @@
                     </div>
                     <div class="form-group mb-2">
                         <label for="color">Vehicle Color <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="color" id="color" placeholder="Vehicle Color"  />
+                        <select class="js-example-basic-single" name="color" id="color" style="width:100%" >
+                            <option selected>Select Vehicle Color</option>
+                            @foreach($colors as $color)
+                                <option value="{{$color->id}}">{{$color->description}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group mb-2">
                         <label for="condition">Vehicle Condition <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="condition" id="condition" placeholder="Vehicle Condition"  />
+                        <select class="js-example-basic-single" name="condition" id="condition" style="width:100%">
+                            <option selected>Select Vehicle Color</option>
+                            @foreach($conditions as $condition)
+                                <option value="{{$condition->id}}">{{$condition->description}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <button type="submit"  class="btn btn-primary">Add Vehicle</button>
 

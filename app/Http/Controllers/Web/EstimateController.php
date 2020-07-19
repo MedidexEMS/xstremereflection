@@ -2,12 +2,16 @@
 
 namespace Vanguard\Http\Controllers\Web;
 use Vanguard\Customer;
+use Vanguard\CustomerVehicle;
 use Vanguard\Estimate;
 use Vanguard\EstimatePackage;
+use Vanguard\EstimateVehicle;
 use Vanguard\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Vanguard\Package;
+use Vanguard\VehicleColor;
+use Vanguard\VehicleCondition;
 
 class EstimateController extends Controller
 {
@@ -115,8 +119,10 @@ class EstimateController extends Controller
     public function show($id)
     {
 
-        $estimate = Estimate::with('packages', 'packages.package')->find($id);
+        $estimate = Estimate::with('packages', 'packages.package', 'vehicle', 'vehicle.vehicleInfo','vehicle.vehicleInfo.color', 'vehicle.vehicleInfo.condition')->find($id);
         $customer = Customer::find($estimate->customerId);
+        $colors = VehicleColor::get();
+        $conditions = VehicleCondition::get();
 
         if (Auth()->user()->companyId != $estimate->companyId) {
 
@@ -134,7 +140,7 @@ class EstimateController extends Controller
             }
         }
 
-        return view('estimate.create', compact('packages', 'customer', 'estimate', 'estimateTotal'));
+        return view('estimate.create', compact('packages', 'customer', 'estimate', 'estimateTotal', 'colors', 'conditions'));
     }
 
     /**
@@ -169,5 +175,39 @@ class EstimateController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addVehicle (Request $request, $cid, $eid)
+    {
+        //dd($eid);
+        if($request->vehicleId == 0){
+            $customerVehicle = new CustomerVehicle;
+
+            $customerVehicle->customerId = $cid;
+            $customerVehicle->vin = $request->vin;
+            $customerVehicle->year = $request->year;
+            $customerVehicle->make = $request->make;
+            $customerVehicle->model = $request->model;
+            $customerVehicle->trim = $request->trim;
+            $customerVehicle->style = $request->style;
+            $customerVehicle->color = $request->color;
+            $customerVehicle->customerCondition = $request->condition;
+            $customerVehicle->save();
+
+            $estimateVehicle = new EstimateVehicle;
+            $estimateVehicle->estimateId = $eid;
+            $estimateVehicle->customerVehicleId = $customerVehicle->id;
+            $estimateVehicle->save();
+
+            return back();
+
+        }else{
+            $estimateVehicle = new EstimateVehicle;
+            $estimateVehicle->estimateId = $eid;
+            $estimateVehicle->customerVehicleId = $request->vehicleId;
+            $estimateVehicle->save();
+
+            return back();
+        }
     }
 }

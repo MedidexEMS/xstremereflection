@@ -5,6 +5,9 @@
                 <div class="col-5 col-sm-7 col-xl-8 p-0">
                     <h4 class="mb-1 mb-sm-0">Customer Information</h4>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">
+                        Estimate ID: {{$estimate->id ?? 'Unknown ID'}}
+                    </p>
+                    <p class="mb-0 font-weight-normal d-none d-sm-block">
                         Name: {{$customer->firstName ?? 'Unknown Customer'}} {{$customer->lastName ?? ''}}
                     </p>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">

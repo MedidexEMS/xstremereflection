@@ -5,15 +5,15 @@
         <div class="card">
             <div class="card-body py-0 px-0 px-sm-3">
                <div class="row">
-                   <div class="col-4 text-center">
+                   <div class="col-4 col-sm-12 text-center">
                        <a href=";javascript" data-toggle="modal" data-target="#packageModal"><img src="{{ url('assets/img/service.png') }}" height="50" width="50"></a> <br>
                        Add Package
                    </div>
-                   <div class="col-4 text-center">
+                   <div class="col-4 col-sm-12 text-center">
                        <a href=";javascript" data-toggle="modal" data-target="#serviceModal"><img src="{{ url('assets/img/service2.png') }}" height="50" width="50"></a> <br>
                        Add Service
                    </div>
-                   <div class="col-4 text-center">
+                   <div class="col-4 col-sm-12 text-center">
                        <a href=";javascript" data-toggle="modal" data-target="#productModal"><img src="{{ url('assets/img/addProduct.png') }}" height="50" width="50"></a> <br>
                        Add Product
                    </div>
@@ -24,7 +24,7 @@
 </div>
 
 <div class="row ">
-    <div class="col-6">
+    <div class="col-6 col-sm-12">
         <h2>Packages</h2>
         <div class="card">
             <div class="card-body py-0 px-0 px-sm-3">
@@ -77,7 +77,7 @@
         </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-6 col-sm-12">
         <div class="row">
             <div class="col-12">
                 <h2>Add on Services</h2>
