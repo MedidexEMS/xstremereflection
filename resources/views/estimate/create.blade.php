@@ -11,29 +11,35 @@
 
 @section('content')
     @include('partials.messages')
+    @if($estimate->status != 4)
     <div class="row mb-4">
         <div class="col">
             <button type="button"  class="btn btn-primary" style="width: 100%">Send for Approval</button>
         </div>
         <div class="col">
-            <button type="button"  class="btn btn-primary" style="width: 100%">Convert to Invoice</button>
+            <a href="/estimate/workOrder/{{$estimate->id}}" ><button type="button" class="btn btn-primary" style="width: 100%">Convert to Work Order</button></a>
         </div>
         <div class="col">
             <button type="button"  class="btn btn-danger" style="width: 100%">Void</button>
         </div>
     </div>
+    @else
+        <div class="row mb-4 text-center">
+            <h2>Estimate has been approved and scheduled for service.</h2>
+        </div>
+    @endif
     <div class="row">
         <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
-            @include('invoice.partials.customer')
+            @include('estimate.partials.customer')
         </div>
         <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
-            @include('invoice.partials.serviceInfo')
+            @include('estimate.partials.serviceInfo')
         </div>
     </div>
 
     <div class="row">
         <div class="col-xl-12">
-            @include('invoice.partials.charges')
+            @include('estimate.partials.charges')
         </div>
     </div>
 
@@ -47,7 +53,6 @@
             </ul>
         </div>
     </div>
-    <!-- end theme-panel -->
 
 
 @stop
@@ -57,6 +62,7 @@
 
 
 @section('scripts')
+
     <script>
         function listPriceUpdate() {
             var id = document.getElementById("packageId").value;
@@ -132,9 +138,7 @@
         }
     </script>
 
-    <script>
 
-    </script>
 
 
 @stop

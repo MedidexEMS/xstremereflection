@@ -13,11 +13,11 @@
                     @csrf
                     <div class="form-group mb-2">
                         <label for="qty"> Quantity <span class="text-danger">*</span> </label>
-                        <input type="number" class="form-control" name="quanity" id="qty" />
+                        <input type="number" class="form-control" name="quanity" id="qty" required/>
                     </div>
                     <div class="form-group mb-2">
                         <label for="packageId"> Package <span class="text-danger">*</span></label>
-                        <select class="js-example-basic-single" name="packageId" id="packageId" style="width:100%" onchange="listPriceUpdate()">
+                        <select class="js-example-basic-single" name="packageId" id="packageId" style="width:100%" onchange="listPriceUpdate()" required>
                             <option selected>Select Package Here</option>
                             @foreach($packages as $package)
                             <option value="{{$package->id}}">{{$package->description}} ({{$package->cost}})</option>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-group mb-2">
                         <label for="discountType"> Discount Type <span class="text-danger">*</span></label>
-                        <select class="js-example-basic-single" name="discountType" style="width:100%" onchange="discountUpdate()">
+                        <select class="js-example-basic-single" name="discountType" style="width:100%" onchange="discountUpdate()" required>
                             <option value="0">No Discount</option>
                             <option value="1">Percent</option>
                             <option value="2">Cash</option>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group mb-2">
                         <label for="discount"> Discount <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" name="discount" id="discount" value="0" />
+                        <input type="number" class="form-control" name="discount" id="discount" value="0" required/>
                     </div>
 
                     <div class="form-group mb-2" id="packageTotals">

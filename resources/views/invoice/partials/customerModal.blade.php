@@ -1,5 +1,6 @@
 <!-- Modal -->
-<div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="customerModalLabel" aria-hidden="true">
+<div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="customerModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,9 +11,6 @@
             </div>
             <div class="modal-body">
                 <form action="/estimate/store" id="customerInvoiceForm" method="POST">
-
-
-
 
 
 

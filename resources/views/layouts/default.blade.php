@@ -25,9 +25,11 @@
     <link rel="stylesheet" href="/assets/corona/css/modern-vertical/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="/assets/corona/images/favicon.png" />
-    <link rel="stylesheet" href="/assets/vendors/select2/select2.min.css">
-    <link rel="stylesheet" href="/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/corona/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="/assets/corona/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <link href="/assets/css/theme/blue.min.css" id="theme" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css" />
 
     <style>
         .select2-search { background-color: #0a0a0a; }
@@ -67,17 +69,25 @@
     <script src="/assets/corona/js/misc.js"></script>
     <script src="/assets/corona/js/settings.js"></script>
     <script src="/assets/corona/js/todolist.js"></script>
+    <script src="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="/assets/vendors/moment/moment.min.js"></script>
+    <script src="/assets/vendors/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.js"></script>
+
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="/assets/corona/js/dashboard.js"></script>
 
     <script>
-        $('#customerModal').on('show.bs.modal', function (){
+
+        $('#customerModal').on('shown.bs.modal', function (){
+
+            $('#datepicker-popup').datepicker({
+                todayHighlight: true,
+            });
+
             $('#customerInvoiceForm').load('/customer/form', function () {
                 $( "#newCustomer" ).hide();
             });
-
-
         });
 
         function customerChange() {
@@ -94,6 +104,7 @@
         }
 
     </script>
+
 
 
     @yield('scripts')

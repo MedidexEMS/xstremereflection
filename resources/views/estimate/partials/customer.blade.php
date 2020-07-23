@@ -8,6 +8,16 @@
                         Estimate ID: {{$estimate->id ?? 'Unknown ID'}}
                     </p>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">
+                        Detail Service Type: @if($estimate->detilType == 1) Shop Detail @elseif($estimate->detailType == 2) Mobile Detail @endif
+                    </p>
+
+                    <p class="mb-0 font-weight-normal d-none d-sm-block">
+                        Service Date: {{\Carbon\Carbon::parse($estimate->dateofService)->format('m-d-Y')}}
+                    </p>
+                    <p class="mb-0 font-weight-normal d-none d-sm-block">
+                        Arrival Window: @if($estimate->arrivalTime){{\Carbon\Carbon::parse($estimate->arrivalTime)->format('H:i')}} to {{\Carbon\Carbon::parse($estimate->arrivalTime)->addHours(3)->format('H:i')}}@else TBD @endif
+                    </p>
+                    <p class="mb-0 font-weight-normal d-none d-sm-block">
                         Name: {{$customer->firstName ?? 'Unknown Customer'}} {{$customer->lastName ?? ''}}
                     </p>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">

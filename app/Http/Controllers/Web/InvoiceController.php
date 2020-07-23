@@ -1,11 +1,16 @@
 <?php
 
 namespace Vanguard\Http\Controllers\Web;
+use Vanguard\Estimate;
 use Vanguard\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Vanguard\Invoice;
+use Vanguard\InvoicePackage;
+use Vanguard\InvoiceService;
 use Vanguard\Package;
 
+use DB;
 
 class InvoiceController extends Controller
 {
@@ -22,6 +27,50 @@ class InvoiceController extends Controller
     {
 
     }
+
+    public function estimateConvert ($id)
+    {
+        $estimate = Estimate::findOrFail($id);
+
+
+
+                $newInvoice = Invoice::create([
+                    'companyId' => Auth()->user()->companyId,
+                    'customerId' => $estimate->customerId,
+                    'detailType' => $estimate->detailType,
+                    'serviceAddress' => $estimate->serviceAddress,
+                    'arrivalTime' => $estimate->arrivalTime,
+                    'dateofService' => $estimate->dateofService,
+                    'status' => 1
+
+                ]);
+
+                foreach ($estimate->packages as $package)
+                {
+                    $ip = InvoicePackage::create([
+                        'invoiceId' => $newInvoice->id,
+                        'packageId' => $package->packageId,
+                        'qty' => $package->quanity,
+                        'discount' => $package->discount,
+                        'discountType' => $package->discountType,
+                        'total' => $package->chargedPrice
+                    ]);
+                }
+
+                foreach ($estimate->services as $service)
+                {
+                    $ip = InvoiceService::create([
+                        'invoiceId' => $newInvoice->id,
+                        'serviceId' => $service->serviceId,
+                        'qty' => $service->quanity,
+                        'discount' => $service->discount,
+                        'discountType' => $service->discountType,
+                        'total' => $service->chargedPrice
+                    ]);
+                }
+
+        }
+
 
     /**
      * Show the form for creating a new resource.

@@ -85,6 +85,7 @@
                     <div class="card-body py-0 px-0 px-sm-3">
                         <div class="list-wrapper">
                             <ul class="d-flex flex-column text-white todo-list todo-list-custom">
+
                                 <li>
                                     <div class="col-xl-2 text-center">
                                         Qty
@@ -99,21 +100,33 @@
                                         Cost
                                     </div>
                                 </li>
+                                @if($estimate->services)
+                                @foreach($estimate->services as $service)
                                 <li>
                                     <div class="col-xl-2 text-center">
-                                        1
+                                        {{$service->quanity ?? 'Unk'}}
                                     </div>
                                     <div class="col-xl-4 text-center">
-                                        Bronze Package
+                                        {{$service->service->description}}
                                     </div>
                                     <div class="col-xl-3 text-center">
-                                        50%
+                                        {{$service->discount ?? '0'}}
                                     </div>
                                     <div class="col-xl-3 text-center">
-                                        List Price: $159.99 <br>
-                                        Total: $100.00
+                                        List Price: ${{$service->listPrice}} <br>
+                                        Total: ${{$service->chargedPrice}}
                                     </div>
                                 </li>
+                                @endforeach
+
+                                @else
+                                    <li>
+                                        <div class="col-xl-2 text-center">
+                                            No services added to estimate
+                                        </div>
+
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -140,21 +153,7 @@
                                         Cost
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="col-xl-2 text-center">
-                                        1
-                                    </div>
-                                    <div class="col-xl-4 text-center">
-                                        Bronze Package
-                                    </div>
-                                    <div class="col-xl-3 text-center">
-                                        50%
-                                    </div>
-                                    <div class="col-xl-3 text-center">
-                                        List Price: $159.99 <br>
-                                        Total: $100.00
-                                    </div>
-                                </li>
+
                             </ul>
                         </div>
                     </div>

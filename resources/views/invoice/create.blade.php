@@ -14,16 +14,16 @@
 
     <div class="row">
         <div class="col-6 grid-margin stretch-card">
-            @include('invoice.partials.customer')
+            @include('estimate.partials.customer')
         </div>
         <div class="col-6 grid-margin stretch-card">
-            @include('invoice.partials.serviceInfo')
+            @include('estimate.partials.serviceInfo')
         </div>
     </div>
 
     <div class="row">
         <div class="col-12">
-            @include('invoice.partials.charges')
+            @include('estimate.partials.charges')
         </div>
     </div>
 

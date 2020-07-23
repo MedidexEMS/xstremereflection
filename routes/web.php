@@ -232,6 +232,20 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/estimate/{id}/show', 'EstimateController@show')->name('estimate.show');
     Route::post('/estimate/{id}/addPackage', 'EstimateController@addPackage');
     Route::post('/estimate/addVehicle/{cid}/{eid}', 'EstimateController@addVehicle');
+    Route::get('/estimate/workOrder/{id}', 'EstimateController@estimateMakeWorkOrder');
+
+
+/**
+ *
+ * Calander
+ */
+    Route::get('/ical/{cid}', 'IcalController@getEventsICalObject');
+
+
+/**
+ * Invoices
+ */
+    Route::get('/estimate/invoice/{id}', 'InvoiceController@estimateConvert');
 
 use GuzzleHttp\Client;
 
