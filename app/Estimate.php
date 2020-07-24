@@ -20,4 +20,8 @@ class Estimate extends Model
     {
         return $this->hasOne(EstimateVehicle::class, 'estimateId');
     }
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customerId');
+    }
 }
