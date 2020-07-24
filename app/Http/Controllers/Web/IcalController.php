@@ -33,7 +33,7 @@ class IcalController extends Controller
             $start = $event->estimate->dateofService.' '. $event->estimate->arrivalTime;
             $end = $event->estimate->dateofService.' '. $endTime;
             if($event->estimate->detailType == 1){$detailType = 'Shop Detail';} elseif($event->estimate->detailType == 2) { $detailType = "Mobile Detail";}else{ $detailType = "Detail";}
-            $summary = $event->estimate->customer->firstName.' '.$event->estimate->customer->lastName;
+            $summary = $event->estimate->customer->firstName.'&nbsp;'.$event->estimate->customer->lastName;
 
             $icalObject .=
                 "BEGIN:VEVENT
