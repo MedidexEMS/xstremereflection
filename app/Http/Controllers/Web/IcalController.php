@@ -34,6 +34,8 @@ class IcalController extends Controller
             $end = $event->estimate->dateofService.' '. $endTime;
             $start = Carbon::parse($start)->addHours(4);
             $end = Carbon::parse($end)->addHours(4);
+            $eventLink = "https://xtremereflection.app/$event->estimate->id/show";
+
 
             if($event->estimate->detailType == 1){$detailType = 'Shop Detail';} elseif($event->estimate->detailType == 2) { $detailType = "Mobile Detail";}else{ $detailType = "Detail";}
             $summary = $event->estimate->customer->firstName.' '.$event->estimate->customer->lastName;
@@ -43,7 +45,7 @@ class IcalController extends Controller
            DTSTART:" . date(ICAL_FORMAT, strtotime($start)) . "
            DTEND:" . date(ICAL_FORMAT, strtotime($end)) . "
            DTSTAMP:" . date(ICAL_FORMAT, strtotime($event->created_at)) . "
-           URL:https://xtremereflection.app/estimate/$event->estimate->id/show
+           URL:https://xtremereflection.app/estimate/$eventLink/show
            SUMMARY:$summary
            UID:$event->id
            LAST-MODIFIED:" . date(ICAL_FORMAT, strtotime($event->updated_at)) . "
