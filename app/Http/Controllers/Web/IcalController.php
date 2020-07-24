@@ -32,8 +32,8 @@ class IcalController extends Controller
             $endTime = Carbon::parse($event->estimate->arrivalTime)->addHours(6)->format('H:i:s');
             $start = $event->estimate->dateofService.' '. $event->estimate->arrivalTime;
             $end = $event->estimate->dateofService.' '. $endTime;
-            $start->setTimezone(new DateTimeZone("UTC"));
-            $end->setTimezone(new DateTimeZone("UTC"));
+            $start = Carbon::parse($start)->addHours(4);
+            $end = Carbon::parse($end)->addHours(4);
 
             if($event->estimate->detailType == 1){$detailType = 'Shop Detail';} elseif($event->estimate->detailType == 2) { $detailType = "Mobile Detail";}else{ $detailType = "Detail";}
             $summary = $event->estimate->customer->firstName.' '.$event->estimate->customer->lastName;
