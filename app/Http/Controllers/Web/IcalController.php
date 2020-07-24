@@ -43,10 +43,16 @@ class IcalController extends Controller
            DTSTART:" . date(ICAL_FORMAT, strtotime($start)) . "
            DTEND:" . date(ICAL_FORMAT, strtotime($end)) . "
            DTSTAMP:" . date(ICAL_FORMAT, strtotime($event->created_at)) . "
-           SUMMARY:$summary;
+           URL:https://xtremereflection.app/estimate/$event->estimate->id/show
+           SUMMARY:$summary
            UID:$event->id
            LAST-MODIFIED:" . date(ICAL_FORMAT, strtotime($event->updated_at)) . "
            LOCATION:$event->estimate->serviceAddress
+           BEGIN:VALARM
+            TRIGGER:-PT30M
+            ACTION:DISPLAY
+            DESCRIPTION:Auto Detail Scheduled
+            END:VALARM
            END:VEVENT\n";
         }
 
