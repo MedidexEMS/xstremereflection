@@ -29,9 +29,7 @@ class IcalController extends Controller
 
         // loop over events
         foreach ($events as $event) {
-            //dd($event->estimate);
             $endTime = Carbon::parse($event->estimate->arrivalTime)->addHours(6)->format('H:i:s');
-
             $start = $event->estimate->dateofService.' '. $event->estimate->arrivalTime;
             $end = $event->estimate->dateofService.' '. $endTime;
             if($event->estimate->detailType == 1){$detailType = 'Shop Detail';} elseif($event->estimate->detailType == 2) { $detailType = "Mobile Detail";}else{ $detailType = "Detail";}
@@ -44,7 +42,6 @@ class IcalController extends Controller
            DTSTAMP:" . date(ICAL_FORMAT, strtotime($event->created_at)) . "
            SUMMARY:$summary;
            UID:$event->id
-           STATUS:
            LAST-MODIFIED:" . date(ICAL_FORMAT, strtotime($event->updated_at)) . "
            LOCATION:$event->estimate->serviceAddress
            END:VEVENT\n";
