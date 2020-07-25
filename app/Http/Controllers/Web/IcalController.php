@@ -50,7 +50,7 @@ class IcalController extends Controller
            SUMMARY:$summary
            UID:$event->id
            LAST-MODIFIED:" . date(ICAL_FORMAT, strtotime($event->updated_at)) . "
-           LOCATION:$event->estimate->serviceAddress
+           LOCATION:$location
            BEGIN:VALARM
             TRIGGER:-PT30M
             ACTION:DISPLAY
