@@ -52,7 +52,7 @@ class IcalController extends Controller
            LAST-MODIFIED:" . date(ICAL_FORMAT, strtotime($event->updated_at)) . "
            LOCATION:$location
            BEGIN:VALARM
-            TRIGGER:-PT30M
+            TRIGGER:-PT1D
             ACTION:DISPLAY
             DESCRIPTION:Auto Detail Scheduled
             END:VALARM
