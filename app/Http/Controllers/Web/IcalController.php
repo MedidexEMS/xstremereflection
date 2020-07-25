@@ -17,7 +17,7 @@ class IcalController extends Controller
      */
     public function getEventsICalObject($cid)
     {
-        $events = WorkOrder::with('estimate', 'estimate.customer')->where('companyId', $cid)->get();
+        $events = WorkOrder::with('estimate', 'estimate.customer')->where('companyId', $cid)->where('status', 1)->get();
 
         //dd($events);
         define('ICAL_FORMAT', 'Ymd\THis\Z');
