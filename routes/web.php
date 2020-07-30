@@ -233,7 +233,20 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/estimate/{id}/addPackage', 'EstimateController@addPackage');
     Route::post('/estimate/addVehicle/{cid}/{eid}', 'EstimateController@addVehicle');
     Route::get('/estimate/workOrder/{id}', 'EstimateController@estimateMakeWorkOrder');
+    Route::get('/estimate', 'EstimateController@index');
 
+/**
+ * Work Orders
+ */
+    Route::get('workorder/{id}/show', 'WorkOrderController@show');
+    Route::get('workorder/techenroute/{id}', 'WorkOrderController@techEnroute');
+
+    ROUTE::get('email', function (){
+        $title= 'Test';
+        $content = 'Content';
+
+       return view('emails.template', compact('title', 'content'));
+    });
 
 /**
  *

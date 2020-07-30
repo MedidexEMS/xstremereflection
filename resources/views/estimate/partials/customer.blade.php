@@ -12,7 +12,7 @@
                     </p>
 
                     <p class="mb-0 font-weight-normal d-none d-sm-block">
-                        Service Date: {{\Carbon\Carbon::parse($estimate->dateofService)->format('m-d-Y')}}
+                        Service Date: @if($estimate->status == 7) <mark>{{\Carbon\Carbon::parse($estimate->dateofService)->format('m-d-Y')}}</mark>  <i class="fad fa-calendar-alt"></i> @else {{\Carbon\Carbon::parse($estimate->dateofService)->format('m-d-Y')}} @endif
                     </p>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">
                         Arrival Window: @if($estimate->arrivalTime){{\Carbon\Carbon::parse($estimate->arrivalTime)->format('H:i')}} to {{\Carbon\Carbon::parse($estimate->arrivalTime)->addHours(3)->format('H:i')}}@else TBD @endif

@@ -10,4 +10,9 @@ class WorkOrder extends Model
     {
         return $this->belongsTo(Estimate::class, 'estimateId');
     }
+
+    public function services ()
+    {
+        return $this->hasMany(WorkOrderServices::class, 'workOrderId');
+    }
 }

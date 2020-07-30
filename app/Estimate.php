@@ -24,4 +24,12 @@ class Estimate extends Model
     {
         return $this->belongsTo(Customer::class, 'customerId');
     }
+    public function estatus ()
+    {
+        return $this->belongsTo(EstimateStatus::class, 'status');
+    }
+    public function workorder ()
+    {
+        return $this->hasOne(WorkOrder::class, 'estimateId');
+    }
 }

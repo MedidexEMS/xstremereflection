@@ -16,6 +16,7 @@ use Vanguard\Services;
 use Vanguard\VehicleColor;
 use Vanguard\VehicleCondition;
 use Vanguard\WorkOrder;
+USE Vanguard\WorkOrderServices;
 
 class EstimateController extends Controller
 {
@@ -30,7 +31,9 @@ class EstimateController extends Controller
      */
     public function index()
     {
-        //
+        $estimates = Estimate::with('workorder')->where('companyID', Auth()->user()->companyId)->orderBy('status', 'asc')->get();
+
+        return view('estimate.index', compact('estimates'));
     }
 
 
@@ -181,6 +184,20 @@ class EstimateController extends Controller
         $estimate->status = 4;
         $estimate->save();
 
+        if($estimate->services){
+            foreach($estimate->services as $service){
+                $estimateService = new WorkOrderServices;
+                $estimateService->estimateId = $estimate->id;
+                $estimateService->workOrderId = $wo->id;
+                $estimateService->qty = 1;
+                $estimateService->serviceId = $service->serviceId;
+                $estimateService->listPrice = $service->listPrice;
+                $estimateService->chargedPrice = 0;
+                $estimateService->status = 1;
+                $estimateService->save();
+            }
+        }
+
 
         return redirect()->route('estimate.show', ['id' => $id])->with('success', 'You have created a new work order.');
     }
@@ -219,6 +236,9 @@ class EstimateController extends Controller
                 $estimateTotal = $estimateTotal + $service->chargedPrice;
             }
         }
+
+        $estimate->total = $estimateTotal;
+        $estimate->save();
 
         return view('estimate.create', compact('packages', 'customer', 'estimate', 'estimateTotal', 'colors', 'conditions'));
     }

@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group mb-2">
                         <label for="discount"> Discount <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" name="discount" id="discount" value="0" required/>
+                        <input type="number" step="0.01" class="form-control" name="discount" id="discount" value="0" required/>
                     </div>
 
                     <div class="form-group mb-2" id="packageTotals">

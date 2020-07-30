@@ -77,17 +77,17 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="/dashboard">
+            <a class="nav-link" href="/estimate">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="fal fa-file-invoice"></i>
               </span>
                 <span class="menu-title">Estimates</span>
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="/dashboard">
+            <a class="nav-link" href="/invoice">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="fas fa-file-invoice-dollar"></i>
               </span>
                 <span class="menu-title">Invoices</span>
             </a>
