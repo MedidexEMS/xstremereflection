@@ -10,7 +10,7 @@ use Illuminate\Queue\SerializesModels;
 class EstimateMailable extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $estimate;
     /**
      * Create a new message instance.
      *
@@ -26,8 +26,8 @@ class EstimateMailable extends Mailable
      *
      * @return $this
      */
-    public function build($estimate)
+    public function build()
     {
-        return $this->view('emails.estimate', compact('estimate'));
+        return $this->view('emails.estimate');
     }
 }
