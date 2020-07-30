@@ -61,7 +61,7 @@
                     <td>
                         <p> {{$estimate->customer->firstName ?? ''}} {{$estimate->customer->lastName ?? ''}} I hope this email finds you well </p>
 
-                        <p>You have requested a quote from us to have your vehicle detailed, we are pleased to provide you with this information. If you do not mind to review the enclosed pricing and info, if you are pleased with the estimate click the approve button at the bottom of this email. </p>
+                        <p>You have requested a quote from us to have your vehicle detailed, we are pleased to provide you with this information. If you do not mind to review the enclosed pricing and info, if you are pleased with the estimate click the approve button at the bottom of this email or you can reply back approved. </p>
 
                         <p>
                             Our specialists are certified in applying ceramic coatings, after providing your vehicle with a like-new shine upgrade your detail with a ceramic coating. Our crystal coating has a life expectancy of up to 3 years. That means with proper maintenance of the vehicle no waxing for 3 years. This could save you as much as $300 over the next 3 years. Studies show that the average auto consumer is keeping their vehicle for 11 years. Why not protect your vehicle with these benefits.

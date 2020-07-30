@@ -233,6 +233,7 @@ class EstimateController extends Controller
         $packages = Package::where('companyId', 0)->orWhere('companyId', Auth()->user()->company_Id)->get();
 
         $estimateTotal = 0;
+        $downPmt = 0;
 
         if($estimate->packages){
             foreach($estimate->packages as $package){
@@ -244,9 +245,13 @@ class EstimateController extends Controller
             foreach($estimate->services as $service){
                 $estimateTotal = $estimateTotal + $service->chargedPrice;
             }
+            foreach($estimate->services->where('requiresDownPayment', 1) as $service){
+                $downPmt = $downPmt + $service->chargedPrice;
+            }
         }
 
         $estimate->total = $estimateTotal;
+        $estimate->deposit = $downPmt;
         $estimate->save();
 
         return view('estimate.create', compact('packages', 'customer', 'estimate', 'estimateTotal', 'colors', 'conditions'));
