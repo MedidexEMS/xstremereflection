@@ -40,7 +40,8 @@ class EstimateController extends Controller
 
     public function estimateEmail ($id)
     {
-        $estimate = Estimate::find($id);
+        $estimate = Estimate::with('customer', 'services', 'packages')->find($id);
+
         Mail::to('blevins.josh@gmail.com')->send(new EstimateMailable($estimate));
 
         return 'Email SENT';
