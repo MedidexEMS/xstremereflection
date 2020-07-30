@@ -103,9 +103,9 @@
                             </tr>
                             @foreach($estimate->packages as $row)
                             <tr>
-                                <td>{{$row->package->description ?? 'Unknown Package'}}</td>
+                                <td>{{$row->package->description ?? 'Unknown Package'}} Package</td>
                                 <td> @if($row->discount == 1) {{$row->discount ?? ''}} % @elseif($row->discount == 2) $ {{$row->discount ?? ''}} @endif</td>
-                                <td></td>
+                                <td>{{$row->chargedPrice ?? ''}}</td>
                             </tr>
                             @endforeach
                         </table>
@@ -117,6 +117,13 @@
                                 <th>Discount</th>
                                 <th>Price</th>
                             </tr>
+                            @foreach($estimate->services as $row)
+                                <tr>
+                                    <td>@if($row->serviceId == 39) {{$row->description}} @else {{$row->service->description ?? 'Unknown Service'}} @endif</td>
+                                    <td> @if($row->discount == 1) {{$row->discount ?? ''}} % @elseif($row->discount == 2) $ {{$row->discount ?? ''}} @endif</td>
+                                    <td>{{$row->chargedPrice ?? ''}}</td>
+                                </tr>
+                            @endforeach
                         </table>
                     </td>
                 </tr>
