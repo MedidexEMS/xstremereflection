@@ -101,6 +101,13 @@
                                 <th>Discount</th>
                                 <th>Price</th>
                             </tr>
+                            @foreach($estimate->packages as $row)
+                            <tr>
+                                <td>{{$row->package->description ?? 'Unknown Package'}}</td>
+                                <td> @if($row->discount == 1) {{$row->discount ?? ''}} % @elseif($row->discount == 2) $ {{$row->discount ?? ''}} @endif</td>
+                                <td></td>
+                            </tr>
+                            @endforeach
                         </table>
                     </td>
                     <td>
