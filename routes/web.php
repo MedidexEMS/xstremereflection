@@ -245,7 +245,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         $title= 'Test';
         $content = 'Content';
 
-       return view('emails.template', compact('title', 'content'));
+       return view('emails.estimate', compact('title', 'content'));
     });
 
 /**
