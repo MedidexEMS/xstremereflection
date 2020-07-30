@@ -26,8 +26,8 @@ class EstimateMailable extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build($estimate)
     {
-        return $this->view('emails.estimate');
+        return $this->view('emails.estimate', compact('estimate'));
     }
 }
