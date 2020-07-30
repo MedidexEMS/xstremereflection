@@ -234,6 +234,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/estimate/addVehicle/{cid}/{eid}', 'EstimateController@addVehicle');
     Route::get('/estimate/workOrder/{id}', 'EstimateController@estimateMakeWorkOrder');
     Route::get('/estimate', 'EstimateController@index');
+    Route::get('/estimate/mail/{id}', 'EstimateController@estimateEmail');
 
 /**
  * Work Orders

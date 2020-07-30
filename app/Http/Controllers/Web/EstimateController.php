@@ -10,6 +10,8 @@ use Vanguard\EstimateVehicle;
 use Vanguard\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Vanguard\Mail\EstimateMailable;
 use Vanguard\Package;
 use Vanguard\packageItem;
 use Vanguard\Services;
@@ -36,7 +38,13 @@ class EstimateController extends Controller
         return view('estimate.index', compact('estimates'));
     }
 
+    public function estimateEmail ($id)
+    {
+        $estimate = Estimate::find($id);
+        Mail::to('blevins.josh@gmail.com')->send(new EstimateMailable($estimate));
 
+        return 'Email SENT';
+    }
 
     /**
      * Show the form for creating a new resource.

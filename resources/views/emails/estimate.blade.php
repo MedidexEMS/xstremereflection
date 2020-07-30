@@ -59,7 +59,7 @@
 
                 <tr>
                     <td>
-                        <p> John Doe I hope this email finds you well </p>
+                        <p> {{$estimate->customer->firstName ?? ''}} {{$estimate->customer->lastName ?? ''}} I hope this email finds you well </p>
 
                         <p>You have requested a quote from us to have your vehicle detailed, we are pleased to provide you with this information. If you do not mind to review the enclosed pricing and info, if you are pleased with the estimate click the approve button at the bottom of this email. </p>
 
