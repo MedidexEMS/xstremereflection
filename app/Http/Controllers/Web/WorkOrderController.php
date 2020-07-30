@@ -53,9 +53,9 @@ class WorkOrderController extends Controller
         return view('workorder.show', compact('workOrder'));
     }
 
-    public function techEnroute ()
+    public function techEnroute ($id)
     {
-        $workOrder = WorkOrder::find(74);
+        $workOrder = WorkOrder::find($id);
         Mail::to('blevins.josh@gmail.com')->send(new SendTechEnrouteMailable($workOrder));
 
         return 'Email SENT';
