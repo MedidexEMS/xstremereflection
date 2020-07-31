@@ -249,6 +249,18 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
        return view('emails.estimate', compact('title', 'content'));
     });
 
+    ROUTE::get('/wo', function (){
+        $wo = Vanguard\WorkOrder::get();
+
+        foreach ($wo as $row )
+        {
+            $e = Vanguard\Estimate::find($row->estimateId);
+
+            $row->totalCharge = $e->total;
+            $row->save();
+        }
+    });
+
 /**
  *
  * Calander

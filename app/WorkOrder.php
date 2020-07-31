@@ -8,7 +8,7 @@ class WorkOrder extends Model
 {
     public function estimate ()
     {
-        return $this->belongsTo(Estimate::class, 'estimateId');
+        return $this->belongsTo(Estimate::class, 'estimateId', 'id');
     }
 
     public function services ()
