@@ -28,6 +28,6 @@ class SendTechEnrouteMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.estimate');
+        return $this->view('emails.techenroute');
     }
 }
