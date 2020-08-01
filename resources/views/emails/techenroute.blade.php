@@ -53,15 +53,23 @@
             <table class="content" width="100%" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
                 <tr>
                     <td>
-                        <h2>Below is information and the estimate you requested</h2>
+                        <h2>Your technician for today is on his way!!!</h2>
                     </td>
                 </tr>
 
                 <tr>
                     <td>
-                        <p> {{$estimate->customer->firstName ?? ''}} {{$estimate->customer->lastName ?? ''}} I hope this email finds you well </p>
+                        <p> {{$workOrder->estimate->customer->firstName ?? ''}} {{$workOrder->estimate->customer->lastName ?? ''}} I hope this email finds you well </p>
 
-                        <p>You have requested a quote from us to have your vehicle detailed, we are pleased to provide you with this information. If you do not mind to review the enclosed pricing and info, if you are pleased with the estimate click the approve button at the bottom of this email or you can reply back approved. </p>
+                        <p>You technician is on his way, I would like to let you know how our process works so you can be prepared. </p>
+
+                        <p>
+                            Our technician will arrive and greet you prior to getting started, then we will proceed into a brief inspcetion of the vehicle with you.
+                            Please let our specialist know about any areas you may be concerned about. After the inspection the specialist will start the detail process,
+                            sometimes as we make our way through the vehicle we find areas of concern that we did not initally identify. The technician may as to speak
+                            with you several times to discuss how we can best handle each concern. Our technician will never add additional charges without having your
+                            approval first. Be sure to speak with the technician about continuing a maintenance program for your vehicle.
+                        </p>
 
                         <p>
                             Our specialists are certified in applying ceramic coatings, after providing your vehicle with a like-new shine upgrade your detail with a ceramic coating. Our crystal coating has a life expectancy of up to 3 years. That means with proper maintenance of the vehicle no waxing for 3 years. This could save you as much as $300 over the next 3 years. Studies show that the average auto consumer is keeping their vehicle for 11 years. Why not protect your vehicle with these benefits.
@@ -103,15 +111,15 @@
                 </tr>
                 <tr>
                     <td>
-                        <img src="https://xtremereflection.app/assets/img/ram1.jpg" width="200px" height="200px" alt="SystemXLogo">                    </td>
+                        <img src="https://xtremereflection.app/assets/img/ram1.jpg" width="150px" height="150px" alt="SystemXLogo">                    </td>
                     <td>
-                        <img src="https://xtremereflection.app/assets/img/jeep.jpg" width="200px" height="200px" alt="SystemXLogo">
+                        <img src="https://xtremereflection.app/assets/img/jeep.jpg" width="150px" height="150px" alt="SystemXLogo">
                     </td>
                     <td>
-                        <img src="https://xtremereflection.app/assets/img/interior.jpg" width="200px" height="200px" alt="SystemXLogo">
+                        <img src="https://xtremereflection.app/assets/img/interior.jpg" width="150px" height="150px" alt="SystemXLogo">
                     </td>
                     <td>
-                        <img src="https://xtremereflection.app/assets/img/gmc.jpg" width="200px" height="200px" alt="SystemXLogo">
+                        <img src="https://xtremereflection.app/assets/img/gmc.jpg" width="150px" height="150px" alt="SystemXLogo">
                     </td>
                 </tr>
             </table>
