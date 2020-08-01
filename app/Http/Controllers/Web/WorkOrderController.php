@@ -61,7 +61,7 @@ class WorkOrderController extends Controller
 
     public function techEnroute ($id)
     {
-        $workOrder = WorkOrder::with('estimate', 'esitimate.customer')->find($id);
+        $workOrder = WorkOrder::with('estimate', 'estimate.customer')->find($id);
         Mail::to('blevins.josh@gmail.com')->send(new SendTechEnrouteMailable($workOrder));
 
         return 'Email SENT';
