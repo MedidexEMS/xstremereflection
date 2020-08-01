@@ -6,6 +6,7 @@ use Vanguard\CustomerVehicle;
 use Vanguard\Estimate;
 use Vanguard\EstimatePackage;
 use Vanguard\EstimateService;
+use Vanguard\EstimateTracking;
 use Vanguard\EstimateVehicle;
 use Vanguard\Http\Controllers\Controller;
 
@@ -19,6 +20,7 @@ use Vanguard\VehicleColor;
 use Vanguard\VehicleCondition;
 use Vanguard\WorkOrder;
 USE Vanguard\WorkOrderServices;
+use Vanguard\WorkOrderTracking;
 
 class EstimateController extends Controller
 {
@@ -44,6 +46,17 @@ class EstimateController extends Controller
 
         Mail::to('blevins.josh@gmail.com')->send(new EstimateMailable($estimate));
 
+        if(Mail::failures()){
+            $tracking = new EstimateTracking;
+            $tracking->estimateId = $estimate->id;
+            $tracking->note = 'Estimate email failed to send.';
+            $tracking->save();
+        }else{
+            $tracking = new EstimateTracking;
+            $tracking->estimateId = $estimate->id;
+            $tracking->note = 'Estimate emailed to the customer.';
+            $tracking->save();
+        }
         return 'Email SENT';
     }
 
@@ -94,6 +107,11 @@ class EstimateController extends Controller
         $estimate->dateofService = $serviceDate;
         $estimate->arrivalTime = $request->arrivalTime;
         $estimate->save();
+
+        $tracking = new EstimateTracking;
+        $tracking->estimateId = $estimate->id;
+        $tracking->note = 'Estimate created.';
+        $tracking->save();
 
         return redirect()->route('estimate.show', ['id' => $estimate->id]);
     }
@@ -181,17 +199,38 @@ class EstimateController extends Controller
         return redirect()->route('estimate.show', ['id' => $id]);
     }
 
+    public function estimateCancel ($id)
+    {
+        $estimate = Estimate::find($id);
+        $estimate->status = 6;
+        $estimate->save();
+
+        return view('estimates')->withErrors('Customer Canceled Job');
+
+    }
+
     public function estimateMakeWorkOrder ($id)
     {
-        $wo = new WorkOrder;
-        $wo->companyId = Auth()->user()->companyId;
-        $wo->estimateId = $id;
-        $wo->status = 1;
-        $wo->save();
-
         $estimate= Estimate::find($id);
         $estimate->status = 4;
         $estimate->save();
+
+        $wo = new WorkOrder;
+        $wo->companyId = Auth()->user()->companyId;
+        $wo->estimateId = $id;
+        $wo->totalCharge = $estimate->total;
+        $wo->status = 1;
+        $wo->save();
+
+        $tracking = new EstimateTracking;
+        $tracking->estimateId = $id;
+        $tracking->note = 'Estimate approved and work order created.';
+        $tracking->save();
+
+        $wtracking = new WorkOrderTracking;
+        $wtracking->workOrderId = $wo->id;
+        $wtracking->note = 'Estimate approved and work order created.';
+        $wtracking->save();
 
         if($estimate->services){
             foreach($estimate->services as $service){
@@ -219,7 +258,7 @@ class EstimateController extends Controller
     public function show($id)
     {
 
-        $estimate = Estimate::with('packages', 'packages.package', 'vehicle', 'vehicle.vehicleInfo','vehicle.vehicleInfo.color', 'vehicle.vehicleInfo.condition')->find($id);
+        $estimate = Estimate::with('packages', 'packages.package', 'vehicle', 'vehicle.vehicleInfo','vehicle.vehicleInfo.colorInfo', 'vehicle.vehicleInfo.condition')->find($id);
         $customer = Customer::find($estimate->customerId);
         $colors = VehicleColor::get();
         $conditions = VehicleCondition::get();

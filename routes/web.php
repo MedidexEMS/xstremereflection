@@ -233,7 +233,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/estimate/{id}/addPackage', 'EstimateController@addPackage');
     Route::post('/estimate/addVehicle/{cid}/{eid}', 'EstimateController@addVehicle');
     Route::get('/estimate/workOrder/{id}', 'EstimateController@estimateMakeWorkOrder');
-    Route::get('/estimate', 'EstimateController@index');
+    Route::get('/estimate', 'EstimateController@index')->name('estimates');
     Route::get('/estimate/mail/{id}', 'EstimateController@estimateEmail');
 
 /**
@@ -260,6 +260,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             $row->save();
         }
     });
+
+/**
+ *
+ */
 
 /**
  *

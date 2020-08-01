@@ -6,7 +6,7 @@
                 <div class="col-xl-12 p-0">
                     <h4 class="mb-1 mb-sm-0">Customer Information</h4>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">
-                        VIN Number: {!! $workOrder->estimate->vehicle->vehicleInfo->vin ?? '<i class="fad fa-sort-numeric-up-alt"></i>' !!}
+                        VIN Number: {!! $workOrder->estimate->vehicle->vehicleInfo->vin ?? '<a data-toggle="modal" data-target="#vehicleModal"><i class="fad fa-sort-numeric-up-alt"></i></a>' !!}
                     </p>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">
                         Vehicle Year: {{$workOrder->estimate->vehicle->vehicleInfo->year}}

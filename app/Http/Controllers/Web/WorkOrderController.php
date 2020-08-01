@@ -3,6 +3,8 @@
 namespace Vanguard\Http\Controllers\Web;
 use Vanguard\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Vanguard\VehicleColor;
+use Vanguard\VehicleCondition;
 use Vanguard\WorkOrder;
 use Illuminate\Support\Facades\Mail;
 use Vanguard\Mail\SendTechEnrouteMailable;
@@ -50,7 +52,11 @@ class WorkOrderController extends Controller
     {
         $workOrder = WorkOrder::find($id);
 
-        return view('workorder.show', compact('workOrder'));
+        $colors = VehicleColor::get();
+
+        $conditions = VehicleCondition::get();
+
+        return view('workorder.show', compact('workOrder', 'colors', 'conditions'));
     }
 
     public function techEnroute ($id)

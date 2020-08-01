@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class CustomerVehicle extends Model
 {
-    public function color()
+    public function colorInfo()
     {
-        return $this->belongsTo(VehicleCondition::class, 'vehicleColor');
+        return $this->belongsTo(VehicleColor::class, 'color');
     }
     public function condition()
     {
-        return $this->belongsTo(VehicleCondition::class, 'vehicleCondition');
+        return $this->belongsTo(VehicleCondition::class, 'customerCondition');
     }
 }
