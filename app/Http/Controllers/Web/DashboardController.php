@@ -6,6 +6,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\View\View;
 use Vanguard\Estimate;
 use Vanguard\Http\Controllers\Controller;
+use Vanguard\Invoice;
 use Vanguard\WorkOrder;
 
 class DashboardController extends Controller
@@ -25,6 +26,8 @@ class DashboardController extends Controller
 
         $workorders = WorkOrder::where('companyId', Auth()->user()->companyId)->get();
 
-        return view('dashboard.index', compact('estimates', 'workorders'));
+        $invoices = Invoice::where('companyId', Auth()->user()->companyId)->get();
+
+        return view('dashboard.index', compact('estimates', 'workorders', 'invoices'));
     }
 }

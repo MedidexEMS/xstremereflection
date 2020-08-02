@@ -260,7 +260,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             $row->save();
         }
     });
-
+Route::post('/updateVehicle/{id}', 'WorkOrderController@updateVehicle');
 /**
  *
  */

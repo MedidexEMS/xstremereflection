@@ -74,7 +74,7 @@
                     </form>
                 @else
 
-                    <form id="newVehicleForm" action="/updateVehicle/{{$workOrder->estimate->customer->id}}/{{$workOrder->estimate->id}}" method="POST">
+                    <form id="newVehicleForm" action="/updateVehicle/{{$workOrder->estimate->vehicle->customerVehicleId}}" method="POST">
                         @csrf
                         <div class="form-group mb-2">
                             <label for="discount">Enter Vehicle VIN <span class="text-danger">*</span></label>
@@ -82,30 +82,30 @@
                         </div>
                         <div class="form-group mb-2">
                             <label for="year">Vehicle Year <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="year" id="year" placeholder="Vehicle Year"  />
+                            <input type="text" class="form-control" name="year" id="year" placeholder="Vehicle Year" value="{{$workOrder->estimate->vehicle->vehicleInfo->year}}"  />
                         </div>
                         <div class="form-group mb-2">
                             <label for="make">Vehicle Make <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="make" id="make" placeholder="Vehicle Make"  />
+                            <input type="text" class="form-control" name="make" id="make" placeholder="Vehicle Make"  value="{{$workOrder->estimate->vehicle->vehicleInfo->make}}"/>
                         </div>
                         <div class="form-group mb-2">
                             <label for="model">Vehicle Model <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="model" id="model" placeholder="Vehicle Model"  />
+                            <input type="text" class="form-control" name="model" id="model" placeholder="Vehicle Model"  value="{{$workOrder->estimate->vehicle->vehicleInfo->model}}"/>
                         </div>
                         <div class="form-group mb-2">
                             <label for="trim">Vehicle Trim <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="trim" id="trim" placeholder="Vehicle Trim"  />
+                            <input type="text" class="form-control" name="trim" id="trim" placeholder="Vehicle Trim"  value="{{$workOrder->estimate->vehicle->vehicleInfo->trim}}"/>
                         </div>
                         <div class="form-group mb-2">
                             <label for="condition">Vehicle Style <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="style" id="style" placeholder="Vehicle Style"  />
+                            <input type="text" class="form-control" name="style" id="style" placeholder="Vehicle Style" value="{{$workOrder->estimate->vehicle->vehicleInfo->style}}" />
                         </div>
                         <div class="form-group mb-2">
                             <label for="color">Vehicle Color <span class="text-danger">*</span></label>
                             <select class="js-example-basic-single" name="color" id="color" style="width:100%" >
                                 <option selected>Select Vehicle Color</option>
                                 @foreach($colors as $color)
-                                    <option value="{{$color->id}}">{{$color->description}}</option>
+                                    <option value="{{$color->id}}" @if($workOrder->estimate->vehicle->vehicleInfo->make == $color->id) selected @endif>{{$color->description}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -114,11 +114,11 @@
                             <select class="js-example-basic-single" name="condition" id="condition" style="width:100%">
                                 <option selected>Select Vehicle Color</option>
                                 @foreach($conditions as $condition)
-                                    <option value="{{$condition->id}}">{{$condition->description}}</option>
+                                    <option value="{{$condition->id}}" @if($condition->id == $workOrder->estimate->vehicle->vehicleInfo->customerCondition) selected @endif>{{$condition->description}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <button type="submit"  class="btn btn-primary">Add Vehicle</button>
+                        <button type="submit"  class="btn btn-primary">Update Vehicle</button>
 
                     </form>
                 @endif

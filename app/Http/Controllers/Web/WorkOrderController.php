@@ -1,6 +1,7 @@
 <?php
 
 namespace Vanguard\Http\Controllers\Web;
+use Vanguard\CustomerVehicle;
 use Vanguard\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Vanguard\VehicleColor;
@@ -88,6 +89,22 @@ class WorkOrderController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function updateVehicle (Request $request, $id)
+    {
+        $customerVehicle = CustomerVehicle::find($id);
+
+        $customerVehicle->vin = $request->vin;
+        $customerVehicle->year = $request->year;
+        $customerVehicle->make = $request->make;
+        $customerVehicle->model = $request->model;
+        $customerVehicle->trim = $request->trim;
+        $customerVehicle->style = $request->style;
+        $customerVehicle->color = $request->color;
+        $customerVehicle->customerCondition = $request->condition;
+
+        $customerVehicle->save();
     }
 
     /**

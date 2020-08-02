@@ -18,7 +18,7 @@
                         Vehicle Model/Style: {{$workOrder->estimate->vehicle->vehicleInfo->model}} - {{$workOrder->estimate->vehicle->vehicleInfo->style}}
                     </p>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">
-                        Vehicle Color: {{$workOrder->estimate->vehicle->vehicleInfo->color->description ?? ''}}
+                        Vehicle Color: {{$workOrder->estimate->vehicle->vehicleInfo->colorInfo->description ?? ''}}
                     </p>
                 </div>
             </div>
