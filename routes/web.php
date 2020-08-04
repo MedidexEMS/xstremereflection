@@ -235,6 +235,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/estimate/workOrder/{id}', 'EstimateController@estimateMakeWorkOrder');
     Route::get('/estimate', 'EstimateController@index')->name('estimates');
     Route::get('/estimate/mail/{id}', 'EstimateController@estimateEmail');
+    Route::get('/removePackage/{id}', 'EstimateController@destroyPackage');
 
 /**
  * Work Orders

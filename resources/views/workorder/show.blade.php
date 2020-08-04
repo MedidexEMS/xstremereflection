@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
-@section('page-title', __('New Invoice'))
-@section('page-heading', __('New Invoice'))
+@section('page-title', __($workOrder->estimate->customer->lastName .' Work Order'))
+@section('page-heading', __($workOrder->estimate->customer->lastName .' Work Order'))
 
 @section('breadcrumbs')
     <li class="breadcrumb-item active">

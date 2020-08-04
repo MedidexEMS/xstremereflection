@@ -330,6 +330,17 @@ class EstimateController extends Controller
         //
     }
 
+    public function destroyPackage ($id)
+    {
+        $package = EstimatePackage::find($id)->delete();
+
+
+        $packageService = EstimateService::where('packageId', $id)->delete();
+
+        return back()->with('success', 'Package removed from estimate.');
+
+    }
+
     public function addVehicle (Request $request, $cid, $eid)
     {
         //dd($eid);

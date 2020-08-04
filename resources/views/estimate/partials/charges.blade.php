@@ -38,11 +38,14 @@
                                     <div class="col-xl-4 text-center">
                                         Package Name
                                     </div>
-                                    <div class="col-xl-3 text-center">
+                                    <div class="col-xl-2 text-center">
                                         Discount
                                     </div>
                                     <div class="col-xl-3 text-center">
                                         Cost
+                                    </div>
+                                    <div class="col-xl-2">
+                                        Actions
                                     </div>
                                 </li>
                                 @foreach($estimate->packages as $packages)
@@ -53,13 +56,16 @@
                                         <div class="col-xl-4 text-center">
                                             {{$packages->package->description ?? 'Unknown Package'}}
                                         </div>
-                                        <div class="col-xl-3 text-center">
+                                        <div class="col-xl-2 text-center">
                                             @if($packages->discountType == 2) $ @endif  {{$packages->discount ?? '0'}} @if($packages->discountType == 1) % @endif
                                         </div>
                                         <div class="col-xl-3 text-center">
                                             List Price: <br>
                                             $ {{$packages->listPrice ?? ''}} <br>
                                             Total: $ {{$packages->chargedPrice ?? ''}}
+                                        </div>
+                                        <div class="col-xl-2">
+                                            <a href="/removePackage/{{$packages->id}}"><span class="text-danger"><i class="fad fa-eraser"></i></span></a>
                                         </div>
                                     </li>
                                 @endforeach
@@ -87,34 +93,40 @@
                             <ul class="d-flex flex-column text-white todo-list todo-list-custom">
 
                                 <li>
-                                    <div class="col-xl-2 text-center">
+                                    <div class="col-xl-1 text-center">
                                         Qty
                                     </div>
                                     <div class="col-xl-4 text-center">
                                         Service Added
                                     </div>
-                                    <div class="col-xl-3 text-center">
+                                    <div class="col-xl-2 text-center">
                                         Discount
                                     </div>
                                     <div class="col-xl-3 text-center">
                                         Cost
                                     </div>
+                                    <div class="col-xl-2">
+                                        Actions
+                                    </div>
                                 </li>
                                 @if($estimate->services)
                                 @foreach($estimate->services as $service)
                                 <li>
-                                    <div class="col-xl-2 text-center">
+                                    <div class="col-xl-1 text-center">
                                         {{$service->quanity ?? 'Unk'}}
                                     </div>
                                     <div class="col-xl-4 text-center">
                                         {{$service->service->description}}
                                     </div>
-                                    <div class="col-xl-3 text-center">
+                                    <div class="col-xl-2 text-center">
                                         {{$service->discount ?? '0'}}
                                     </div>
                                     <div class="col-xl-3 text-center">
                                         List Price: ${{$service->listPrice}} <br>
                                         Total: ${{$service->chargedPrice}}
+                                    </div>
+                                    <div class="col-xl-2">
+                                        <a href="/removeService/{{$service->id}}"><span class="text-danger"><i class="fad fa-eraser"></i></span></a>
                                     </div>
                                 </li>
                                 @endforeach
