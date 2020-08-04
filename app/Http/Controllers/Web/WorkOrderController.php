@@ -1,6 +1,7 @@
 <?php
 
 namespace Vanguard\Http\Controllers\Web;
+use Vanguard\Customer;
 use Vanguard\CustomerVehicle;
 use Vanguard\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -63,7 +64,10 @@ class WorkOrderController extends Controller
     public function techEnroute ($id)
     {
         $workOrder = WorkOrder::with('estimate', 'estimate.customer')->find($id);
-        Mail::to('blevins.josh@gmail.com')->send(new SendTechEnrouteMailable($workOrder));
+
+        //$customer = Customer::where('id', $workOrder->estimate->customerId)->first();
+
+        Mail::to('blevins.josh@gmail.com')->send(new SendTechEnrouteMailable($workOrder, $customer));
 
         return 'Email SENT';
     }

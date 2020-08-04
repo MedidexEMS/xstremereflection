@@ -11,6 +11,8 @@ class SendTechEnrouteMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $workOrder;
+
     /**
      * Create a new message instance.
      *

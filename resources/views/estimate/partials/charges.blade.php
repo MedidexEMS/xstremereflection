@@ -1,5 +1,5 @@
 
-
+@if($estimate->status != 4)
 <div class="row m-2">
     <div class="col-xl-12">
         <div class="card">
@@ -22,6 +22,7 @@
         </div>
     </div>
 </div>
+@endif
 
 <div class="row ">
     <div class="col-xl-6 col-xl--12">
@@ -64,8 +65,9 @@
                                             $ {{$packages->listPrice ?? ''}} <br>
                                             Total: $ {{$packages->chargedPrice ?? ''}}
                                         </div>
+
                                         <div class="col-xl-2">
-                                            <a href="/removePackage/{{$packages->id}}"><span class="text-danger"><i class="fad fa-eraser"></i></span></a>
+                                            @if($estimate->status != 4)  <a href="/removePackage/{{$packages->id}}"><span class="text-danger"><i class="fad fa-eraser"></i></span></a> @endif
                                         </div>
                                     </li>
                                 @endforeach
@@ -126,7 +128,7 @@
                                         Total: ${{$service->chargedPrice}}
                                     </div>
                                     <div class="col-xl-2">
-                                        <a href="/removeService/{{$service->id}}"><span class="text-danger"><i class="fad fa-eraser"></i></span></a>
+                                        @if($estimate->status != 4)<a href="/removeService/{{$service->id}}"><span class="text-danger"><i class="fad fa-eraser"></i></span></a>@endif
                                     </div>
                                 </li>
                                 @endforeach
