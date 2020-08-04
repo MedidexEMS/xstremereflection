@@ -10,9 +10,7 @@ use Illuminate\Queue\SerializesModels;
 class SendTechEnrouteMailable extends Mailable
 {
     use Queueable, SerializesModels;
-
     public $workOrder;
-
     /**
      * Create a new message instance.
      *
@@ -30,6 +28,6 @@ class SendTechEnrouteMailable extends Mailable
      */
     public function build()
     {
-        return $this->subject('Tech is on thier way.')->view('emails.techenroute');
+        return $this->subject('Tech is on their way.')->view('emails.techenroute');
     }
 }
