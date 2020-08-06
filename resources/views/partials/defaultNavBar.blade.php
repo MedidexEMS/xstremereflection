@@ -85,6 +85,14 @@
             </a>
         </li>
         <li class="nav-item menu-items">
+            <a class="nav-link" href="/workorder">
+              <span class="menu-icon">
+                <i class="fad fa-car-wash"></i>
+              </span>
+                <span class="menu-title">Work Orders</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
             <a class="nav-link" href="/invoice">
               <span class="menu-icon">
                 <i class="fas fa-file-invoice-dollar"></i>
@@ -100,47 +108,6 @@
                 <span class="menu-title">Completed Jobs</span>
             </a>
         </li>
-        <li class="nav-item menu-items">
-            <a class="nav-link" href="/dashboard">
-              <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
-              </span>
-                <span class="menu-title">My Reviews</span>
-            </a>
-        </li>
-        <li class="nav-item menu-items">
-            <a class="nav-link" href="/dashboard">
-              <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
-              </span>
-                <span class="menu-title">Dashboard</span>
-            </a>
-        </li>
-        <li class="nav-item menu-items">
-            <a class="nav-link" href="/dashboard">
-              <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
-              </span>
-                <span class="menu-title">Dashboard</span>
-            </a>
-        </li>
-        <li class="nav-item menu-items">
-            <a class="nav-link" href="/dashboard">
-              <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
-              </span>
-                <span class="menu-title">Dashboard</span>
-            </a>
-        </li>
-        <li class="nav-item menu-items">
-            <a class="nav-link" href="/dashboard">
-              <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
-              </span>
-                <span class="menu-title">Dashboard</span>
-            </a>
-        </li>
-
 
         <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#my-services" aria-expanded="false" aria-controls="my-services">

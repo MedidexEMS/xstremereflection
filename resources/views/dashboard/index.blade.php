@@ -32,6 +32,12 @@
 
 </div>
 
+    <div class="row">
+        @include('dashboard.partials.rescheduleJobs')
+        @include('dashboard.partials.workOrders')
+        @include('dashboard.partials.pendingInvoice')
+    </div>
+
 @stop
 
 @section('scripts')
