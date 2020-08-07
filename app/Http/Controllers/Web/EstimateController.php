@@ -374,4 +374,11 @@ class EstimateController extends Controller
             return back();
         }
     }
+
+    public function estimateRescheduleModal ($id)
+    {
+        $estimate = Estimate::find($id);
+
+        return view('dashboard.partials.modalUpdateEstimateBody', compact('estimate'));
+    }
 }

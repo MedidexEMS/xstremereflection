@@ -8,14 +8,18 @@
                 @foreach($estimates->where('status', 7) as $estimate)
                     <a class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{$estimate->customer->firstName ?? 'Missing Customer Info'}} {{$estimate->customer->lastName ?? 'Missing Customer Info'}}</h5>
-                            <small><button class="btn btn-primary">Update</button></small>
+                            <h5 class="mb-1">{{$estimate->customer->firstName ?? 'Missing Customer Info'}} {{$estimate->customer->lastName ?? ''}}</h5>
+
+                                <button class="btn btn-primary" data-toggle="modal" data-link="/modal/estimateupdate/{{$estimate->id}}" data-target="#updateEstimateModal">
+                                    Update
+                                </button>
+
                         </div>
                         <p class="mb-1">{{$estimate->vehicle->vehicleInfo->year ?? ''}} {{$estimate->vehicle->vehicleInfo->make ?? ''}} {{$estimate->vehicle->vehicleInfo->model ?? ''}} {{$estimate->vehicle->vehicleInfo->colorInfo->description ?? ''}}</p>
                         <small>Last Updated: {{\Carbon\Carbon::parse($estimate->updated_at)->format('m-d-Y H:i')}}</small>
 
                     </a>
-                    <hr>
+                <hr>
                 @endforeach
             </div>
         </div>

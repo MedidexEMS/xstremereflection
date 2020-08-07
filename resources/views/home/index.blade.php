@@ -55,6 +55,7 @@
                     <li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">WORK</a></li>
                     <li class="nav-item"><a class="nav-link" href="#client" data-click="scroll-to-target">CLIENT</a></li>
                     <li class="nav-item"><a class="nav-link" href="#pricing" data-click="scroll-to-target">PRICING</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#protection" data-click="scroll-to-target">CERAMIC</a></li>
                     <li class="nav-item"><a class="nav-link" href="#products" data-click="scroll-to-target">PRODUCTS</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact" data-click="scroll-to-target">CONTACT</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login" >SIGN IN</a></li>
@@ -247,7 +248,6 @@
                     <i class="fa fa-quote-left"></i> A clean car says a lot about you. <br />
                     about <span class="text-primary">you</span>!
                     <i class="fa fa-quote-right"></i>
-                    <small>Sean Themes, Developer Teams in Malaysia</small>
                 </div>
                 <!-- end col-12 -->
             </div>
@@ -525,6 +525,7 @@
              data-paroller-factor-xs="0.01">
         </div>
         <!-- end content-bg -->
+
         <!-- begin container -->
         <div class="container" data-animation="true" data-animation-type="fadeInUp">
             <h2 class="content-title">Our Client Testimonials</h2>
@@ -532,36 +533,60 @@
             <div class="carousel testimonials slide" data-ride="carousel" id="testimonials">
                 <!-- begin carousel-inner -->
                 <div class="carousel-inner text-center">
-                    <!-- begin item -->
-                    <div class="carousel-item active">
-                        <blockquote>
-                            <i class="fa fa-quote-left"></i>
+                    <!-- begin #quote -->
+                    <div id="quote" class="content bg-black-darker has-bg" data-scrollview="true">
+                        <!-- begin content-bg -->
+                        <div class="content-bg" style="background-image: url(../assets/img/detail3.jpg)"
+                             data-paroller-factor="0.5"
+                             data-paroller-factor-md="0.01"
+                             data-paroller-factor-xs="0.01">
+                        </div>
+                        <!-- end content-bg -->
+                        <!-- begin container -->
+                        <div class="container" data-animation="true" data-animation-type="fadeInLeft">
+                            <!-- begin row -->
+                            <div class="row">
+                                <!-- begin col-12 -->
+                                <div class="col-md-12 quote text-white">
+                                    <!-- begin item -->
+                                    <div class="carousel-item active">
+                                        <blockquote>
+                                            <i class="fa fa-quote-left"></i>
+                                                My car looked better than the day I bought it!!!
+                                            <i class="fa fa-quote-right"></i>
+                                        </blockquote>
+                                        <div class="name"> — <span class="text-primary">Mark Singleton</span>, South Shore, Ky</div>
+                                    </div>
+                                    <!-- end item -->
+                                    <!-- begin item -->
+                                    <div class="carousel-item">
+                                        <blockquote>
+                                            <i class="fa fa-quote-left"></i>
+                                            Very good detailer and really takes pride in doing the best job possible.
+                                            <i class="fa fa-quote-right"></i>
+                                        </blockquote>
+                                        <div class="name"> — <span class="text-primary">William Jarvis</span>, Winfield, Wv</div>
+                                    </div>
+                                    <!-- end item -->
+                                    <!-- begin item -->
+                                    <div class="carousel-item">
+                                        <blockquote>
+                                            <i class="fa fa-quote-left"></i>
+                                                Attention to detail don't even decribe how good of job.
+                                            <i class="fa fa-quote-right"></i>
+                                        </blockquote>
+                                        <div class="name"> — <span class="text-primary">Linda Adams</span>, Colluden, Wv</div>
+                                    </div>
+                                    <!-- end item -->
+                                </div>
+                                <!-- end col-12 -->
+                            </div>
+                            <!-- end row -->
+                        </div>
+                        <!-- end container -->
+                    </div>
+                    <!-- end #quote -->
 
-                            <i class="fa fa-quote-right"></i>
-                        </blockquote>
-                        <div class="name"> — <span class="text-primary">Mark Doe</span>, South Shore, Ky</div>
-                    </div>
-                    <!-- end item -->
-                    <!-- begin item -->
-                    <div class="carousel-item">
-                        <blockquote>
-                            <i class="fa fa-quote-left"></i>
-                            Very good detail er and really takes pride in doing the best job possible.
-                                    <i class="fa fa-quote-right"></i>
-                        </blockquote>
-                        <div class="name"> — <span class="text-primary">Joe Smith</span>, Winfield, Wv</div>
-                    </div>
-                    <!-- end item -->
-                    <!-- begin item -->
-                    <div class="carousel-item">
-                        <blockquote>
-                            <i class="fa fa-quote-left"></i>
-
-                            <i class="fa fa-quote-right"></i>
-                        </blockquote>
-                        <div class="name"> — <span class="text-primary">Linda Adams</span>, Colluden, Wv</div>
-                    </div>
-                    <!-- end item -->
                 </div>
                 <!-- end carousel-inner -->
                 <!-- begin carousel-indicators -->
@@ -624,6 +649,128 @@
         <!-- end containter -->
     </div>
     <!-- end #products -->
+    <!-- begin #protection -->
+    <div id="protection" class="content" data-scrollview="true">
+        <!-- begin container -->
+        <div class="container" data-animation="true" data-animation-type="fadeInDown">
+            <h2 class="content-title">Ceramic Coatings</h2>
+            <p class="content-desc">
+                Your automobile deserves nothing but the best. That's why owners and collectors of the finest vintage
+                and exotic automobiles worldwide choose System X Automotive Ceramic Protection. Quite Simply, they
+                trust System X Ceramic Coatings to consistently provide unmatched paint protection, hardness, and
+                brilliance.
+            </p>
+            <p class="content-desc">
+                Packages starting at $749.99.
+            </p>
+            <!-- begin row -->
+            <div class="row">
+                <!-- begin col-4 -->
+                <div class="col-md-4 col-sm-12" style="height: 100%">
+                    <!-- begin about -->
+                    <div class="about">
+                        <h3 class="mb-3">Partnered With</h3>
+                        <p>
+                            <img class="align-middle" src="/assets/img/systemx-logo-white.png" width="300 px" height="100 px" >
+                        </p>
+
+                    </div>
+                    <!-- end about -->
+                </div>
+                <!-- end col-4 -->
+                <!-- begin col-4 -->
+                <div class="col-md-4 col-sm-12">
+                    <h3>Protection for you car.</h3>
+                    <!-- begin carousel -->
+                    <div class="carousel testimonials slide" data-ride="carousel" id="testimonials">
+                        <!-- begin carousel-inner -->
+                        <div class="carousel-inner text-center">
+                            <!-- begin #quote -->
+                            <div id="quote" class="content has-bg" data-scrollview="true">
+
+                                <!-- begin container -->
+                                <div class="container" data-animation="true" data-animation-type="fadeInLeft">
+                                    <!-- begin row -->
+                                    <div class="row">
+                                            <!-- begin item -->
+                                            <div class="carousel-item active">
+                                                <img src="/assets/img/seadoo.png" width="300 px" height="200 px">
+                                            </div>
+                                            <!-- end item -->
+                                            <!-- begin item -->
+                                            <div class="carousel-item">
+                                                <img src="/assets/img/rims.png" width="300 px" height="200 px">
+                                            </div>
+                                            <!-- end item -->
+                                            <!-- begin item -->
+                                            <div class="carousel-item">
+                                                <img src="/assets/img/jeep.jpg" width="300 px" height="200 px">
+                                            </div>
+                                            <!-- end item -->
+                                            <!-- begin item -->
+                                            <div class="carousel-item">
+                                                <img src="/assets/img/boat1.jpg" width="300 px" height="200 px">
+                                            </div>
+                                            <!-- end item -->
+
+                                    </div>
+                                    <!-- end row -->
+                                </div>
+                                <!-- end container -->
+                            </div>
+                            <!-- end #quote -->
+
+                        </div>
+                        <!-- end carousel-inner -->
+                        <!-- begin carousel-indicators -->
+                        <ol class="carousel-indicators m-b-0">
+                            <li data-target="#testimonials" data-slide-to="0" class="active"></li>
+                            <li data-target="#testimonials" data-slide-to="1" class=""></li>
+                            <li data-target="#testimonials" data-slide-to="2" class=""></li>
+                        </ol>
+                        <!-- end carousel-indicators -->
+                    </div>
+                    <!-- end carousel -->
+                </div>
+                <!-- end col-4 -->
+                <!-- begin col-4 -->
+                <div class="col-md-4 col-sm-12">
+                    <h3 class="mb-3">Our Products</h3>
+                    <!-- begin skills -->
+                    <div class="skills">
+                        <div class="skills-name">System X Diamond</div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-theme" style="width: 100%">
+                                <span class="progress-number">100%</span>
+                            </div>
+                        </div>
+                        <div class="skills-name">System X Pro </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-theme" style="width: 75%">
+                                <span class="progress-number">75%</span>
+                            </div>
+                        </div>
+                        <div class="skills-name">System X Crystal</div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-theme" style="width: 50%">
+                                <span class="progress-number">50%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end skills -->
+                </div>
+                <!-- end col-4 -->
+            </div>
+            <!-- end row -->
+            <div class="row">
+                <div class="col-xl-12 text-center">
+                    <img class="align-middle" src="/assets/img/systemxproducts.png"  height="200 px" >
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end #about -->
     <!-- begin #pricing -->
     <div id="pricing" class="content" data-scrollview="true">
         <!-- begin container -->

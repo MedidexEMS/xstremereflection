@@ -5,6 +5,7 @@ namespace Vanguard\Http\Controllers\Web;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\View\View;
 use Vanguard\Estimate;
+use Vanguard\EstimateStatus;
 use Vanguard\Http\Controllers\Controller;
 use Vanguard\Invoice;
 use Vanguard\WorkOrder;
@@ -28,6 +29,8 @@ class DashboardController extends Controller
 
         $invoices = Invoice::where('companyId', Auth()->user()->companyId)->get();
 
-        return view('dashboard.index', compact('estimates', 'workorders', 'invoices'));
+        $estimateStatus = EstimateStatus::get();
+
+        return view('dashboard.index', compact('estimates', 'workorders', 'invoices', 'estimateStatus'));
     }
 }

@@ -39,11 +39,30 @@
     </div>
 
 @stop
-
+@include('dashboard.partials.modalUpdateEstimate')
 @section('scripts')
     @foreach (\Vanguard\Plugins\Vanguard::availableWidgets(auth()->user()) as $widget)
         @if (method_exists($widget, 'scripts'))
             {!! app()->call([$widget, 'scripts']) !!}
         @endif
     @endforeach
+
+    <script>
+        $("#updateEstimateModal").on("show.bs.modal", function(e) {
+            var link = $(e.relatedTarget).data("link");
+
+            // AJAX request
+            $.ajax({
+                url: link,
+                type: 'get',
+                success: function(response){
+                    // Add response in Modal body
+                    $('.modal-body').html(response);
+
+                    // Display Modal
+                    $('#empModal').modal('show');
+                }
+            });
+        });
+    </script>
 @stop
