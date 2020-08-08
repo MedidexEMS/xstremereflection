@@ -237,6 +237,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/estimate/mail/{id}', 'EstimateController@estimateEmail');
     Route::get('/removePackage/{id}', 'EstimateController@destroyPackage');
     Route::get('/modal/estimateupdate/{id}', 'EstimateController@estimateRescheduleModal');
+    Route::get('/estimate/cancel/{id}', 'EstimateController@estimateCancel');
 
 /**
  * Work Orders

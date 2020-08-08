@@ -20,7 +20,7 @@
             <a href="/estimate/workOrder/{{$estimate->id}}" ><button type="button" class="btn btn-primary" style="width: 100%">Convert to Work Order</button></a>
         </div>
         <div class="col">
-            <button type="button"  class="btn btn-danger" style="width: 100%">Void</button>
+            <a></a><button type="button"  class="btn btn-danger" style="width: 100%">Void</button>
         </div>
     </div>
     @else

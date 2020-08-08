@@ -90,7 +90,29 @@
         <!-- end container -->
     </div>
     <!-- end #home -->
-
+    <!-- begin #about -->
+    <div id="social" class="content" data-scrollview="true">
+        <!-- begin container -->
+        <div class="container" data-animation="true" data-animation-type="fadeInDown">
+            <h2 class="content-title">Our Social Media</h2>
+            <!-- begin row -->
+            <div class="row text-center" itemscope itemtype="http://schema.org/Organization">
+                <link itemprop="url" href="https://xtremereflection.app">
+                <div class="col-md-4 col-sm-12">
+                    <a itemprop="sameAs" href="https://www.facebook.com/xstremereflection"><img src="/assets/img/facebook.png" width="200 px" height="200 px"></a>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <a itemprop="sameAs" href="https://www.instagram.com/xtremereflectiondetail/"><img src="/assets/img/instagram.png" width="200 px" height="200 px"></a>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <a itemprop="sameAs" href="#"><img src="/assets/img/twitter.png" width="200 px" height="200 px"></a>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end #about -->
     <!-- begin #about -->
     <div id="about" class="content" data-scrollview="true">
         <!-- begin container -->
@@ -572,7 +594,7 @@
                                     <div class="carousel-item">
                                         <blockquote>
                                             <i class="fa fa-quote-left"></i>
-                                                Attention to detail don't even decribe how good of job.
+                                                Attention to detail don't even describe how good of job.
                                             <i class="fa fa-quote-right"></i>
                                         </blockquote>
                                         <div class="name"> — <span class="text-primary">Linda Adams</span>, Colluden, Wv</div>

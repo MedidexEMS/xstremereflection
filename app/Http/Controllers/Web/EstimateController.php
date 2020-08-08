@@ -205,7 +205,26 @@ class EstimateController extends Controller
         $estimate->status = 6;
         $estimate->save();
 
-        return view('estimates')->withErrors('Customer Canceled Job');
+        $etracking = new EstimateTracking;
+        $etracking->estimateId = $id;
+        $etracking->status = 6;
+        $etracking->note = "Customer canceled the estimate / work Order";
+        $etracking->save();
+
+        $workOrder = WorkOrder::where('estimateId', $id)->first();
+
+        if($workOrder){
+            $workOrder->status = 9;
+            $workOrder->save();
+
+            $wtracking = new EstimateTracking;
+            $wtracking->estimateId = $id;
+            $wtracking->status = 6;
+            $wtracking->note = "Customer canceled the estimate / work Order";
+            $wtracking->save();
+        }
+
+        return back()->withErrors('Customer Canceled Job');
 
     }
 
