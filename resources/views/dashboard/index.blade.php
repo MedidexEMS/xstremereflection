@@ -9,6 +9,11 @@
     </li>
 @stop
 
+@section('styles')
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
+@stop
+
+
 @section('content')
     @include('partials.messages')
 
@@ -46,10 +51,14 @@
             {!! app()->call([$widget, 'scripts']) !!}
         @endif
     @endforeach
-
+    <script src="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script>
-        $("#updateEstimateModal").on("show.bs.modal", function(e) {
+        $("#updateEstimateModal").on("shown.bs.modal", function(e) {
             var link = $(e.relatedTarget).data("link");
+
+            $('#datepicker-popup-1').datepicker({
+                todayHighlight: true,
+            });
 
             // AJAX request
             $.ajax({

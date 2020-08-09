@@ -75,9 +75,5 @@
     }
 </script>
 
-    <script>
-
-    </script>
-
 
 @stop

@@ -61,7 +61,7 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="/dashboard">
+            <a class="nav-link" href="/mycalendar">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -69,7 +69,7 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="/dashboard">
+            <a class="nav-link" href="/bidding" disabled>
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -85,7 +85,7 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="/workorder">
+            <a class="nav-link" href="/workorder" disabled">
               <span class="menu-icon">
                 <i class="fad fa-car-wash"></i>
               </span>
@@ -101,11 +101,11 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="/dashboard">
+            <a class="nav-link" href="/completed">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
-                <span class="menu-title">Completed Jobs</span>
+                <span class="menu-title">Completed Work Orders</span>
             </a>
         </li>
 
