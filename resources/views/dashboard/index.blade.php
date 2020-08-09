@@ -66,10 +66,10 @@
                 type: 'get',
                 success: function(response){
                     // Add response in Modal body
-                    $('.modal-body').html(response);
+                    $('#updateEstimateModal .modal-body').html(response);
 
                     // Display Modal
-                    $('#empModal').modal('show');
+                    $('#updateEstimateModal').modal('show');
                 }
             });
         });
