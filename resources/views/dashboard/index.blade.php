@@ -56,7 +56,7 @@
         $("#updateEstimateModal").on("shown.bs.modal", function(e) {
             var link = $(e.relatedTarget).data("link");
 
-            $('#datepicker-popup-1').datepicker({
+            $('#updateEstimateModal .datepicker').datepicker({
                 todayHighlight: true,
             });
 
