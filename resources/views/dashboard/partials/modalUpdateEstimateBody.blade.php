@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
 <div class="row">
     @if($estimate->customer->email)
         <a type="button" class="btn btn-primary btn-lg btn-block mb-3">Send Reminder Email</a>
@@ -39,3 +40,5 @@
         </select>
     </div>
 </form>
+
+<script src="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>

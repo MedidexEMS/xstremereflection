@@ -10,7 +10,7 @@
 @stop
 
 @section('styles')
-    <link rel="stylesheet" href="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
+
 @stop
 
 
@@ -51,7 +51,7 @@
             {!! app()->call([$widget, 'scripts']) !!}
         @endif
     @endforeach
-    <script src="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+
     <script>
         $("#updateEstimateModal").on("shown.bs.modal", function(e) {
             var link = $(e.relatedTarget).data("link");
