@@ -29,6 +29,6 @@ class RescheduleReminder extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.reschedule');
+        return $this->view('emails.reschedule')->subject("Reschedule Request");
     }
 }
