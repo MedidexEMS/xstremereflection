@@ -52,13 +52,16 @@ class EstimateController extends Controller
             $tracking->estimateId = $estimate->id;
             $tracking->note = 'Estimate email failed to send.';
             $tracking->save();
+            return back()->with('error', 'The mail was not sent to the customer.');
         }else{
             $tracking = new EstimateTracking;
             $tracking->estimateId = $estimate->id;
             $tracking->note = 'Estimate emailed to the customer.';
             $tracking->save();
+
+            return back()->with('success', 'Email has been sent.');
         }
-        return 'Email SENT';
+
     }
 
     /**
