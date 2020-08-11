@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('page-title') - {{ setting('app_name') }}</title>
     <!-- plugins:css -->
-    <script src="https://kit.fontawesome.com/6c1803817f.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6c1803817f.js" crossorigin="anonymous" `SameSite=None`></script>
     <link href="/assets/css/opp.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/corona/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/assets/corona/vendors/css/vendor.bundle.base.css">
@@ -51,6 +51,7 @@
             </div>
         </div>
     </div>
+    @yield('modals')
     @include('invoice.partials.customerModal')
 
     <script src="/assets/corona/vendors/js/vendor.bundle.base.js"></script>

@@ -1,13 +1,13 @@
-<link rel="stylesheet" href="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
+
 <div class="row">
     @if($estimate->customer->email)
-        <a type="button" class="btn btn-primary btn-lg btn-block mb-3">Send Reminder Email</a>
+        <a type="button" href="/estimate/reschedulemail/{{$estimate->id}}" class="btn btn-primary btn-lg btn-block mb-3">Send Reminder Email</a>
     @endif
     <a class="btn btn-danger btn-lg btn-block mb-3" href="/estimate/cancel/{{$estimate->id}}">Canceled By Customer</a>
-    <a type="button" class="btn btn-success btn-lg btn-block mb-3">Enter New Date</a>
+    <a type="button" class="btn btn-success btn-lg btn-block mb-3" onclick="showForm()">Enter New Date</a>
 </div>
 
-<form id="newDateForm">
+<form id="newDateForm" action="estimate/updatedate/{{$estimate->id}}" method="POST">
     <div id="datepicker-popup-1" class="input-group date datepicker">
         <input type="text" name="dateofService" class="form-control">
         <span class="input-group-addon input-group-append border-left">
@@ -39,6 +39,8 @@
 
         </select>
     </div>
+
+    <button type="submit" class="btn btn-success">Change Date</button>
 </form>
 
-<script src="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+

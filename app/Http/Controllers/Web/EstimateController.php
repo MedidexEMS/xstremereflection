@@ -13,6 +13,7 @@ use Vanguard\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Vanguard\Mail\EstimateMailable;
+use Vanguard\Mail\RescheduleReminder;
 use Vanguard\Package;
 use Vanguard\packageItem;
 use Vanguard\Services;
@@ -226,6 +227,52 @@ class EstimateController extends Controller
 
         return back()->withErrors('Customer Canceled Job');
 
+    }
+
+    public function updateDate(Request $request, $id)
+    {
+        $estimate = Estimate::find($id);
+
+        $estimate->dateofService = $request->dateofService;
+        $estimate->arrivalTime = $request->arrivalTime;
+        $estimate->Save();
+
+        $estimateStatus = new EstimateTracking;
+        $estimateStatus->estimateId = $id;
+        $estimateStatus->status = 4;
+        $estimateStatus->note = 'Rescheduled and sent to work order.';
+        $estimateStatus->save();
+
+        $wo = WorkOrder::where('estimateId', $id)->first();
+
+        if($wo){
+            $wo->status = 1;
+            $wo->save();
+
+            $workOrderStatus = new WorkOrderTracking;
+            $workOrderStatus->workOrderId = $wo->id;
+            $workOrderStatus->status = 1;
+            $workOrderStatus->note = "Work order has been rescheduled.";
+            $workOrderStatus->save();
+        }
+
+    }
+
+    public function rescheduleEmail($id)
+    {
+        $estimate = Estimate::find($id);
+
+        Mail::to('blevins.josh@gmail.com')->send(new RescheduleReminder($estimate));
+
+        if (Mail::failures()) {
+            return back()->with('error', 'Mail was not delivered.');
+        }else{
+            return back()->with('success', 'Reminder mail was sent..');
+            $tracking = new EstimateTracking;
+            $tracking->estimateId = $id;
+            $tracking->note = 'Reminder Email Sent.';
+            $tracking->save();
+        }
     }
 
     public function estimateMakeWorkOrder ($id)

@@ -36,15 +36,19 @@
     @endrole
 
 </div>
-
     <div class="row">
         @include('dashboard.partials.rescheduleJobs')
         @include('dashboard.partials.workOrders')
         @include('dashboard.partials.pendingInvoice')
     </div>
 
+    @include('dashboard.partials.modalUpdateEstimate')
 @stop
-@include('dashboard.partials.modalUpdateEstimate')
+
+@section('modals')
+
+@stop
+
 @section('scripts')
     @foreach (\Vanguard\Plugins\Vanguard::availableWidgets(auth()->user()) as $widget)
         @if (method_exists($widget, 'scripts'))
@@ -56,11 +60,7 @@
         $("#updateEstimateModal").on("shown.bs.modal", function(e) {
             var link = $(e.relatedTarget).data("link");
 
-            $('#updateEstimateModal .datepicker').datepicker({
-                todayHighlight: true,
-            });
-
-            // AJAX request
+           // AJAX request
             $.ajax({
                 url: link,
                 type: 'get',
@@ -68,11 +68,24 @@
                     // Add response in Modal body
                     $('#updateEstimateModal .modal-body').html(response);
 
-                    // Display Modal
-                    $('#updateEstimateModal').modal('show');
+                    $('#datepicker-popup-1').datepicker({
+                        todayHighlight: true,
+                    });
+
+                    $( "#newDateForm" ).hide();
+
+                    function showForm() {
+
+                        $( "#newDateForm" ).show();
+                    }
                 }
             });
         });
+
+        function showForm() {
+
+            $( "#newDateForm" ).show();
+        }
 
     </script>
 @stop
