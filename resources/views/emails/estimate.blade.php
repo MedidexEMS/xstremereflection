@@ -64,10 +64,15 @@
                         <p>You have requested a quote from us to have your vehicle detailed, we are pleased to provide you with this information. If you do not mind to review the enclosed pricing and info, if you are pleased with the estimate click the approve button at the bottom of this email or you can reply back approved. </p>
 
                         <p>
-                            Our specialists are certified in applying ceramic coatings, after providing your vehicle with a like-new shine upgrade your detail with a ceramic coating. Our crystal coating has a life expectancy of up to 3 years. That means with proper maintenance of the vehicle no waxing for 3 years. This could save you as much as $300 over the next 3 years. Studies show that the average auto consumer is keeping their vehicle for 11 years. Why not protect your vehicle with these benefits.
+                            Our specialists are certified in applying SystemX ceramic coatings, after providing your vehicle with a like-new shine upgrade your detail with a ceramic coating.
+                            Our System X Pro™ is an ultra hydrophobic ceramic coating for automotive paint with up to 6 years continued protection. Pro™ is semi-permanent 9H self-cleaning
+                            ceramic with high gloss. This could save you as much as $1000 over the next 6 years. Studies show that the average auto consumer is keeping their vehicle for
+                            11 years. Why not protect your vehicle with these benefits.
                         </p>
 
+                        <h3>Why choose ceramic over wax???</h3>
                         <ul>
+                            <li>Longer lasting protection.</li>
                             <li>Protection from harmful UV Rays.</li>
                             <li>Protection from Chemical Stains.</li>
                             <li>Hydrophobic Nature, Ease of Cleaning.</li>

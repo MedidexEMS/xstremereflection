@@ -64,9 +64,9 @@
                         <p>You technician is on his way, I would like to let you know how our process works so you can be prepared. </p>
 
                         <p>
-                            Our technician will arrive and greet you prior to getting started, then we will proceed into a brief inspcetion of the vehicle with you.
+                            Our technician will arrive and greet you prior to getting started, then we will proceed into a brief inspection of the vehicle with you.
                             Please let our specialist know about any areas you may be concerned about. After the inspection the specialist will start the detail process,
-                            sometimes as we make our way through the vehicle we find areas of concern that we did not initally identify. The technician may as to speak
+                            sometimes as we make our way through the vehicle we find areas of concern that we did not initially identify. The technician may as to speak
                             with you several times to discuss how we can best handle each concern. Our technician will never add additional charges without having your
                             approval first. Be sure to speak with the technician about continuing a maintenance program for your vehicle.
                         </p>
