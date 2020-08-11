@@ -262,7 +262,7 @@ class EstimateController extends Controller
     {
         $estimate = Estimate::find($id);
 
-        Mail::to('blevins.josh@gmail.com')->send(new RescheduleReminder($estimate));
+        Mail::to($estimate->customer->email)->subject('Reschedule Request')->send(new RescheduleReminder($estimate));
 
         if (Mail::failures()) {
             return back()->with('error', 'Mail was not delivered.');

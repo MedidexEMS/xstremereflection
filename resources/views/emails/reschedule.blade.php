@@ -66,15 +66,7 @@
                         <p>If you would like to reschedule please respond back to this email or contact us by phone to set a date and time. If you do not respond within 15 days of this email your estimate will automatically cancel.</p>
 
                         <p>
-                            Our technician will arrive and greet you prior to getting started, then we will proceed into a brief inspection of the vehicle with you.
-                            Please let our specialist know about any areas you may be concerned about. After the inspection the specialist will start the detail process,
-                            sometimes as we make our way through the vehicle we find areas of concern that we did not initially identify. The technician may as to speak
-                            with you several times to discuss how we can best handle each concern. Our technician will never add additional charges without having your
-                            approval first. Be sure to speak with the technician about continuing a maintenance program for your vehicle.
-                        </p>
-
-                        <p>
-                            Our specialists are certified in applying ceramic coatings, after providing your vehicle with a like-new shine upgrade your detail with a ceramic coating.
+                            Our specialists are certified in applying SystemX ceramic coatings, after providing your vehicle with a like-new shine upgrade your detail with a ceramic coating.
                             Our System X Pro™ is an ultra hydrophobic ceramic coating for automotive paint with up to 6 years continued protection. Pro™ is semi-permanent 9H self-cleaning
                             ceramic with high gloss.
                         </p>
