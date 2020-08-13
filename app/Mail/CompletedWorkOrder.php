@@ -19,7 +19,7 @@ class CompletedWorkOrder extends Mailable
      */
     public function __construct($wo)
     {
-        //
+        $this->wo = $wo;
     }
 
     /**
