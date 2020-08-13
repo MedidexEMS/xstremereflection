@@ -13,7 +13,7 @@ class Customer extends Model
 
     public function company ()
     {
-        return $this->hasOne(Company::class, 'companyId');
+        return $this->belongsTo(Company::class, 'companyId');
     }
 
 }
