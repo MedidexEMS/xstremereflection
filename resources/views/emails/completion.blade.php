@@ -74,7 +74,13 @@
                         @if($wo->estimate->customer->company->googleReview )
                         <p>If you could please take a moment and head over to our google page and drop us a quick review.</p>
 
-                        <p><a href="{{$wo->estimate->customer->company->googleReview ?? ''}}"></a></p>
+                        <p><a href="{{$wo->estimate->customer->company->googleReview ?? ''}}"> <img src="/assets/img/googlereview.png" height="100" width="200"></a></p>
+                        @endif
+
+                        @if($wo->estimate->customer->company->facebookReview )
+                            <p>If you could please take a moment and head over to our google page and drop us a quick review.</p>
+
+                            <p><a href="{{$wo->estimate->customer->company->facebookReview ?? ''}}"> <img src="/assets/img/facebookreview.png" height="100" width="200"></a></p>
                         @endif
 
                         @if(!$wo->estimate->ceramic)
