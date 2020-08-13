@@ -42,13 +42,15 @@ class WorkOrderCompleted extends Command
     {
         $workOrder = WorkOrder::
             with('estimate', 'estimate.customer', 'estimate.customer.company', 'estimate.vehicle','estimate.vehicle.vehicleInfo')
-            ->where('status', 8)->get();
+            ->where('status', 8)
+            ->where('completionEmail', 0)
+            ->get();
 
         foreach ($workOrder as $wo)
         {
             if($wo->estimate->customer->email)
             {
-                Mail::to(['jblevins@xtremereflection.app'])->send(new CompletedWorkOrder($wo));
+                Mail::to([$wo->estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new CompletedWorkOrder($wo));
 
                 $wo->completionEmail = 1;
                 $wo->save();
