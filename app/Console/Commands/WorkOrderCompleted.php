@@ -4,6 +4,8 @@ namespace Vanguard\Console\Commands;
 
 use Illuminate\Console\Command;
 use Vanguard\WorkOrder;
+use Illuminate\Support\Facades\Mail;
+use Vanguard\Mail\CompletedWorkOrder;
 
 class WorkOrderCompleted extends Command
 {
@@ -44,7 +46,7 @@ class WorkOrderCompleted extends Command
         {
             if($wo->estimate->customer->email)
             {
-                Mail::to(['jblevins@xtremereflection.app'])->send(new WorkOrderCompleted($wo));
+                Mail::to(['jblevins@xtremereflection.app'])->send(new CompletedWorkOrder($wo));
 
                 $wo->completionEmail = 1;
                 $wo->save();
