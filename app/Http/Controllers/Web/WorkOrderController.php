@@ -20,7 +20,27 @@ class WorkOrderController extends Controller
      */
     public function index()
     {
-        //
+        $workorders = WorkOrder::
+            where('status', '<', 8)
+            ->get();
+
+        return view('workorder.index', compact('workorders'));
+    }
+    public function canceled()
+    {
+        $workorders = WorkOrder::
+        where('status', 9)
+            ->get();
+
+        return view('workorder.index', compact('workorders'));
+    }
+    public function completed()
+    {
+        $workorders = WorkOrder::
+        where('status', 8)
+            ->get();
+
+        return view('workorder.index', compact('workorders'));
     }
 
     /**

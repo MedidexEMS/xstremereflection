@@ -36,7 +36,31 @@ class EstimateController extends Controller
      */
     public function index()
     {
-        $estimates = Estimate::with('workorder')->where('companyID', Auth()->user()->companyId)->orderBy('status', 'asc')->get();
+        $estimates = Estimate::with('workorder')
+            ->where('companyID', Auth()->user()->companyId)
+            ->where('status', '!=', 4)
+            ->where('status', '!=', 6)
+            ->orderBy('dateofService', 'desc')->get();
+
+        return view('estimate.index', compact('estimates'));
+    }
+
+    public function approved()
+    {
+        $estimates = Estimate::with('workorder')
+            ->where('companyID', Auth()->user()->companyId)
+            ->where('status',  4)
+            ->orderBy('dateofService', 'desc')->get();
+
+        return view('estimate.index', compact('estimates'));
+    }
+
+    public function canceled()
+    {
+        $estimates = Estimate::with('workorder')
+            ->where('companyID', Auth()->user()->companyId)
+            ->where('status',  6)
+            ->orderBy('dateofService', 'desc')->get();
 
         return view('estimate.index', compact('estimates'));
     }

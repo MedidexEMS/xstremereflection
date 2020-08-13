@@ -240,6 +240,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/estimate/cancel/{id}', 'EstimateController@estimateCancel');
     Route::post('/estimate/updatedate/{id}', 'EstimateController@updateDate');
     Route::get('/estimate/reschedulemail/{id}', 'EstimateController@rescheduleEmail');
+    Route::get('/estimate/completed', 'EstimateController@approved');
+    Route::get('/estimate/canceled', 'EstimateController@canceled');
 
 /**
  * Work Orders
@@ -266,6 +268,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         }
     });
 Route::post('/updateVehicle/{id}', 'WorkOrderController@updateVehicle');
+Route::get('/workorder', 'WorkOrderController@index');
+Route::get('/workorder/canceled', 'WorkOrderController@canceled');
+Route::get('/workorder/completed', 'WorkOrderController@completed');
 /**
  *
  */

@@ -77,21 +77,38 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="/estimate">
+            <a class="nav-link" data-toggle="collapse" href="#my-estimates" aria-expanded="false" aria-controls="my-estimates">
               <span class="menu-icon">
                 <i class="fal fa-file-invoice"></i>
               </span>
-                <span class="menu-title">Estimates</span>
+                <span class="menu-title">My Estimates</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="my-estimates">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="/estimate">Pending Estimates</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/estimate/canceled">Canceled Estimates</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/estimate/completed">Completed Estimates</a></li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="/workorder" disabled">
+            <a class="nav-link" data-toggle="collapse" href="#my-work-orders" aria-expanded="false" aria-controls="my-work-orders">
               <span class="menu-icon">
                 <i class="fad fa-car-wash"></i>
               </span>
-                <span class="menu-title">Work Orders</span>
+                <span class="menu-title">My Work Orders</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="my-work-orders">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="/workorder">Active Work Orders</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/workorder/canceled">Canceled Work Orders</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/workorder/completed">Completed Work Orders</a></li>
+                </ul>
+            </div>
         </li>
+
         <li class="nav-item menu-items">
             <a class="nav-link" href="/invoice">
               <span class="menu-icon">

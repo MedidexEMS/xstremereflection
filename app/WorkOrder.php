@@ -15,4 +15,9 @@ class WorkOrder extends Model
     {
         return $this->hasMany(WorkOrderServices::class, 'workOrderId');
     }
+
+    public function wstatus()
+    {
+        return $this->belongsTo(WorkOrderStatus::class, 'status');
+    }
 }

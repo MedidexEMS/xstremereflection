@@ -11,4 +11,9 @@ class Customer extends Model
         return $this->hasMany(CustomerVehicle::class, 'customerId');
     }
 
+    public function company ()
+    {
+        return $this->hasOne(Company::class, 'companyId');
+    }
+
 }

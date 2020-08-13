@@ -51,27 +51,34 @@
     <tr>
         <td align="center" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 25px 0;">
             <table class="content" width="100%" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
-                <tr>
-                    <td>
-                        <h2>Would you like to reschedule?</h2>
-                    </td>
-                </tr>
 
                 <tr>
                     <td>
-                        <p> {{$estimate->customer->firstName ?? ''}} {{$estimate->customer->lastName ?? ''}} I hope this email finds you well </p>
+                        <p> {{$wo->estimate->customer->firstName ?? ''}} {{$wo->estimate->customer->lastName ?? ''}} I hope this email finds you well </p>
 
-                        <p>We hate to hear you had to cancel your appointment with us, so we wanted to reach out and see if you would like to reschedule your original appointment/estimate.</p>
+                        <p>Vehicle Information</p>
+                        <ul>
+                            <li>Year:{{$wo->estimate->vehicle->vehicleInfo->year ?? ''}}</li>
+                            <li>Make:{{$wo->estimate->vehicle->vehicleInfo->make ?? ''}}</li>
+                            <li>Model:{{$wo->estimate->vehicle->vehicleInfo->model ?? ''}}</li>
+                            <li>VIN:{{$wo->estimate->vehicle->vehicleInfo->vin ?? ''}}</li>
+                        </ul>
 
-                        <p>If you would like to reschedule please respond back to this email or contact us by phone to set a date and time. If you do not respond within 15 days of this email your estimate will automatically cancel.</p>
+                        <p>We would like to thank you for your allowing us to complete the services on your vehicle.
+                        We sincerely hope you are pleased with the work that was completed.</p>
 
-                        <p>
-                            Our specialists are certified in applying SystemX ceramic coatings, after providing your vehicle with a like-new shine upgrade your detail with a ceramic coating.
-                            Our System X Pro™ is an ultra hydrophobic ceramic coating for automotive paint with up to 6 years continued protection. Pro™ is semi-permanent 9H self-cleaning
-                            ceramic with high gloss. This could save you as much as $1000 over the next 6 years. Studies show that the average auto consumer is keeping their vehicle for
-                            11 years. Why not protect your vehicle with these benefits.
-                        </p>
-                        <h3>Why choose ceramic over wax???</h3>
+                        <p>If you would not rate us a 5 out of 5 stars we want to hear about it and make things right. Xtreme Reflection will settle for nothing less than the best.</p>
+
+                        <p>Please if you are not satisfied 100% contact us so we can help you. </p>
+                        @if($wo->estimate->customer->company->googleReview)
+                        <p>If you could please take a moment and head over to our google page and drop us a quick review.</p>
+
+                        <p><a href="$wo->estimate->customer->company->googleReview"></a></p>
+                        @endif
+
+                        @if(!$wo->estimate->ceramic)
+                        <h3>Do you love the way your vehicle looks after our detail call us within 15 days of the completion date and get 40% off ceramic protection???
+                        Keep that fresh detail look for years to come. Benefits of ceramic coatings:</h3>
                         <ul>
                             <li>Longer lasting protection.</li>
                             <li>Protection from harmful UV Rays.</li>
@@ -82,6 +89,7 @@
                             <li>Protection from water spotting.</li>
 
                         </ul>
+                        @endif
                     </td>
 
                 </tr>
