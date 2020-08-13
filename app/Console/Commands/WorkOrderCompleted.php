@@ -40,7 +40,9 @@ class WorkOrderCompleted extends Command
      */
     public function handle()
     {
-        $workOrder = WorkOrder::where('status', 8)->get();
+        $workOrder = WorkOrder::
+            with('estimate', 'estimate.customer', 'estimate.customer.vehicleInfo')
+            ->where('status', 8)->get();
 
         foreach ($workOrder as $wo)
         {
