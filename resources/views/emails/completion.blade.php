@@ -70,7 +70,7 @@
                         <p>If you would not rate us a 5 out of 5 stars we want to hear about it and make things right. Xtreme Reflection will settle for nothing less than the best.</p>
 
                         <p>Please if you are not satisfied 100% contact us so we can help you. </p>
-                        @if($wo->estimate->customer->company->googleReview)
+                        @if($wo->estimate->customer->company->googleReview ?? '')
                         <p>If you could please take a moment and head over to our google page and drop us a quick review.</p>
 
                         <p><a href="$wo->estimate->customer->company->googleReview"></a></p>
