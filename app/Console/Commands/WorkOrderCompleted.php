@@ -42,7 +42,7 @@ class WorkOrderCompleted extends Command
 
         foreach ($workOrder as $wo)
         {
-            if($wo->estimate->cusomer->email)
+            if($wo->estimate->customer->email)
             {
                 Mail::to(['jblevins@xtremereflection.app'])->send(new WorkOrderCompleted($wo));
 
