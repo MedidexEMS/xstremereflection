@@ -362,7 +362,7 @@ class EstimateController extends Controller
 
         }
 
-        $packages = Package::where('companyId', 0)->orWhere('companyId', Auth()->user()->company_Id)->get();
+        $packages = Package::where('companyId', 0)->orWhere('companyId', Auth()->user()->companyId)->get();
 
         $estimateTotal = 0;
         $downPmt = 0;

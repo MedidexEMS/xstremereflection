@@ -804,9 +804,10 @@
                 @foreach($packages as $package)
                     <li @if($package->most_purchased) class="highlight" @endif data-animation="true" data-animation-type="fadeInUp">
                         <div class="pricing-container">
-                            <h3>{{$package->description}}</h3>
+                            <h3 >{{$package->description}}</h3>
                             <div class="price">
                                 <div class="price-figure">
+                                    <h2 class="text-white">Starting At</h2>
                                     <span class="price-number">${{$package->cost}}</span>
                                 </div>
                             </div>

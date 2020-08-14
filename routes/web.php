@@ -15,6 +15,10 @@ Route::get('/', [
 ]);
 //EndHome//
 
+Route::get('/packageList', function (){
+   return view('home.allpackage');
+});
+
 //Package Ajax//
 
 Route::get('/packageData/{id}', function ($id){
