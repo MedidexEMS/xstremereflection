@@ -314,7 +314,7 @@
 
 
         $('#selectedPackage').change(function (e) {
-            var id = $(e.relatedTarget).data("id");
+            var id = $("input[name='package']:checked").val();
 
             console.log(id);
         });

@@ -50,33 +50,35 @@
                                     </div>
                                 </li>
                                 @foreach($estimate->packages as $packages)
-                                    <li>
-                                        <div class="col-xl-2 text-center">
-                                            <div class="form-check form-check-muted m-0">
+                                    <div class="form-check">
+                                        <li>
+                                            <div class="col-xl-2 text-center">
                                                 <label class="form-check-label">
-                                                    <input type="checkbox" data-id="{{$packages->id}}" id="selectedPackage" class="form-check-input">
+                                                    <input type="radio" class="form-check-input" name="package" id="package{{$packages->ic}}" value="{{$packages->id}}" onchange="selectedPackage()">
+
                                                 </label>
                                             </div>
-                                        </div>
-                                        <div class="col-xl-4 text-center">
-                                            {{$packages->package->description ?? 'Unknown Package'}}
-                                        </div>
-                                        <div class="col-xl-2 text-center">
-                                            @if($packages->discountType == 2) $ @endif  {{$packages->discount ?? '0'}} @if($packages->discountType == 1) % @endif
-                                        </div>
-                                        <div class="col-xl-3 text-center">
-                                            List Price: <br>
-                                            $ {{$packages->listPrice ?? ''}} <br>
-                                            Total: $ {{$packages->chargedPrice ?? ''}}
-                                        </div>
+                                            <div class="col-xl-4 text-center">
+                                                {{$packages->package->description ?? 'Unknown Package'}}
+                                            </div>
+                                            <div class="col-xl-2 text-center">
+                                                @if($packages->discountType == 2) $ @endif  {{$packages->discount ?? '0'}} @if($packages->discountType == 1) % @endif
+                                            </div>
+                                            <div class="col-xl-3 text-center">
+                                                List Price: <br>
+                                                $ {{$packages->listPrice ?? ''}} <br>
+                                                Total: $ {{$packages->chargedPrice ?? ''}}
+                                            </div>
 
-                                        <div class="col-xl-2">
-                                            @if($estimate->status != 4)  <a href="/removePackage/{{$packages->id}}"><span class="text-danger"><i class="fad fa-eraser"></i></span></a> @endif
+                                            <div class="col-xl-2">
+                                                @if($estimate->status != 4)  <a href="/removePackage/{{$packages->id}}"><span class="text-danger"><i class="fad fa-eraser"></i></span></a> @endif
 
-                                               <a data-toggle="modal" data-link="/modal/packageServices/{{$packages->id}}" data-target="#servicesModal"><i class="fas fa-binoculars ml-3"></i></a>
-                                        </div>
+                                                <a data-toggle="modal" data-link="/modal/packageServices/{{$packages->id}}" data-target="#servicesModal"><i class="fas fa-binoculars ml-3"></i></a>
+                                            </div>
 
-                                    </li>
+                                        </li>
+                                    </div>
+
                                 @endforeach
                             @else
                                 <li>
