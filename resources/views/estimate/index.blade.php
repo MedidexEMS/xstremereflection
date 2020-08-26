@@ -24,7 +24,7 @@
 
     <div class="row">
         <div class="col-xl-3">
-            <a class="nav-link btn btn-primary create-new-button" id="createbuttonDropdown" aria-expanded="false" href=";javascript" data-toggle="modal" data-target="#customerModal"> </a>
+            <a class="nav-link btn btn-primary create-new-button" id="createbuttonDropdown" aria-expanded="false" href=";javascript" data-toggle="modal" data-target="#customerModal"> Add New Estimate </a>
         </div>
     </div>
 
