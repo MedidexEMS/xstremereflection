@@ -305,6 +305,8 @@
             console.log(serviceType);
             if(serviceType == 0){
                 $( "#addCustomServiceForm" ).show();
+            }else{
+                $( "#addCustomServiceForm" ).hide();
             }
         }
 
