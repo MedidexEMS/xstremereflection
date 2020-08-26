@@ -22,6 +22,12 @@
 @section('content')
     @include('partials.messages')
 
+    <div class="row">
+        <div class="col-xl-3">
+            <a class="nav-link btn btn-primary create-new-button" id="createbuttonDropdown" aria-expanded="false" href=";javascript" data-toggle="modal" data-target="#customerModal">
+        </div>
+    </div>
+
     @include('estimate.partials.table')
 
 @stop
