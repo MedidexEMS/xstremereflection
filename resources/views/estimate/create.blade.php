@@ -303,7 +303,7 @@
         function serviceUpdate() {
             var serviceType = document.getElementById("serviceId").value;
             console.log(serviceType);
-            if(serviceType = 0){
+            if(serviceType == 0){
                 $( "#addCustomServiceForm" ).show();
             }
         }
