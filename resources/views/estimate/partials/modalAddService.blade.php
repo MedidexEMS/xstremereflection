@@ -9,11 +9,14 @@
                 </button>
             </div>
             <div class="modal-body" id="addServices">
-                <div class="d-flex justify-content-center" id="addServicesSpinner">
-                    <div class="spinner-border text-warning" style="width: 6rem; height: 6rem;" role="status">
-                        <span class="sr-only text-center">Loading...</span>
+                <form action="#" method="POST">
+                    <div class="form-group mb-2">
+                        <label for="discountType"> Select Service  <span class="text-danger">*</span></label>
+                        <select class="js-example-basic-single" name="serviceId" style="width:100%" onchange="serviceUpdate()" required>
+                            <option value="0">Custom Service</option>
+                        </select>
                     </div>
-                </div>
+                </form>
 
             </div>
             <div class="modal-footer">
