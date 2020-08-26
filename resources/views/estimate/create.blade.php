@@ -312,11 +312,13 @@
             }
         }
 
-        function selectedPackage(e){
+
+        $('#selectedPackage').change(function (e) {
             var id = $(e.relatedTarget).data("id");
 
             console.log(id);
-        }
+        });
+
 
         $("#servicesModal").on("hidden.bs.modal", function(){
             $("#servicesModal .modal-body").html("<div class=\"d-flex justify-content-center\" id=\"servicesSpinner\">\n" +

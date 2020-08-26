@@ -54,7 +54,7 @@
                                         <div class="col-xl-2 text-center">
                                             <div class="form-check form-check-muted m-0">
                                                 <label class="form-check-label">
-                                                    <input type="checkbox" data-id="{{$packages->id}}" onchange="selectedPackage()" class="form-check-input">
+                                                    <input type="checkbox" data-id="{{$packages->id}}" id="selectedPackage" class="form-check-input">
                                                 </label>
                                             </div>
                                         </div>
