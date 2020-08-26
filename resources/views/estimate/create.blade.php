@@ -304,11 +304,11 @@
             var serviceType = document.getElementById("serviceId").value;
             console.log(serviceType);
             if(serviceType == 0){
-                $( "#customServiceButton" ).hide();
+                $( "#serviceButton" ).hide();
                 $( "#addCustomServiceForm" ).show();
             }else{
                 $( "#addCustomServiceForm" ).hide();
-                $( "#customServiceButton" ).show();
+                $( "#serviceButton" ).show();
             }
         }
 
