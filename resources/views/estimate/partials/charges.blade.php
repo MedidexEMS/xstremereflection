@@ -52,7 +52,11 @@
                                 @foreach($estimate->packages as $packages)
                                     <li>
                                         <div class="col-xl-2 text-center">
-                                            {{$packages->quanity ?? '?'}}
+                                            <div class="form-check form-check-muted m-0">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </label>
+                                            </div>
                                         </div>
                                         <div class="col-xl-4 text-center">
                                             {{$packages->package->description ?? 'Unknown Package'}}
