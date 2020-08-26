@@ -13,6 +13,7 @@
                     <div class="form-group mb-2">
                         <label for="discountType"> Select Service  <span class="text-danger">*</span></label>
                         <select class="js-example-basic-single" name="serviceId" id="serviceId" style="width:100%" onchange="serviceUpdate()" required>
+                            <option selected >Select Service</option>
                             <option value="0">Custom Service</option>
                             <option value="1">Other Options</option>
                         </select>
