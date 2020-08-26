@@ -234,7 +234,7 @@
             var serviceType = document.getElementById("serviceId").value;
 
             if(serviceType = 0){
-                $( "#addServiceForm" ).show();
+                $( "#addCustomServiceForm" ).show();
             }
         }
 
