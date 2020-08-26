@@ -312,12 +312,12 @@
             }
         }
 
-
-        $('#selectedPackage').change(function (e) {
+        function selectedPackage(e){
             var id = $("input[name='package']:checked").val();
 
             console.log(id);
-        });
+        }
+
 
 
         $("#servicesModal").on("hidden.bs.modal", function(){
