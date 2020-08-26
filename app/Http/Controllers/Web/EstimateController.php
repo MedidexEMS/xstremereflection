@@ -172,7 +172,7 @@ class EstimateController extends Controller
         $epackage->chargedPrice = $chargedPrice;
 
         $epackage->save();
-
+        /*
         if($package->includes){
             $array = explode(',', $package->includes);
             foreach ($array as $include)
@@ -221,6 +221,7 @@ class EstimateController extends Controller
             }
 
         }
+        */
 
 
 
@@ -351,33 +352,34 @@ class EstimateController extends Controller
     public function show($id)
     {
 
-        $estimate = Estimate::with('packages', 'packages.package', 'vehicle', 'vehicle.vehicleInfo','vehicle.vehicleInfo.colorInfo', 'vehicle.vehicleInfo.condition')->find($id);
+        $estimate = Estimate::with('packages', 'packages.package', 'vehicle', 'vehicle.vehicleInfo', 'vehicle.vehicleInfo.colorInfo', 'vehicle.vehicleInfo.condition')->find($id);
         $customer = Customer::find($estimate->customerId);
         $colors = VehicleColor::get();
         $conditions = VehicleCondition::get();
 
         if (Auth()->user()->companyId != $estimate->companyId) {
 
-          return  view('layouts.403');
+            return view('layouts.403');
 
         }
 
         $packages = Package::where('companyId', 0)->orWhere('companyId', Auth()->user()->companyId)->get();
 
+
         $estimateTotal = 0;
         $downPmt = 0;
-
-        if($estimate->packages){
-            foreach($estimate->packages as $package){
-                $estimateTotal = $estimateTotal + $package->chargedPrice;
+        if ($estimate->approvedPackage){
+            if ($estimate->packages) {
+                foreach ($estimate->packages as $package) {
+                    $estimateTotal = $estimateTotal + $package->chargedPrice;
+                }
             }
-        }
 
-        if($estimate->services){
-            foreach($estimate->services as $service){
+        if ($estimate->services) {
+            foreach ($estimate->services as $service) {
                 $estimateTotal = $estimateTotal + $service->chargedPrice;
             }
-            foreach($estimate->services->where('requiresDownPayment', 1) as $service){
+            foreach ($estimate->services->where('requiresDownPayment', 1) as $service) {
                 $downPmt = $downPmt + $service->chargedPrice;
             }
         }
@@ -385,6 +387,7 @@ class EstimateController extends Controller
         $estimate->total = $estimateTotal;
         $estimate->deposit = $downPmt;
         $estimate->save();
+    }
 
         return view('estimate.create', compact('packages', 'customer', 'estimate', 'estimateTotal', 'colors', 'conditions'));
     }

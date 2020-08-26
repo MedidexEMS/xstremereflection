@@ -918,7 +918,7 @@
                 XtremeReflection
             </div>
             <p>
-                &copy; Copyright XtremeReflection 2020 <br />
+                &copy; Copyright XtremeReflection {{\Carbon\Carbon::now()->format('Y')}} <br />
             </p>
             <p class="social-list">
                 <a href="#"><i class="fab fa-facebook-f fa-fw"></i></a>

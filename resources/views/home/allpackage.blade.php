@@ -1,255 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8" />
+    <title>XtremeReflection | Auto Detail at it's Best</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
 
+    <script src="https://kit.fontawesome.com/6c1803817f.js" crossorigin="anonymous"></script>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
-    <!-- ================== BEGIN BASE CSS STYLE ================== -->@@if(context.theme == 'default') {
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-    <link href="/assets/css/default/app.min.css" rel="stylesheet" />
+    <link href="/assets/css/opp.min.css" rel="stylesheet" />
+    <link href="/assets/css/default/listapp.min.css" rel="stylesheet" />
 
+    <link href="/assets/css/theme/blue.min.css" id="theme" rel="stylesheet" />
+
+    <!-- ================== END BASE CSS STYLE ================== -->
 </head>
-<body>
-
-
+<body data-spy="scroll"  data-offset="51">
 <!-- begin #page-container -->
-<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
-
-<!-- begin #content -->
-    <div id="content" class="content">
-        <!-- begin breadcrumb -->
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-            <li class="breadcrumb-item"><a href="javascript:;">Extra</a></li>
-            <li class="breadcrumb-item active">Search Results</li>
-        </ol>
-        <!-- end breadcrumb -->
-        <!-- begin page-header -->
-        <h1 class="page-header">Search Results <small>3 results found</small></h1>
-        <!-- end page-header -->
-        <!-- begin row -->
-        <div class="row">
-            <!-- begin col-12 -->
-            <div class="col-md-12">
-                <!-- begin result-container -->
-                <div class="result-container">
-                    <!-- begin input-group -->
-                    <div class="input-group input-group-lg mb-3">
-                        <input type="text" class="form-control input-white" placeholder="Enter keywords here..." />
-                        <div class="input-group-append">
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a href="javascript:;" class="dropdown-item">Action</a>
-                                <a href="javascript:;" class="dropdown-item">Another action</a>
-                                <a href="javascript:;" class="dropdown-item">Something else here</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="javascript:;" class="dropdown-item">Separated link</a>
-                            </div>
-                            <button type="button" class="btn btn-primary"><i class="fa fa-search fa-fw"></i> Search</button>
-                            <button type="button" class="btn btn-primary dropdown-toggle no-caret" data-toggle="dropdown">
-                                <i class="fa fa-cog fa-fw"></i>
-                            </button>
+<div id="page-container" class="fade">
+    <!-- begin #header -->
+    <div id="header" class="header navbar navbar-transparent navbar-fixed-top navbar-expand-lg">
+        <!-- begin container -->
+        <div class="container">
+            <!-- begin navbar-brand -->
+            <a href="index.html" class="navbar-brand">
+                <span class="brand-logo"></span>
+                <span class="brand-text">
+						<span class="text-primary">Xtreme</span> Reflection
+					</span>
+            </a>
+            <!-- end navbar-brand -->
+            <!-- begin navbar-toggle -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- end navbar-header -->
+            <!-- begin navbar-collapse -->
+            <div class="collapse navbar-collapse" id="header-navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active" href="#home" data-click="scroll-to-target" data-scroll-target="#home">HOME <b class="caret"></b></a>
+                        <div class="dropdown-menu dropdown-menu-left animated fadeInDown">
+                            <a class="dropdown-item" href="index.html">All Services</a>
+                            <a class="dropdown-item" href="index_inverse_header.html">Blog / Tutorials</a>
+                            <a class="dropdown-item" href="index_default_header.html">Page with White Header</a>
+                            <a class="dropdown-item" href="extra_element.html">Extra Element</a>
                         </div>
-                    </div>
-                    <!-- end input-group -->
-                    <div class="d-block d-md-flex align-items-center mb-3">
-                        <!-- begin filter -->
-                        <div class="d-flex">
-                            <!-- begin dropdown -->
-                            <div class="dropdown mr-2">
-                                <a href="#" class="btn btn-white btn-white-without-border dropdown-toggle" data-toggle="dropdown">
-                                    Filters by <b class="caret"></b>
-                                </a>
-                                <div class="dropdown-menu" role="menu">
-                                    <a href="javascript:;" class="dropdown-item">Posted Date</a>
-                                    <a href="javascript:;" class="dropdown-item">View Count</a>
-                                    <a href="javascript:;" class="dropdown-item">Total View</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="javascript:;" class="dropdown-item">Location</a>
-                                </div>
-                            </div>
-                            <!-- end dropdown -->
-                            <!-- begin btn-group -->
-                            <div class="btn-group">
-                                <a href="javascript:;" class="btn btn-white btn-white-without-border"><i class="fa fa-list"></i></a>
-                                <a href="javascript:;" class="btn btn-white btn-white-without-border"><i class="fa fa-th"></i></a>
-                                <a href="javascript:;" class="btn btn-white btn-white-without-border"><i class="fa fa-th-large"></i></a>
-                            </div>
-                            <!-- end btn-group -->
-                        </div>
-                        <!-- end filter -->
-                        <!-- begin pagination -->
-                        <div class="ml-auto d-none d-lg-block">
-                            <ul class="pagination mb-0">
-                                <li class="page-item disabled"><a href="javascript:;" class="page-link">«</a></li>
-                                <li class="page-item active"><a href="javascript:;" class="page-link">1</a></li>
-                                <li class="page-item"><a href="javascript:;" class="page-link">2</a></li>
-                                <li class="page-item"><a href="javascript:;" class="page-link">3</a></li>
-                                <li class="page-item"><a href="javascript:;" class="page-link">4</a></li>
-                                <li class="page-item"><a href="javascript:;" class="page-link">5</a></li>
-                                <li class="page-item"><a href="javascript:;" class="page-link">6</a></li>
-                                <li class="page-item"><a href="javascript:;" class="page-link">7</a></li>
-                                <li class="page-item"><a href="javascript:;" class="page-link">»</a></li>
-                            </ul>
-                        </div>
-                        <!-- end pagination -->
-                    </div>
-                    <!-- begin result-list -->
-                    <ul class="result-list">
-                        <li>
-                            <a href="#" class="result-image" style="background-image: url(../assets/img/gallery/gallery-51.jpg)"></a>
-                            <div class="result-info">
-                                <h4 class="title"><a href="javascript:;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-                                <p class="location">United State, BY 10089</p>
-                                <p class="desc">
-                                    Nunc et ornare ligula. Aenean commodo lectus turpis, eu laoreet risus lobortis quis. Suspendisse vehicula mollis magna vel aliquet. Donec ac tempor neque, convallis euismod mauris. Integer dictum dictum ipsum quis viverra.
-                                </p>
-                                <div class="btn-row">
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Analytics"><i class="fa fa-fw fa-chart-bar"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Tasks"><i class="fa fa-fw fa-tasks"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Configuration"><i class="fa fa-fw fa-cog"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Performance"><i class="fa fa-fw fa-tachometer-alt"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Users"><i class="fa fa-fw fa-user"></i></a>
-                                </div>
-                            </div>
-                            <div class="result-price">
-                                $92,101 <small>PER MONTH</small>
-                                <a href="javascript:;" class="btn btn-yellow btn-block">View Details</a>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#" class="result-image" style="background-image: url(../assets/img/gallery/gallery-52.jpg)"></a>
-                            <div class="result-info">
-                                <h4 class="title"><a href="javascript:;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-                                <p class="location">United State, BY 10089</p>
-                                <p class="desc">
-                                    Nunc et ornare ligula. Aenean commodo lectus turpis, eu laoreet risus lobortis quis. Suspendisse vehicula mollis magna vel aliquet. Donec ac tempor neque, convallis euismod mauris. Integer dictum dictum ipsum quis viverra.
-                                </p>
-                                <div class="btn-row">
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Analytics"><i class="fa fa-fw fa-chart-bar"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Tasks"><i class="fa fa-fw fa-tasks"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Configuration"><i class="fa fa-fw fa-cog"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Performance"><i class="fa fa-fw fa-tachometer-alt"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Users"><i class="fa fa-fw fa-user"></i></a>
-                                </div>
-                            </div>
-                            <div class="result-price">
-                                $102,232 <small>PER MONTH</small>
-                                <a href="javascript:;" class="btn btn-yellow btn-block">View Details</a>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#" class="result-image" style="background-image: url(../assets/img/gallery/gallery-53.jpg)"></a>
-                            <div class="result-info">
-                                <h4 class="title"><a href="javascript:;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-                                <p class="location">United State, BY 10089</p>
-                                <p class="desc">
-                                    Nunc et ornare ligula. Aenean commodo lectus turpis, eu laoreet risus lobortis quis. Suspendisse vehicula mollis magna vel aliquet. Donec ac tempor neque, convallis euismod mauris. Integer dictum dictum ipsum quis viverra.
-                                </p>
-                                <div class="btn-row">
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Analytics"><i class="fa fa-fw fa-chart-bar"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Tasks"><i class="fa fa-fw fa-tasks"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Configuration"><i class="fa fa-fw fa-cog"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Performance"><i class="fa fa-fw fa-tachometer-alt"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Users"><i class="fa fa-fw fa-user"></i></a>
-                                </div>
-                            </div>
-                            <div class="result-price">
-                                $183,921 <small>PER MONTH</small>
-                                <a href="javascript:;" class="btn btn-yellow btn-block">View Details</a>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#" class="result-image" style="background-image: url(../assets/img/gallery/gallery-54.jpg)"></a>
-                            <div class="result-info">
-                                <h4 class="title"><a href="javascript:;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-                                <p class="location">United State, BY 10089</p>
-                                <p class="desc">
-                                    Nunc et ornare ligula. Aenean commodo lectus turpis, eu laoreet risus lobortis quis. Suspendisse vehicula mollis magna vel aliquet. Donec ac tempor neque, convallis euismod mauris. Integer dictum dictum ipsum quis viverra.
-                                </p>
-                                <div class="btn-row">
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Analytics"><i class="fa fa-fw fa-chart-bar"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Tasks"><i class="fa fa-fw fa-tasks"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Configuration"><i class="fa fa-fw fa-cog"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Performance"><i class="fa fa-fw fa-tachometer-alt"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Users"><i class="fa fa-fw fa-user"></i></a>
-                                </div>
-                            </div>
-                            <div class="result-price">
-                                $82,991 <small>PER MONTH</small>
-                                <a href="javascript:;" class="btn btn-yellow btn-block">View Details</a>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#" class="result-image" style="background-image: url(../assets/img/gallery/gallery-55.jpg)"></a>
-                            <div class="result-info">
-                                <h4 class="title"><a href="javascript:;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-                                <p class="location">United State, BY 10089</p>
-                                <p class="desc">
-                                    Nunc et ornare ligula. Aenean commodo lectus turpis, eu laoreet risus lobortis quis. Suspendisse vehicula mollis magna vel aliquet. Donec ac tempor neque, convallis euismod mauris. Integer dictum dictum ipsum quis viverra.
-                                </p>
-                                <div class="btn-row">
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Analytics"><i class="fa fa-fw fa-chart-bar"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Tasks"><i class="fa fa-fw fa-tasks"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Configuration"><i class="fa fa-fw fa-cog"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Performance"><i class="fa fa-fw fa-tachometer-alt"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Users"><i class="fa fa-fw fa-user"></i></a>
-                                </div>
-                            </div>
-                            <div class="result-price">
-                                $422,999 <small>PER MONTH</small>
-                                <a href="javascript:;" class="btn btn-yellow btn-block">View Details</a>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#" class="result-image" style="background-image: url(../assets/img/gallery/gallery-56.jpg)"></a>
-                            <div class="result-info">
-                                <h4 class="title"><a href="javascript:;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-                                <p class="location">United State, BY 10089</p>
-                                <p class="desc">
-                                    Nunc et ornare ligula. Aenean commodo lectus turpis, eu laoreet risus lobortis quis. Suspendisse vehicula mollis magna vel aliquet. Donec ac tempor neque, convallis euismod mauris. Integer dictum dictum ipsum quis viverra.
-                                </p>
-                                <div class="btn-row">
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Analytics"><i class="fa fa-fw fa-chart-bar"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Tasks"><i class="fa fa-fw fa-tasks"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Configuration"><i class="fa fa-fw fa-cog"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Performance"><i class="fa fa-fw fa-tachometer-alt"></i></a>
-                                    <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Users"><i class="fa fa-fw fa-user"></i></a>
-                                </div>
-                            </div>
-                            <div class="result-price">
-                                $891,872 <small>PER MONTH</small>
-                                <a href="javascript:;" class="btn btn-yellow btn-block">View Details</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <!-- end result-list -->
-                    <!-- begin pagination -->
-                    <div class="d-flex m-t-20">
-                        <ul class="pagination ml-auto mr-auto mr-lg-0">
-                            <li class="page-item disabled"><a href="javascript:;" class="page-link">«</a></li>
-                            <li class="page-item active"><a href="javascript:;" class="page-link">1</a></li>
-                            <li class="page-item"><a href="javascript:;" class="page-link">2</a></li>
-                            <li class="page-item"><a href="javascript:;" class="page-link">3</a></li>
-                            <li class="page-item"><a href="javascript:;" class="page-link">4</a></li>
-                            <li class="page-item"><a href="javascript:;" class="page-link">5</a></li>
-                            <li class="page-item"><a href="javascript:;" class="page-link">6</a></li>
-                            <li class="page-item"><a href="javascript:;" class="page-link">7</a></li>
-                            <li class="page-item"><a href="javascript:;" class="page-link">»</a></li>
-                        </ul>
-                    </div>
-                    <!-- end pagination -->
-                </div>
-                <!-- end result-container -->
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#about" data-click="scroll-to-target">ABOUT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#service" data-click="scroll-to-target">SERVICES</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">WORK</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#client" data-click="scroll-to-target">CLIENT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing" data-click="scroll-to-target">PRICING</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#protection" data-click="scroll-to-target">CERAMIC</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products" data-click="scroll-to-target">PRODUCTS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" data-click="scroll-to-target">CONTACT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login" >SIGN IN</a></li>
+                </ul>
             </div>
-            <!-- end col-12 -->
+            <!-- end navbar-collapse -->
         </div>
-        <!-- end row -->
+        <!-- end container -->
     </div>
-    <!-- end #content -->
+    <!-- end #header -->
+
+    <div class="content mt-5">
+        @foreach($packageTypes as $pt)
+            <div class="row">
+                <div class="col-xl-12 mb-3">
+                    <h2>{{$pt->description ?? ''}} Packages</h2>
+                    <hr>
+                    <ul class="result-list">
+                        @foreach($packages->where('packageType', $pt->id) as $package)
+                            <li>
+                                <a href="#" class="result-image" style="background-image: url(../assets/img/gallery/gallery-51.jpg)"></a>
+                                <div class="result-info">
+                                    <h4 class="title"><a href="javascript:;">{{$package->description ?? 'Unknown Package'}} Package</a></h4>
+                                    <p class="location">United State, BY 10089</p>
+                                    <p class="desc">
+                                        Nunc et ornare ligula. Aenean commodo lectus turpis, eu laoreet risus lobortis quis. Suspendisse vehicula mollis magna vel aliquet. Donec ac tempor neque, convallis euismod mauris. Integer dictum dictum ipsum quis viverra.
+                                    </p>
+                                    <div class="btn-row">
+                                        <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Analytics"><i class="fa fa-fw fa-chart-bar"></i></a>
+                                        <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Tasks"><i class="fa fa-fw fa-tasks"></i></a>
+                                        <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Configuration"><i class="fa fa-fw fa-cog"></i></a>
+                                        <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Performance"><i class="fa fa-fw fa-tachometer-alt"></i></a>
+                                        <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Users"><i class="fa fa-fw fa-user"></i></a>
+                                    </div>
+                                </div>
+                                <div class="result-price">
+                                     <small>STARTING AT</small> ${{$package->cost ?? 'Call Today'}}
+                                    <a href="javascript:;" class="btn btn-yellow btn-block">View Details</a>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endforeach
+    </div>
 
 
+
+    <!-- begin #footer -->
+    <div id="footer" class="footer">
+        <div class="container">
+            <div class="footer-brand">
+                <div class="footer-brand-logo"></div>
+                XtremeReflection
+            </div>
+            <p>
+                &copy; Copyright XtremeReflection {{\Carbon\Carbon::now()->format('Y')}} <br />
+            </p>
+            <p class="social-list">
+                <a href="#"><i class="fab fa-facebook-f fa-fw"></i></a>
+                <a href="#"><i class="fab fa-instagram fa-fw"></i></a>
+                <a href="#"><i class="fab fa-twitter fa-fw"></i></a>
+                <a href="#"><i class="fab fa-google-plus-g fa-fw"></i></a>
+                <a href="#"><i class="fab fa-dribbble fa-fw"></i></a>
+            </p>
+        </div>
+    </div>
+    <!-- end #footer -->
+
+    <!-- begin theme-panel -->
+    <div class="theme-panel">
+        <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+        <div class="theme-panel-content">
+            <ul class="theme-list clearfix">
+                <li class="active"><a href="javascript:;" class="bg-blue" data-theme="blue" data-theme-file="/assets/css/theme/blue.min.css" data-click="default" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue" data-original-title="" title="">&nbsp;</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <!-- end theme-panel -->
 </div>
-<!-- end page container -->
+<!-- end #page-container -->
 
-
+<!-- ================== BEGIN BASE JS ================== -->
+<script src="/assets/js/opp.min.js"></script>
+<!-- ================== END BASE JS ================== -->
 </body>
 </html>

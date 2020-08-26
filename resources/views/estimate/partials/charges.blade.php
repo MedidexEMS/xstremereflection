@@ -25,7 +25,7 @@
 @endif
 
 <div class="row ">
-    <div class="col-xl-6 col-xl--12">
+    <div class="col-xl-12 col-xl--12">
         <h2>Packages</h2>
         <div class="card">
             <div class="card-body py-0 px-0 px-sm-3">
@@ -68,7 +68,10 @@
 
                                         <div class="col-xl-2">
                                             @if($estimate->status != 4)  <a href="/removePackage/{{$packages->id}}"><span class="text-danger"><i class="fad fa-eraser"></i></span></a> @endif
+
+                                               <a data-toggle="modal" data-link="/modal/packageServices/{{$packages->id}}" data-target="#servicesModal"><i class="fas fa-binoculars ml-3"></i></a>
                                         </div>
+
                                     </li>
                                 @endforeach
                             @else
@@ -84,7 +87,7 @@
             </div>
         </div>
     </div>
-
+<!--
     <div class="col-xl-6 col-xl--12">
         <div class="row">
             <div class="col-xl-12">
@@ -175,5 +178,5 @@
             </div>
             </div>
         </div>
-
+-->
 </div>

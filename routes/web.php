@@ -16,7 +16,9 @@ Route::get('/', [
 //EndHome//
 
 Route::get('/packageList', function (){
-   return view('home.allpackage');
+    $packageTypes = \Vanguard\PackageType::get();
+    $packages = \Vanguard\Package::where('companyId', 0)->orWhere('companyId', 1)->get();
+   return view('home.allpackage', compact('packages', 'packageTypes'));
 });
 
 //Package Ajax//
@@ -246,6 +248,11 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/estimate/reschedulemail/{id}', 'EstimateController@rescheduleEmail');
     Route::get('/estimate/completed', 'EstimateController@approved');
     Route::get('/estimate/canceled', 'EstimateController@canceled');
+    Route::get('/modal/packageServices/{id}', function ($id){
+        $package = \Vanguard\EstimatePackage::find($id);
+
+        return view('estimate.partials.modalBodyServices', compact('package'));
+    });
 
 /**
  * Work Orders
