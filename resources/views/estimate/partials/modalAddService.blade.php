@@ -18,6 +18,8 @@
                             <option value="1">Other Options</option>
                         </select>
                     </div>
+
+                    <button type="submit" id="serviceButton" class="btn btn-primary btn-lg btn-block">Add Service To Package</button>
                 </form>
 
                 <form id="addCustomServiceForm">
@@ -30,6 +32,9 @@
                         <label for="price"> Service Price <span class="text-danger">*</span> </label>
                         <input type="text" class="form-control" name="price" id="price" required/>
                     </div>
+
+                    <button type="submit" id="customServiceButton" class="btn btn-primary btn-lg btn-block">Add Service To Package</button>
+
                 </form>
 
             </div>
