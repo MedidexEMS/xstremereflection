@@ -312,6 +312,12 @@
             }
         }
 
+        function selectedPackage(e){
+            var id = $(e.relatedTarget).data("id");
+
+            console.log(id);
+        }
+
         $("#servicesModal").on("hidden.bs.modal", function(){
             $("#servicesModal .modal-body").html("<div class=\"d-flex justify-content-center\" id=\"servicesSpinner\">\n" +
                 "                    <div class=\"spinner-border text-warning\" style=\"width: 6rem; height: 6rem;\" role=\"status\">\n" +
