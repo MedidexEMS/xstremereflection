@@ -14,6 +14,7 @@
                         <label for="discountType"> Select Service  <span class="text-danger">*</span></label>
                         <select class="js-example-basic-single" name="serviceId" style="width:100%" onchange="serviceUpdate()" required>
                             <option value="0">Custom Service</option>
+                            <option value="1">Other Options</option>
                         </select>
                     </div>
                 </form>
