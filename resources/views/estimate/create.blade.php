@@ -230,14 +230,6 @@
             }
         }
 
-        function serviceUpdate() {
-            var serviceType = document.getElementById("serviceId").value;
-
-            if(serviceType = 0){
-                $( "#addCustomServiceForm" ).show();
-            }
-        }
-
         $('#vehicleModal').on('show.bs.modal', function (){
 
             $( "#newVehicleForm" ).hide();
@@ -303,8 +295,16 @@
             });
         });
 
-        $("#addServicesModal").on("show.bs.modal", function(e) {
+        $("#addServicesModal").on("shown.bs.modal", function(e) {
             $( "#addCustomServiceForm" ).hide();
+
+            function serviceUpdate() {
+                var serviceType = document.getElementById("serviceId").value;
+
+                if(serviceType = 0){
+                    $( "#addCustomServiceForm" ).show();
+                }
+            }
         });
 
         $("#servicesModal").on("hidden.bs.modal", function(){
