@@ -18,6 +18,18 @@
                     </div>
                 </form>
 
+                <form id="addCustomServiceForm">
+                    <div class="form-group mb-2">
+                        <label for="description"> Service Description <span class="text-danger">*</span> </label>
+                        <input type="text" class="form-control" name="description" id="description" required/>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="price"> Service Price <span class="text-danger">*</span> </label>
+                        <input type="text" class="form-control" name="price" id="price" required/>
+                    </div>
+                </form>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
