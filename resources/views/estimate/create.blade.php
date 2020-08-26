@@ -298,14 +298,15 @@
         $("#addServicesModal").on("shown.bs.modal", function(e) {
             $( "#addCustomServiceForm" ).hide();
 
-            function serviceUpdate() {
-                var serviceType = document.getElementById("serviceId").value;
-
-                if(serviceType = 0){
-                    $( "#addCustomServiceForm" ).show();
-                }
-            }
         });
+
+        function serviceUpdate() {
+            var serviceType = document.getElementById("serviceId").value;
+
+            if(serviceType = 0){
+                $( "#addCustomServiceForm" ).show();
+            }
+        }
 
         $("#servicesModal").on("hidden.bs.modal", function(){
             $("#servicesModal .modal-body").html("<div class=\"d-flex justify-content-center\" id=\"servicesSpinner\">\n" +
