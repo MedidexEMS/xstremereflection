@@ -376,7 +376,7 @@ class EstimateController extends Controller
         view()->share('estimate',$estimate);
 
 
-        $pdf = PDF::loadView('estimate.pdf.estimate', compact('customer', 'estimate', 'estimateTotal'));
+        $pdf = PDF::loadView('estimate.pdf.estimate');
 
         return $pdf->stream('estimate.pdf');
 
