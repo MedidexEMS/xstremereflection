@@ -253,6 +253,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
         return view('estimate.partials.modalBodyServices', compact('package'));
     });
+    Route::get('estimate/{id}/pdf', 'EstimateController@pdf');
 
 /**
  * Work Orders

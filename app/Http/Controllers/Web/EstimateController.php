@@ -22,6 +22,7 @@ use Vanguard\VehicleCondition;
 use Vanguard\WorkOrder;
 USE Vanguard\WorkOrderServices;
 use Vanguard\WorkOrderTracking;
+use PDF;
 
 class EstimateController extends Controller
 {
@@ -93,10 +94,7 @@ class EstimateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
 
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -343,6 +341,43 @@ class EstimateController extends Controller
 
         return redirect()->route('estimate.show', ['id' => $id])->with('success', 'You have created a new work order.');
     }
+
+    public function pdf($id)
+    {
+        $estimate = Estimate::with('packages', 'packages.package', 'vehicle', 'vehicle.vehicleInfo', 'vehicle.vehicleInfo.colorInfo', 'vehicle.vehicleInfo.condition')->find($id);
+        $customer = Customer::find($estimate->customerId);
+        $colors = VehicleColor::get();
+        $conditions = VehicleCondition::get();
+
+        $estimateTotal = 0;
+        $downPmt = 0;
+        if ($estimate->approvedPackage){
+            if ($estimate->packages) {
+                foreach ($estimate->packages as $package) {
+                    $estimateTotal = $estimateTotal + $package->chargedPrice;
+                }
+            }
+
+            if ($estimate->services) {
+                foreach ($estimate->services as $service) {
+                    $estimateTotal = $estimateTotal + $service->chargedPrice;
+                }
+                foreach ($estimate->services->where('requiresDownPayment', 1) as $service) {
+                    $downPmt = $downPmt + $service->chargedPrice;
+                }
+            }
+
+            $estimate->total = $estimateTotal;
+            $estimate->deposit = $downPmt;
+            $estimate->save();
+        }
+
+        $pdf = PDF::loadView('estimate.pdf.estimate', compact('customer', 'estimate', 'estimateTotal', 'colors', 'conditions'));
+
+
+        return view('estimate.pdf.estimate', compact('customer', 'estimate', 'estimateTotal', 'colors', 'conditions'));
+    }
+
     /**
      * Display the specified resource.
      *
