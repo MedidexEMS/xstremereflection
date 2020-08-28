@@ -374,8 +374,9 @@ class EstimateController extends Controller
 
         $pdf = PDF::loadView('estimate.pdf.estimate', compact('customer', 'estimate', 'estimateTotal', 'colors', 'conditions'));
 
+        return $pdf->stream('estimate.pdf');
 
-        return view('estimate.pdf.estimate', compact('customer', 'estimate', 'estimateTotal', 'colors', 'conditions'));
+        //return view('estimate.pdf.estimate', compact('customer', 'estimate', 'estimateTotal', 'colors', 'conditions'));
     }
 
     /**
