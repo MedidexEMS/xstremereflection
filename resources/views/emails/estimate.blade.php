@@ -102,35 +102,27 @@
                     <td>
                         <table class="content" width="100%" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
                             <tr>
-                                <th>Package</th>
-                                <th>Discount</th>
-                                <th>Price</th>
+                                <th>Package #</th>
+                                <th>Description</th>
+                                <th>List Price</th>
+                                <th>Your Price</th>
+                                <th>Deposit</th>
                             </tr>
-                            @foreach($estimate->packages as $row)
-                            <tr>
-                                <td>{{$row->package->description ?? 'Unknown Package'}} Package</td>
-                                <td> @if($row->discountType == 1) {{$row->discount ?? ''}} % @elseif($row->discountType == 2) $ {{$row->discount ?? ''}} @endif</td>
-                                <td>{{$row->chargedPrice ?? ''}}</td>
-                            </tr>
-                            @endforeach
-                        </table>
-                    </td>
-                    <td>
-                        <table class="content" width="100%" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
-                            <tr>
-                                <th>Service</th>
-                                <th>Discount</th>
-                                <th>Price</th>
-                            </tr>
-                            @foreach($estimate->services as $row)
+                            @foreach($estimate->packages as $packages)
                                 <tr>
-                                    <td>@if($row->serviceId == 39) {{$row->description}} @else {{$row->service->description ?? 'Unknown Service'}} @endif</td>
-                                    <td> @if($row->discountType == 1) {{$row->discount ?? ''}} % @elseif($row->discountType == 2) $ {{$row->discount ?? ''}} @endif</td>
-                                    <td>{{$row->chargedPrice ?? ''}}</td>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td width="50%">
+                                        <h6>{{$packages->package->description}}</h6>
+                                        {!! $packages->package->details !!}
+                                    </td>
+                                    <td>${{$packages->listPrice ?? ''}}</td>
+                                    <td>${{$packages->chargedPrice ?? ''}}</td>
+                                    <td>${{$packages->deposit ?? ''}}</td>
                                 </tr>
                             @endforeach
                         </table>
                     </td>
+
                 </tr>
 
             </table>
@@ -138,20 +130,17 @@
     </tr>
     <tr>
         <td align="center" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 25px 0;">
-            <table class="content" width="100%" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
+            This estimate is not a contract or a bill. It is our best guess at the total price to complete the work started above. Based upon our initial inspection or
+            conversation, if prices change or additional parts and labor are required, we will inform you prior to proceeding with the work. Some estimates require security
+            deposits at the time of accepting the estimate. Your estimate is valid for 15 days. Please refer to our cancellation policy for more information about security
+            deposit refunds.
 
+        </td>
+    </tr>
 
-
-                <tr>
-                    <td>Total</td>
-                    <td>{{$estimate->total}}</td>
-                </tr>
-                <tr>
-                    <td>Security Deposit</td>
-                    <td>{{$estimate->deposit ?? '$0.00'}}</td>
-                </tr>
-
-            </table>
+    <tr>
+        <td align="center" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 25px 0;">
+            <button class="btn-primary btn-block"> Click Here To Accept One Of These Packages</button>
         </td>
     </tr>
 
