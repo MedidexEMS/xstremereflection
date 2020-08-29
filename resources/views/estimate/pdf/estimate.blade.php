@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Customer Estimate - PDF</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
         tr {
@@ -13,7 +13,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-6">
-            <img src="{{ url('assets/img/logo1.png') }}" width="500px" height="150px" alt="logo" />
+            <img src="{{ public_path('assets/img/logo1.png') }}" width="500px" height="150px" alt="logo" />
         </div>
         <div class="col-6">
             <address>
@@ -106,6 +106,10 @@
     <div class="col-3">
         <strong>____________________________________</strong>
     </div>
+
+</div>
+
+<div class="row">
     <div class="col-8 mr-2">
         Customer Approval
     </div>
