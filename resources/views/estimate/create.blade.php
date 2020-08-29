@@ -323,7 +323,7 @@
             // AJAX request
             $.ajax({
                 url: '/estimate/selectpackage/{{$estimate->id}}/'+ id,
-                type: 'post',
+                type: 'get',
                 success: function(response){
 
                 }
