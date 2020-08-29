@@ -314,7 +314,12 @@
 
         function selectedPackage(e){
             var id = $("input[name='package']:checked").val();
-
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            });
             // AJAX request
             $.ajax({
                 url: '/estimate/selectpackage/{{$estimate->id}}/'+ id,
