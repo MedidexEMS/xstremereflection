@@ -11,10 +11,7 @@
             <div class="modal-body">
                 <form id="newPackageForm" action="/estimate/{{$estimate->id}}/addPackage" method="POST">
                     @csrf
-                    <div class="form-group mb-2">
-                        <label for="qty"> Quantity <span class="text-danger">*</span> </label>
-                        <input type="number" class="form-control" name="quanity" id="qty" required/>
-                    </div>
+
                     <div class="form-group mb-2">
                         <label for="packageId"> Package <span class="text-danger">*</span></label>
                         <select class="js-example-basic-single" name="packageId" id="packageId" style="width:100%" onchange="listPriceUpdate()" required>
@@ -34,7 +31,7 @@
                     </div>
                     <div class="form-group mb-2">
                         <label for="discount"> Discount <span class="text-danger">*</span></label>
-                        <input type="number" step="0.01" class="form-control" name="discount" id="discount" value="0" required/>
+                        <input type="number" step="0.01" class="form-control" name="discount" id="discount" value="0.00" required/>
                     </div>
                     <div class="form-group mb-2">
                         <label for="deposit"> Deposit <span class="text-danger">*</span></label>
