@@ -70,7 +70,7 @@ class EstimateController extends Controller
     {
         $estimate = Estimate::with('customer', 'services', 'packages')->find($id);
 
-        Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new EstimateMailable($estimate));
+        Mail::to([ 'jblevins@xtremereflection.app'])->send(new EstimateMailable($estimate));
 
         if(Mail::failures()){
             $tracking = new EstimateTracking;
