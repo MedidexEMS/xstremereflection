@@ -12,10 +12,10 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xl-6">
+        <div class="col-6">
             <img src="{{ url('assets/img/logo1.png') }}" width="500px" height="150px" alt="logo" />
         </div>
-        <div class="col-xl-6">
+        <div class="col-6">
             <address>
                 4663 State Route 784 <br/>
                 South Shore, Ky 41175 <br/>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="row mb-4">
-        <div class="col-xl-6">
+        <div class="col-6">
             <h3>Customer Information</h3>
             <hr>
             <div class="row">
@@ -37,7 +37,7 @@
                 Arrival Window: @if($estimate->arrivalTime){{\Carbon\Carbon::parse($estimate->arrivalTime)->format('H:i')}} to {{\Carbon\Carbon::parse($estimate->arrivalTime)->addHours(3)->format('H:i')}}@else TBD @endif <br/>
             </div>
         </div>
-        <div class="col-xl-6">
+        <div class="col-6">
             <h3>Vehicle Information</h3>
             <hr>
             <h4 class="mb-1 mb-sm-0">Customer Information</h4>
@@ -88,7 +88,7 @@
     </div>
 
     <div class="row mt-5">
-        <div class="col-xl-12">
+        <div class="col-12">
             <small>
                 <strong>Note:</strong> This estimate is not a contract or a bill. It is our best guess at the total price to complete the work started above.
                 Based upon our initial inspection or conversation, if prices change or additional parts and labor are required, we will inform you prior to
@@ -100,16 +100,16 @@
 </div>
 
 <div class="row">
-    <div class="col-xl-8 mr-2">
+    <div class="col-8 mr-2">
         <strong>X___________________________________________________________________________</strong>
     </div>
-    <div class="col-xl-3">
+    <div class="col-3">
         <strong>____________________________________</strong>
     </div>
-    <div class="col-xl-8 mr-2">
+    <div class="col-8 mr-2">
         Customer Approval
     </div>
-    <div class="col-xl-3">
+    <div class="col-3">
         Date
     </div>
 </div>
