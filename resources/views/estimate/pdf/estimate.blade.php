@@ -11,10 +11,12 @@
 </head>
 <body>
 
-<table class="table table">
-    <tr>
-        <td><img src="{{ url('assets/img/logo1.png') }}" width="500px" height="150px" alt="logo" /></td>
-        <td>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <img src="{{ url('assets/img/logo1.png') }}" width="500px" height="150px" alt="logo" />
+        </div>
+        <div class="col-6">
             <address>
                 4663 State Route 784 <br/>
                 South Shore, Ky 41175 <br/>
@@ -22,11 +24,8 @@
             </address>
             <h1>Estimate ID: {{$estimate->id ?? 'Unknown ID'}}</h1>
             <h1>Estimate Date: {{\Carbon\Carbon::parse($estimate->created_at)->format('M d Y')}}</h1>
-        </td>
-    </tr>
-</table>
-<div class="container-fluid">
-
+        </div>
+    </div>
 
     <div class="row mb-4">
         <div class="col-6">
