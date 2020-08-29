@@ -424,8 +424,6 @@ class EstimateController extends Controller
             }
         }
 
-        $estimate->total = $estimateTotal;
-        $estimate->deposit = $downPmt;
         $estimate->save();
     }
 
