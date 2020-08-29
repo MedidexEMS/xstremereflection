@@ -54,7 +54,7 @@
                                         <li>
                                             <div class="col-xl-2 text-center">
                                                 <label class="form-check-label">
-                                                    <input type="radio" class="form-check-input" name="package" id="package{{$packages->ic}}" value="{{$packages->id}}" onchange="selectedPackage()">
+                                                    <input type="radio" class="form-check-input" name="package" id="package{{$packages->ic}}" value="{{$packages->id}}" onchange="selectedPackage()" @if($estimate->approvedPackage == $packages->id) checked="checked" @endif>
 
                                                 </label>
                                             </div>
