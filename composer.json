@@ -34,7 +34,6 @@
         "fruitcake/laravel-cors": "^1.0",
         "guzzle/guzzle": "~3.9",
         "guzzlehttp/guzzle": "^6.3",
-        "h4cc/wkhtmltoimage-i386": "0.12.x",
         "intervention/image": "^2.3",
         "jenssegers/agent": "^2.5",
         "lab404/laravel-impersonate": "^1.2",
