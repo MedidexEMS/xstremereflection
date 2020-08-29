@@ -33,6 +33,7 @@
             <div class="row">
                 Customer: {{$customer->firstName ?? 'Unknown Customer'}} {{$customer->lastName ?? ''}} - @if($customer->phoneNumber) {{ '('.substr($customer->phoneNumber, 0, 3).') '.substr($customer->phoneNumber, 3, 3).'-'.substr($customer->phoneNumber,6)  }} @endif <br />
                 Address: {{$customer->address ?? ''}} <br/>
+                Date of Service:@if($estimate->dateofService){{\Carbon\Carbon::parse($estimate->dateofService)->format('M d Y')}} @else TBD @endif <br />
                 Detail Service Type: @if($estimate->detilType == 1) Shop Detail @elseif($estimate->detailType == 2) Mobile Detail @else T.B.D @endif <br />
                 Arrival Window: @if($estimate->arrivalTime){{\Carbon\Carbon::parse($estimate->arrivalTime)->format('H:i')}} to {{\Carbon\Carbon::parse($estimate->arrivalTime)->addHours(3)->format('H:i')}}@else TBD @endif <br/>
             </div>
