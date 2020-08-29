@@ -317,7 +317,7 @@
 
             // AJAX request
             $.ajax({
-                url: '/estimate/selectPackage/{{$estimate->id}}/'+ id,
+                url: '/estimate/selectpackage/{{$estimate->id}}/'+ id,
                 type: 'post',
                 success: function(response){
 
