@@ -185,7 +185,7 @@
         <a   class="theme-collapse-btn"> <span class="text-primary"><i class="fas fa-money-bill-alt "></i> </span> </a>
         <div class="theme-panel-content">
             <ul class="theme-list clearfix">
-                <li class="active text-danger"> <span class="display-4" id="subTotal">$ {{ number_format($estimateTotal, 2, '.', '') ?? '0.00'}} </span>&nbsp;</li>
+                <li class="active text-danger"> <span class="display-4" id="subTotal">$ {{ number_format($estimate->total, 2, '.', '') ?? '0.00'}} </span>&nbsp;</li>
 
             </ul>
         </div>
