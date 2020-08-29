@@ -40,6 +40,7 @@
         <div class="col-6">
             <h3>Vehicle Information</h3>
             <hr>
+            @if($estimate->vehicle)
                 VIN Number: {{$estimate->vehicle->vehicleInfo->vin ?? 'VIN not provided at time of estimate.'}} <br />
 
                 Vehicle Year: {{$estimate->vehicle->vehicleInfo->year}} <br />
@@ -52,6 +53,11 @@
 
 
                 Vehicle Color: {{$estimate->vehicle->vehicleInfo->colorInfo->description ?? ''}}
+            @else
+                No Vehicle information added.
+            @endif
+
+
 
         </div>
     </div>
