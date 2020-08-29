@@ -315,7 +315,15 @@
         function selectedPackage(e){
             var id = $("input[name='package']:checked").val();
 
-            console.log(id);
+            // AJAX request
+            $.ajax({
+                url: '/estimate/selectPackage/{{$estimate->id}}/'+ id,
+                type: 'post',
+                success: function(response){
+
+                }
+            });
+
         }
 
 
