@@ -14,7 +14,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-6">
-            <img src="{{ url('http://xtremereflection.app/assets/img/logo1.png') }}" width="500px" height="150px" alt="logo" />
+
         </div>
         <div class="col-6">
             <address>
