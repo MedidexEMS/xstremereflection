@@ -13,7 +13,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-6">
-            <img src="{{ public_path('assets/img/logo1.png') }}" width="500px" height="150px" alt="logo" />
+            <img src="{{ public_path('assets/img/logo1.png') }}" width="450px" height="140px" alt="logo" />
         </div>
         <div class="col-6">
             <address>
@@ -22,7 +22,7 @@
                 (740) 207-2847
             </address>
             <h1>Estimate ID: {{$estimate->id ?? 'Unknown ID'}}</h1>
-            <h1>Estimate Date: {{\Carbon\Carbon::parse($estimate->created_at)->format('M d Y')}}</h1>
+            <h2>Estimate Date: {{\Carbon\Carbon::parse($estimate->created_at)->format('M d Y')}}</h2>
         </div>
     </div>
 
@@ -40,22 +40,19 @@
         <div class="col-6">
             <h3>Vehicle Information</h3>
             <hr>
-            <h4 class="mb-1 mb-sm-0">Customer Information</h4>
-            <p class="mb-0 font-weight-normal d-none d-sm-block">
-                VIN Number: {{$estimate->vehicle->vehicleInfo->vin ?? 'VIN not provided at time of estimate.'}}
-            </p>
-            <p class="mb-0 font-weight-normal d-none d-sm-block">
-                Vehicle Year: {{$estimate->vehicle->vehicleInfo->year}}
-            </p>
-            <p class="mb-0 font-weight-normal d-none d-sm-block">
-                Vehicle Make: {{$estimate->vehicle->vehicleInfo->make}}
-            </p>
-            <p class="mb-0 font-weight-normal d-none d-sm-block">
-                Vehicle Model/Style: {{$estimate->vehicle->vehicleInfo->model}} - {{$estimate->vehicle->vehicleInfo->style}}
-            </p>
-            <p class="mb-0 font-weight-normal d-none d-sm-block">
+                VIN Number: {{$estimate->vehicle->vehicleInfo->vin ?? 'VIN not provided at time of estimate.'}} <br />
+
+                Vehicle Year: {{$estimate->vehicle->vehicleInfo->year}} <br />
+
+
+                Vehicle Make: {{$estimate->vehicle->vehicleInfo->make}} <br />
+
+
+                Vehicle Model/Style: {{$estimate->vehicle->vehicleInfo->model}} - {{$estimate->vehicle->vehicleInfo->style}} <br />
+
+
                 Vehicle Color: {{$estimate->vehicle->vehicleInfo->colorInfo->description ?? ''}}
-            </p>
+
         </div>
     </div>
 
