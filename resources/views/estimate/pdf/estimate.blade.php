@@ -1,7 +1,8 @@
 <html>
 <head>
     <title>Customer Estimate - PDF</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
         tr {
             page-break-inside: avoid
@@ -9,11 +10,10 @@
     </style>
 </head>
 <body>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-6">
-            <img src="{{ public_path('/assets/img/logo1.png') }}" width="500px" height="150px" alt="logo" />
+            <img src="{{ url('assets/img/logo1.png') }}" width="500px" height="150px" alt="logo" />
         </div>
         <div class="col-6">
             <address>
