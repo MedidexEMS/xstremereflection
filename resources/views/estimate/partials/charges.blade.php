@@ -56,19 +56,18 @@
                                             <td width="50%">
                                                 {{$packages->package->description ?? 'Unknown Package'}} <br />
                                                 @if($packages->addOnService)
-                                                    <div class="card" >
-                                                        <div class="card-body">
-                                                            <h5 class="card-title">Add on Services</h5>
-                                                            <ul class="list-group">
-                                                                @foreach($packages->addOnService as $aos)
-                                                                <li class="list-group-item">
+                                                    <table class="table table-sm">
+                                                        <tr>
+                                                            <th><h6 class="card-title">Add on Services</h6></th>
+                                                        </tr>
+                                                        @foreach($packages->addOnService as $aos)
+                                                            <tr class="list-group-item">
+                                                                <td>
                                                                     @if($aos->serviceId == 0) {{$aos->description ?? ''}}  @else {{$aos->service->description  }} @endif - <small>List Price: ${{$aos->service->charge ?? '0.00'}}  Charged: {{$aos->price ?? '0.00'}} </small>
-
-                                                                </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </table>
                                                 @endif
 
                                             </td>
