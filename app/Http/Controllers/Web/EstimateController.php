@@ -150,13 +150,13 @@ class EstimateController extends Controller
             $discountPercent = $request->discount / 100;
             $discountTotal = $package->cost * $discountPercent;
 
-            $chargedPrice = $package->cost - $discountTotal * $request->quanity;
+            $chargedPrice = $package->cost - $discountTotal;
 
         }elseif($request->discountType == 2){
             //CASH DISCOUNT//
-            $chargedPrice = $package->cost - $request->discount * $request->quanity;
+            $chargedPrice = $package->cost - $request->discount;
         }else{
-            $chargedPrice = $package->cost * $request->quanity;
+            $chargedPrice = $package->cost ;
         }
 
         dd($chargedPrice);
