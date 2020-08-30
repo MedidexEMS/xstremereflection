@@ -64,6 +64,12 @@
     </div>
 
     <div class="row">
+        <div class="col-12">
+            Reported Problem: {{$estimate->problem ?? ''}}
+        </div>
+    </div>
+
+    <div class="row">
         <table class="table table-striped">
             <thead>
             <tr>
