@@ -31,11 +31,11 @@
                     </div>
                     <div class="form-group mb-2">
                         <label for="discount"> Discount <span class="text-danger">*</span></label>
-                        <input type="number" step="0.01" class="form-control" name="discount" id="discount" value="0.00" required/>
+                        <input type="number" step="0.01" class="form-control" name="discount" id="discount" placeholder="0.00" required/>
                     </div>
                     <div class="form-group mb-2">
                         <label for="deposit"> Deposit <span class="text-danger">*</span></label>
-                        <input type="number" step="0.01" class="form-control" name="deposit" id="deposit" value="0.00" required/>
+                        <input type="number" step="0.01" class="form-control" name="deposit" id="deposit" placeholder="0.00" required/>
                     </div>
 
                     <div class="form-group mb-2" id="packageTotals">
