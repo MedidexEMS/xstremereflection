@@ -1,6 +1,7 @@
 <?php
 
 namespace Vanguard\Http\Controllers\Web;
+use Vanguard\AddOnService;
 use Vanguard\Customer;
 use Vanguard\CustomerVehicle;
 use Vanguard\Estimate;
@@ -23,6 +24,7 @@ use Vanguard\WorkOrder;
 USE Vanguard\WorkOrderServices;
 use Vanguard\WorkOrderTracking;
 use PDF;
+use function GuzzleHttp\Psr7\_parse_request_uri;
 
 class EstimateController extends Controller
 {
@@ -345,6 +347,71 @@ class EstimateController extends Controller
         return redirect()->route('estimate.show', ['id' => $id])->with('success', 'You have created a new work order.');
     }
 
+    public function addPackageService (Request $request, $id)
+    {
+        $package = EstimatePackage::find($id);
+
+        if($request->serviceId == 0){
+
+            if($request->discountType == 1){
+                //PERCENT DISCOUNT//
+                $discountPercent = $request->discount / 100;
+                $discountTotal = $request->price * $discountPercent;
+
+                $chargedPrice = $request->price - $discountTotal;
+
+            }elseif($request->discountType == 2){
+                //CASH DISCOUNT//
+                $chargedPrice = $request->price - $request->discount;
+            }else{
+                $chargedPrice = $request->price ;
+            }
+
+
+            $addService = new AddOnService();
+            $addService->packageId = $id;
+            $addService->serviceid = $request->serviceId;
+            $addService->price = $chargedPrice;
+            $addService->show = $request->show;
+
+            $addService->save();
+
+        }else{
+            $service = Services::find($request->serviceId);
+
+
+            if($request->discountType == 1){
+                //PERCENT DISCOUNT//
+                $discountPercent = $request->discount / 100;
+                $discountTotal = $service->charge * $discountPercent;
+
+                $chargedPrice = $service->charge - $discountTotal;
+
+            }elseif($request->discountType == 2){
+                //CASH DISCOUNT//
+                $chargedPrice = $service->charge - $request->discount;
+            }else{
+                $chargedPrice = $service->charge ;
+            }
+
+
+            $addService = new AddOnService();
+            $addService->packageId = $id;
+            $addService->serviceid = $request->serviceId;
+            $addService->price = $chargedPrice;
+            $addService->show = $request->show;
+
+            $addService->save();
+        }
+
+        $newPackagePrice = $package->chargedPrice + $chargedPrice;
+
+        $package->chargedPrice = $newPackagePrice;
+        $package->save();
+
+        return back()->with('success', 'Added new service to package.');
+    }
+
     public function pdf($id)
     {
         $estimate = Estimate::with('packages', 'packages.package', 'vehicle', 'vehicle.vehicleInfo', 'vehicle.vehicleInfo.colorInfo', 'vehicle.vehicleInfo.condition')->find($id);
@@ -429,8 +496,9 @@ class EstimateController extends Controller
 
         $estimate->save();
     }
+        $services = Services::where('company_id', 0)->orWhere('company_id', Auth()->user()->companyId)->get();
 
-        return view('estimate.create', compact('packages', 'customer', 'estimate', 'estimateTotal', 'colors', 'conditions'));
+        return view('estimate.create', compact('packages', 'customer', 'estimate', 'estimateTotal', 'colors', 'conditions', 'services'));
     }
 
     /**
@@ -469,10 +537,10 @@ class EstimateController extends Controller
 
     public function destroyPackage ($id)
     {
-        $package = EstimatePackage::find($id)->delete();
+        $package = EstimatePackage::find($id);
+            $package->addOnService()->delete();
+            $package->delete();
 
-
-        $packageService = EstimateService::where('packageId', $id)->delete();
 
         return back()->with('success', 'Package removed from estimate.');
 

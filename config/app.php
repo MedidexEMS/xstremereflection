@@ -196,7 +196,7 @@ return [
         Webpatser\Countries\CountriesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
-        Barryvdh\Snappy\ServiceProvider::class,
+       // Barryvdh\Snappy\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -269,8 +269,8 @@ return [
         'Authy' => Vanguard\Services\Auth\TwoFactor\Facade::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
-        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
-        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        //'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        //'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
 
 
     ],

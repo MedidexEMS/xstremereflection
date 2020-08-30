@@ -35,7 +35,7 @@
         <ul class="list-group">
 
 
-            <a href="#" data-toggle="modal"  data-target="#addServicesModal"><li class="list-group-item active text-center">Add Additional Service</li></a>
+            <a href="#" data-toggle="modal" data-id="{{$id}}"  data-target="#addServicesModal"><li class="list-group-item active text-center">Add Additional Service</li></a>
         </ul>
     </div>
 </div>

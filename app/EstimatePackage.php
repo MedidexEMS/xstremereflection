@@ -10,4 +10,11 @@ class EstimatePackage extends Model
     {
         return $this->belongsTo(Package::class, 'packageId');
     }
+
+    public function addOnService ()
+    {
+        return $this->hasMany(AddOnService::class, 'packageId');
+    }
+
+
 }

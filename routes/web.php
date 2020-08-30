@@ -251,7 +251,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/modal/packageServices/{id}', function ($id){
         $package = \Vanguard\EstimatePackage::find($id);
 
-        return view('estimate.partials.modalBodyServices', compact('package'));
+
+        return view('estimate.partials.modalBodyServices', compact('package', 'id'));
     });
     Route::get('estimate/selectpackage/{eid}/{id}', function($eid, $id){
         $package = \Vanguard\EstimatePackage::find($id);
@@ -264,6 +265,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
 });
     Route::get('estimate/{id}/pdf', 'EstimateController@pdf');
+    Route::post('/estimate/package/addservice/{id}', 'EstimateController@addPackageService');
 
 /**
  * Work Orders

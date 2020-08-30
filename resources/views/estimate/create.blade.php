@@ -175,6 +175,10 @@
     </div>
 
     <div class="row">
+        @include('estimate.partials.problem')
+    </div>
+
+    <div class="row">
         <div class="col-xl-12">
             @include('estimate.partials.charges')
         </div>
@@ -296,7 +300,9 @@
         });
 
         $("#addServicesModal").on("shown.bs.modal", function(e) {
+            var id = $(e.relatedTarget).data("id");
             $( "#addCustomServiceForm" ).hide();
+            $('#serviceForm').attr('action', '/estimate/package/addservice/'+ id);
 
         });
 
@@ -304,11 +310,11 @@
             var serviceType = document.getElementById("serviceId").value;
             console.log(serviceType);
             if(serviceType == 0){
-                $( "#serviceButton" ).hide();
+
                 $( "#addCustomServiceForm" ).show();
             }else{
                 $( "#addCustomServiceForm" ).hide();
-                $( "#serviceButton" ).show();
+
             }
         }
 

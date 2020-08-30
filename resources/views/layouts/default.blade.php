@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 
@@ -38,6 +38,14 @@
     @yield('styles')
 
     @hook('app:styles')
+
+    <script src='https://cdn.tiny.cloud/1/vhwdr00g7rh6pkyyon9gh805fujprojdb75iywpnv6akkt2e/tinymce/5/tinymce.min.js' referrerpolicy="origin"  />
+
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
 </head>
 <body >
     <div class="container-scroller">
@@ -106,6 +114,11 @@
 
     </script>
 
+    <script>
+        $('.toast').toast('show')
+
+
+    </script>
 
 
     @yield('scripts')
