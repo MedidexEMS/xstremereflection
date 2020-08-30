@@ -159,6 +159,8 @@ class EstimateController extends Controller
             $chargedPrice = $package->cost * $request->quanity;
         }
 
+        dd($request->discountType);
+
         $epackage = new EstimatePackage;
 
         $epackage->estimateId = $id;
