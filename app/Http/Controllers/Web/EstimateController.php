@@ -159,7 +159,7 @@ class EstimateController extends Controller
             $chargedPrice = $package->cost ;
         }
 
-        dd($chargedPrice);
+        //dd($chargedPrice);
 
         $epackage = new EstimatePackage;
 
