@@ -58,10 +58,10 @@
                                                 @if($packages->addOnService)
                                                     <table class="table table-sm">
                                                         <tr>
-                                                            <th><h6 class="card-title">Add on Services</h6></th>
+                                                            <th><h6>Add on Services</h6></th>
                                                         </tr>
                                                         @foreach($packages->addOnService as $aos)
-                                                            <tr class="list-group-item">
+                                                            <tr>
                                                                 <td>
                                                                     @if($aos->serviceId == 0) {{$aos->description ?? ''}}  @else {{$aos->service->description  }} @endif - <small>List Price: ${{$aos->service->charge ?? '0.00'}}  Charged: {{$aos->price ?? '0.00'}} </small>
                                                                 </td>
