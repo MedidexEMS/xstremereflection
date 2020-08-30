@@ -32,54 +32,70 @@
                     <div class="list-wrapper">
                         <ul class="d-flex flex-column text-white todo-list todo-list-custom">
                             @if($estimate->packages)
-                                <li>
-                                    <div class="col-xl-2 text-center">
-                                        Qty
-                                    </div>
-                                    <div class="col-xl-4 text-center">
-                                        Package Name
-                                    </div>
-                                    <div class="col-xl-2 text-center">
-                                        Discount
-                                    </div>
-                                    <div class="col-xl-3 text-center">
-                                        Cost
-                                    </div>
-                                    <div class="col-xl-2">
-                                        Actions
-                                    </div>
-                                </li>
-                                @foreach($estimate->packages as $packages)
-                                    <div class="form-check">
-                                        <li>
-                                            <div class="col-xl-2 text-center">
-                                                <label class="form-check-label">
-                                                    <input type="radio" class="form-check-input" name="package" id="package{{$packages->ic}}" value="{{$packages->id}}" onchange="selectedPackage()" @if($estimate->approvedPackage == $packages->id) checked="checked" @endif>
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Select PKG</th>
+                                        <th>Package Description</th>
+                                        <th>List Price</th>
+                                        <th>Charged Price</th>
+                                        <th>Deposit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($estimate->packages as $packages)
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="package" id="package{{$packages->ic}}" value="{{$packages->id}}" onchange="selectedPackage()" @if($estimate->approvedPackage == $packages->id) checked="checked" @endif>
 
-                                                </label>
-                                            </div>
-                                            <div class="col-xl-4 text-center">
-                                                {{$packages->package->description ?? 'Unknown Package'}}
-                                            </div>
-                                            <div class="col-xl-2 text-center">
-                                                @if($packages->discountType == 2) $ @endif  {{$packages->discount ?? '0'}} @if($packages->discountType == 1) % @endif
-                                            </div>
-                                            <div class="col-xl-3 text-center">
-                                                List Price: <br>
-                                                $ {{$packages->listPrice ?? ''}} <br>
-                                                Total: $ {{$packages->chargedPrice ?? ''}}
-                                            </div>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{$packages->package->description ?? 'Unknown Package'}} <br />
+                                                {{$packages->package->details ?? 'Unknown Details'}}
+                                            </td>
+                                            <td>
+                                                $ {{$packages->listPrice ?? ''}}
+                                            </td>
+                                            <td>
+                                                $ {{$packages->chargedPrice ?? ''}}
+                                            </td>
+                                            <td>
+                                                $ {{$packages->deposit ?? ''}}
+                                            </td>
+                                        </tr>
 
-                                            <div class="col-xl-2">
-                                                @if($estimate->status != 4)  <a href="/removePackage/{{$packages->id}}"><span class="text-danger"><i class="fad fa-eraser"></i></span></a> @endif
+                                            <li>
+                                                <div class="col-xl-2 text-center">
 
-                                                <a data-toggle="modal" data-link="/modal/packageServices/{{$packages->id}}" data-target="#servicesModal"><i class="fas fa-binoculars ml-3"></i></a>
-                                            </div>
+                                                </div>
+                                                <div class="col-xl-4 text-center">
+                                                    {{$packages->package->description ?? 'Unknown Package'}}
+                                                </div>
+                                                <div class="col-xl-2 text-center">
+                                                    @if($packages->discountType == 2) $ @endif  {{$packages->discount ?? '0'}} @if($packages->discountType == 1) % @endif
+                                                </div>
+                                                <div class="col-xl-3 text-center">
+                                                    List Price: <br>
+                                                    $ {{$packages->listPrice ?? ''}} <br>
+                                                    Total: $ {{$packages->chargedPrice ?? ''}}
+                                                </div>
 
-                                        </li>
-                                    </div>
+                                                <div class="col-xl-2">
+                                                    @if($estimate->status != 4)  <a href="/removePackage/{{$packages->id}}"><span class="text-danger"><i class="fad fa-eraser"></i></span></a> @endif
 
-                                @endforeach
+                                                    <a data-toggle="modal" data-link="/modal/packageServices/{{$packages->id}}" data-target="#servicesModal"><i class="fas fa-binoculars ml-3"></i></a>
+                                                </div>
+
+                                            </li>
+                                        </div>
+
+                                    @endforeach
+                                    </tbody>
+                                </table>
                             @else
                                 <li>
                                     <div class="col-xl-2 text-center">
