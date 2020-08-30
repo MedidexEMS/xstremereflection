@@ -65,7 +65,7 @@
 
     <div class="row">
         <div class="col-12">
-            Reported Problem: {{$estimate->problem ?? ''}}
+            <small> <strong> Reported Problem: </strong> {{$estimate->problem ?? ''}} </small>
         </div>
     </div>
 
