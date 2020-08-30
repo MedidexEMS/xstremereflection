@@ -66,6 +66,11 @@
                                             <td>
                                                 $ {{$packages->deposit ?? ''}}
                                             </td>
+                                            <td>
+                                                @if($estimate->status != 4)  <a href="/removePackage/{{$packages->id}}"><span class="text-danger"><i class="fad fa-eraser"></i></span></a> @endif
+
+                                                <a data-toggle="modal" data-link="/modal/packageServices/{{$packages->id}}" data-target="#servicesModal"><i class="fas fa-binoculars ml-3"></i></a>
+                                            </td>
                                         </tr>
 
                                             <li>
