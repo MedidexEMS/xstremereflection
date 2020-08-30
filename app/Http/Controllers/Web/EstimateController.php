@@ -167,6 +167,7 @@ class EstimateController extends Controller
         $epackage->discount = $request->discount;
         $epackage->discountType = $request->discountType;
         $epackage->listPrice = $package->cost;
+        $epackage->deposit  = $request->deposit;
         $epackage->chargedPrice = $chargedPrice;
 
         $epackage->save();
