@@ -21,8 +21,8 @@
                 South Shore, Ky 41175 <br/>
                 (740) 207-2847
             </address>
-            <h1>Estimate ID: {{$estimate->id ?? 'Unknown ID'}}</h1>
-            <h2>Estimate Date: {{\Carbon\Carbon::parse($estimate->created_at)->format('M d Y')}}</h2>
+            <h3>Estimate ID: {{$estimate->id ?? 'Unknown ID'}}</h3>
+            <h3>Estimate Date: {{\Carbon\Carbon::parse($estimate->created_at)->format('M d Y')}}</h3>
         </div>
     </div>
 
