@@ -79,7 +79,7 @@ class EstimateController extends Controller
 
         $estimate->save();
 
-        Mail::to('jblevins@xtremereflection.app')->send(new AcceptedEstimateEmail($estimate));
+        Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new AcceptedEstimateEmail($estimate));
 
         return back()->with('success', 'You have successfully accepted the package and our representative will contact you shortly.');
     }
