@@ -7,9 +7,9 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
+    <script type="text/javascript" src="{{url('/assets/js/jquery.signature.js')}}"></script>
 
-    <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
+    <link rel="stylesheet" type="text/css" href="{{url('/assets/css/jquery.signature.css')}}">
 
     <style>
         .kbw-signature { width: 100%; height: 200px;}
