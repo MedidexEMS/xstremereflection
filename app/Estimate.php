@@ -11,6 +11,11 @@ class Estimate extends Model
         return $this->hasMany(EstimatePackage::class, 'estimateId');
     }
 
+    public function acceptedPackage()
+    {
+        return $this->hasOne(EstimatePackage::class, 'approvedPackage');
+    }
+
     public function services ()
     {
         return $this->hasMany(EstimateService::class, 'estimateId');

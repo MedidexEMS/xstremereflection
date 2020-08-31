@@ -15,6 +15,7 @@ use Vanguard\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Vanguard\Mail\EstimateMailable;
+use Vanguard\Mail\AcceptedEstimateEmail;
 use Vanguard\Mail\RescheduleReminder;
 use Vanguard\Package;
 use Vanguard\packageItem;
@@ -77,6 +78,8 @@ class EstimateController extends Controller
         $estimate->deposit = $package->deposit;
 
         $estimate->save();
+
+        Mail::to('jblevins@xtremereflection.app')->send(new AcceptedEstimateEmail($estimate));
 
         return back()->with('success', 'You have successfully accepted the package and our representative will contact you shortly.');
     }
