@@ -71,7 +71,7 @@ class EstimateController extends Controller
         $estimate = Estimate::find($eid);
 
         $estimate->approvedPackage = $pid;
-        $estimate->signature = '/customerSignature'.$fileName;
+        $estimate->signature = '/customerSignature/'.$fileName;
         $estimate->signed = Carbon::now();
         $estimate->total = $package->chargedPrice;
         $estimate->deposit = $package->deposit;

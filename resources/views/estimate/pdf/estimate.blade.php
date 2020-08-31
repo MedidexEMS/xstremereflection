@@ -75,14 +75,19 @@
             <tr>
                 <th>Package #</th>
                 <th>Description</th>
-                <th>List Price</th>
-                <th>Your Price</th>
-                <th>Deposit</th>
+                @if($estimate->ndp)
+                    <td>Pricing Information</td>
+                @else
+                    <th>List Price</th>
+                    <th>Your Price</th>
+                    <th>Deposit</th>
+                @endif
+
             </tr>
             </thead>
             <tbody>
             @foreach($estimate->packages as $packages)
-            <tr>
+            <tr @if($estimate->approvedPackage == $packages->id) class="bg-success" @endif>
                 <td>{{$loop->iteration}}</td>
                 <td width="50%">
                     <h6>{{$packages->package->description}}</h6>
@@ -102,9 +107,13 @@
                         </table>
                     @endif
                 </td>
-                <td>${{$packages->listPrice ?? ''}}</td>
-                <td>${{$packages->chargedPrice ?? ''}}</td>
-                <td>${{$packages->deposit ?? ''}}</td>
+                @if($estimate->ndp)
+                    <td>Pricing By National Detail Pros</td>
+                @else
+                    <td>${{$packages->listPrice ?? ''}}</td>
+                    <td>${{$packages->chargedPrice ?? ''}}</td>
+                    <td>${{$packages->deposit ?? ''}}</td>
+                @endif
             </tr>
             @endforeach
             </tbody>
