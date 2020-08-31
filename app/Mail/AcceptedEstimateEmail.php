@@ -31,11 +31,11 @@ class AcceptedEstimateEmail extends Mailable
      *
      * @return $this
      */
-    public function build($estimate)
+    public function build()
     {
-        $customer = Customer::find($estimate->customerId);
+        $customer = Customer::find($this->estimate->customerId);
         view()->share('customer',$customer);
-        view()->share('estimate',$estimate);
+        view()->share('estimate',$this->estimate);
         $pdf = PDF::loadView('estimate.pdf.estimate', compact('estimate', 'customer'));
 
         $file = $customer->lastName.'_'.$this->estimate->id.'_estimate';
