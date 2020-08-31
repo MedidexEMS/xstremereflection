@@ -61,14 +61,20 @@ class EstimateController extends Controller
 
         $image_base64 = base64_decode($image_parts[1]);
 
-        $file = $folderPath . uniqid() . '.'.$image_type;
+        $fileName = uniqid(). '.'.$image_type;
+
+        $file = $folderPath . $fileName;
         file_put_contents($file, $image_base64);
+
+        $package = EstimatePackage::find($pid);
 
         $estimate = Estimate::find($eid);
 
         $estimate->approvedPackage = $pid;
-        $estimate->signature = $file;
+        $estimate->signature = '/customerSignature'.$fileName;
         $estimate->signed = Carbon::now();
+        $estimate->total = $package->chargedPrice;
+        $estimate->deposit = $package->deposit;
 
         $estimate->save();
 
