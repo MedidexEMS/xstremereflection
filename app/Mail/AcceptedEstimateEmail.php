@@ -8,6 +8,8 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Vanguard\Customer;
 
+use PDF;
+
 class AcceptedEstimateEmail extends Mailable
 {
 
