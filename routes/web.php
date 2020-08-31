@@ -267,6 +267,15 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('estimate/{id}/pdf', 'EstimateController@pdf');
     Route::post('/estimate/package/addservice/{id}', 'EstimateController@addPackageService');
 
+    Route::get('/estimate/customerReview/{id}', 'EstimateController@customerReview');
+    Route::get('customerSignatureBody/{pid}/{eid}', function ($pid, $eid){
+        $package = \Vanguard\EstimatePackage::find($pid);
+        $estimate = \Vanguard\Estimate::find($eid);
+
+       return view('estimate.partials.modalCustomerSignatureBody', compact('pid', 'eid', 'package', 'estimate'));
+    });
+    Route::post('customerSignature/{pid}/{eid}', 'EstimateController@uploadSignature');
+
 /**
  * Work Orders
  */

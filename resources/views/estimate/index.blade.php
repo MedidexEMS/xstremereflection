@@ -11,6 +11,8 @@
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="../../../assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <!-- End plugin css for this page -->
+
+
 @stop
 
 @section('breadcrumbs')

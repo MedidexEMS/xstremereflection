@@ -1,6 +1,7 @@
 <?php
 
 namespace Vanguard\Http\Controllers\Web;
+use Carbon\Carbon;
 use Vanguard\AddOnService;
 use Vanguard\Customer;
 use Vanguard\CustomerVehicle;
@@ -30,7 +31,7 @@ class EstimateController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['except' => ['customerReview', 'uploadSignature']]);
     }
     /**
      * Display a listing of the resource.
@@ -46,6 +47,32 @@ class EstimateController extends Controller
             ->orderBy('dateofService', 'desc')->get();
 
         return view('estimate.index', compact('estimates'));
+    }
+
+    public function uploadSignature(Request $request, $pid, $eid)
+    {
+        $folderPath = public_path('customerSignature/');
+
+        $image_parts = explode(";base64,", $request->signed);
+
+        $image_type_aux = explode("image/", $image_parts[0]);
+
+        $image_type = $image_type_aux[1];
+
+        $image_base64 = base64_decode($image_parts[1]);
+
+        $file = $folderPath . uniqid() . '.'.$image_type;
+        file_put_contents($file, $image_base64);
+
+        $estimate = Estimate::find($eid);
+
+        $estimate->approvedPackage = $pid;
+        $estimate->signature = $file;
+        $estimate->signed = Carbon::now();
+
+        $estimate->save();
+
+        return back()->with('success', 'You have successfully accepted the package and our representative will contact you shortly.');
     }
 
     public function approved()
@@ -499,6 +526,14 @@ class EstimateController extends Controller
         $services = Services::where('company_id', 0)->orWhere('company_id', Auth()->user()->companyId)->get();
 
         return view('estimate.create', compact('packages', 'customer', 'estimate', 'estimateTotal', 'colors', 'conditions', 'services'));
+    }
+
+    public function customerReview($id)
+    {
+        $estimate = Estimate::with('packages', 'packages.package', 'vehicle', 'vehicle.vehicleInfo', 'vehicle.vehicleInfo.colorInfo', 'vehicle.vehicleInfo.condition')->find($id);
+
+
+        return view('estimate.customerReview', compact('estimate'));
     }
 
     /**
