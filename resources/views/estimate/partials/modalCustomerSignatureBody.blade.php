@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{{url('/assets/css/jquery.signature.css')}}">
 
     <style>
-        .kbw-signature { width: 100%; height: 200px;}
+        .kbw-signature { width: 100%; height: 400px;}
         #sig canvas{
             width: 100% !important;
             height: auto;
@@ -23,7 +23,7 @@
 <body class="bg-dark">
 <div class="container">
     <div class="row">
-        <div class="col-md-6 offset-md-3 mt-5">
+        <div class="col-md-12 mt-5">
             <div class="card">
                 <div class="card-header">
                     <h5>Estimate Package Approval Confirmation </h5>
