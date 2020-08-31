@@ -134,7 +134,7 @@
 
 <div class="row">
     <div class="col-8 mr-2">
-        @if($estimate->signed) <img src="{{public_path($estimate->signature)}}">  @else <strong>X___________________________________________________________________________</strong> @endif
+        @if($estimate->signed) <img src="{{public_path($estimate->signature)}}" width="200px" height="100px">  @else <strong>X___________________________________________________________________________</strong> @endif
     </div>
     <div class="col-3">
         <strong>____________________________________</strong>
