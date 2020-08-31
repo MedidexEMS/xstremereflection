@@ -75,7 +75,7 @@
                         <td>${{$packages->listPrice ?? ''}}</td>
                         <td>${{$packages->chargedPrice ?? ''}}</td>
                         <td>${{$packages->deposit ?? ''}}</td>
-                        <td><a href="/customerSignatureBody/{{$packages->id}}"><button class="btn btn-success btn-block">Approve Package # {{$loop->iteration}}</button></a></td>
+                        <td><a href="/customerSignatureBody/{{$packages->id}}/{{$estimate->id}}"><button class="btn btn-success btn-block">Approve Package # {{$loop->iteration}}</button></a></td>
                     </tr>
                 @endforeach
                 </tbody>
