@@ -7,6 +7,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-touch-events/2.0.3/jquery.mobile-events.min.js" integrity="sha512-cbHKEp1NB9R746n/1SEKKc8kJuqqeT1JNainv36ZK9GjEZ9xlSvucx7Y2u9UCB605tfjHGWbfDeOHiTKJeKo3g==" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{url('/assets/js/jquery.signature.js')}}"></script>
 
     <link rel="stylesheet" type="text/css" href="{{url('/assets/css/jquery.signature.css')}}">
