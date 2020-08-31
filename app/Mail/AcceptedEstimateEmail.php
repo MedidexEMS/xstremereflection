@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Vanguard\Customer;
 
 class AcceptedEstimateEmail extends Mailable
 {
@@ -28,10 +29,15 @@ class AcceptedEstimateEmail extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build($estimate)
     {
+        $customer = Customer::find($estimate->customerId);
+        view()->share('customer',$customer);
+        view()->share('estimate',$estimate);
+        $pdf = PDF::loadView('estimate.pdf.estimate', compact('estimate', 'customer'));
 
+        $file = $customer->lastName.'_'.$this->estimate->id.'_estimate';
 
-        return $this->view('emails.estimateAccepted');
+        return $this->view('emails.estimateAccepted')->attachData($pdf->output(), $file);
     }
 }
