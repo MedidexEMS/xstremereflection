@@ -13,7 +13,7 @@ class Estimate extends Model
 
     public function acceptedPackage()
     {
-        return $this->hasOne(EstimatePackage::class, 'approvedPackage');
+        return $this->belongsTo(EstimatePackage::class, 'approvedPackage');
     }
 
     public function services ()
