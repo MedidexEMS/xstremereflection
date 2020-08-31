@@ -32,6 +32,6 @@ class AcceptedEstimateEmail extends Mailable
     {
 
 
-        return $this->view('view.name');
+        return $this->view('emails.estimateAccepted');
     }
 }
