@@ -136,7 +136,7 @@
     <div class="col-8 mr-2">
         @if($estimate->signed) <img src="{{public_path($estimate->signature)}}" width="200px" height="100px">  @else <strong>X___________________________________________________________________________</strong> @endif
     </div>
-    <div class="col-3">
+    <div class="col-3 align-text-bottom">
         @if($estimate->signed) {{\Carbon\Carbon::parse($estimate->signed)->format('m/d/Y H:i')}}  @else  <strong>____________________________________</strong> @endif
     </div>
 
