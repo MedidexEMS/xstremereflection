@@ -24,8 +24,8 @@
 
     <div class="row p-10 mb-3">
         <div class="col-xl-12">
-            John Doe I would like to thank you for contacting Xtreme Reflection for the perfection of your _________________.
-            We have slated our schedule for ________________________ and plan to give your vehicle the care you expect.
+            {{$estimate->customer->firstName ?? '' }} {{$estimate->customer->lastName ?? ''}} I would like to thank you for contacting Xtreme Reflection for the perfection of your @if($estimate->vehicle) {{$estimate->vehicle->vehicleInfo->colorInfo->description}} {{$estimate->vehicle->vehicleInfo->year ?? ''}} {{$estimate->vehicle->vehicleInfo->make ?? ''}} {{$estimate->vehicle->vehicleInfo->model ?? ''}}@else vehicle  @endif.
+            We have slated our schedule for {{ \Carbon\Carbon::parse($estimate->dateofService)->format('m/d/Y') ?? '' }} arrival time @if($estimate->arrivalTime){{\Carbon\Carbon::parse($estimate->arrivalTime)->format('H:i')}} to {{\Carbon\Carbon::parse($estimate->arrivalTime)->addHours(3)->format('H:i')}}@else to be determined @endif and plan to give your vehicle the care you expect.
             Please review the packages below and select the package that best fits your needs.
         </div>
     </div>
