@@ -1,11 +1,11 @@
 <div class="col-xl-4 col-sm-12">
-    <h2>Unscheduled Details</h2>
+    <h2>Pending Contacts / Estimates</h2>
     <div class="card">
         <div class="card-body py-0 px-0 px-sm-3">
 
             <div class="list-group">
 
-                @foreach($estimates->where('status', 7) as $estimate)
+                @foreach($estimates->whereIn('status', [1, 7]) as $estimate)
                     <a class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{$estimate->customer->firstName ?? 'Missing Customer Info'}} {{$estimate->customer->lastName ?? ''}}</h5>

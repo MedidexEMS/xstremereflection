@@ -37,4 +37,9 @@ class Estimate extends Model
     {
         return $this->hasOne(WorkOrder::class, 'estimateId');
     }
+
+    public function tracking()
+    {
+        return $this->hasMany(EstimateTracking::class, 'estimateId');
+    }
 }

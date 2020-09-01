@@ -147,42 +147,53 @@
 @stop
 
 @section('content')
-    @include('partials.messages')
+
+
     @if($estimate->status != 4)
-    <div class="row mb-4">
-        <div class="col">
-            <a href="/estimate/mail/{{$estimate->id}}"><button type="button"  class="btn btn-primary" style="width: 100%">Send for Approval</button></a>
+        <div class="row mb-4">
+            <div class="col">
+                <a href="/estimate/mail/{{$estimate->id}}"><button type="button"  class="btn btn-primary" style="width: 100%">Send for Approval</button></a>
+            </div>
+            <div class="col">
+                <a href="/estimate/workOrder/{{$estimate->id}}" ><button type="button" class="btn btn-primary" style="width: 100%">Convert to Work Order</button></a>
+            </div>
+            <div class="col">
+                <a></a><button type="button"  class="btn btn-danger" style="width: 100%">Void</button>
+            </div>
         </div>
-        <div class="col">
-            <a href="/estimate/workOrder/{{$estimate->id}}" ><button type="button" class="btn btn-primary" style="width: 100%">Convert to Work Order</button></a>
-        </div>
-        <div class="col">
-            <a></a><button type="button"  class="btn btn-danger" style="width: 100%">Void</button>
-        </div>
-    </div>
     @else
         <div class="row mb-4 text-center">
             <h2>Estimate has been approved and scheduled for service.</h2>
         </div>
     @endif
+
     <div class="row">
-        <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
-            @include('estimate.partials.customer')
+        <div class="col-sm-12 col-xl-8">
+            <div class="row">
+                <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
+                    @include('estimate.partials.customer')
+                </div>
+                <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
+                    @include('estimate.partials.serviceInfo')
+                </div>
+            </div>
+
+            <div class="row">
+                @include('estimate.partials.problem')
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12">
+                    @include('estimate.partials.charges')
+                </div>
+            </div>
         </div>
-        <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
-            @include('estimate.partials.serviceInfo')
+        <div class="col-sm-12 col-xl-4">
+            @include('estimate.partials.notes')
         </div>
     </div>
 
-    <div class="row">
-        @include('estimate.partials.problem')
-    </div>
 
-    <div class="row">
-        <div class="col-xl-12">
-            @include('estimate.partials.charges')
-        </div>
-    </div>
 
     <!-- begin theme-panel -->
     <div class="theme-panel active">
@@ -203,7 +214,7 @@
 @include('estimate.partials.modalServices')
 @include('estimate.partials.modalAddService')
 
-
+@include('partials.messages')
 @section('scripts')
 
     <script>
