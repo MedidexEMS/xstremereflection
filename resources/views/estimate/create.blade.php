@@ -151,7 +151,7 @@
     @if($estimate->status != 4)
     <div class="row mb-4">
         <div class="col">
-            <button type="button"  class="btn btn-primary" style="width: 100%">Send for Approval</button>
+            <a href="/estimate/mail/{{$estimate->id}}"><button type="button"  class="btn btn-primary" style="width: 100%">Send for Approval</button></a>
         </div>
         <div class="col">
             <a href="/estimate/workOrder/{{$estimate->id}}" ><button type="button" class="btn btn-primary" style="width: 100%">Convert to Work Order</button></a>
