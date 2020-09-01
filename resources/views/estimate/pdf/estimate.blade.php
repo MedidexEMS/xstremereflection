@@ -91,7 +91,9 @@
                 <td>{{$loop->iteration}}</td>
                 <td width="50%">
                     <h6>{{$packages->package->description}}</h6>
-                    {!! $packages->package->details !!}
+                    {!! $packages->package->details !!} <br />
+                    <small>@if($packages->package->items) @foreach($packages->package->items as $item)
+                        {{$item->desc->description}} @if($loop->last) @else , @endif @endforeach  @endif</small>
                     @if($packages->addOnService)
                         <table class="table table-sm">
                             <tr>
