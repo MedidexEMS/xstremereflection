@@ -147,7 +147,7 @@
 @stop
 
 @section('content')
-
+    @include('partials.messages')
 
     @if($estimate->status != 4)
         <div class="row mb-4">
@@ -206,7 +206,7 @@
         </div>
     </div>
 
-    @include('partials.messages')
+
 @stop
 
 @include('invoice.partials.itemModal')
