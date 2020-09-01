@@ -140,7 +140,7 @@
 
     <tr>
         <td align="center" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 25px 0;">
-            <button class="btn-primary btn-block"> Click Here To Accept One Of These Packages</button>
+            <a href="/estimate/customerReview/{{$estimate->id}}"><button class="btn-primary btn-block"> Click Here To Accept One Of These Packages</button></a>
         </td>
     </tr>
 
