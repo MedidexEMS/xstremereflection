@@ -263,6 +263,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         $estimate->approvedPackage = $id;
         $estimate->save();
 
+        return back()->with('success', 'Customer problem description updated.')
+
 });
     Route::post('/updateProblem/{id}', function (Request $request, $id){
        $estimate = \Vanguard\Estimate::find($id);
