@@ -95,7 +95,8 @@
 
                     @php
                         $array = explode(',', $packages->package->includes);
-                       $packageItems = \Vanguard\packageItem::whereIn('packageId', $array) @endphp
+                       $packageItems = \Vanguard\packageItem::whereIn('packageId', $array)->get();
+                    @endphp
                     <small>
                         @if($packageItems)
                             @foreach($packageItems as $item)
