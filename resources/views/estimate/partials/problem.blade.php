@@ -1,8 +1,8 @@
 <div class="col-xl-12">
-    <form>
+    <form action="/updateProblem/{{$estimate->id}}">
         <div class="col-xl-12 mb-2">
             <label>Reported Problem</label>
-            <textarea  id="mytextarea" name="mytextarea" style="width: 100%">
+            <textarea  id="mytextarea" name="problem" style="width: 100%">
               {{$estimate->problem ?? ''}}
             </textarea>
         </div>

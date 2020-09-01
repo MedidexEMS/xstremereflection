@@ -264,6 +264,11 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         $estimate->save();
 
 });
+    Route::post('/updateProblem/{id}', function (Request $request, $id){
+       $estimate = \Vanguard\Estimate::find($id);
+       $estimate->problem = $request->problem;
+       $estimate->save();
+    });
     Route::get('estimate/{id}/pdf', 'EstimateController@pdf');
     Route::post('/estimate/package/addservice/{id}', 'EstimateController@addPackageService');
 
