@@ -453,8 +453,8 @@ class EstimateController extends Controller
     {
         $estimate = Estimate::with('packages', 'packages.package', 'vehicle', 'vehicle.vehicleInfo', 'vehicle.vehicleInfo.colorInfo', 'vehicle.vehicleInfo.condition')->find($id);
         $customer = Customer::find($estimate->customerId);
-        $colors = VehicleColor::get();
-        $conditions = VehicleCondition::get();
+
+
 
         $estimateTotal = 0;
         $downPmt = 0;
