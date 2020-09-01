@@ -92,9 +92,14 @@
                 <td width="50%">
                     <h6>{{$packages->package->description}}</h6>
                     {!! $packages->package->details !!} <br />
-                    <?php $packageItems = \Vanguard\packageItem::whereIn('packageId', $packages->package->includes) ?>
-                    <small>@if($packageItems) @foreach($packageItems as $item)
-                        {{$item->desc->description}} @if($loop->last) @else , @endif @endforeach  @endif</small>
+
+                    @php $packageItems = \Vanguard\packageItem::whereIn('packageId', $packages->package->includes) @endphp
+                    <small>
+                        @if($packageItems)
+                            @foreach($packageItems as $item)
+                            {{$item->desc->description}} @if($loop->last) @else , @endif
+                            @endforeach
+                        @endif</small>
                     @if($packages->addOnService)
                         <table class="table table-sm">
                             <tr>
