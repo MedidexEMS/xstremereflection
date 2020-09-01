@@ -34,7 +34,7 @@ class IcalController extends Controller
             $end = $event->estimate->dateofService.' '. $endTime;
             $start = Carbon::parse($start)->addHours(4);
             $end = Carbon::parse($end)->addHours(4);
-            $eventLink = 'https://xtremereflection.app/'.$event->estimate->id.'/show';
+            $eventLink = 'https://xtremereflection.app/estimate/'.$event->estimate->id.'/show';
             if($event->estimate->serviceAddress){ $location = $event->estimate->serviceAddress; }else{$location= "";};
 
 
