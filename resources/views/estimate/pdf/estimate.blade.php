@@ -93,7 +93,7 @@
                     <h6>{{$packages->package->description}}</h6>
                     {!! $packages->package->details !!} <br />
 
-                    @php $packageItems = \Vanguard\packageItem::whereIn('packageId', $packages->package->includes) @endphp
+                    @php $packageItems = \Vanguard\packageItem::whereIn('packageId','['. $packages->package->includes.']') @endphp
                     <small>
                         @if($packageItems)
                             @foreach($packageItems as $item)
