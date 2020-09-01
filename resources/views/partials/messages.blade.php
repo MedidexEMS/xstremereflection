@@ -1,8 +1,7 @@
 @if(isset ($errors) && count($errors) > 0)
     <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
         <!-- Position it -->
-        <div style="position: absolute; top: 0; right: 0;">
-            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="15000">
+            <div class="toast" style="position: absolute; top: 0; right: 0;" role="alert" aria-live="assertive" aria-atomic="true" data-delay="15000">
                 <div class="toast-header">
                     <img src="{{url('/assets/img/bluesquare.png')}}" class="rounded bg-danger mr-2" alt="..." width="15px" height="15px">
                     <strong class="mr-auto">Error Reported</strong>
@@ -17,7 +16,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
 @endif
 
 @if(Session::get('success', false))
@@ -25,9 +24,9 @@
     @if (is_array($data))
         <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
             <!-- Position it -->
-            <div style="position: absolute; top: 0; right: 0;">
+
                 @foreach ($data as $msg)
-                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="15000">
+                    <div class="toast" style="position: absolute; top: 0; right: 0;" role="alert" aria-live="assertive" aria-atomic="true" data-delay="15000">
                         <div class="toast-header">
                             <img src="{{url('/assets/img/bluesquare.png')}}" class="rounded mr-2" alt="..." width="15px" height="15px">
                             <strong class="mr-auto">Action Completed</strong>
@@ -40,13 +39,13 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
+
         </div>
     @else
         <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
             <!-- Position it -->
-            <div style="position: absolute; top: 0; right: 0;">
-                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="15000">
+
+                <div class="toast" style="position: absolute; top: 0; right: 0;" role="alert" aria-live="assertive" aria-atomic="true" data-delay="15000">
                     <div class="toast-header">
                         <img src="{{url('/assets/img/bluesquare.png')}}" class="rounded mr-2" alt="..." width="15px" height="15px">
                         <strong class="mr-auto">Action Completed</strong>
@@ -58,7 +57,7 @@
                         {{ $data }}
                     </div>
                 </div>
-            </div>
+
         </div>
     @endif
 @endif

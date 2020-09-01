@@ -206,7 +206,7 @@
         </div>
     </div>
 
-
+    @include('partials.messages')
 @stop
 
 @include('invoice.partials.itemModal')
@@ -214,7 +214,7 @@
 @include('estimate.partials.modalServices')
 @include('estimate.partials.modalAddService')
 
-@include('partials.messages')
+
 @section('scripts')
 
     <script>
