@@ -254,6 +254,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
         return view('estimate.partials.modalBodyServices', compact('package', 'id'));
     });
+
+use Illuminate\Http\Request;
+
     Route::get('estimate/selectpackage/{eid}/{id}', function($eid, $id){
         $package = \Vanguard\EstimatePackage::find($id);
 

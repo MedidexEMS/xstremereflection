@@ -1,5 +1,5 @@
 <div class="col-xl-12">
-    <form action="/updateProblem/{{$estimate->id}}" method="POST">
+    <form action="/updateProblem/{{$estimate->id}}" method="post">
         <div class="col-xl-12 mb-2">
             @csrf
             <label>Reported Problem</label>
