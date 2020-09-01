@@ -94,7 +94,7 @@
                     {!! $packages->package->details !!} <br />
 
                     @php
-                        $array = explode(',', $packages->includes);
+                        $array = explode(',', $packages->package->includes);
                        $packageItems = \Vanguard\packageItem::whereIn('packageId', $array) @endphp
                     <small>
                         @if($packageItems)
