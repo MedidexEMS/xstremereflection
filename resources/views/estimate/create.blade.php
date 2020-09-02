@@ -177,7 +177,7 @@
     @endif
 
     <div class="row">
-        <div class="col-sm-12 col-xl-8">
+        <div class="col-sm-12 col-xl-9">
             <div class="row">
                 <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
                     @include('estimate.partials.customer')
@@ -197,7 +197,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-xl-4">
+        <div class="col-sm-12 col-xl-3">
             @include('estimate.partials.notes')
         </div>
     </div>

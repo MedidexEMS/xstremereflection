@@ -11,7 +11,7 @@
 
 @section('content')
     @include('partials.messages')
-    <div class="row">
+    <div class="row mb-3">
         @include('workorder.partials.jobStats')
     </div>
     <div class="row">

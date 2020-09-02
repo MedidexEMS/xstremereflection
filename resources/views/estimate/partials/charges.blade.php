@@ -79,6 +79,46 @@
                                                 <a data-toggle="modal" data-link="/modal/packageServices/{{$packages->id}}" data-target="#servicesModal"><i class="fas fa-binoculars ml-3"></i></a>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <table class="table table">
+                                                <tr>
+                                                    <th>Price</th>
+                                                    <th>Product</th>
+                                                    <th>Labor</th>
+                                                    <th>Labor %</th>
+                                                    <th>Acquisition</th>
+                                                    <th>Gross Profit</th>
+                                                    <th>Margin</th>
+                                                    <th>Markup</th>
+                                                </tr>
+                                                <?php
+                                                $price = $packages->chargedPrice;
+                                                $laborPrice = $packages->package->laborCost;
+                                                $productPrice = $packages->package->productCost;
+                                                $acquisitionPrice = $packages->package->acquisitionCost;
+                                                $laborMargin =  $laborPrice / $price * 100;
+                                                if($estimate->detailType == 2){
+                                                    $costs =$laborPrice + $productPrice + $acquisitionPrice + 25 ;
+                                                    $gross = $price - $laborPrice - $productPrice - $acquisitionPrice - 25;
+                                                }else{
+                                                    $costs =$laborPrice + $productPrice + $acquisitionPrice ;
+                                                    $gross = $price - $laborPrice - $productPrice - $acquisitionPrice;
+                                                }
+                                                $profit = $gross / $price * 100;
+                                                $markup = $price - $gross / $costs
+                                                ?>
+                                                <tr class="bg-primary text-white">
+                                                    <td>$ {{$price}}</td>
+                                                    <td>$ {{$productPrice}}</td>
+                                                    <td>$ {{$laborPrice}}</td>
+                                                    <td>{{ceil($laborMargin)}} %</td>
+                                                    <td>$ {{$acquisitionPrice}}</td>
+                                                    <td>$ {{number_format($gross, 2)}}</td>
+                                                    <td>{{number_format($profit)}} %</td>
+                                                    <td> {{round($markup)}} %</td>
+                                                </tr>
+                                            </table>
+                                        </tr>
 
                                     @endforeach
                                     </tbody>

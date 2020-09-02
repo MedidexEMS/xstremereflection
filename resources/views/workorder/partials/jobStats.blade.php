@@ -9,13 +9,25 @@
         <th>Margin</th>
         <th>Markup</th>
     </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+    <?php
+    $price = $workOrder->estimate->total;
+    $laborPrice = $workOrder->estimate->acceptedPackage->package->laborCost;
+    $productPrice = $workOrder->estimate->acceptedPackage->package->productCost;
+    $acquisitionPrice = $workOrder->estimate->acceptedPackage->package->acquisitionCost;
+    $laborMargin =  $laborPrice / $price * 100;
+    $costs =$laborPrice + $productPrice + $acquisitionPrice;
+    $gross = $price - $laborPrice - $productPrice - $acquisitionPrice;
+    $profit = $gross / $price * 100;
+    $markup = $price - $gross / $costs
+    ?>
+    <tr class="bg-primary text-white">
+        <td>$ {{$workOrder->estimate->total}}</td>
+        <td>$ {{$workOrder->estimate->acceptedPackage->package->productCost}}</td>
+        <td>$ {{$workOrder->estimate->acceptedPackage->package->laborCost}}</td>
+        <td>{{ceil($laborMargin)}} %</td>
+        <td>$ {{$acquisitionPrice}}</td>
+        <td>$ {{number_format($gross, 2)}}</td>
+        <td>{{number_format($profit)}} %</td>
+        <td> {{round($markup)}} %</td>
     </tr>
 </table>
