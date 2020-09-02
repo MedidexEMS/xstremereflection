@@ -554,6 +554,8 @@ class EstimateController extends Controller
     }
         $services = Services::where('company_id', 0)->orWhere('company_id', Auth()->user()->companyId)->get();
 
+
+
         return view('estimate.create', compact('packages', 'customer', 'estimate', 'estimateTotal', 'colors', 'conditions', 'services'));
     }
 
