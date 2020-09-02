@@ -222,6 +222,7 @@
 @include('invoice.partials.vehicleModal')
 @include('estimate.partials.modalServices')
 @include('estimate.partials.modalAddService')
+@include('estimate.partials.modalNote')
 
 
 @section('scripts')

@@ -269,6 +269,15 @@ use Illuminate\Http\Request;
         return back()->with('success', 'Customer problem description updated.');
 
 });
+
+    Route::post('/estimate/note/{id}', function (Request $request, $id){
+       $tracking = new \Vanguard\EstimateTracking;
+       $tracking->estimateId = $id;
+       $tracking->note = $request->note;
+       $tracking->save();
+
+       return back()->with('success', 'New note has been added.');
+    });
     Route::post('/updateProblem/{id}', function (Request $request, $id){
        $estimate = \Vanguard\Estimate::find($id);
        $estimate->problem = $request->problem;
