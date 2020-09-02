@@ -11,7 +11,9 @@
 
 @section('content')
     @include('partials.messages')
-
+    <div class="row">
+        @include('workorder.partials.jobStats')
+    </div>
     <div class="row">
         <div class="col-xl-12">
             @include('workorder.partials.statusButtons')
