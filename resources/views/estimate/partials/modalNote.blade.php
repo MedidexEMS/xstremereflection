@@ -11,11 +11,13 @@
             <div class="modal-body" >
                 <form action="/estimate/note/{{$estimate->id}}" method="post">
                     @csrf
+                    <div class="form-group mb-2">
+                        <label for="note">Add Brief Note</label>
+                        <input type="text" class="form-control" />
+                    </div>
 
-                    <label for="note">Add Brief Note</label>
-                    <input type="text" class="form-control" />
 
-                    <button type="submit" class="btn btn-success btn-block"
+                    <button type="submit" class="btn btn-success btn-block">Save Note To Estimate</button>
                 </form>
 
             </div>
