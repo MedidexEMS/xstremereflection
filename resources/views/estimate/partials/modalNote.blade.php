@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="noteModelLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="noteModelLabel">Add Note to Estimate</h5>
@@ -13,7 +13,7 @@
                     @csrf
                     <div class="form-group mb-2">
                         <label for="note">Add Brief Note</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" name="note" class="form-control" />
                     </div>
 
 
