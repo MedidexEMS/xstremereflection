@@ -1,4 +1,5 @@
 @if($workOrder->estimate->detailType == 1)
+
     @if($workOrder->status == 1)
         <div class="row mb-4">
             <div class="col">

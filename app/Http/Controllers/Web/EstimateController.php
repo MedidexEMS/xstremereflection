@@ -459,8 +459,10 @@ class EstimateController extends Controller
         }
 
         $newPackagePrice = $package->chargedPrice + $chargedPrice;
+        $newListPrice = $package->listPrice + $service->charge;
 
         $package->chargedPrice = $newPackagePrice;
+        $package->listPrice = $newListPrice;
         $package->save();
 
         return back()->with('success', 'Added new service to package.');
