@@ -287,6 +287,19 @@ use Illuminate\Http\Request;
     Route::post('/estimate/package/addservice/{id}', 'EstimateController@addPackageService');
 
     Route::get('/estimate/customerReview/{id}', 'EstimateController@customerReview');
+    Route::get('/modal/updatePackage/{id}', function ($id) {
+        $package = \Vanguard\EstimatePackage::find($id);
+        //dd($package);
+        return view('estimate.partials.updatePackageModalBody', compact('package'));
+});
+    Route::post('/updatePackage/{id}', function (Request $request, $id) {
+        $package = \Vanguard\EstimatePackage::find($id);
+        $package->chargedPrice = $request->chargedPrice;
+        $package->save();
+
+        return back()->with('success', 'Package has been updated.');
+    });
+
     Route::get('customerSignatureBody/{pid}/{eid}', function ($pid, $eid){
         $package = \Vanguard\EstimatePackage::find($pid);
         $estimate = \Vanguard\Estimate::find($eid);

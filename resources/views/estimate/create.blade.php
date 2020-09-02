@@ -223,6 +223,7 @@
 @include('estimate.partials.modalServices')
 @include('estimate.partials.modalAddService')
 @include('estimate.partials.modalNote')
+@include('estimate.partials.updatePackageModal')
 
 
 @section('scripts')
@@ -314,6 +315,22 @@
                 success: function(response){
                     // Add response in Modal body
                     $('#services').html(response);
+
+
+                }
+            });
+        });
+
+        $("#updatePackageModal").on("shown.bs.modal", function(e) {
+            var link = $(e.relatedTarget).data("link");
+
+            // AJAX request
+            $.ajax({
+                url: link,
+                type: 'get',
+                success: function(response){
+                    // Add response in Modal body
+                    $('#updatePackage').html(response);
 
 
                 }
