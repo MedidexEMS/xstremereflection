@@ -6,8 +6,9 @@
             <div class="list-group">
 
                 @foreach($estimates->whereIn('status', [1, 7]) as $estimate)
-                    <a class="list-group-item list-group-item-action flex-column align-items-start">
+                    <a class="list-group-item list-group-item-action flex-column align-items-start @if($estimate->status == 7) bg-primary @endif">
                         <div class="d-flex w-100 justify-content-between">
+                            @if($estimate->status == 7) <h4> Needs Rescheduled </h4> @endif
                             <h5 class="mb-1">{{$estimate->customer->firstName ?? 'Missing Customer Info'}} {{$estimate->customer->lastName ?? ''}}</h5>
 
                                 <button class="btn btn-primary" data-toggle="modal" data-link="/modal/estimateupdate/{{$estimate->id}}" data-target="#updateEstimateModal">
