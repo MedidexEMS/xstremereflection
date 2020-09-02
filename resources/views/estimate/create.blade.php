@@ -153,14 +153,21 @@
         <div class="row mb-4">
             @if($estimate->customer->email)
             <div class="col">
-                <a href="/estimate/mail/{{$estimate->id}}"><button type="button"  class="btn btn-primary" style="width: 100%">Send for Approval</button></a>
+                <a href="/estimate/mail/{{$estimate->id}}"><button type="button"  class="btn btn-primary" style="width: 100%">Send Email for Approval</button></a>
             </div>
             @endif
+                @if($estimate->customer->phoneNumber)
+                    <div class="col">
+                        <a href="#"><button type="button"  class="btn btn-primary" style="width: 100%" disabled>Send Text for Approval</button></a>
+                    </div>
+                @endif
+                @if($estimate->approvedPackage)
             <div class="col">
                 <a href="/estimate/workOrder/{{$estimate->id}}" ><button type="button" class="btn btn-primary" style="width: 100%">Convert to Work Order</button></a>
             </div>
+                @endif
             <div class="col">
-                <a></a><button type="button"  class="btn btn-danger" style="width: 100%">Void</button>
+                <a href="/estimate/cancel/{{$estimate->id}}"></a><button type="button"  class="btn btn-danger" style="width: 100%">Void</button>
             </div>
         </div>
     @else
