@@ -78,11 +78,28 @@ class EstimateController extends Controller
         $estimate->deposit = $package->deposit;
 
         $estimate->save();
+        if($estimate->customer->email){
+            Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new AcceptedEstimateEmail($estimate));
 
-        Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new AcceptedEstimateEmail($estimate));
-        Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new AcceptedEstimateEmail($estimate));
+            if(Mail::failures()){
+                $tracking = new EstimateTracking;
+                $tracking->estimateId = $estimate->id;
+                $tracking->note = 'Customer approved and signed email was not sent.';
+                $tracking->save();
+                return back()->with('error', 'Customer approved and signed email was not sent.');
+            }else{
+                $tracking = new EstimateTracking;
+                $tracking->estimateId = $estimate->id;
+                $tracking->note = 'You have successfully accepted the package and signed your estimate we attempted to email you a copy, unfortunately the email did not go through. One of our representative will contact you shortly..';
+                $tracking->save();
 
-        return back()->with('success', 'You have successfully accepted the package and our representative will contact you shortly.');
+                return back()->with('success', 'You have successfully accepted the package and signed your estimate a copy will be emailed to you. One of our representative will contact you shortly.');
+            }
+        }else{
+            return back()->with('success', 'You have successfully accepted the package and our representative will contact you shortly.');
+
+        }
+
     }
 
     public function approved()
