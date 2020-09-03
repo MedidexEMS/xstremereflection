@@ -36,7 +36,7 @@ class AcceptedEstimateEmail extends Mailable
         $customer = Customer::find($this->estimate->customerId);
         view()->share('customer',$customer);
         view()->share('estimate',$this->estimate);
-        $pdf = PDF::loadView('estimate.pdf.estimate')->setOption("footer-right", "Page [page] from [topage]");
+        $pdf = PDF::loadView('estimate.pdf.estimate');
 
         $file = $customer->lastName.'_'.$this->estimate->id.'_estimate.pdf';
 
