@@ -220,6 +220,7 @@ class EstimateController extends Controller
         $epackage = new EstimatePackage;
 
         $epackage->estimateId = $id;
+        $epackage->companyId = Auth()->user()->companyId;
         $epackage->quanity = $request->quanity;
         $epackage->packageId = $request->packageId;
         $epackage->discount = $request->discount;

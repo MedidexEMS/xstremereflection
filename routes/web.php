@@ -227,8 +227,38 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('package/store', 'PackageController@store');
     Route::get('package/edit/{id}', 'PackageController@edit');
     Route::put('package/store/{id}', 'PackageController@update');
+    Route::get('/package/{id}', 'PackageController@show');
 
+/**
+ * Square API Routes
+ */
+// Basic charge
+Route::get('/charge', 'ChargeController@charge');
 
+Route::group(['prefix' => 'merchant'], function () {
+    // Charge with merchant
+    Route::get('/{merchant}/charge', 'ChargeController@chargeWithMerchant');
+    // Charge with merchant and customer
+    Route::get('/{merchant}/customer/{customer}/charge', 'ChargeController@chargeWithMerchantAndCustomer');
+});
+
+Route::group(['prefix' => 'customer'], function () {
+    // Create customer
+    Route::get('/create', 'ChargeController@createCustomer');
+    // Charge with customer
+    Route::get('/{customer}/charge', 'ChargeController@chargeWithCustomer');
+});
+
+Route::group(['prefix' => 'order'], function () {
+    // Create an order
+    Route::get('/', 'OrderController@order');
+    // Order with merchant
+    Route::get('/{merchant}/merchant', 'OrderController@orderWithMerchant');
+    // Order with customer
+    Route::get('/{customer}/customer', 'OrderController@orderWithCustomer');
+    // Order with customer and merchant included
+    Route::get('/{merchant}/{customer}', 'OrderController@orderWithCustomerAndMerchant');
+});
 
 /**
  *Estimates

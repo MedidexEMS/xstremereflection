@@ -6,7 +6,7 @@
                     <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
                             <h3 class="mb-0">{{$package->description}}</h3>
-                            <p class="text-success ml-2 mb-0 font-weight-medium"> # Sold</p>
+                            <p class="text-success ml-2 mb-0 font-weight-medium"> {{count($estimates->where('packageId', $package->id))}} Sold</p>
                         </div>
                     </div>
                     <div class="col-3">
@@ -23,12 +23,12 @@
                 <div class="row">
                     <div class="col-3">
                         <div class="d-flex align-items-center align-self-start">
-                            <button class="btn btn-primary">Edit</button>
+                            <a href="/package/edit/{{$package->id}}"><button class="btn btn-primary">Edit</button></a>
                         </div>
                     </div>
                     <div class="col-9">
                         <div class="">
-                            <button class="btn btn-dark">View Package Details</button>
+                            <a href="/package/{{$package->id}}"><button class="btn btn-dark">View Package Details</button></a>
                         </div>
                     </div>
                 </div>

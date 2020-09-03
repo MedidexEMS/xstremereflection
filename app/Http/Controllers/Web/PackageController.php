@@ -1,6 +1,8 @@
 <?php
 
 namespace Vanguard\Http\Controllers\Web;
+use Vanguard\Estimate;
+use Vanguard\EstimatePackage;
 use Vanguard\Http\Controllers\Controller;
 use Vanguard\Package;
 
@@ -24,8 +26,9 @@ class PackageController extends Controller
     public function index()
     {
         $packages = Package::where('companyId', auth()->user()->companyId)->orWhere('companyId', 0)->get();
+        $estimates = EstimatePackage::where('approved', 1)->where('companyId', Auth()->user()->companyId)->get();
 
-        return view('packages.index', compact('packages'));
+        return view('packages.index', compact('packages', 'estimates'));
     }
 
     /**
@@ -77,7 +80,16 @@ class PackageController extends Controller
      */
     public function show($id)
     {
-        //
+        $package = Package::find($id);
+        $array = explode(',', $package->includes);
+        $upsaleArray = explode(',', $package->upsale);
+        $upsale = Services::whereIn('id', $upsaleArray)->get();
+        $packages = Package::whereIn('id', $array)->get();
+        $packageServices = packageItem::whereIn('packageId', $array)->get();
+        $availableServices = Services::where('company_id', Auth()->user()->companyId)->orWhere('company_id', 0)->get();
+
+
+        return view('packages.show', compact('package', 'packages', 'packageServices', 'upsale', 'availableServices'));
     }
 
     /**
@@ -90,7 +102,6 @@ class PackageController extends Controller
     {
         $package = Package::with('items')->find($id);
         $services   = Services::where('company_id', auth()->user()->companyId)->orWhere('company_id', 0)->get();
-
 
         return view('packages.edit', compact('package', 'services'));
     }

@@ -12,6 +12,11 @@
 @section('content')
 @include('partials.messages')
 
+<div class="row mb-4">
+    <div class="col-xl-4">
+        <a href="/packages/create"><button class="btn btn-primary btn-block">Create New Package</button></a>
+    </div>
+</div>
 <div class="row">
     @include('packages.partials.package')
 </div>
