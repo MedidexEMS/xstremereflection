@@ -149,7 +149,13 @@
 @section('content')
     @include('partials.messages')
 
-    @if($estimate->status != 4)
+    @if($estimate->status == 8)
+        <div class="row mb-4">
+            <div class="col">
+                <a href="/estimate/restore/{{$estimate->id}}"><button type="button"  class="btn btn-danger" style="width: 100%">Restore</button></a>
+            </div>
+        </div>
+    @elseif($estimate->status != 4)
         <div class="row mb-4">
             @if($estimate->customer->email)
             <div class="col">
@@ -167,14 +173,10 @@
             </div>
                 @endif
             <div class="col">
-                <a href="/estimate/cancel/{{$estimate->id}}"></a><button type="button"  class="btn btn-danger" style="width: 100%">Void</button>
+                <a href="/estimate/void/{{$estimate->id}}"><button type="button"  class="btn btn-danger" style="width: 100%">Void</button></a>
             </div>
         </div>
-    @else
-        <div class="row mb-4 text-center">
-            <h2>Estimate has been approved and scheduled for service.</h2>
-        </div>
-    @endif
+
 
     <div class="row">
         <div class="col-sm-12 col-xl-9">
@@ -198,13 +200,22 @@
             </div>
         </div>
         <div class="col-sm-12 col-xl-3">
-            @include('estimate.partials.notes')
+            <div class="row">
+                <div class="col-xl-12">
+                    @include('estimate.partials.totals')
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    @include('estimate.partials.notes')
+                </div>
+            </div>
         </div>
     </div>
 
 
-
-    <!-- begin theme-panel -->
+    <!--
+    <!-- begin theme-panel ->
     <div class="theme-panel active">
         <a   class="theme-collapse-btn"> <span class="text-primary"><i class="fas fa-money-bill-alt "></i> </span> </a>
         <div class="theme-panel-content">
@@ -214,7 +225,7 @@
             </ul>
         </div>
     </div>
-
+    -->
 
 @stop
 

@@ -653,4 +653,13 @@ class EstimateController extends Controller
 
         return view('dashboard.partials.modalUpdateEstimateBody', compact('estimate'));
     }
+
+    public function voidEstimate($id)
+    {
+        $estimate = Estimate::find($id);
+        $estimate->status = 8;
+        $estimate->save();
+
+        return back()->with('error', 'Estimate Voided.' );
+    }
 }
