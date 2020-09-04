@@ -43,9 +43,9 @@ class JobReschedule extends Command
      */
     public function handle()
     {
-        $estimate = Estimate::where('status', 7)->get();
+        $estimates = Estimate::where('status', 7)->get();
 
-        foreach ($estimate as $row)
+        foreach ($estimates as $estimate)
         {
             $start = $estimate->rescheduleEmail;
             $now = Carbon::now();
