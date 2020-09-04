@@ -68,7 +68,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="table-responsive">
+        <div class="col-12">
+
             <table class="table table">
                 <thead>
                 <tr>
@@ -120,51 +121,53 @@
     </div>
 
     <div class="row">
-
-    </div>
-    <table class="table table-striped">
-        <?php
-        $array = explode(',', $estimate->acceptedPackage->package->upsale);
-        $upsale = \Vanguard\Services::whereIn('id', $array)->get();
-        ?>
-
-        @if($upsale)
-            @foreach($upsale as $row)
+        <div class="col-12">
+            <table class="table table-striped">
                 <?php
-                $rowPrice = $price + $row->charge;
-                $rowProductPrice = $productPrice + $row->productPrice;
-                $rowLaborPrice = $laborPrice + $row->laborCost;
-
-                $rowLaborMargin = $rowLaborPrice / $rowPrice * 100;
-                $rowCosts = $rowLaborPrice + $rowProductPrice;
-                $rowGross = $rowPrice - $rowLaborPrice - $rowProductPrice;
-                $rowProfit = $rowGross / $rowPrice * 100;
-                $rowBadProfit = 66 - $rowProfit;
-                $rowMarkup = $rowPrice - $rowGross / $rowCosts
+                $array = explode(',', $estimate->acceptedPackage->package->upsale);
+                $upsale = \Vanguard\Services::whereIn('id', $array)->get();
                 ?>
-                <tr>
-                    <td colspan="7" class="text-center">{{$row->description}}
-                        - {{$row->charge}}</td>
-                </tr>
-                <tr>
-                    <td>$ {{$rowPrice}}</td>
-                    <td>$ {{$rowProductPrice}}</td>
-                    <td>$ {{$rowLaborPrice}}</td>
-                    <td>{{ceil($rowLaborMargin)}} %</td>
-                    <td>$ 0.00</td>
-                    <td>$ {{number_format($rowGross, 2)}}</td>
-                    <td>{{number_format($rowProfit)}} %
-                        @if($rowProfit < 66) <span
-                            class="text-danger"> ( {{number_format($rowBadProfit)}} ) %</span> @endif
-                    </td>
-                    <td> {{round($rowMarkup)}} %</td>
-                </tr>
 
-            @endforeach
+                @if($upsale)
+                    @foreach($upsale as $row)
+                        <?php
+                        $rowPrice = $price + $row->charge;
+                        $rowProductPrice = $productPrice + $row->productPrice;
+                        $rowLaborPrice = $laborPrice + $row->laborCost;
 
-        @endif
+                        $rowLaborMargin = $rowLaborPrice / $rowPrice * 100;
+                        $rowCosts = $rowLaborPrice + $rowProductPrice;
+                        $rowGross = $rowPrice - $rowLaborPrice - $rowProductPrice;
+                        $rowProfit = $rowGross / $rowPrice * 100;
+                        $rowBadProfit = 66 - $rowProfit;
+                        $rowMarkup = $rowPrice - $rowGross / $rowCosts
+                        ?>
+                        <tr>
+                            <td colspan="7" class="text-center">{{$row->description}}
+                                - {{$row->charge}}</td>
+                        </tr>
+                        <tr>
+                            <td>$ {{$rowPrice}}</td>
+                            <td>$ {{$rowProductPrice}}</td>
+                            <td>$ {{$rowLaborPrice}}</td>
+                            <td>{{ceil($rowLaborMargin)}} %</td>
+                            <td>$ 0.00</td>
+                            <td>$ {{number_format($rowGross, 2)}}</td>
+                            <td>{{number_format($rowProfit)}} %
+                                @if($rowProfit < 66) <span
+                                    class="text-danger"> ( {{number_format($rowBadProfit)}} ) %</span> @endif
+                            </td>
+                            <td> {{round($rowMarkup)}} %</td>
+                        </tr>
 
-    </table>
+                    @endforeach
+
+                @endif
+
+            </table>
+        </div>
+    </div>
+
 </div>
 
 </body>
