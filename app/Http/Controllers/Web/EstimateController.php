@@ -26,6 +26,9 @@ use Vanguard\WorkOrder;
 USE Vanguard\WorkOrderServices;
 use Vanguard\WorkOrderTracking;
 use PDF;
+use Vanguard\Notifications\EstimateApproved;
+use Vanguard\User;
+
 use function GuzzleHttp\Psr7\_parse_request_uri;
 
 class EstimateController extends Controller
@@ -86,6 +89,7 @@ class EstimateController extends Controller
                 $tracking->estimateId = $estimate->id;
                 $tracking->note = 'Customer approved and signed email was not sent.';
                 $tracking->save();
+                User::where('companyId', $estimate->companyId)->where('role_id', 3)->notify(new EstimateApproved($estimate));
                 return back()->with('error', 'Customer approved and signed email was not sent.');
             }else{
                 $tracking = new EstimateTracking;
