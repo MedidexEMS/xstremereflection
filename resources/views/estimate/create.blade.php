@@ -195,10 +195,10 @@
     <div class="row">
         <div class="col-sm-12 col-xl-9">
             <div class="row">
-                <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
+                <div class="col-xl-6 col-sm-12 grid-margin stretch-card">
                     @include('estimate.partials.customer')
                 </div>
-                <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
+                <div class="col-xl-6 col-sm-12 grid-margin stretch-card">
                     @include('estimate.partials.serviceInfo')
                 </div>
             </div>
