@@ -181,13 +181,15 @@
     @endif
 
     <div class="row">
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Reports
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">PDF Estimate Customer Copy</a>
-                <a class="dropdown-item" href="#">PDF Upsale Detailer Copy</a>
+        <div class="col">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Reports
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">PDF Estimate Customer Copy</a>
+                    <a class="dropdown-item" href="#">PDF Upsale Detailer Copy</a>
+                </div>
             </div>
         </div>
     </div>
@@ -195,10 +197,10 @@
     <div class="row">
         <div class="col-sm-12 col-xl-9">
             <div class="row">
-                <div class="col-xl-6 col-sm-12 grid-margin stretch-card">
+                <div class="col-xl-6 col-sm-12">
                     @include('estimate.partials.customer')
                 </div>
-                <div class="col-xl-6 col-sm-12 grid-margin stretch-card">
+                <div class="col-xl-6 col-sm-12">
                     @include('estimate.partials.serviceInfo')
                 </div>
             </div>
