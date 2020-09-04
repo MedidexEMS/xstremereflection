@@ -153,6 +153,22 @@ class EstimateController extends Controller
 
     }
 
+    public function upsalePdf($id)
+    {
+        $estimate = Estimate::find($id);
+        $customer = $estimate->customer;
+
+        view()->share('customer',$customer);
+        view()->share('estimate',$estimate);
+
+
+        $pdf = PDF::loadView('estimate.pdf.upsale');
+
+        return $pdf->stream('estimate_'.$estimate->id.'.pdf');
+
+        //return view('estimate.pdf.upsale', compact('estimate', 'customer'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -180,15 +180,15 @@
         </div>
     @endif
 
-    <div class="row">
+    <div class="row mb-3">
         <div class="col">
             <div class="dropdown">
                 <button class="btn btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Reports
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">PDF Estimate Customer Copy</a>
-                    <a class="dropdown-item" href="#">PDF Upsale Detailer Copy</a>
+                    <a class="dropdown-item" href="/estimate/{{$estimate->id}}/pdf">PDF Estimate Customer Copy</a>
+                    <a class="dropdown-item" href="/upsale/{{$estimate->id}}/pdf">PDF Upsale Detailer Copy</a>
                 </div>
             </div>
         </div>
