@@ -44,7 +44,7 @@ class JobReschedule extends Command
      */
     public function handle()
     {
-        $estimate = EstimatePackage::where('status', 4)->get();
+        $estimate = EstimatePackage::where('status', 7)->get();
 
         foreach ($estimate as $row)
         {
@@ -55,7 +55,8 @@ class JobReschedule extends Command
             $date2 = new DateTime($now);
             $interval = $date1->diff($now);
             $days = $interval->format('%a');
-            return $days;
+
+            Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new RescheduleReminder($estimate));
 
             if($days == 5 || $days == 10){
                 Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new RescheduleReminder($estimate));
