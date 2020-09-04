@@ -5,8 +5,7 @@ namespace Vanguard\Console\Commands;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use DateTime;
-use Vanguard\EstimatePackage;
-use Vanguard\EstimateTracking;
+use Vanguard\Estimate;
 use Vanguard\Mail\RescheduleReminder;
 
 use Illuminate\Support\Facades\Mail;
