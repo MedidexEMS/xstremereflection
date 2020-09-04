@@ -1,5 +1,5 @@
 <div class="card">
-    <div class="card-body py-0 px-0 px-sm-3">
+    <div class="card-body py-0 px-0">
 
             @if($estimate->vehicle)
             <div class="row ">

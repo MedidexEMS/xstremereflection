@@ -183,7 +183,7 @@
     <div class="row">
         <div class="col">
             <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Reports
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -197,10 +197,10 @@
     <div class="row">
         <div class="col-sm-12 col-xl-9">
             <div class="row">
-                <div class="col-xl-6 col-sm-12">
+                <div class="col-sm-12 col-xl-6">
                     @include('estimate.partials.customer')
                 </div>
-                <div class="col-xl-6 col-sm-12">
+                <div class="col-sm-12 col-xl-6">
                     @include('estimate.partials.serviceInfo')
                 </div>
             </div>
