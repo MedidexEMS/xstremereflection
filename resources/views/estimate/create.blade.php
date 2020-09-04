@@ -13,21 +13,7 @@
 <style>
 
     @import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
-    @media screen and (max-width: 600px) {
-        table thead {
-            display: none;
-        }
-        table td {
-            display: flex;
-        }
 
-        table td::before {
-            content: attr(label);
-            font-weight: bold;
-            width: 120px;
-            min-width: 120px;
-        }
-    }
     body {
         height: 100%;
         padding: 0px;
@@ -193,6 +179,18 @@
             </div>
         </div>
     @endif
+
+    <div class="row">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Reports
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">PDF Estimate Customer Copy</a>
+                <a class="dropdown-item" href="#">PDF Upsale Detailer Copy</a>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-sm-12 col-xl-9">
