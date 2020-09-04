@@ -3,21 +3,21 @@
 
             @if($estimate->vehicle)
             <div class="row ">
-                <div class="col-xl-12 p-0">
+                <div class="col-xl-12">
                     <h4 class="mb-1 mb-sm-0">Customer Information</h4>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">
                         VIN Number: {{$estimate->vehicle->vehicleInfo->vin ?? '?'}}
                     </p>
-                    <p class="mb-0 font-weight-normal d-none d-sm-block">
+                    <p class="mb-0 font-weight-normal">
                         Vehicle Year: {{$estimate->vehicle->vehicleInfo->year}}
                     </p>
-                    <p class="mb-0 font-weight-normal d-none d-sm-block">
+                    <p class="mb-0 font-weight-normal">
                         Vehicle Make: {{$estimate->vehicle->vehicleInfo->make}}
                     </p>
-                    <p class="mb-0 font-weight-normal d-none d-sm-block">
+                    <p class="mb-0 font-weight-normal">
                         Vehicle Model/Style: {{$estimate->vehicle->vehicleInfo->model}} - {{$estimate->vehicle->vehicleInfo->style}}
                     </p>
-                    <p class="mb-0 font-weight-normal d-none d-sm-block">
+                    <p class="mb-0 font-weight-normal">
                         Vehicle Color: {{$estimate->vehicle->vehicleInfo->colorInfo->description ?? ''}}
                     </p>
                 </div>
