@@ -1,6 +1,7 @@
 <?php
 
 namespace Vanguard\Http\Controllers\Web;
+use Notification;
 use Carbon\Carbon;
 use Vanguard\AddOnService;
 use Vanguard\Customer;
@@ -28,6 +29,7 @@ use Vanguard\WorkOrderTracking;
 use PDF;
 use Vanguard\Notifications\EstimateApproved;
 use Vanguard\User;
+
 
 
 use function GuzzleHttp\Psr7\_parse_request_uri;
@@ -90,7 +92,7 @@ class EstimateController extends Controller
                 $tracking->estimateId = $estimate->id;
                 $tracking->note = 'Customer approved and signed email was not sent.';
                 $tracking->save();
-                User::where('companyId', $estimate->companyId)->where('role_id', 3)->notify(new EstimateApproved($estimate));
+
                 return back()->with('error', 'Customer approved and signed email was not sent.');
             }else{
                 $tracking = new EstimateTracking;
@@ -98,7 +100,6 @@ class EstimateController extends Controller
                 $tracking->note = 'You have successfully accepted the package and signed your estimate we attempted to email you a copy, unfortunately the email did not go through. One of our representative will contact you shortly..';
                 $tracking->save();
 
-                User::where('companyId', $estimate->companyId)->where('role_id', 3)->notify(new EstimateApproved($estimate));
 
                 return back()->with('success', 'You have successfully accepted the package and signed your estimate a copy will be emailed to you. One of our representative will contact you shortly.');
             }

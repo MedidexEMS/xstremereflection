@@ -25,8 +25,7 @@ class User extends Authenticatable implements TwoFactorAuthenticatableContract, 
         AuthorizationUserTrait,
         Notifiable,
         CanImpersonateUsers,
-        HasApiTokens,
-        Notifiable;
+        HasApiTokens;
 
     protected $presenter = UserPresenter::class;
 
