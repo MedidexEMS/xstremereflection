@@ -86,6 +86,7 @@ class EstimateController extends Controller
         $estimate->save();
         if($estimate->customer->email){
             Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new AcceptedEstimateEmail($estimate));
+            $userSchema = User::where('companyId', $estimate->companyId);
 
             if(Mail::failures()){
                 $tracking = new EstimateTracking;

@@ -55,7 +55,7 @@ class EstimateApproved extends Notification
     public function toArray($notifiable)
     {
         return [
-            'data' => 'Estimate '.$this->estimate->id.' has been approved by the customer.',
+            'data' => 'Estimate '.$this->estimate->id.'approved by the customer.',
             'link' => 'https://xtremereflection.app/esitimate'.$this->estimate->id.'/show',
             'img' => '/assets/img/approved.png'
         ];
