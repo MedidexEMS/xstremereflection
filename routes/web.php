@@ -150,6 +150,11 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::post('two-factor/disable', 'TwoFactorController@disable')->name('user.two-factor.disable');
     });
 
+    Route::get('markAllRead',function (){
+        auth()->user()->unreadNotifications->markAsRead();
+        return redirect()-> back();
+    })->name('markAllRead');
+
     /**
      * Roles & Permissions
      */

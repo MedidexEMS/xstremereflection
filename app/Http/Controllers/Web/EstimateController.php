@@ -93,6 +93,8 @@ class EstimateController extends Controller
                 $tracking->note = 'You have successfully accepted the package and signed your estimate we attempted to email you a copy, unfortunately the email did not go through. One of our representative will contact you shortly..';
                 $tracking->save();
 
+                User::where('companyId', $estimate->companyId)->where('role_id', 3)->notify(new EstimateApproved($estimate));
+
                 return back()->with('success', 'You have successfully accepted the package and signed your estimate a copy will be emailed to you. One of our representative will contact you shortly.');
             }
         }else{
