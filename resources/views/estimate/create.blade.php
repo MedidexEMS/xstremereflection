@@ -11,7 +11,23 @@
 
 @section('style')
 <style>
+
     @import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
+    @media screen and (max-width: 600px) {
+        table thead {
+            display: none;
+        }
+        table td {
+            display: flex;
+        }
+
+        table td::before {
+            content: attr(label);
+            font-weight: bold;
+            width: 120px;
+            min-width: 120px;
+        }
+    }
     body {
         height: 100%;
         padding: 0px;
@@ -176,7 +192,7 @@
                 <a href="/estimate/void/{{$estimate->id}}"><button type="button"  class="btn btn-danger" style="width: 100%">Void</button></a>
             </div>
         </div>
-
+    @endif
 
     <div class="row">
         <div class="col-sm-12 col-xl-9">
