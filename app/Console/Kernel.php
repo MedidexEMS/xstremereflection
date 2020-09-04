@@ -4,6 +4,7 @@ namespace Vanguard\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Vanguard\Plugins\Vanguard;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        'Vanguard\Console\Commands\JobReschedule',
     ];
 
     /**
@@ -28,6 +29,8 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
 
         //$schedule->command('workorder:completed')->everyMinute();
+
+        $schedule->command('job:reschedule')->dailyAt('8:00');
     }
 
     /**
