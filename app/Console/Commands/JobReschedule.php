@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Console\Command;
 use DateTime;
 use Vanguard\Estimate;
+use Vanguard\EstimateTracking;
 use Vanguard\Mail\RescheduleReminder;
 
 use Illuminate\Support\Facades\Mail;
@@ -54,7 +55,7 @@ class JobReschedule extends Command
             $date2 = new DateTime($now);
             $interval = $date1->diff($now);
             $days = $interval->format('%a');
-
+            //dd($days);
             //Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new RescheduleReminder($estimate));
 
             if($days == 5 || $days == 10){
