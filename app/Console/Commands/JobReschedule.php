@@ -55,14 +55,15 @@ class JobReschedule extends Command
             $date2 = new DateTime($now);
             $interval = $date1->diff($now);
             $days = $interval->format('%a');
+            return $days;
 
             if($days == 5 || $days == 10){
-                Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new RescheduleReminder());
+                Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new RescheduleReminder($estimate));
                 $tracking = new EstimateTracking;
                 $tracking->estimateId = $estimate->id;
                 $tracking->note = 'Customer emailed reschedule notification.';
                 $tracking->save();
-
+                //dd($days);
             }elseif($days == 15){
                 $estimate->status = 6;
                 $estimate->save();
