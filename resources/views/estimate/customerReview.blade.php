@@ -31,56 +31,56 @@
     </div>
 
     <div class="row">
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Package #</th>
-                    <th>Description</th>
-                    <th>List Price</th>
-                    <th>Your Price</th>
-                    <th>Deposit</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($estimate->packages as $packages)
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
                     <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td style="width: 50px">
-                            <h6>{{$packages->package->description}}</h6>
-                            <div class="col-xl-12">
-
-                                <div class="row">
-                                    <div class="col-xl-10">
-
-                                    </div>
-                                </div>
-                                @if($packages->addOnService)
-                                    <table class="table table-sm">
-                                        <tr>
-                                            <th><h6>Add on Services</h6></th>
-                                        </tr>
-                                        @foreach($packages->addOnService as $aos)
-                                            <tr>
-                                                <td>
-                                                    @if($aos->serviceId == 0) {{$aos->description ?? ''}}  @else {{$aos->service->description  }} @endif - <small>List Price: ${{$aos->service->charge ?? '0.00'}}  Charged: {{$aos->price ?? '0.00'}} </small>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </table>
-                                @endif
-                            </div>
-                        </td>
-                        <td>${{$packages->listPrice ?? ''}}</td>
-                        <td>${{$packages->chargedPrice ?? ''}}</td>
-                        <td>${{$packages->deposit ?? ''}}</td>
-                        <td><a href="/customerSignatureBody/{{$packages->id}}/{{$estimate->id}}"><button class="btn btn-success btn-block">Approve Package # {{$loop->iteration}}</button></a></td>
+                        <th>Package #</th>
+                        <th>Description</th>
+                        <th>List Price</th>
+                        <th>Your Price</th>
+                        <th>Deposit</th>
+                        <th></th>
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    @foreach($estimate->packages as $packages)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td style="width: 50px">
+                                <h6>{{$packages->package->description}}</h6>
+                                <div class="col-xl-12">
 
+                                    <div class="row">
+                                        <div class="col-xl-10">
+
+                                        </div>
+                                    </div>
+                                    @if($packages->addOnService)
+                                        <table class="table table-sm">
+                                            <tr>
+                                                <th><h6>Add on Services</h6></th>
+                                            </tr>
+                                            @foreach($packages->addOnService as $aos)
+                                                <tr>
+                                                    <td>
+                                                        @if($aos->serviceId == 0) {{$aos->description ?? ''}}  @else {{$aos->service->description  }} @endif - <small>List Price: ${{$aos->service->charge ?? '0.00'}}  Charged: {{$aos->price ?? '0.00'}} </small>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </table>
+                                    @endif
+                                </div>
+                            </td>
+                            <td>${{$packages->listPrice ?? ''}}</td>
+                            <td>${{$packages->chargedPrice ?? ''}}</td>
+                            <td>${{$packages->deposit ?? ''}}</td>
+                            <td><a href="/customerSignatureBody/{{$packages->id}}/{{$estimate->id}}"><button class="btn btn-success btn-block">Approve Package # {{$loop->iteration}}</button></a></td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
     </div>
 
     @include('estimate.partials.modalCustomerSignature')
