@@ -12,7 +12,7 @@
                             <small><button class="btn btn-primary">Update</button></small>
                         </div>
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{\Carbon\Carbon::parse($wo->estimate->serviceDate)->format('m-d-Y')}}</h5>
+                            <h5 class="mb-1">{{\Carbon\Carbon::parse($wo->estimate->dateofService)->format('m-d-Y')}}</h5>
                             <small>Arrival Time: {{\Carbon\Carbon::parse($wo->estimate->arrivalTime)->format('H:i')}} - {{\Carbon\Carbon::parse($wo->estimate->arrivalTime)->addHours(4)->format('H:i')}} </small>
                         </div>
                         <p class="mb-1">{{$wo->estimate->vehicle->vehicleInfo->year ?? ''}} {{$wo->estimate->vehicle->vehicleInfo->make ?? ''}} {{$wo->estimate->vehicle->vehicleInfo->model ?? ''}} {{$wo->estimate->vehicle->vehicleInfo->colorInfo->description ?? ''}}</p>
