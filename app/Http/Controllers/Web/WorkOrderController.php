@@ -87,6 +87,9 @@ class WorkOrderController extends Controller
 
         //$customer = Customer::where('id', $workOrder->estimate->customerId)->first();
 
+        $workOrder->status = 2;
+        $workOrder->save();
+
         Mail::to([$workOrder->estimate->customer->email,'blevins.josh@gmail.com'])->send(new SendTechEnrouteMailable($workOrder));
 
         return 'Email SENT';
