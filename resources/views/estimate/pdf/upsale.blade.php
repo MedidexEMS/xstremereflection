@@ -12,11 +12,11 @@
 <body>
 <div class="container-fluid">
     <div class="row mb-4">
-        <div class="col-8">
+        <div class="col-6">
             <img src="{{ public_path('assets/img/logo1.png') }}" width="450px" height="140px" alt="logo"/>
         </div>
-        <div class="col-4">
-            <table class="table table">
+        <div class="col-6">
+            <table class="table table-sm">
                 <thead>
                 <tr>
                     <th>Customer</th>
@@ -70,7 +70,7 @@
     <div class="row">
         <div class="col-12">
 
-            <table class="table table-sm">
+            <table class="table table">
                 <thead>
                 <tr>
                     <th>Price</th>
