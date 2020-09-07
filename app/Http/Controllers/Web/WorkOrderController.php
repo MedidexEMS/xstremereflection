@@ -56,7 +56,15 @@ class WorkOrderController extends Controller
 
         $wo = WorkOrder::find($id);
 
-        Mail::to([$workorder->estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new CompletedWorkOrder($wo));
+        if($wo->estimate->customer->email)
+        {
+            Mail::to([$workorder->estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new CompletedWorkOrder($wo));
+
+        }else{
+            Mail::to(['jblevins@xtremereflection.app'])->send(new CompletedWorkOrder($wo));
+
+        }
+
 
         return back()->with('success', 'Work Order Completed, and turned to invoice.');
 
