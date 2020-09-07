@@ -46,6 +46,8 @@ class WorkOrderController extends Controller
 
         $invoice->companyId = Auth()->user()->companyId;
         $invoice->customerId = $workorder->estimate->customerId;
+        $invoice->estimateId = $workorder->estimate->id;
+        $invoice->workOrderId = $workorder->id;
         $invoice->detailType = $workorder->estimate->detailType;
         $invoice->dateofService = $workorder->estimate->dateofService;
         $invoice->total = $workorder->totalCharge;
