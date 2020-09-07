@@ -20,6 +20,11 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-xl-12">
+            <a href="/workorder/completed/{{$workOrder->id}}" class="btn btn-success btn-block">Complete Work Order</a>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
             @include('workorder.partials.customer')
         </div>

@@ -5,6 +5,8 @@ use Vanguard\Customer;
 use Vanguard\CustomerVehicle;
 use Vanguard\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Vanguard\Invoice;
+use Vanguard\Mail\CompletedWorkOrder;
 use Vanguard\VehicleColor;
 use Vanguard\VehicleCondition;
 use Vanguard\WorkOrder;
@@ -34,13 +36,26 @@ class WorkOrderController extends Controller
 
         return view('workorder.index', compact('workorders'));
     }
-    public function completed()
+    public function completed($id)
     {
-        $workorders = WorkOrder::
-        where('status', 8)
-            ->get();
+        $workorder = WorkOrder::find($id);
+        $workorder->status = 8;
+        $workorder->save();
 
-        return view('workorder.index', compact('workorders'));
+        $invoice = new Invoice;
+
+        $invoice->companyId = Auth()->user()->companyId;
+        $invoice->customerId = $workorder->estimate->customerId;
+        $invoice->detailType = $workorder->estimate->detailType;
+        $invoice->dateofService = $workorder->estimate->dateofService;
+        $invoice->total = $workorder->totalCharge;
+        $invoice->status = 1;
+        $invoice->save();
+
+        Mail::to([$workorder->estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new CompletedWorkOrder());
+
+        return back()->with('success', 'Work Order Completed, and turned to invoice.');
+
     }
 
     /**
@@ -132,6 +147,25 @@ class WorkOrderController extends Controller
         $customerVehicle->customerCondition = $request->condition;
 
         $customerVehicle->save();
+    }
+
+    public function completeOrder($id)
+    {
+        $workorder = WorkOrder::find($id);
+        $workorder->status = 8;
+        $workorder->save();
+
+        $invoice = new Invoice;
+
+        $invoice->companyId = Auth()->user()->companyId;
+        $invoice->customerId = $workorder->estimate->customerId;
+        $invoice->detailType = $workorder->estimate->detailType;
+        $invoice->dateofService = $workorder->estimate->dateofService;
+        $invoice->total = $workorder->totalCharge;
+        $invoice->status = 1;
+        $invoice->save();
+
+        return back()->with('success', 'Work Order Completed, and turned to invoice.');
     }
 
     /**
