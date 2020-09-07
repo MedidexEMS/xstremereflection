@@ -3,7 +3,7 @@
     @if($workOrder->status == 1)
         <div class="row mb-4">
             <div class="col">
-                <a href="/workrder/techenroute/{{$workOrder->id}}" ><button type="button" class="btn btn-primary" style="width: 100%">Tech Enroute</button></a>
+                <a href="/workorder/techenroute/{{$workOrder->id}}" ><button type="button" class="btn btn-primary" style="width: 100%">Tech Enroute</button></a>
             </div>
             <div class="col">
                 <button type="button"  class="btn btn-danger" style="width: 100%">Cancel</button>

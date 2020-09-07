@@ -92,7 +92,7 @@ class WorkOrderController extends Controller
 
         Mail::to([$workOrder->estimate->customer->email,'blevins.josh@gmail.com'])->send(new SendTechEnrouteMailable($workOrder));
 
-        return 'Email SENT';
+        return back()->with('success', 'Notification sent and status updated');
     }
 
     /**
