@@ -52,7 +52,9 @@ class WorkOrderController extends Controller
         $invoice->status = 1;
         $invoice->save();
 
-        Mail::to([$workorder->estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new CompletedWorkOrder());
+        $wo = WorkOrder::find($id);
+
+        Mail::to([$workorder->estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new CompletedWorkOrder(Swo));
 
         return back()->with('success', 'Work Order Completed, and turned to invoice.');
 
