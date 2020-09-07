@@ -70,7 +70,7 @@
     <div class="row">
         <div class="col-12">
 
-            <table class="table table">
+            <table class="table table-sm">
                 <thead>
                 <tr>
                     <th>Price</th>
