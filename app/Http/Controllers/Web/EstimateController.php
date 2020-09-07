@@ -162,7 +162,7 @@ class EstimateController extends Controller
         view()->share('estimate',$estimate);
 
 
-        $pdf = PDF::loadView('estimate.pdf.upsale');
+        $pdf = PDF::loadView('estimate.pdf.upsale')->setPaper('a4', 'landscape');;
 
         return $pdf->stream('estimate_'.$estimate->id.'.pdf');
 
