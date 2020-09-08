@@ -14,9 +14,10 @@ class PaymentController extends Controller
         $invoice = Invoice::find($id);
         if($type == 1)
         {
-            $amount = $invoice->deposit;
+            $
+            $amount = $invoice->deposit * 100;
         }elseif($type == 1){
-            $amount = $invoice->total - $invoice->totalPaid;
+            $amount = $invoice->total - $invoice->totalPaid * 100;
         }
 
 
@@ -24,10 +25,12 @@ class PaymentController extends Controller
 
         $token = $_POST['stripeToken'];
         $charge = \Stripe\Charge::create([
-            'amount' => "10000",
+            'amount' => $amount,
             'currency' => 'usd',
             'description' => 'Example Charge',
             'source' => $token
         ]);
+
+
     }
 }
