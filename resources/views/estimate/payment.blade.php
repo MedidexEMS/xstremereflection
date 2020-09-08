@@ -36,7 +36,7 @@
         <form action="/api/payment" method="POST">
             <script
                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_51HPAurAzOqvz8nyKljc9bcWzTA8GYcj35Qv1307AJtsI5xwBHgoMywiYpqtIl9KpPuMY1U4LnNX1vUjAhXuNUxu900bGay9YuX"
+                data-key="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"
                 data-amount="{{$invoice->deposit}}"
                 data-name="{{$invoice->estimate->customer->firstName}} {{$invoice->estimate->customer->lastName}}"
                 data-description="Deposit Funds"
