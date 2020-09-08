@@ -10,6 +10,6 @@ class Invoice extends Model
 
     public function estimate()
     {
-        return $this->belongsTo(Estimate::class, 'invoiceId');
+        return $this->belongsTo(Estimate::class, 'estimateId');
     }
 }
