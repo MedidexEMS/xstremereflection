@@ -33,8 +33,8 @@
                             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                             data-key="pk_test_51HPAurAzOqvz8nyKljc9bcWzTA8GYcj35Qv1307AJtsI5xwBHgoMywiYpqtIl9KpPuMY1U4LnNX1vUjAhXuNUxu900bGay9YuX"
                             data-amount="{{$amount}}"
-                            data-name="{{$invoice->estimate->customer->firstName}} {{$invoice->estimate->customer->lastName}}"
-                            data-description="Deposit Funds"
+                            data-name="{{$customer->firstName}} {{$customer->lastName}}"
+                            data-description="{{$paymentDescription}}"
                             data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                             data-currency="usd"></script>
 

@@ -72,11 +72,14 @@ class EstimateController extends Controller
         $fileName = uniqid(). '.'.$image_type;
 
         $file = $folderPath . $fileName;
+
         file_put_contents($file, $image_base64);
 
         $package = EstimatePackage::find($pid);
 
         $estimate = Estimate::find($eid);
+
+        $customer = Customer::find($estimate->customerId);
 
         $estimate->approvedPackage = $pid;
         $estimate->signature = '/customerSignature/'.$fileName;
@@ -86,12 +89,54 @@ class EstimateController extends Controller
 
         $estimate->save();
 
+
         $workorder = new WorkOrder;
         $workorder->companyId = Auth()->user()->companyId;
         $workorder->estimateId = $estimate->id;
         $workorder->totalCharge = $estimate->total;
         $workorder->status = 1;
         $workorder->save();
+
+        $tracking = new EstimateTracking;
+        $tracking->estimateId = $eid;
+        $tracking->note = 'Estimate approved by customer and work order created.';
+        $tracking->save();
+
+        $wtracking = new WorkOrderTracking;
+        $wtracking->workOrderId = $workorder->id;
+        $wtracking->note = 'Estimate approved by customer and work order created.';
+        $wtracking->save();
+
+        if($estimate->approvedPackage){
+            $array = explode(',', $estimate->approvedPackage->package->includes);
+            $services = packageItem::whereIn('packageId', $array)->get();
+
+            foreach($services as $service){
+                $estimateService = new WorkOrderServices;
+                $estimateService->estimateId = $estimate->id;
+                $estimateService->workOrderId = $workorder->id;
+                $estimateService->qty = 1;
+                $estimateService->serviceId = $service->serviceId;
+                $estimateService->listPrice = $service->listPrice;
+                $estimateService->chargedPrice = 0;
+                $estimateService->status = 1;
+                $estimateService->save();
+            }
+            $addons = AddOnService::where('packageId', $estimate->approvedPackage)->get();
+
+            foreach($addons as $row)
+            {
+                $estimateService = new WorkOrderServices;
+                $estimateService->estimateId = $estimate->id;
+                $estimateService->workOrderId = $workorder->id;
+                $estimateService->qty = 1;
+                $estimateService->serviceId = $row->serviceId;
+                $estimateService->listPrice = $row->listPrice;
+                $estimateService->chargedPrice = $row->chargedPrice;
+                $estimateService->status = 1;
+                $estimateService->save();
+            }
+        }
 
         $invoice = new Invoice;
 
@@ -127,7 +172,8 @@ class EstimateController extends Controller
 
         if($invoice->deposit > 0){
             $amount = $invoice->deposit * 100;
-            return view('estimate.payment', compact('invoice', 'amount'))->with('success', 'You have successfully accepted the package and signed your estimate a copy will be emailed to you. One of our representative will contact you shortly.');
+            $paymentDescription = 'Detail Deposit';
+            return view('estimate.payment', compact('invoice', 'amount', 'customer', 'paymentDescription'))->with('success', 'You have successfully accepted the package and signed your estimate a copy will be emailed to you. One of our representative will contact you shortly.');
         }else{
             return back()->with('success', 'You have successfully accepted the package and our representative will contact you shortly.');
 

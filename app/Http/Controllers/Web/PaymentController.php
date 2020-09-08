@@ -12,6 +12,7 @@ class PaymentController extends Controller
     public function paymentProcess($id, $type)
     {
         $invoice = Invoice::find($id);
+
         if($type == 1)
         {
             $amount = $invoice->deposit * 100;
