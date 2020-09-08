@@ -114,7 +114,7 @@
                                                         $laborPrice = $packages->package->laborCost;
                                                         $productPrice = $packages->package->productCost;
                                                         $acquisitionPrice = $packages->package->acquisitionCost;
-                                                        $laborMargin = $laborPrice / $price * 100;
+                                                        $laborMargin = $laborPrice / ($price ?? 1) * 100;
                                                         if ($estimate->detailType == 2) {
                                                             $costs = $laborPrice + $productPrice + $acquisitionPrice + 25;
                                                             $gross = $price - $laborPrice - $productPrice - $acquisitionPrice - 25;
@@ -122,17 +122,17 @@
                                                             $costs = $laborPrice + $productPrice + $acquisitionPrice;
                                                             $gross = $price - $laborPrice - $productPrice - $acquisitionPrice;
                                                         }
-                                                        $profit = $gross / $price * 100;
+                                                        $profit = $gross / ($price ?? 1) * 100;
                                                         $badProfit = 66 - $profit;
-                                                        $markup = $price - $gross / $costs
+                                                        $markup = $price - $gross / ($costs ?? 1)
                                                         ?>
                                                         <tbody>
                                                         <tr class="bg-primary text-white">
-                                                            <td>$ {{$price}}</td>
-                                                            <td>$ {{$productPrice}}</td>
-                                                            <td>$ {{$laborPrice}}</td>
+                                                            <td>$ {{$price ?? 'Unk'}}</td>
+                                                            <td>$ {{$productPrice ?? 'Unk'}}</td>
+                                                            <td>$ {{$laborPrice ?? 'Unk'}}</td>
                                                             <td>{{ceil($laborMargin)}} %</td>
-                                                            <td>$ {{$acquisitionPrice}}</td>
+                                                            <td>$ {{$acquisitionPrice ?? 'Unk'}}</td>
                                                             <td>$ {{number_format($gross, 2)}}</td>
                                                             <td>{{number_format($profit)}} %
                                                                 @if($profit < 66) <span class="text-danger"> ( {{number_format($badProfit)}} ) %</span> @endif

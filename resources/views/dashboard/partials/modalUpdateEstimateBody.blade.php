@@ -1,6 +1,7 @@
 
 <div class="row">
-    <a class="btn btn-danger btn-lg btn-block mb-3" href="/estimate/{{$estimate->id}}/show">View The Estimate</a>
+    <a class="btn btn-light btn-lg btn-block mb-3" href="/estimate/{{$estimate->id}}/show">View The Estimate</a>
+    @if($estimate->approvedPackage && !$estimate->workorder) <a class="btn btn-outline-success btn-lg btn-block mb-3" href="/estimate/workOrder/{{$estimate->id}}">Create Work Order</a> @endif
     @if($estimate->customer->email)
         <a type="button" href="/estimate/reschedulemail/{{$estimate->id}}" class="btn btn-primary btn-lg btn-block mb-3">Send Reminder Email</a>
     @endif

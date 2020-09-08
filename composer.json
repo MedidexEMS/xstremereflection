@@ -43,6 +43,7 @@
         "laravelcollective/html": "^6.1",
         "proengsoft/laravel-jsvalidation": "^3.0.0",
         "spatie/laravel-query-builder": "^2.8",
+        "stripe/stripe-php": "^7.51",
         "vanguardapp/activity-log": "^2.0.0",
         "vanguardapp/announcements": "^2.0.0",
         "vanguardapp/plugins": "^2.0.0",

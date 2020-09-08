@@ -15,6 +15,7 @@ use Vanguard\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Vanguard\Invoice;
 use Vanguard\Mail\EstimateMailable;
 use Vanguard\Mail\AcceptedEstimateEmail;
 use Vanguard\Mail\RescheduleReminder;
@@ -84,6 +85,27 @@ class EstimateController extends Controller
         $estimate->deposit = $package->deposit;
 
         $estimate->save();
+
+        $workorder = new WorkOrder;
+        $workorder->companyId = Auth()->user()->companyId;
+        $workorder->estimateId = $estimate->id;
+        $workorder->totalCharge = $estimate->total;
+        $workorder->status = 1;
+        $workorder->save();
+
+        $invoice = new Invoice;
+
+        $invoice->companyId = Auth()->user()->companyId;
+        $invoice->customerId = $workorder->estimate->customerId;
+        $invoice->estimateId = $workorder->estimate->id;
+        $invoice->workOrderId = $workorder->id;
+        $invoice->detailType = $workorder->estimate->detailType;
+        $invoice->dateofService = $workorder->estimate->dateofService;
+        $invoice->total = $workorder->totalCharge;
+        $invoice->deposit = $estimate->deposit;
+        $invoice->status = 1;
+        $invoice->save();
+
         if($estimate->customer->email){
             Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new AcceptedEstimateEmail($estimate));
             $userSchema = User::where('companyId', $estimate->companyId);
@@ -101,7 +123,7 @@ class EstimateController extends Controller
                 $tracking->note = 'You have successfully accepted the package and signed your estimate we attempted to email you a copy, unfortunately the email did not go through. One of our representative will contact you shortly..';
                 $tracking->save();
 
-                return back()->with('success', 'You have successfully accepted the package and signed your estimate a copy will be emailed to you. One of our representative will contact you shortly.');
+                return view('estimate.payment', compact('invoice'))->with('success', 'You have successfully accepted the package and signed your estimate a copy will be emailed to you. One of our representative will contact you shortly.');
             }
         }else{
             return back()->with('success', 'You have successfully accepted the package and our representative will contact you shortly.');
