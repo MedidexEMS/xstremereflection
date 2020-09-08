@@ -479,15 +479,32 @@ class EstimateController extends Controller
         $wtracking->note = 'Estimate approved and work order created.';
         $wtracking->save();
 
-        if($estimate->services){
-            foreach($estimate->services as $service){
+        if($estimate->approvedPackage){
+            $array = explode(',', $estimate->acceptedPackage->package->includes);
+            $services = packageItem::whereIn('packageId', $array)->get();
+
+            foreach($services as $service){
                 $estimateService = new WorkOrderServices;
                 $estimateService->estimateId = $estimate->id;
-                $estimateService->workOrderId = $wo->id;
+                $estimateService->workOrderId = $workorder->id;
                 $estimateService->qty = 1;
                 $estimateService->serviceId = $service->serviceId;
-                $estimateService->listPrice = $service->listPrice;
+                $estimateService->listPrice = $service->desc->charge;
                 $estimateService->chargedPrice = 0;
+                $estimateService->status = 1;
+                $estimateService->save();
+            }
+            $addons = AddOnService::where('packageId', $estimate->acceptedPackage)->get();
+
+            foreach($addons as $row)
+            {
+                $estimateService = new WorkOrderServices;
+                $estimateService->estimateId = $estimate->id;
+                $estimateService->workOrderId = $workorder->id;
+                $estimateService->qty = 1;
+                $estimateService->serviceId = $row->serviceId;
+                $estimateService->listPrice = $row->desc->charge;
+                $estimateService->chargedPrice = $row->chargedPrice;
                 $estimateService->status = 1;
                 $estimateService->save();
             }
