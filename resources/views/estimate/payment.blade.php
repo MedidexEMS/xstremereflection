@@ -25,9 +25,7 @@
                 <p>Total Invoice: ${{$invoice->total}}</p>
                 <p>Total Deposit Due Today: ${{$invoice->deposit}}</p>
             </div>
-            <?php
-            $amount = $invoice->deposit * 100;
-            ?>
+
             <div class="card-footer">
                 <div class="links">
                     <form action="/api/payment" method="POST">
