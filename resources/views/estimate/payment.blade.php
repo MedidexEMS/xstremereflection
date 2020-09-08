@@ -25,13 +25,16 @@
                 <p>Total Invoice: ${{$invoice->total}}</p>
                 <p>Total Deposit Due Today: ${{$invoice->deposit}}</p>
             </div>
+            <?php
+            $amount = $invoice->deposit * 100;
+            ?>
             <div class="card-footer">
                 <div class="links">
                     <form action="/api/payment" method="POST">
                         <script
                             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                             data-key="pk_live_51HPAurAzOqvz8nyKdJdyCFUNhvslEF9mYBTHVfgJgVinnUoZo3SBqyUQm5ZIP8KW6WtGlHtTBOfYEZiZ7jqowTQU00xFw2muvH"
-                            data-amount="{{$invoice->deposit}}"
+                            data-amount="{{$amount}}"
                             data-name="{{$invoice->estimate->customer->firstName}} {{$invoice->estimate->customer->lastName}}"
                             data-description="Deposit Funds"
                             data-image="https://stripe.com/img/documentation/checkout/marketplace.png"

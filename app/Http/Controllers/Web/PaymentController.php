@@ -14,7 +14,6 @@ class PaymentController extends Controller
         $invoice = Invoice::find($id);
         if($type == 1)
         {
-            $
             $amount = $invoice->deposit * 100;
         }elseif($type == 1){
             $amount = $invoice->total - $invoice->totalPaid * 100;
