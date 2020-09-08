@@ -9,7 +9,7 @@
                     <a href="/workorder/{{$wo->id}}/show" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{$wo->estimate->customer->firstName ?? 'Missing Customer Info'}} {{$wo->estimate->customer->lastName ?? 'Missing Customer Info'}} - {{$wo->estimate->customer->phoneNumber ?? 'Missing Contact Info'}}</h5>
-                            <small><button class="btn btn-primary">Update</button></small>
+                           
                         </div>
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{\Carbon\Carbon::parse($wo->estimate->dateofService)->format('m-d-Y')}}</h5>
