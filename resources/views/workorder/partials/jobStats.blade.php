@@ -14,10 +14,10 @@
     $laborPrice = $workOrder->estimate->acceptedPackage->package->laborCost;
     $productPrice = $workOrder->estimate->acceptedPackage->package->productCost;
     $acquisitionPrice = $workOrder->estimate->acceptedPackage->package->acquisitionCost;
-    $laborMargin =  $laborPrice / $price * 100;
+    $laborMargin =  $laborPrice / ($price ?? 1) * 100;
     $costs =$laborPrice + $productPrice + $acquisitionPrice;
     $gross = $price - $laborPrice - $productPrice - $acquisitionPrice;
-    $profit = $gross / $price * 100;
+    $profit = $gross / ($price ?? 1) * 100;
     $markup = $price - $gross / $costs
     ?>
     <tr class="bg-primary text-white">
