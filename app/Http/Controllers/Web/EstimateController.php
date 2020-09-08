@@ -117,7 +117,7 @@ class EstimateController extends Controller
                 $estimateService->workOrderId = $workorder->id;
                 $estimateService->qty = 1;
                 $estimateService->serviceId = $service->serviceId;
-                $estimateService->listPrice = $service->desc->cost;
+                $estimateService->listPrice = $service->desc->charge;
                 $estimateService->chargedPrice = 0;
                 $estimateService->status = 1;
                 $estimateService->save();
@@ -131,7 +131,7 @@ class EstimateController extends Controller
                 $estimateService->workOrderId = $workorder->id;
                 $estimateService->qty = 1;
                 $estimateService->serviceId = $row->serviceId;
-                $estimateService->listPrice = $row->desc->cost;
+                $estimateService->listPrice = $row->desc->charge;
                 $estimateService->chargedPrice = $row->chargedPrice;
                 $estimateService->status = 1;
                 $estimateService->save();
