@@ -18,7 +18,7 @@
     $costs =$laborPrice + $productPrice + $acquisitionPrice;
     $gross = $price - $laborPrice - $productPrice - $acquisitionPrice;
     $profit = $gross / ($price ?? 1) * 100;
-    $markup = $price - $gross / $costs
+    $markup = $price - $gross / ($costs ?? 1)
     ?>
     <tr class="bg-primary text-white">
         <td>$ {{$workOrder->estimate->total}}</td>
