@@ -108,7 +108,7 @@ class EstimateController extends Controller
         $wtracking->save();
 
         if($estimate->approvedPackage){
-            $array = explode(',', $estimate->approvedPackage->package->includes);
+            $array = explode(',', $estimate->acceptedPackage->package->includes);
             $services = packageItem::whereIn('packageId', $array)->get();
 
             foreach($services as $service){
@@ -122,7 +122,7 @@ class EstimateController extends Controller
                 $estimateService->status = 1;
                 $estimateService->save();
             }
-            $addons = AddOnService::where('packageId', $estimate->approvedPackage)->get();
+            $addons = AddOnService::where('packageId', $estimate->acceptedPackage)->get();
 
             foreach($addons as $row)
             {
