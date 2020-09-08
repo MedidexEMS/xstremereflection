@@ -3,6 +3,7 @@
 namespace Vanguard\Http\Controllers\Web;
 use Vanguard\Customer;
 use Vanguard\CustomerVehicle;
+use Vanguard\Estimate;
 use Vanguard\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Vanguard\Invoice;
@@ -53,6 +54,10 @@ class WorkOrderController extends Controller
         $invoice->total = $workorder->totalCharge;
         $invoice->status = 1;
         $invoice->save();
+
+        $estimate = Estimate::find($workorder->estimate->id);
+        $estimate->invoiceId = $invoice->id;
+        $estimate->save();
 
         $wo = WorkOrder::find($id);
 

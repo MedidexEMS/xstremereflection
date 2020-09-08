@@ -1,5 +1,5 @@
 <div class="col-xl-4 col-sm-12">
-    <h2>Pending Contacts / Estimates</h2>
+    <h2>Customer Leads</h2>
     <div class="card">
         <div class="card-body py-0 px-0 px-sm-3">
 
