@@ -116,15 +116,18 @@ class EstimateController extends Controller
                 $tracking->note = 'Customer approved and signed email was not sent.';
                 $tracking->save();
 
-                return back()->with('error', 'Customer approved and signed email was not sent.');
             }else{
                 $tracking = new EstimateTracking;
                 $tracking->estimateId = $estimate->id;
                 $tracking->note = 'You have successfully accepted the package and signed your estimate we attempted to email you a copy, unfortunately the email did not go through. One of our representative will contact you shortly..';
                 $tracking->save();
 
-                return view('estimate.payment', compact('invoice'))->with('success', 'You have successfully accepted the package and signed your estimate a copy will be emailed to you. One of our representative will contact you shortly.');
             }
+        }
+
+        if($invoice->deposit > 0){
+            $amount = $invoice->deposit * 100;
+            return view('estimate.payment', compact('invoice', 'amount'))->with('success', 'You have successfully accepted the package and signed your estimate a copy will be emailed to you. One of our representative will contact you shortly.');
         }else{
             return back()->with('success', 'You have successfully accepted the package and our representative will contact you shortly.');
 
