@@ -126,12 +126,18 @@ class PackageController extends Controller
 
         foreach($request->package_items as $item)
         {
-            $pi = new packageItem;
+            $packageItemCheck = packageItem::where('packageId'. $package->id)->where('serviceId'. $item)->get();
+            if(!$packageItemCheck)
+            {
+                $pi = new packageItem;
 
-            $pi->packageId = $package->id;
-            $pi->serviceId = $item;
-            $pi->save();
+                $pi->packageId = $package->id;
+                $pi->serviceId = $item;
+                $pi->save();
+            }
         }
+
+        return back()->with('success', 'Updates completed.');
     }
 
     /**
