@@ -10,6 +10,7 @@ use Vanguard\Invoice;
 use Stripe\Stripe;
 use Stripe\Customer;
 use Stripe\Charge;
+use Vanguard\InvoicePayment;
 
 class PaymentController extends Controller
 {
@@ -24,23 +25,34 @@ class PaymentController extends Controller
             $amount = $invoice->total - $invoice->totalPaid * 100;
         }
 
+        try {
+            Stripe::setApiKey(env('stripeTestKey'));
 
-        Stripe::setApiKey(env('stripeTestKey'));
+            $token = $_POST['stripeToken'];
+            $charge = Charge::create([
+                'amount' => $amount,
+                'currency' => 'usd',
+                'description' => 'Example Charge',
+                'source' => $token
+            ]);
 
-        $token = $_POST['stripeToken'];
-        $charge = Charge::create([
-            'amount' => $amount,
-            'currency' => 'usd',
-            'description' => 'Example Charge',
-            'source' => $token
-        ]);
+            $paid = $invoice->totalPaid + $amount;
 
-        $paid = $invoice->totalPaid + $amount;
+            $invoice->totalPaid = $paid;
+            $invoice->save();
 
-        $invoice->totalPaid = $paid;
-        $invoice->save();
+            $amount = number_format(($amount/100),2);
 
+            $invoicePayment = new InvoicePayment;
 
-        return view('invoice.summary', compact('invoice'));
+            $invoicePayment->invoiceId = $invoice->id;
+            $invoicePayment->pmtAmount = $amount;
+            $invoicePayment->save();
+
+            return view('invoice.summary', compact('invoice'));
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
+        }
+
     }
 }

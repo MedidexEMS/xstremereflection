@@ -437,6 +437,8 @@ class EstimateController extends Controller
             $workOrderStatus->save();
         }
 
+        return back()->with('success', 'Date of Service and time have been updated.');
+
     }
 
     public function rescheduleEmail($id)
@@ -509,6 +511,19 @@ class EstimateController extends Controller
                 $estimateService->save();
             }
         }
+
+        $invoice = new Invoice;
+
+        $invoice->companyId = Auth()->user()->companyId;
+        $invoice->customerId = $wo->estimate->customerId;
+        $invoice->estimateId = $wo->estimate->id;
+        $invoice->workOrderId = $wo->id;
+        $invoice->detailType = $wo->estimate->detailType;
+        $invoice->dateofService = $wo->estimate->dateofService;
+        $invoice->total = $wo->totalCharge;
+        $invoice->deposit = $estimate->deposit;
+        $invoice->status = 1;
+        $invoice->save();
 
 
         return redirect()->route('estimate.show', ['id' => $id])->with('success', 'You have created a new work order.');
