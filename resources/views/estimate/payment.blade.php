@@ -29,6 +29,7 @@
             <div class="card-footer">
                 <div class="links">
                     <form action="/payment/{{$invoice->id}}/1" method="POST">
+                        @csrf
                         <script
                             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                             data-key="pk_test_51HPAurAzOqvz8nyKljc9bcWzTA8GYcj35Qv1307AJtsI5xwBHgoMywiYpqtIl9KpPuMY1U4LnNX1vUjAhXuNUxu900bGay9YuX"

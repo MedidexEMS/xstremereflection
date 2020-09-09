@@ -381,7 +381,7 @@ Route::get('/workorder/completed/{id}', 'WorkOrderController@completed');
  * Payment Routes
  */
 
-Route::get('/payment/{id}/{type}', 'PaymentController@paymentProcess');
+Route::post('/payment/{id}/{type}', 'PaymentController@paymentProcess');
 
 /**
  *
