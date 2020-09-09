@@ -488,7 +488,7 @@ class EstimateController extends Controller
             foreach($services as $service){
                 $estimateService = new WorkOrderServices;
                 $estimateService->estimateId = $estimate->id;
-                $estimateService->workOrderId = $workorder->id;
+                $estimateService->workOrderId = $WO->id;
                 $estimateService->qty = 1;
                 $estimateService->serviceId = $service->serviceId;
                 $estimateService->listPrice = $service->desc->charge;
@@ -502,7 +502,7 @@ class EstimateController extends Controller
             {
                 $estimateService = new WorkOrderServices;
                 $estimateService->estimateId = $estimate->id;
-                $estimateService->workOrderId = $workorder->id;
+                $estimateService->workOrderId = $wo->id;
                 $estimateService->qty = 1;
                 $estimateService->serviceId = $row->serviceId;
                 $estimateService->listPrice = $row->desc->charge;
