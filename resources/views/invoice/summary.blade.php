@@ -13,7 +13,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-6">
-            <img src="{{ public_path('assets/img/logo1.png') }}" width="450px" height="140px" alt="logo" />
+            <img src="{{ url('assets/img/logo1.png') }}" width="450px" height="140px" alt="logo" />
         </div>
         <div class="col-6">
             <address>
@@ -121,7 +121,7 @@
 
 <div class="row">
     <div class="col-8 mr-2">
-        @if($invoice->estimate->signed) <img src="{{public_path($invoice->estimate->signature)}}" width="200px" height="100px">  @else <strong>X___________________________________________________________________________</strong> @endif
+        @if($invoice->estimate->signed) <img src="{{url($invoice->estimate->signature)}}" width="200px" height="100px">  @else <strong>X___________________________________________________________________________</strong> @endif
     </div>
     <div class="col-3 align-text-bottom">
         @if($invoice->estimate->signed) {{\Carbon\Carbon::parse($invoice->estimate->signed)->format('m/d/Y H:i')}}  @else  <strong>____________________________________</strong> @endif
