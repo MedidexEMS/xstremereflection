@@ -10,6 +10,7 @@
 </div>
 
 <form id="newDateForm" action="estimate/updatedate/{{$estimate->id}}" method="POST">
+    @csrf
     <div id="datepicker-popup-1" class="input-group date datepicker">
         <input type="text" name="dateofService" class="form-control">
         <span class="input-group-addon input-group-append border-left">
