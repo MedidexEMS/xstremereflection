@@ -12,4 +12,9 @@ class Invoice extends Model
     {
         return $this->belongsTo(Estimate::class, 'estimateId');
     }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customerId');
+    }
 }

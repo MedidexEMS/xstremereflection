@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-xl-9">
                         <div class="text-muted display-4">
-                            ${{$invoices->sum('totalCharge')}}
+                            ${{$invoices->sum('totalPaid')}}
                         </div>
                     </div>
                     <div class="col-xl-12">

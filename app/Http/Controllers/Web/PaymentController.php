@@ -16,7 +16,7 @@ class PaymentController extends Controller
         if($type == 1)
         {
             $amount = $invoice->deposit * 100;
-        }elseif($type == 1){
+        }elseif($type == 2){
             $amount = $invoice->total - $invoice->totalPaid * 100;
         }
 
@@ -31,6 +31,12 @@ class PaymentController extends Controller
             'source' => $token
         ]);
 
+        $paid = $invoice->totalPaid + $amount;
 
+        $invoice->totalPaid = $paid;
+        $invoice->save();
+
+
+        return view('invoice.summary', compact('invoice'));
     }
 }
