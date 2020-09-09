@@ -7,6 +7,9 @@ use Vanguard\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Vanguard\Invoice;
+use Stripe\Stripe;
+use Stripe\Customer;
+use Stripe\Charge;
 
 class PaymentController extends Controller
 {
@@ -22,10 +25,10 @@ class PaymentController extends Controller
         }
 
 
-        \Stripe\Stripe::setApiKey(env('stripeTestKey'));
+        Stripe::setApiKey(env('stripeTestKey'));
 
         $token = $_POST['stripeToken'];
-        $charge = \Stripe\Charge::create([
+        $charge = Charge::create([
             'amount' => $amount,
             'currency' => 'usd',
             'description' => 'Example Charge',
