@@ -526,7 +526,7 @@ class EstimateController extends Controller
         $invoice->save();
 
 
-        return redirect()->route('estimate.show', ['id' => $id])->with('success', 'You have created a new work order.');
+        return redirect()->route('workorder.show', ['id' => $wo->id])->with('success', 'You have created a new work order.');
     }
 
     public function addPackageService (Request $request, $id)

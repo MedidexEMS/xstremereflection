@@ -348,7 +348,7 @@ use Illuminate\Http\Request;
 /**
  * Work Orders
  */
-    Route::get('workorder/{id}/show', 'WorkOrderController@show');
+    Route::get('workorder/{id}/show', 'WorkOrderController@show')->name('workorder.show');
     Route::get('workorder/techenroute/{id}', 'WorkOrderController@techEnroute');
 
     ROUTE::get('email', function (){
