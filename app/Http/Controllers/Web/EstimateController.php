@@ -414,7 +414,7 @@ class EstimateController extends Controller
     {
         $estimate = Estimate::find($id);
 
-        $estimate->dateofService = $request->dateofService;
+        $estimate->dateofService = Carbon::parse($request->dateofService)->format('Y-m-d');
         $estimate->arrivalTime = $request->arrivalTime;
         $estimate->Save();
 
