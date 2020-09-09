@@ -1,3 +1,4 @@
+@if($workOrder->estimate->acceptedPackage->package->laborCost)
 <table class="table table">
     <tr>
         <th>Price</th>
@@ -9,6 +10,7 @@
         <th>Margin</th>
         <th>Markup</th>
     </tr>
+
     <?php
     $price = $workOrder->estimate->total;
     $laborPrice = $workOrder->estimate->acceptedPackage->package->laborCost;
@@ -31,3 +33,4 @@
         <td> {{round($markup)}} %</td>
     </tr>
 </table>
+@endif
