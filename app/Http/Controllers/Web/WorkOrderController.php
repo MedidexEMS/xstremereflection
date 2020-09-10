@@ -1,6 +1,7 @@
 <?php
 
 namespace Vanguard\Http\Controllers\Web;
+use Vanguard\AddOnService;
 use Vanguard\Customer;
 use Vanguard\CustomerVehicle;
 use Vanguard\Estimate;
@@ -8,11 +9,13 @@ use Vanguard\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Vanguard\Invoice;
 use Vanguard\Mail\CompletedWorkOrder;
+use Vanguard\packageItem;
 use Vanguard\VehicleColor;
 use Vanguard\VehicleCondition;
 use Vanguard\WorkOrder;
 use Illuminate\Support\Facades\Mail;
 use Vanguard\Mail\SendTechEnrouteMailable;
+use Vanguard\WorkOrderServices;
 
 class WorkOrderController extends Controller
 {
@@ -125,6 +128,56 @@ class WorkOrderController extends Controller
         Mail::to([$workOrder->estimate->customer->email,'blevins.josh@gmail.com'])->send(new SendTechEnrouteMailable($workOrder));
 
         return back()->with('success', 'Notification sent and status updated');
+    }
+
+    public function addServices($id)
+    {
+     $wo = WorkOrder::find($id);
+     $estimate = Estimate::find($wo->estimate->id);
+
+
+        if($wo->estimate->approvedPackage) {
+            $array = explode(',', $wo->estimate->acceptedPackage->package->includes);
+            $services = packageItem::whereIn('packageId', $array)->orWhere('packageId', $estimate->acceptedPackage->package->id)->get();
+
+            foreach ($services as $service) {
+                $estimateService = new WorkOrderServices;
+                $estimateService->estimateId = $wo->estimate->id;
+                $estimateService->workOrderId = $wo->id;
+                $estimateService->qty = 1;
+                $estimateService->serviceId = $service->serviceId;
+                $estimateService->listPrice = $service->desc->charge;
+                $estimateService->chargedPrice = 0;
+                $estimateService->status = 1;
+                $estimateService->save();
+            }
+
+            $addons = AddOnService::where('packageId', $wo->estimate->approvedPackage)->get();
+
+
+            foreach ($addons as $row) {
+                $estimateService = new WorkOrderServices;
+                $estimateService->estimateId = $wo->estimate->id;
+                $estimateService->workOrderId = $wo->id;
+                $estimateService->qty = 1;
+                $estimateService->serviceId = $row->serviceId;
+                $estimateService->listPrice = $row->service->charge;
+                $estimateService->chargedPrice = $row->price;
+                $estimateService->status = 1;
+                $estimateService->save();
+            }
+        }
+
+        return back();
+    }
+
+    public function serviceComplete($id)
+    {
+        $service = WorkOrderServices::find($id);
+        $service->status = 2;
+        $service->save();
+
+        return 'Ok';
     }
 
     /**

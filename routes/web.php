@@ -350,6 +350,8 @@ use Illuminate\Http\Request;
  */
     Route::get('workorder/{id}/show', 'WorkOrderController@show')->name('workorder.show');
     Route::get('workorder/techenroute/{id}', 'WorkOrderController@techEnroute');
+    Route::get('/workorder/addServices/{id}', 'WorkOrderController@addServices');
+    Route::get('/workorder/serviceComplete/{id}', 'WorkOrderController@serviceComplete');
 
     ROUTE::get('email', function (){
         $title= 'Test';

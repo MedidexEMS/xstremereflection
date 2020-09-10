@@ -483,7 +483,7 @@ class EstimateController extends Controller
 
         if($estimate->approvedPackage){
             $array = explode(',', $estimate->acceptedPackage->package->includes);
-            $services = packageItem::whereIn('packageId', $array)->get();
+            $services = packageItem::whereIn('packageId', $array)->orWhere('packageId', $estimate->acceptedPackage->package->id)->get();
 
             foreach($services as $service){
                 $estimateService = new WorkOrderServices;
@@ -496,7 +496,7 @@ class EstimateController extends Controller
                 $estimateService->status = 1;
                 $estimateService->save();
             }
-            $addons = AddOnService::where('packageId', $estimate->acceptedPackage)->get();
+            $addons = AddOnService::where('packageId', $estimate->approvedPackage)->get();
 
             foreach($addons as $row)
             {
@@ -505,8 +505,8 @@ class EstimateController extends Controller
                 $estimateService->workOrderId = $wo->id;
                 $estimateService->qty = 1;
                 $estimateService->serviceId = $row->serviceId;
-                $estimateService->listPrice = $row->desc->charge;
-                $estimateService->chargedPrice = $row->chargedPrice;
+                $estimateService->listPrice = $row->service->charge;
+                $estimateService->chargedPrice = $row->price;
                 $estimateService->status = 1;
                 $estimateService->save();
             }

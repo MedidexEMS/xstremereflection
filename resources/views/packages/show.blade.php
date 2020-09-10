@@ -28,9 +28,15 @@
             </ul>
         </div>
     </div>
-
     <div class="row">
-        <div class="col-xl-4">
+        <div class="col-xl-12">
+            <div class="card">
+                @include('packages.partials.availableServices')
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-6">
             <div class="row mb-2">
                 <div class="col-xl-12">
                     <div class="card">
@@ -46,19 +52,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-4">
+        <div class="col-xl-6">
             <div class="card">
                 @include('packages.partials.packageServices')
             </div>
         </div>
-        <div class="col-xl-4">
-            <div class="card">
-                @include('packages.partials.availableServices')
-            </div>
-        </div>
-
     </div>
-
 
 @stop
 

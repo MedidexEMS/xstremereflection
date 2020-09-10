@@ -15,27 +15,50 @@
         @include('workorder.partials.jobStats')
     </div>
     <div class="row">
-        <div class="col-xl-12">
-            @include('workorder.partials.statusButtons')
+        <div class="col-xl-9">
+            <div class="row">
+                <div class="col-xl-12">
+                    @include('workorder.partials.statusButtons')
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <a href="/workorder/completed/{{$workOrder->id}}" class="btn btn-success btn-block">Complete Work Order</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
+                    @include('workorder.partials.customer')
+                </div>
+                <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
+                    @include('workorder.partials.serviceInfo')
+                </div>
+            </div>
+            <div class="row">
+                @include('workorder.partials.services')
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xl-12">
-            <a href="/workorder/completed/{{$workOrder->id}}" class="btn btn-success btn-block">Complete Work Order</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
-            @include('workorder.partials.customer')
-        </div>
-        <div class="col-xl-6 col-sm--12 grid-margin stretch-card">
-            @include('workorder.partials.serviceInfo')
+
+        <div class="col-xl-3">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header"><h3>Available Actions</h3></div>
+                        <div class="card-body">
+                            <div class="col-xl-12">
+                                @include('workorder.partials.actionButtons')
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        @include('workorder.partials.services')
-    </div>
+
+
+
 
 @stop
 @include('workorder.partials.modalVehicleUpdate')
@@ -67,5 +90,26 @@
 
         });
     }
+
+    $('input[name=service]').change(function (item) {
+        var id = $(this).data('id');
+        console.log(id);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
+        // AJAX request
+        $.ajax({
+            url: '/workorder/serviceComplete/'+ id,
+            type: 'get',
+            success: function(response){
+
+            }
+        });
+    });
+
+
 </script>
 @stop

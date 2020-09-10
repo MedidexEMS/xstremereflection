@@ -86,47 +86,90 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($estimate->packages as $packages)
-            <tr @if($estimate->approvedPackage == $packages->id) class="bg-success" @endif>
-                <td>{{$loop->iteration}}</td>
-                <td width="50%">
-                    <h6>{{$packages->package->description}}</h6>
-                    {!! $packages->package->details !!} <br />
+            @if($estimate->approvedPackage)
+                <tr>
+                    <td>{{$estimate->approvedPackage->id}}</td>
+                    <td width="50%">
+                        <h6>{{$estimate->approvedPackage->package->description}}</h6>
+                        {!! $estimate->approvedPackage->package->details !!} <br />
 
-                    @php
-                        $array = explode(',', $packages->package->includes);
-                       $packageItems = \Vanguard\packageItem::whereIn('packageId', $array)->get();
-                    @endphp
-                    <small>
-                        @if($packageItems)
-                            @foreach($packageItems as $item)
-                            {{$item->desc->description}} @if($loop->last) @else , @endif
-                            @endforeach
-                        @endif</small>
-                    @if($packages->addOnService)
-                        <table class="table table-sm">
-                            <tr>
-                                <th><h6>Add on Services</h6></th>
-                            </tr>
-                            @foreach($packages->addOnService as $aos)
+                        @php
+                            $array = explode(',', $estimate->approvedPackage->package->includes);
+                           $packageItems = \Vanguard\packageItem::whereIn('packageId', $array)->get();
+                        @endphp
+                        <small>
+                            @if($packageItems)
+                                @foreach($packageItems as $item)
+                                    {{$item->desc->description}} @if($loop->last) @else , @endif
+                                @endforeach
+                            @endif</small>
+                        @if($packages->addOnService)
+                            <table class="table table-sm">
                                 <tr>
-                                    <td>
-                                        @if($aos->serviceId == 0) {{$aos->description ?? ''}}  @else {{$aos->service->description  }} @endif - <small>List Price: ${{$aos->service->charge ?? '0.00'}}  Charged: {{$aos->price ?? '0.00'}} </small>
-                                    </td>
+                                    <th><h6>Add on Services</h6></th>
                                 </tr>
-                            @endforeach
-                        </table>
+                                @foreach($packages->addOnService as $aos)
+                                    <tr>
+                                        <td>
+                                            @if($aos->serviceId == 0) {{$aos->description ?? ''}}  @else {{$aos->service->description  }} @endif - <small>List Price: ${{$aos->service->charge ?? '0.00'}}  Charged: {{$aos->price ?? '0.00'}} </small>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        @endif
+                    </td>
+                    @if($estimate->ndp)
+                        <td>Pricing By National Detail Pros</td>
+                    @else
+                        <td>${{$packages->listPrice ?? ''}}</td>
+                        <td>${{$packages->chargedPrice ?? ''}}</td>
+                        <td>${{$packages->deposit ?? ''}}</td>
                     @endif
-                </td>
-                @if($estimate->ndp)
-                    <td>Pricing By National Detail Pros</td>
-                @else
-                    <td>${{$packages->listPrice ?? ''}}</td>
-                    <td>${{$packages->chargedPrice ?? ''}}</td>
-                    <td>${{$packages->deposit ?? ''}}</td>
-                @endif
-            </tr>
-            @endforeach
+                </tr>
+            @else
+                @foreach($estimate->packages as $packages)
+                    <tr @if($estimate->approvedPackage == $packages->id) class="bg-success" @endif>
+                        <td>{{$loop->iteration}}</td>
+                        <td width="50%">
+                            <h6>{{$packages->package->description}}</h6>
+                            {!! $packages->package->details !!} <br />
+
+                            @php
+                                $array = explode(',', $packages->package->includes);
+                               $packageItems = \Vanguard\packageItem::whereIn('packageId', $array)->get();
+                            @endphp
+                            <small>
+                                @if($packageItems)
+                                    @foreach($packageItems as $item)
+                                        {{$item->desc->description}} @if($loop->last) @else , @endif
+                                    @endforeach
+                                @endif</small>
+                            @if($packages->addOnService)
+                                <table class="table table-sm">
+                                    <tr>
+                                        <th><h6>Add on Services</h6></th>
+                                    </tr>
+                                    @foreach($packages->addOnService as $aos)
+                                        <tr>
+                                            <td>
+                                                @if($aos->serviceId == 0) {{$aos->description ?? ''}}  @else {{$aos->service->description  }} @endif - <small>List Price: ${{$aos->service->charge ?? '0.00'}}  Charged: {{$aos->price ?? '0.00'}} </small>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+                            @endif
+                        </td>
+                        @if($estimate->ndp)
+                            <td>Pricing By National Detail Pros</td>
+                        @else
+                            <td>${{$packages->listPrice ?? ''}}</td>
+                            <td>${{$packages->chargedPrice ?? ''}}</td>
+                            <td>${{$packages->deposit ?? ''}}</td>
+                        @endif
+                    </tr>
+                @endforeach
+            @endif
+
             </tbody>
         </table>
     </div>

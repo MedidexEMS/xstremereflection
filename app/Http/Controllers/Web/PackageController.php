@@ -85,7 +85,7 @@ class PackageController extends Controller
         $upsaleArray = explode(',', $package->upsale);
         $upsale = Services::whereIn('id', $upsaleArray)->get();
         $packages = Package::whereIn('id', $array)->get();
-        $packageServices = packageItem::whereIn('packageId', $array)->get();
+        $packageServices = packageItem::whereIn('packageId', $array)->orWhere('packageId', $id)->get();
         $availableServices = Services::where('company_id', Auth()->user()->companyId)->orWhere('company_id', 0)->get();
 
 
@@ -126,7 +126,7 @@ class PackageController extends Controller
 
         foreach($request->package_items as $item)
         {
-            $packageItemCheck = packageItem::where('packageId'. $package->id)->where('serviceId'. $item)->get();
+            $packageItemCheck = packageItem::where('packageId', $package->id)->where('serviceId', $item)->get();
             if(!$packageItemCheck)
             {
                 $pi = new packageItem;
