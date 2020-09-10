@@ -112,7 +112,7 @@
                     <?php
                     $balance = $balance - $pmt->pmtAmount;
                     ?>
-                    {{number_format($balance)}}
+                    {{number_format($balance, 2)}}
                 </td>
             </tr>
             @endforeach
