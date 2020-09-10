@@ -88,13 +88,13 @@
             <tbody>
             @if($estimate->approvedPackage)
                 <tr>
-                    <td>{{$estimate->approvedPackage->id}}</td>
+                    <td>{{$estimate->approvedPackage}}</td>
                     <td width="50%">
-                        <h6>{{$estimate->approvedPackage->package->description}}</h6>
-                        {!! $estimate->approvedPackage->package->details !!} <br />
+                        <h6>{{$estimate->acceptedPackage->package->description}}</h6>
+                        {!! $estimate->acceptedPackage->package->details !!} <br />
 
                         @php
-                            $array = explode(',', $estimate->approvedPackage->package->includes);
+                            $array = explode(',', $estimate->acceptedPackage->package->includes);
                            $packageItems = \Vanguard\packageItem::whereIn('packageId', $array)->get();
                         @endphp
                         <small>
