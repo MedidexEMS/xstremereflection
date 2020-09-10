@@ -603,29 +603,6 @@ class EstimateController extends Controller
 
 
 
-        $estimateTotal = 0;
-        $downPmt = 0;
-        if ($estimate->approvedPackage){
-            if ($estimate->packages) {
-                foreach ($estimate->packages as $package) {
-                    $estimateTotal = $estimateTotal + $package->chargedPrice;
-                }
-            }
-
-            if ($estimate->services) {
-                foreach ($estimate->services as $service) {
-                    $estimateTotal = $estimateTotal + $service->chargedPrice;
-                }
-                foreach ($estimate->services->where('requiresDownPayment', 1) as $service) {
-                    $downPmt = $downPmt + $service->chargedPrice;
-                }
-            }
-
-            $estimate->total = $estimateTotal;
-            $estimate->deposit = $downPmt;
-            $estimate->save();
-        }
-
         view()->share('customer',$customer);
         view()->share('estimate',$estimate);
 
