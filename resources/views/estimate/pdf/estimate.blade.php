@@ -103,12 +103,12 @@
                                     {{$item->desc->description}} @if($loop->last) @else , @endif
                                 @endforeach
                             @endif</small>
-                        @if($packages->addOnService)
+                        @if($estimate->acceptedPackage->addOnService)
                             <table class="table table-sm">
                                 <tr>
                                     <th><h6>Add on Services</h6></th>
                                 </tr>
-                                @foreach($packages->addOnService as $aos)
+                                @foreach($estimate->acceptedPackage->addOnService as $aos)
                                     <tr>
                                         <td>
                                             @if($aos->serviceId == 0) {{$aos->description ?? ''}}  @else {{$aos->service->description  }} @endif - <small>List Price: ${{$aos->service->charge ?? '0.00'}}  Charged: {{$aos->price ?? '0.00'}} </small>
@@ -121,9 +121,9 @@
                     @if($estimate->ndp)
                         <td>Pricing By National Detail Pros</td>
                     @else
-                        <td>${{$packages->listPrice ?? ''}}</td>
-                        <td>${{$packages->chargedPrice ?? ''}}</td>
-                        <td>${{$packages->deposit ?? ''}}</td>
+                        <td>${{$estimate->acceptedPackage->listPrice ?? ''}}</td>
+                        <td>${{$estimate->acceptedPackage->chargedPrice ?? ''}}</td>
+                        <td>${{$estimate->acceptedPackage->deposit ?? ''}}</td>
                     @endif
                 </tr>
             @else
