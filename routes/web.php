@@ -304,6 +304,7 @@ use Illuminate\Http\Request;
         $estimate->save();
 
         return back()->with('success', 'Customer problem description updated.');
+        return back()->with('success', 'Customer problem description updated.');
 
 });
 
@@ -396,6 +397,7 @@ Route::post('/payment/{id}/{type}', 'PaymentController@paymentProcess');
  * Invoices
  */
     Route::get('/estimate/invoice/{id}', 'InvoiceController@estimateConvert');
+    Route::get('/invoice/{id}', 'InvoiceController@show');
 
 use GuzzleHttp\Client;
 

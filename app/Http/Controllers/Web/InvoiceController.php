@@ -104,7 +104,9 @@ class InvoiceController extends Controller
      */
     public function show($id)
     {
-        //
+        $invoice = Invoice::find($id);
+
+        return view('invoice.summary', compact('invoice'));
     }
 
     /**

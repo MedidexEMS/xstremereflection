@@ -151,6 +151,12 @@ class EstimateController extends Controller
         $invoice->status = 1;
         $invoice->save();
 
+        $workorder->invoiceId = $invoice->id;
+        $workorder->save();
+
+        $estimate->invoiceId = $invoice->id;
+        $estimate->save();
+
         if($estimate->customer->email){
             Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new AcceptedEstimateEmail($estimate));
             $userSchema = User::where('companyId', $estimate->companyId);
@@ -524,6 +530,12 @@ class EstimateController extends Controller
         $invoice->deposit = $estimate->deposit;
         $invoice->status = 1;
         $invoice->save();
+
+        $wo->invoiceId = $invoice->id;
+        $wo->save();
+
+        $estimate->invoiceId = $invoice->id;
+        $estimate->save();
 
 
         return redirect()->route('workorder.show', ['id' => $wo->id])->with('success', 'You have created a new work order.');

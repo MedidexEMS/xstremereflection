@@ -93,17 +93,29 @@
                 <th>Payment Date</th>
                 <th>Total Paid</th>
                 <th>Balance</th>
-
-
-
             </tr>
             </thead>
             <tbody>
+            <?php $totalPaid = 0;
+                  $balance = $invoice->total;
+            ?>
+            @foreach($invoice->payments as $pmt)
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{number_format($pmt->pmtAmount, 2)}}</td>
+                <td>
+                    <?php
+                    $totalPaid = $totalPaid + $pmt->pmtAmount;
+                    ?>
+                    {{number_format($totalPaid, 2)}}
+                </td>
+                <td>
+                    <?php
+                    $balance = $balance - $pmt->pmtAmount;
+                    ?>
+                    {{number_format($balance)}}
+                </td>
             </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
