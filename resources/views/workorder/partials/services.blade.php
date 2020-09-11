@@ -72,7 +72,7 @@
                                     <div class="col-xl-2 text-center">
                                         <div class="form-check form-check-muted m-0">
                                             <label class="form-check-label">
-                                                <input type="checkbox" name="service" value="{{$s->id}}" class="form-check-input" data-id="{{$s->id}} @if($s->status == 2) checked @endif onchange="serviceComplete()">
+                                                <input type="checkbox" name="service" value="{{$s->id}}" class="form-check-input" data-id="{{$s->id}}" @if($s->status == 2) checked @endif">
                                             </label>
                                         </div>
                                     </div>
@@ -122,7 +122,7 @@
                                     <div class="col-xl-2 text-center">
                                         <div class="form-check form-check-muted m-0">
                                             <label class="form-check-label">
-                                                <input type="checkbox" name="service" value="{{$s->id}}" class="form-check-input" data-id="{{$s->id}} @if($s->status == 2) checked @endif onchange="serviceComplete()">
+                                                <input type="checkbox" name="service" value="{{$s->id}}" class="form-check-input" data-id="{{$s->id}}" @if($s->status == 2) checked @endif >
                                             </label>
                                         </div>
                                     </div>

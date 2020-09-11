@@ -7,10 +7,12 @@ use Vanguard\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Vanguard\Invoice;
 use Vanguard\InvoicePackage;
+use Vanguard\InvoicePayment;
 use Vanguard\InvoiceService;
 use Vanguard\Package;
 
 use DB;
+use Vanguard\WorkOrder;
 
 class InvoiceController extends Controller
 {
@@ -91,9 +93,30 @@ class InvoiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $workorder = WorkOrder::find($id);
+        $estimate = Estimate::find($workorder->estimateId);
+        $invoice = new Invoice;
+
+        $invoice->companyId = Auth()->user()->companyId;
+        $invoice->customerId = $workorder->estimate->customerId;
+        $invoice->estimateId = $workorder->estimate->id;
+        $invoice->workOrderId = $workorder->id;
+        $invoice->detailType = $workorder->estimate->detailType;
+        $invoice->dateofService = $workorder->estimate->dateofService;
+        $invoice->total = $workorder->totalCharge;
+        $invoice->deposit = $workorder->estimate->deposit;
+        $invoice->status = 1;
+        $invoice->save();
+
+        $workorder->invoiceId = $invoice->id;
+        $estimate->invoiceId = $invoice->id;
+
+        $workorder->save();
+        $estimate->save();
+
+        return back()->with('success', 'Invoice Created.');
     }
 
     /**
@@ -107,6 +130,36 @@ class InvoiceController extends Controller
         $invoice = Invoice::find($id);
 
         return view('invoice.summary', compact('invoice'));
+    }
+
+    public function paymentModal($id)
+    {
+        $invoice = Invoice::find($id);
+
+        return view('invoice.partials.modalPaymentBody', compact('invoice'));
+    }
+
+    public function payment(Request $request, $id)
+    {
+        $invoice = Invoice::find($id);
+
+        $payment = new InvoicePayment;
+        $payment->invoiceId = $id;
+        $payment->pmtAmount = $request->pmtAmount;
+        $payment->save();
+
+        $newTotalPaid = $invoice->totalPaid + $request->pmtAmount;
+
+        $invoice->totalPaid = $newTotalPaid;
+        $invoice->save();
+
+        if($invoice->total <= $invoice->totalPaid)
+        {
+            $invoice->status = 99;
+            $invoice->save();
+        }
+
+        return back()->with('success', 'Payment added to invoice.');
     }
 
     /**

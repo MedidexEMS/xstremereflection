@@ -59,9 +59,10 @@
 
 
 
-
+    @include('invoice.partials.modalPayment')
 @stop
 @include('workorder.partials.modalVehicleUpdate')
+
 
 @section('scripts')
 <script>
@@ -105,6 +106,22 @@
             url: '/workorder/serviceComplete/'+ id,
             type: 'get',
             success: function(response){
+
+            }
+        });
+    });
+
+    $("#paymentModal").on("shown.bs.modal", function(e) {
+        var link = $(e.relatedTarget).data("link");
+
+        // AJAX request
+        $.ajax({
+            url: link,
+            type: 'get',
+            success: function(response){
+                // Add response in Modal body
+                $('#payment').html(response);
+
 
             }
         });

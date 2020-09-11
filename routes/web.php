@@ -399,6 +399,9 @@ Route::post('/payment/{id}/{type}', 'PaymentController@paymentProcess');
  */
     Route::get('/estimate/invoice/{id}', 'InvoiceController@estimateConvert');
     Route::get('/invoice/{id}', 'InvoiceController@show');
+    Route::get('/invoice/{id}/create', 'InvoiceController@store');
+    Route::get('/invoice/{id}/paymentModal', 'InvoiceController@paymentModal');
+    Route::post('/invoice/payment/{id}', 'InvoiceController@payment');
 
 use GuzzleHttp\Client;
 
