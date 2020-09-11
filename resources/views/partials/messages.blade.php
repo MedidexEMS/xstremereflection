@@ -1,5 +1,5 @@
 @if(isset ($errors) && count($errors) > 0)
-    <div class="toast" data-autohide="false" style="position: absolute; top: 0; right: 0;">
+
         <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
             <!-- Position it -->
             <div class="toast" style="position: absolute; top: 0; right: 0;" role="alert" aria-live="assertive" aria-atomic="true" data-delay="15000">
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
 
 
 @endif
@@ -28,7 +28,7 @@
 
 
                 @foreach ($data as $msg)
-                    <div class="toast" data-autohide="false" style="position: absolute; top: 0; right: 0;">
+
                         <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
                             <!-- Position it -->
                             <div class="toast" style="position: absolute; top: 0; right: 0;" role="alert" aria-live="assertive" aria-atomic="true" data-delay="15000">
@@ -44,13 +44,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+
 
                 @endforeach
 
 
     @else
-        <div class="toast" data-autohide="false" style="position: absolute; top: 0; right: 0;">
+
             <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
                 <!-- Position it -->
                 <div class="toast" style="position: absolute; top: 0; right: 0;" role="alert" aria-live="assertive" aria-atomic="true" data-delay="15000">
@@ -66,7 +66,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+
 
     @endif
 @endif
