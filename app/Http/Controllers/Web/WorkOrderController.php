@@ -19,6 +19,10 @@ use Vanguard\WorkOrderServices;
 
 class WorkOrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth',['except' => ['customerReview', 'uploadSignature']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,6 +44,17 @@ class WorkOrderController extends Controller
 
         return view('workorder.index', compact('workorders'));
     }
+
+    public function completedWo()
+    {
+        $workorders = WorkOrder::
+        where('status', 8)
+            ->get();
+
+        return view('workorder.index', compact('workorders'));
+    }
+
+
     public function completed($id)
     {
         $workorder = WorkOrder::find($id);

@@ -376,6 +376,7 @@ Route::post('/updateVehicle/{id}', 'WorkOrderController@updateVehicle');
 Route::get('/workorder', 'WorkOrderController@index');
 Route::get('/workorder/canceled', 'WorkOrderController@canceled');
 Route::get('/workorder/completed/{id}', 'WorkOrderController@completed');
+Route::get('/workorder/completed', 'WorkOrderController@completedWo');
 /**
  *
  */
