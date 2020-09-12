@@ -2,6 +2,7 @@
 
 namespace Vanguard\Http\Controllers\Web;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\View\View;
 use Vanguard\Customer;
@@ -30,8 +31,13 @@ class DashboardController extends Controller
 
         $invoices = Customer::where('companyId', Auth()->user()->companyId)->whereHas('invoice', function($q){$q->where('status', '<=', 2);})->get() ;
 
+        $invoiceYTD = Invoice::whereBetween('created_at', [
+            Carbon::now()->startOfYear(),
+            Carbon::now()->endOfYear(),
+        ])->get();
+
         $estimateStatus = EstimateStatus::get();
 
-        return view('dashboard.index', compact('estimates', 'workorders', 'invoices', 'estimateStatus'));
+        return view('dashboard.index', compact('estimates', 'workorders', 'invoices', 'estimateStatus', 'invoiceYTD'));
     }
 }
