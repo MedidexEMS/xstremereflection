@@ -132,7 +132,7 @@
                     @foreach($upsale as $row)
                         <?php
                         $rowPrice = $price + $row->charge;
-                        $rowProductPrice = $productPrice + $row->productPrice;
+                        $rowProductPrice = $productPrice + $row->productCost;
                         $rowLaborPrice = $laborPrice + $row->laborCost;
 
                         $rowLaborMargin = $rowLaborPrice / $rowPrice * 100;
@@ -148,8 +148,8 @@
                         </tr>
                         <tr>
                             <td>$ {{$rowPrice}}</td>
-                            <td>$ {{$rowProductPrice}} ({{$row->productPrice ?? '0.00'}})</td>
-                            <td>$ {{$rowLaborPrice}} {{$row->laborCost ?? '0.00'}}</td>
+                            <td>$ {{$rowProductPrice}} ({{$row->productCost ?? '0.00'}})</td>
+                            <td>$ {{$rowLaborPrice}} ({{$row->laborCost ?? '0.00'}})</td>
                             <td>{{ceil($rowLaborMargin)}} %</td>
                             <td>$ 0.00</td>
                             <td>$ {{number_format($rowGross, 2)}}</td>
