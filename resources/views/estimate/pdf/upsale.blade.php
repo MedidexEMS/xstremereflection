@@ -148,8 +148,8 @@
                         </tr>
                         <tr>
                             <td>$ {{$rowPrice}}</td>
-                            <td>$ {{$rowProductPrice}}</td>
-                            <td>$ {{$rowLaborPrice}}</td>
+                            <td>$ {{$rowProductPrice}} ({{$row->productPrice ?? '0.00'}})</td>
+                            <td>$ {{$rowLaborPrice}} {{$row->laborCost ?? '0.00'}}</td>
                             <td>{{ceil($rowLaborMargin)}} %</td>
                             <td>$ 0.00</td>
                             <td>$ {{number_format($rowGross, 2)}}</td>
