@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'Vanguard\Console\Commands\JobReschedule',
+        'Vanguard\Console\Commands\ServiceReminder',
     ];
 
     /**

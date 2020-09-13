@@ -89,6 +89,9 @@ class EstimateController extends Controller
 
         $estimate->save();
 
+        $package->approved = 1;
+        $package->save();
+
 
         $workorder = new WorkOrder;
         $workorder->companyId = Auth()->user()->companyId;
