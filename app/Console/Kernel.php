@@ -32,6 +32,8 @@ class Kernel extends ConsoleKernel
         //$schedule->command('workorder:completed')->everyMinute();
 
         $schedule->command('job:reschedule')->dailyAt('8:00');
+
+        $schedule->command('service:reminder')->dailyAt('8:10');
     }
 
     /**
