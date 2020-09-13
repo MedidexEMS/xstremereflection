@@ -3,8 +3,8 @@
         <div class="col-xl-12 mb-2">
             @csrf
             <label>Reported Problem</label>
-            <textarea  id="mytextarea" name="problem" style="width: 100%">
-              {{$estimate->problem ?? ''}}
+            <textarea  id="summernote" name="problem" style="width: 100%">
+              {!! $estimate->problem ?? '' !!}
             </textarea>
         </div>
         <div class="col-xl-12">

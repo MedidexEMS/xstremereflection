@@ -10,6 +10,7 @@
 @stop
 
 @section('style')
+
 <style>
 
     @import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
@@ -146,6 +147,12 @@
     }
     }
 </style>
+
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+</script>
 @stop
 
 @section('content')
@@ -254,6 +261,8 @@
 
 
 @section('scripts')
+
+
 
     <script>
         function listPriceUpdate() {
