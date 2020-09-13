@@ -265,7 +265,7 @@ class EstimateController extends Controller
     public function store(Request $request)
     {
         //dd($request->dateofService);
-        $serviceDate = date("Y-m-d", strtotime($request->dateofService));
+        if($request->dateofService) {$serviceDate = date("Y-m-d", strtotime($request->dateofService)); } else {$serviceDate = "";}
         if($request->customer == 0){
             $validatedData = $request->validate([
                 'email' => 'required_without_all:phoneNumber|sometimes:customers|max:255',

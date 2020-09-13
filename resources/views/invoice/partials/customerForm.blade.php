@@ -21,7 +21,7 @@
 <div class="form-group">
     <label for="serviceTime">Detail Type</label>
     <select class="js-example-basic-single" id="detailType" name="detailType" style="width: 100%"  >
-        <option selected> Select Time of Arrival </option>
+        <option selected> Select Type of Detail Location </option>
 
         <option value="1"> Shop</option>
         <option value="2"> Mobile</option>
