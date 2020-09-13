@@ -56,6 +56,10 @@ class User extends Authenticatable implements TwoFactorAuthenticatableContract, 
      */
     protected $hidden = ['password', 'remember_token'];
 
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'companyId');
+    }
     /**
      * Always encrypt password when it is updated.
      *

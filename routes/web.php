@@ -75,6 +75,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
      */
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('/dashboard/manage', 'DashboardController@manage')->name('dashboard.manage');
+
 
     /**
      * User Profile
