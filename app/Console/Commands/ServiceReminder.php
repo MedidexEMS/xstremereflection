@@ -5,6 +5,7 @@ namespace Vanguard\Console\Commands;
 use Illuminate\Console\Command;
 use Vanguard\Estimate;
 use Carbon\Carbon;
+use Vanguard\Mail\ServiceTimeReminder;
 
 class ServiceReminder extends Command
 {
@@ -39,11 +40,11 @@ class ServiceReminder extends Command
      */
     public function handle()
     {
-        $estimate= Estimate::whereDate('created_at', Carbon::today())->where('status', 4 )->get();
+        $estimates= Estimate::whereDate('created_at', Carbon::today())->where('status', 4 )->get();
 
         //dd(count($estimate));
 
-        foreach ($estimate as $row)
+        foreach ($estimates as $row)
         {
 
             if($row->dateofService)
@@ -57,13 +58,22 @@ class ServiceReminder extends Command
                 $days = $interval->format('%a');
                 if($days == $row->maint )
                 {
-                    $newEstimate = new Estimate;
-                    $newEstimate->companyId = $row->companyId;
-                    $newEstimate->detailType = $row->detailType;
-                    $newEstimate->customerId = $row->customerId;
-                    $newEstimate->status = 1;
-                    $newEstimate->problem = 'Customer vehicle due for maintenance.';
-                    $newEstimate->save();
+                    $estimate = new Estimate;
+                    $estimate->companyId = $row->companyId;
+                    $estimate->detailType = $row->detailType;
+                    $estimate->customerId = $row->customerId;
+                    $estimate->status = 1;
+                    $estimate->problem = 'Customer vehicle due for maintenance.';
+                    $estimate->save();
+
+                    if($estimate->customer->email)
+                    {
+                        Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new ServiceTimeReminder($estimate));
+
+                    }else{
+                        Mail::to(['jblevins@xtremereflection.app'])->send(new ServiceTimeReminder($estimate));
+
+                    }
                 }
 
             }
