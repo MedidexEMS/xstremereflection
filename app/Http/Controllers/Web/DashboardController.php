@@ -36,9 +36,18 @@ class DashboardController extends Controller
             Carbon::now()->endOfYear(),
         ])->get();
 
+        $invoiceTotal = $invoiceYTD->sum('total');
+        $invoiceOutstanding =  $invoiceTotal - $invoiceYTD->sum('totalPaid');
+        $leads = count($estimates->where('status', 0));
+        $leadPercent = ($leads ?? 0) / 10 * 100;
+        $estimate = count($estimates->where('status', 1));
+        $workorder = count($workorders->where('status', '<', 8));
+        $unpaidInvoices = count($invoiceYTD->where('status', 1));
+
+
         $estimateStatus = EstimateStatus::get();
 
-        return view('dashboard.dashboard', compact('estimates', 'workorders', 'invoices', 'estimateStatus', 'invoiceYTD'));
+        return view('dashboard.dashboard', compact('estimates', 'workorders', 'invoices', 'estimateStatus', 'invoiceYTD', 'invoiceTotal', 'invoiceOutstanding', 'leads', 'leadPercent', 'estimate', 'workorder', 'unpaidInvoices'));
     }
 
     public function manage()
