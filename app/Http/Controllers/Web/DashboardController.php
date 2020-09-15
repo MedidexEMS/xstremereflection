@@ -55,8 +55,8 @@ class DashboardController extends Controller
         $end = Carbon::now()->endOfYear();
         $users_created = InvoicePayment::
             whereBetween('created_at', [$start, $end])
-            ->groupBy(DB::raw('MONTH(users.created_at)'))
-            ->get([DB::raw('COUNT(*) as count'),DB::raw('DATE(users.created_at) as date')]);
+            ->groupBy(DB::raw('MONTH(invoice_payments.created_at)'))
+            ->get([DB::raw('COUNT(*) as count'),DB::raw('DATE(invoice_payments.created_at) as date')]);
 
         dd($users_created);
 
