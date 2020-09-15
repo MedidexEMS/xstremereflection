@@ -56,7 +56,7 @@ class DashboardController extends Controller
         $users_created = InvoicePayment::
             whereBetween('created_at', [$start, $end])
             ->groupBy(DB::raw('MONTH(invoice_payments.created_at)'))
-            ->get([DB::raw('COUNT(*) as count'),DB::raw('DATE(invoice_payments.created_at) as date')]);
+            ->get([DB::raw('SUM(pmtAmount) as count'),DB::raw('MONTH(invoice_payments.created_at) as date')]);
 
         dd($users_created);
 
