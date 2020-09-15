@@ -50,8 +50,8 @@ class DashboardController extends Controller
 
 
         $estimateStatus = EstimateStatus::get();
-        $start = Carbon::startOfYear();
-        $end = Carbon::endOfYear();
+        $start = Carbon::now()->startOfYear();
+        $end = Carbon::now()->endOfYear();
         $users_created = InvoicePayment::
             whereBetween('created_at', '>=', [$start, $end])
             ->groupBy(DB::raw('MONTH(users.created_at)'))
