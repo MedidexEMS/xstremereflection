@@ -40,6 +40,22 @@ class ServiceReminder extends Command
      */
     public function handle()
     {
+        $estimates = Estimate::whereBetween('created_at', [
+            Carbon::now()->startOfYear(),
+            Carbon::now()->endOfYear(),
+        ])->get();
+        $index = 1;
+        foreach ($estimates as $row)
+        {
+
+            $eid = $row->companyId.'-'.Carbon::now()->format('y').'-'.$index;
+
+            $row->eid = $eid;
+            $row->save();
+
+            $index++;
+        }
+        /*
         $estimates= Estimate::whereDate('created_at', Carbon::today())->where('status', 4 )->get();
 
         //dd(count($estimate));
@@ -79,7 +95,7 @@ class ServiceReminder extends Command
             }
 
         }
-
+    */
         return 0;
     }
 }

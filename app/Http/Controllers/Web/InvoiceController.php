@@ -129,7 +129,7 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::find($id);
 
-        return view('invoice.summary', compact('invoice'));
+        return view('invoice.summary2', compact('invoice'));
     }
 
     public function paymentModal($id)

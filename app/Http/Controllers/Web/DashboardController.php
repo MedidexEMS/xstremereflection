@@ -8,8 +8,10 @@ use Illuminate\View\View;
 use Vanguard\Customer;
 use Vanguard\Estimate;
 use Vanguard\EstimateStatus;
+use Vanguard\EstimateTracking;
 use Vanguard\Http\Controllers\Controller;
 use Vanguard\Invoice;
+use Vanguard\InvoicePayment;
 use Vanguard\WorkOrder;
 
 class DashboardController extends Controller
@@ -25,7 +27,7 @@ class DashboardController extends Controller
             session()->flash('success', __('E-Mail verified successfully.'));
         }
 
-        $estimates = Estimate::where('companyId', Auth()->user()->companyId)->get();
+        $estimates = Estimate::where('companyId', Auth()->user()->companyId)->orderBy('status')->get();
 
         $workorders = WorkOrder::where('companyId', Auth()->user()->companyId)->get();
 
@@ -44,10 +46,20 @@ class DashboardController extends Controller
         $workorder = count($workorders->where('status', '<', 8));
         $unpaidInvoices = count($invoiceYTD->where('status', 1));
 
+        $estimateHistory = EstimateTracking::orderBy('created_at', 'desc')->take('10')->get();
+
 
         $estimateStatus = EstimateStatus::get();
+        $start = Carbon::startOfYear();
+        $end = Carbon::endOfYear();
+        $users_created = InvoicePayment::
+            whereBetween('created_at', '>=', [$start, $end])
+            ->groupBy(DB::raw('MONTH(users.created_at)'))
+            ->get([DB::raw('COUNT(*) as count'),DB::raw('DATE(users.created_at) as date')]);
 
-        return view('dashboard.dashboard', compact('estimates', 'workorders', 'invoices', 'estimateStatus', 'invoiceYTD', 'invoiceTotal', 'invoiceOutstanding', 'leads', 'leadPercent', 'estimate', 'workorder', 'unpaidInvoices'));
+        dd($users_created);
+
+        return view('dashboard.dashboard', compact('estimates', 'workorders', 'invoices', 'estimateStatus', 'invoiceYTD', 'invoiceTotal', 'invoiceOutstanding', 'leads', 'leadPercent', 'estimate', 'workorder', 'unpaidInvoices','estimateHistory'));
     }
 
     public function manage()

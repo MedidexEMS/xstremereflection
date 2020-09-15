@@ -48,11 +48,11 @@
 							<span class="sidebar-mini-icon">
 								<i class="fa fa-ellipsis-h"></i>
 							</span>
-                    <h4 class="text-section">Components</h4>
+                    <h4 class="text-section">Company Menu</h4>
                 </li>
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#estimates">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fal fa-file-invoice"></i>
                         <p>Estimates</p>
                         <span class="caret"></span>
                     </a>
@@ -78,7 +78,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#workOrders">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="far fa-tools"></i>
                         <p>Work Orders</p>
                         <span class="caret"></span>
                     </a>
@@ -104,7 +104,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#packages">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fas fa-cubes"></i>
                         <p>Packages</p>
                         <span class="caret"></span>
                     </a>
@@ -120,7 +120,7 @@
                 </li>
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#services">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fab fa-servicestack"></i>
                         <p>Services</p>
                         <span class="caret"></span>
                     </a>

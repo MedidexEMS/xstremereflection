@@ -5,7 +5,7 @@
 
             <div class="list-group">
 
-                @foreach($estimates->whereIn('status', [1, 7]) as $estimate)
+                @foreach($estimates->whereIn('status', [0, 1, 7]) as $estimate)
                     <a class="list-group-item list-group-item-action flex-column align-items-start @if($estimate->status == 7) bg-primary @elseif($estimate->approvedPackage) bg-success text-white @elseif(!$estimate->dateofService) bg-warning @endif">
                         <div class="d-flex w-100 justify-content-between">
                             @if($estimate->status == 7) <h4> Needs Rescheduled </h4> @endif
