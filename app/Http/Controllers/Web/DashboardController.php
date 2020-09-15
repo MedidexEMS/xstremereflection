@@ -58,7 +58,7 @@ class DashboardController extends Controller
             ->groupBy(DB::raw('MONTH(invoice_payments.created_at)'))
             ->get([DB::raw('SUM(pmtAmount) as count'),DB::raw('MONTH(invoice_payments.created_at) as date')]);
 
-        $invoiceChart = $users_created->toJson();
+        $invoiceChart = $users_created->date->toJson();
 
         dd($invoiceChart);
 
