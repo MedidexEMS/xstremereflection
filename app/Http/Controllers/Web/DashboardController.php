@@ -13,6 +13,7 @@ use Vanguard\Http\Controllers\Controller;
 use Vanguard\Invoice;
 use Vanguard\InvoicePayment;
 use Vanguard\WorkOrder;
+use DB;
 
 class DashboardController extends Controller
 {
