@@ -60,7 +60,7 @@ class DashboardController extends Controller
 
         $invoiceChart = $users_created->toJson();
 
-        dd($invoiceChart['date']);
+        dd(json_encode($invoiceChart['date']));
 
         return view('dashboard.dashboard', compact('estimates', 'workorders', 'invoices', 'estimateStatus', 'invoiceYTD', 'invoiceTotal', 'invoiceOutstanding', 'leads', 'leadPercent', 'estimate', 'workorder', 'unpaidInvoices','estimateHistory'));
     }
