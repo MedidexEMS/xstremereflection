@@ -265,7 +265,8 @@ class EstimateController extends Controller
     public function store(Request $request)
     {
         //dd($request->dateofService);
-        if($request->dateofService) {$serviceDate = date("Y-m-d", strtotime($request->dateofService)); } else {$serviceDate = "";}
+        if($request->dateofService) {$serviceDate = date("Y-m-d", strtotime($request->dateofService)); } else {$serviceDate = null;}
+        if($request->arrivalTime) {$arrivalTime = $request->arrivalTime; } else {$arrivalTime = null;}
         if($request->customer == 0){
             $validatedData = $request->validate([
                 'email' => 'required_without_all:phoneNumber|sometimes:customers|max:255',
@@ -291,7 +292,7 @@ class EstimateController extends Controller
         $estimate->customerId = $customer->id;
         $estimate->status = 1;
         $estimate->dateofService = $serviceDate;
-        $estimate->arrivalTime = $request->arrivalTime;
+        $estimate->arrivalTime = $arrivalTime;
         $estimate->save();
 
         $tracking = new EstimateTracking;

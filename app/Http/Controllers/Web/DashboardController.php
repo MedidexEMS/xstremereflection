@@ -5,6 +5,7 @@ namespace Vanguard\Http\Controllers\Web;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\View\View;
+use Vanguard\Charts\MonthlyIncomeChart;
 use Vanguard\Customer;
 use Vanguard\Estimate;
 use Vanguard\EstimateStatus;
@@ -53,16 +54,20 @@ class DashboardController extends Controller
         $estimateStatus = EstimateStatus::get();
         $start = Carbon::now()->startOfYear();
         $end = Carbon::now()->endOfYear();
-        $users_created = InvoicePayment::
+        $invoiceChart = InvoicePayment::
             whereBetween('created_at', [$start, $end])
             ->groupBy(DB::raw('MONTH(invoice_payments.created_at)'))
-            ->get([DB::raw('SUM(pmtAmount) as count'),DB::raw('MONTH(invoice_payments.created_at) as date')]);
+            ->get([DB::raw('SUM(pmtAmount) as count'),DB::raw('MONTH(invoice_payments.created_at) as date')])->pluck('date', 'count');
 
-        $invoiceChart = $users_created->toJson();
+        $chart = new MonthlyIncomeChart();
+        $chart->labels($invoiceChart->values());
+        $chart->dataset('Income', 'bar', $invoiceChart->keys());
+        $chart->options(['backgroundColor' => '#ff9e27']);
 
-        dd(json_encode($invoiceChart['date']));
 
-        return view('dashboard.dashboard', compact('estimates', 'workorders', 'invoices', 'estimateStatus', 'invoiceYTD', 'invoiceTotal', 'invoiceOutstanding', 'leads', 'leadPercent', 'estimate', 'workorder', 'unpaidInvoices','estimateHistory'));
+
+
+        return view('dashboard.dashboard', compact('estimates', 'workorders', 'invoices', 'estimateStatus', 'invoiceYTD', 'invoiceTotal', 'invoiceOutstanding', 'leads', 'leadPercent', 'estimate', 'workorder', 'unpaidInvoices','estimateHistory', 'invoiceChart', 'chart'));
     }
 
     public function manage()
