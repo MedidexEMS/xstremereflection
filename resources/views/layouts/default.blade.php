@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/assets/corona/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="/assets/corona/vendors/jvectormap/jquery-jvectormap.css">
+
     <link rel="stylesheet" href="/assets/corona/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="/assets/corona/vendors/owl-carousel-2/owl.carousel.min.css">
     <link rel="stylesheet" href="/assets/corona/vendors/owl-carousel-2/owl.theme.default.min.css">
@@ -91,6 +91,10 @@
 
             $('#datepicker-popup').datepicker({
                 todayHighlight: true,
+            });
+
+            $('.selectBasic').select2({
+                theme: "bootstrap"
             });
 
             $('#customerInvoiceForm').load('/customer/form', function () {

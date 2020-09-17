@@ -25,8 +25,7 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="/assets/indexial/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/indexial/css/indexial.css">
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="/assets/indexial/css/demo.css">
+
     <link rel="stylesheet" href="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
     <!-- plugins:css -->
     <script src="https://kit.fontawesome.com/6c1803817f.js" crossorigin="anonymous" `SameSite=None`></script>
@@ -87,10 +86,6 @@
 <!-- Bootstrap Toggle -->
 <script src="/assets/indexial/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
 
-<!-- jQuery Vector Maps -->
-<script src="/assets/indexial/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-<script src="/assets/indexial/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
-
 <!-- Google Maps Plugin -->
 <script src="/assets/indexial/js/plugin/gmaps/gmaps.js"></script>
 
@@ -132,10 +127,6 @@
 
 <script src="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
-<!-- Indexial DEMO methods, don't include it in your project! -->
-<script src="/assets/indexial/js/setting-demo.js"></script>
-<script src="/assets/indexial/js/demo.js"></script>
-
 
 <script>
 
@@ -145,10 +136,19 @@
             todayHighlight: true,
         });
 
+
+
         $('#customerInvoiceForm').load('/customer/form', function () {
             $( "#newCustomer" ).hide();
+
+            $('.select').select2({
+                dropdownParent: $('#customerModal .modal-content'),
+                theme: "bootstrap"
+            });
         });
     });
+
+
 
     function customerChange() {
         var customer = document.getElementById("customer").value;

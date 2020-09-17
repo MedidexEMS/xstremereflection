@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/estimate/addVehicle/{{$customer->id}}/{{$estimate->id}}" method="POST">
+                <form action="/estimate/addVehicle/{{$customer->id}}/{{$estimate->id}}" id="vehicleForm" method="POST">
                     @csrf
                     <div class="form-group mb-2">
                         <label for="vehicleId"> Customer Vehicle <span class="text-danger">*</span></label>
@@ -24,30 +24,30 @@
                     <button type="submit" id="addCustomerVehicle" class="btn btn-primary">Add Vehicle</button>
                 </form>
 
-                <form id="newVehicleForm" action="/estimate/addVehicle/{{$customer->id}}/{{$estimate->id}}" method="POST">
+                <form id="new" action="/estimate/addVehicle/{{$customer->id}}/{{$estimate->id}}" method="POST">
                     @csrf
                     <div class="form-group mb-2">
-                        <label for="discount">Enter Vehicle VIN <span class="text-danger">*</span></label>
+                        <label for="discount">Enter Vehicle VIN </label>
                         <input type="text" class="form-control" name="vin" id="vin" placeholder="Type VIN Here" onchange="vinUpdate()" />
                     </div>
                     <div class="form-group mb-2">
                         <label for="year">Vehicle Year <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="year" id="year" placeholder="Vehicle Year"  />
+                        <input type="text" class="form-control" name="year" id="year" placeholder="Vehicle Year" required />
                     </div>
                     <div class="form-group mb-2">
                         <label for="make">Vehicle Make <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="make" id="make" placeholder="Vehicle Make"  />
+                        <input type="text" class="form-control" name="make" id="make" placeholder="Vehicle Make" required />
                     </div>
                     <div class="form-group mb-2">
                         <label for="model">Vehicle Model <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="model" id="model" placeholder="Vehicle Model"  />
+                        <input type="text" class="form-control" name="model" id="model" placeholder="Vehicle Model" required />
                     </div>
                     <div class="form-group mb-2">
-                        <label for="trim">Vehicle Trim <span class="text-danger">*</span></label>
+                        <label for="trim">Vehicle Trim </label>
                         <input type="text" class="form-control" name="trim" id="trim" placeholder="Vehicle Trim"  />
                     </div>
                     <div class="form-group mb-2">
-                        <label for="condition">Vehicle Style <span class="text-danger">*</span></label>
+                        <label for="condition">Vehicle Style </label>
                         <input type="text" class="form-control" name="style" id="style" placeholder="Vehicle Style"  />
                     </div>
                     <div class="form-group mb-2">

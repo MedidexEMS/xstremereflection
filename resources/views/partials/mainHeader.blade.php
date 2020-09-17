@@ -267,6 +267,7 @@
                             <li>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/profile">My Profile</a>
+                                <a class="dropdown-item" href="https://xtremereflection.freshdesk.com/support/home">Help Center</a>
                                 <a class="dropdown-item" href="/logout">Logout</a>
                             </li>
                         </div>

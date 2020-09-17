@@ -1,6 +1,8 @@
-@extends('layouts.default')
+@extends('layouts.dashboard')
 
-@section('page-title', __('New Invoice'))
+@section('page-title', __('Customer Estimate'))
+@section('customer-info', __($customer->firstName.' '.$customer->lastName))
+@section('estimate-number', __('Estimate ID: '.$estimate->eid))
 @section('page-heading', __('New Invoice'))
 
 @section('breadcrumbs')
@@ -148,11 +150,6 @@
     }
 </style>
 
-<script>
-    $(document).ready(function() {
-        $('#summernote').summernote();
-    });
-</script>
 @stop
 
 @section('content')
@@ -262,9 +259,16 @@
 
 @section('scripts')
 
-
+    <script>
+        $('#summernote').summernote({
+            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+            tabsize: 2,
+            height: 50
+        });
+    </script>
 
     <script>
+
         function listPriceUpdate() {
             var id = document.getElementById("packageId").value;
 
@@ -292,9 +296,10 @@
             }
         }
 
-        $('#vehicleModal').on('show.bs.modal', function (){
+        $('#vehicleModal').on('shown.bs.modal', function (){
 
-            $( "#newVehicleForm" ).hide();
+            $( "#new" ).hide();
+
         });
 
         function vehicleUpdate(){
@@ -302,12 +307,12 @@
 
             if(vehicleId == 0){
 
-                $( "#newVehicleForm" ).show();
+                $( "#new" ).show();
                 $( "#addCustomerVehicle").hide();
             }
             else {
                 console.log('Existing Customer')
-                $( "#newVehicleForm" ).hide();
+                $( "#new" ).hide();
                 $( "#addCustomerVehicle").show();
             }
 

@@ -125,20 +125,21 @@
             lineColor: '#ffa534',
             fillColor: 'rgba(255, 165, 52, .14)'
         });
-
+        @if(1 == 1)
         //Notify
         $.notify({
             icon: 'flaticon-alarm-1',
-            title: 'Indexial',
-            message: 'Bootstrap 4 Admin Template',
+            title: 'Free Schedule',
+            message: 'You have no work scheduled for today',
         },{
-            type: 'secondary',
+            type: 'success',
             placement: {
                 from: "bottom",
                 align: "right"
             },
-            time: 1000,
+            time: 5000,
         });
+        @endif
     </script>
 
     <script>

@@ -3,7 +3,7 @@
 
 <div class="form-group">
     <label for="customer">Select Customer</label>
-    <select class="form-control selectBasic" id="customer" name="customer" style="width: 100%" onchange="customerChange()" >
+    <select class="form-control select" id="customer" name="customer" style="width: 100%" onchange="customerChange()" >
         <option selected> Select Customer or Add New Customer </option>
         <option value="0"> Add New Customer </option>
         @foreach($customers as $customer)
@@ -19,8 +19,8 @@
     </span>
 </div>
 <div class="form-group">
-    <label for="serviceTime">Detail Type</label>
-    <select class="js-example-basic-single" id="detailType" name="detailType" style="width: 100%"  >
+    <label for="detailType">Detail Type</label>
+    <select class="form-control select" id="detailType" name="detailType" >
         <option selected> Select Type of Detail Location </option>
 
         <option value="1"> Shop</option>
@@ -32,8 +32,8 @@
 
 <div class="form-group">
     <label for="serviceTime">Select Time (Arrival Window is 3 Hours)</label>
-    <select class="js-example-basic-single" id="arrivalTime" name="arrivalTime" style="width: 100%"  >
-        <option selected> Select Time of Arrival </option>
+    <select class="form-control select" id="arrivalTime" name="arrivalTime"  >
+        <option value="0" selected> Select Time of Arrival </option>
 
             <option value="06:00:00"> 6:00 AM</option>
             <option value="07:00:00"> 7:00 AM</option>

@@ -1,10 +1,10 @@
-<div class="card">
-    <div class="card-body py-0 px-0">
+<div class="card full-height">
+    <div class="card-body py-0">
 
             @if($estimate->vehicle)
             <div class="row ">
                 <div class="col-xl-12">
-                    <h4 class="mb-1 mb-sm-0">Customer Information</h4>
+                    <h4 class="mb-1 mb-sm-0">Vehicle Information</h4>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">
                         VIN Number: {{$estimate->vehicle->vehicleInfo->vin ?? '?'}}
                     </p>
@@ -24,7 +24,7 @@
             </div>
             @else
                 <div class="row">
-                    <h4 class="mb-1 mb-sm-0">Customer Information</h4>
+                    <h4 class="mb-1 mb-sm-0">Vehicle Information</h4>
                 </div>
                 <div class="row">
                     <div class="col">

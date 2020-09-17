@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.dashboard')
 
 @section('page-title', __('Estimate List'))
 @section('page-heading', __('Estimate List'))
