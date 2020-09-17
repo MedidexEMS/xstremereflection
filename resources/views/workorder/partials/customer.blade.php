@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card full-height">
     <div class="card-body py-0 px-0 px-sm-3">
         <div class="row ">
 
