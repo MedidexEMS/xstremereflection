@@ -56,15 +56,16 @@ class DashboardController extends Controller
         $end = Carbon::now()->endOfYear();
         $invoiceChart = InvoicePayment::
             whereBetween('created_at', [$start, $end])
-            ->groupBy(DB::raw('MONTH(invoice_payments.created_at)'))
-            ->get([DB::raw('SUM(pmtAmount) as count'),DB::raw('MONTH(invoice_payments.created_at) as date')])->pluck('date', 'count');
+            ->groupBy(DB::raw('monthname(created_at)'))
+            ->get([DB::raw('SUM(pmtAmount) as count'),DB::raw('monthname(created_at) as date')])->pluck('date', 'count');
 
         $chart = new MonthlyIncomeChart();
-        $chart->labels($invoiceChart->values());
-        $chart->dataset('Income', 'bar', $invoiceChart->keys());
-        $chart->options(['backgroundColor' => '#ff9e27']);
+        $chart->labels($invoiceChart->values())
+        ->dataset('Income', 'bar', $invoiceChart->keys())->options(
+            [
+                'backgroundColor' => '#ff9e27',
 
-
+            ]);
 
 
         return view('dashboard.dashboard', compact('estimates', 'workorders', 'invoices', 'estimateStatus', 'invoiceYTD', 'invoiceTotal', 'invoiceOutstanding', 'leads', 'leadPercent', 'estimate', 'workorder', 'unpaidInvoices','estimateHistory', 'invoiceChart', 'chart'));

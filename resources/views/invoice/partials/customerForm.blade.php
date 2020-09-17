@@ -3,7 +3,7 @@
 
 <div class="form-group">
     <label for="customer">Select Customer</label>
-    <select class="js-example-basic-single" id="customer" name="customer" style="width: 100%" onchange="customerChange()" >
+    <select class="form-control selectBasic" id="customer" name="customer" style="width: 100%" onchange="customerChange()" >
         <option selected> Select Customer or Add New Customer </option>
         <option value="0"> Add New Customer </option>
         @foreach($customers as $customer)
@@ -98,6 +98,6 @@
 
 <script>
     $(document).ready(function() {
-        $('.js-example-basic-single').select2();
+        $('.selectBasic').select2();
     });
 </script>

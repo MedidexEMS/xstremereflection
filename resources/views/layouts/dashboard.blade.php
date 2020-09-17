@@ -168,7 +168,11 @@
 <script>
     $('.toast').toast('show')
 </script>
-
+<script>
+    $('.js-example-basic-single').select2({
+        theme: "bootstrap"
+    });
+</script>
 @yield('scripts')
 
 @hook('app:scripts')
