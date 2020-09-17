@@ -70,7 +70,7 @@
                             @if($s->service->serviceTypeId == 2)
                                 <li>
                                     <div class="col-xl-2 text-center">
-                                        <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
                                             <label class="form-check-label">
                                                 <input type="checkbox" name="service" value="{{$s->id}}" class="custom-control-input" data-id="{{$s->id}}" @if($s->status == 2) checked @endif">
                                             </label>
