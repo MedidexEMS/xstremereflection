@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-body py-0 px-0 px-sm-3">
             <div class="list-wrapper">
-                <ul class="d-flex flex-column text-white todo-list todo-list-custom">
+                <ul class="d-flex flex-column todo-list todo-list-custom">
 
                     <li>
                         <div class="col-xl-2 text-center">
@@ -54,7 +54,7 @@
     <div class="card">
         <div class="card-body py-0 px-0 px-sm-3">
             <div class="list-wrapper">
-                <ul class="d-flex flex-column text-white todo-list todo-list-custom">
+                <ul class="d-flex flex-column todo-list todo-list-custom">
 
                     <li>
                         <div class="col-xl-2 text-center">
@@ -104,7 +104,7 @@
     <div class="card">
         <div class="card-body py-0 px-0 px-sm-3">
             <div class="list-wrapper">
-                <ul class="d-flex flex-column text-white todo-list todo-list-custom">
+                <ul class="d-flex flex-column todo-list todo-list-custom">
 
                     <li>
                         <div class="col-xl-2 text-center">
