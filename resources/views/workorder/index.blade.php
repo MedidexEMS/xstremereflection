@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.dashboard')
 
 @section('page-title', __('Work Orders Active'))
 @section('page-heading', __('Work Orders Active'))

@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.dashboard')
 
 @section('page-title', __($workOrder->estimate->customer->lastName .' Work Order'))
 @section('page-heading', __($workOrder->estimate->customer->lastName .' Work Order'))
