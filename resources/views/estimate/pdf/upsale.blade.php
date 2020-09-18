@@ -13,7 +13,7 @@
 <div class="container-fluid">
     <div class="row mb-4">
         <div class="col-6">
-            <img src="{{ public_path('assets/img/logo1.png') }}" width="450px" height="140px" alt="logo"/>
+            <img src="{{ public_path($estimate->customer->company->logo) }}"  width="450px" height="140px" alt="logo"/>
         </div>
         <div class="col-6">
             <table class="table table-sm">
