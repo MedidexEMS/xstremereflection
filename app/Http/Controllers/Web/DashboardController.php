@@ -91,7 +91,9 @@ class DashboardController extends Controller
         $invoiceYTD = Invoice::whereBetween('created_at', [
             Carbon::now()->startOfYear(),
             Carbon::now()->endOfYear(),
-        ])->get();
+        ])
+            ->where('companyId', Auth()->user()->companyId)
+            ->get();
 
         $estimateStatus = EstimateStatus::get();
 
