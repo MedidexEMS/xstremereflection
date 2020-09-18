@@ -32,6 +32,7 @@ class WorkOrderController extends Controller
     {
         $workorders = WorkOrder::
             where('status', '<', 8)
+            ->where('companyId', Auth()->user()->companyId)
             ->get();
 
         return view('workorder.index', compact('workorders'));
@@ -40,6 +41,7 @@ class WorkOrderController extends Controller
     {
         $workorders = WorkOrder::
         where('status', 9)
+            ->where('companyId', Auth()->user()->companyId)
             ->get();
 
         return view('workorder.index', compact('workorders'));
@@ -49,6 +51,7 @@ class WorkOrderController extends Controller
     {
         $workorders = WorkOrder::
         where('status', 8)
+            ->where('companyId', Auth()->user()->companyId)
             ->get();
 
         return view('workorder.index', compact('workorders'));
