@@ -60,7 +60,7 @@ class EstimateController extends Controller
 
     public function uploadSignature(Request $request, $pid, $eid)
     {
-        $invoice = Invoice::where('estimateId', $eid);
+        $invoice = Invoice::where('estimateId', $eid)->get();
         if($invoice){
 
             return back()->with('error', 'This estimate has already been approved please contact the shop');
