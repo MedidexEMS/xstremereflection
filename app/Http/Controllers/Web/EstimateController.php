@@ -63,11 +63,11 @@ class EstimateController extends Controller
         $invoice = Invoice::where('estimateId', $eid)->get();
 
         if(count($invoice)){
-            dd('Invoice Exists');
+           // dd('Invoice Exists');
             return back()->with('error', 'This estimate has already been approved please contact the shop');
 
         }else {
-            dd('New Invoice');
+           //dd('New Invoice');
             $folderPath = public_path('customerSignature/');
 
             $image_parts = explode(";base64,", $request->signed);
