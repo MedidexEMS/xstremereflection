@@ -1,6 +1,7 @@
 <?php
 
 namespace Vanguard\Http\Controllers\Web;
+use Illuminate\Validation\Rules\In;
 use Notification;
 use Carbon\Carbon;
 use Vanguard\AddOnService;
@@ -59,140 +60,146 @@ class EstimateController extends Controller
 
     public function uploadSignature(Request $request, $pid, $eid)
     {
-        $folderPath = public_path('customerSignature/');
+        $invoice = Invoice::where('estimateId', $eid);
+        if($invoice){
 
-        $image_parts = explode(";base64,", $request->signed);
+            return back()->with('error', 'This estimate has already been approved please contact the shop');
 
-        $image_type_aux = explode("image/", $image_parts[0]);
+        }else {
+            $folderPath = public_path('customerSignature/');
 
-        $image_type = $image_type_aux[1];
+            $image_parts = explode(";base64,", $request->signed);
 
-        $image_base64 = base64_decode($image_parts[1]);
+            $image_type_aux = explode("image/", $image_parts[0]);
 
-        $fileName = uniqid(). '.'.$image_type;
+            $image_type = $image_type_aux[1];
 
-        $file = $folderPath . $fileName;
+            $image_base64 = base64_decode($image_parts[1]);
 
-        file_put_contents($file, $image_base64);
+            $fileName = uniqid() . '.' . $image_type;
 
-        $package = EstimatePackage::find($pid);
+            $file = $folderPath . $fileName;
 
-        $estimate = Estimate::find($eid);
+            file_put_contents($file, $image_base64);
 
-        $customer = Customer::find($estimate->customerId);
+            $package = EstimatePackage::find($pid);
 
-        $estimate->approvedPackage = $pid;
-        $estimate->signature = '/customerSignature/'.$fileName;
-        $estimate->signed = Carbon::now();
-        $estimate->total = $package->chargedPrice;
-        $estimate->deposit = $package->deposit;
+            $estimate = Estimate::find($eid);
 
-        $estimate->save();
+            $customer = Customer::find($estimate->customerId);
 
-        $package->approved = 1;
-        $package->save();
+            $estimate->approvedPackage = $pid;
+            $estimate->signature = '/customerSignature/' . $fileName;
+            $estimate->signed = Carbon::now();
+            $estimate->total = $package->chargedPrice;
+            $estimate->deposit = $package->deposit;
+
+            $estimate->save();
+
+            $package->approved = 1;
+            $package->save();
 
 
-        $workorder = new WorkOrder;
-        $workorder->companyId = Auth()->user()->companyId;
-        $workorder->estimateId = $estimate->id;
-        $workorder->totalCharge = $estimate->total;
-        $workorder->status = 1;
-        $workorder->save();
+            $workorder = new WorkOrder;
+            $workorder->companyId = Auth()->user()->companyId;
+            $workorder->estimateId = $estimate->id;
+            $workorder->totalCharge = $estimate->total;
+            $workorder->status = 1;
+            $workorder->save();
 
-        $tracking = new EstimateTracking;
-        $tracking->estimateId = $eid;
-        $tracking->note = 'Estimate approved by customer and work order created.';
-        $tracking->save();
+            $tracking = new EstimateTracking;
+            $tracking->estimateId = $eid;
+            $tracking->note = 'Estimate approved by customer and work order created.';
+            $tracking->save();
 
-        $wtracking = new WorkOrderTracking;
-        $wtracking->workOrderId = $workorder->id;
-        $wtracking->note = 'Estimate approved by customer and work order created.';
-        $wtracking->save();
+            $wtracking = new WorkOrderTracking;
+            $wtracking->workOrderId = $workorder->id;
+            $wtracking->note = 'Estimate approved by customer and work order created.';
+            $wtracking->save();
 
-        if($estimate->approvedPackage){
-            $array = explode(',', $estimate->acceptedPackage->package->includes);
-            $services = packageItem::whereIn('packageId', $array)->get();
+            if ($estimate->approvedPackage) {
+                $array = explode(',', $estimate->acceptedPackage->package->includes);
+                $services = packageItem::whereIn('packageId', $array)->get();
 
-            foreach($services as $service){
-                $estimateService = new WorkOrderServices;
-                $estimateService->estimateId = $estimate->id;
-                $estimateService->workOrderId = $workorder->id;
-                $estimateService->qty = 1;
-                $estimateService->serviceId = $service->serviceId;
-                $estimateService->listPrice = $service->desc->charge;
-                $estimateService->chargedPrice = 0;
-                $estimateService->status = 1;
-                $estimateService->save();
+                foreach ($services as $service) {
+                    $estimateService = new WorkOrderServices;
+                    $estimateService->estimateId = $estimate->id;
+                    $estimateService->workOrderId = $workorder->id;
+                    $estimateService->qty = 1;
+                    $estimateService->serviceId = $service->serviceId;
+                    $estimateService->listPrice = $service->desc->charge;
+                    $estimateService->chargedPrice = 0;
+                    $estimateService->status = 1;
+                    $estimateService->save();
+                }
+                $addons = AddOnService::where('packageId', $estimate->acceptedPackage)->get();
+
+                foreach ($addons as $row) {
+                    $estimateService = new WorkOrderServices;
+                    $estimateService->estimateId = $estimate->id;
+                    $estimateService->workOrderId = $workorder->id;
+                    $estimateService->qty = 1;
+                    $estimateService->serviceId = $row->serviceId;
+                    $estimateService->listPrice = $row->desc->charge;
+                    $estimateService->chargedPrice = $row->chargedPrice;
+                    $estimateService->status = 1;
+                    $estimateService->save();
+                }
             }
-            $addons = AddOnService::where('packageId', $estimate->acceptedPackage)->get();
 
-            foreach($addons as $row)
-            {
-                $estimateService = new WorkOrderServices;
-                $estimateService->estimateId = $estimate->id;
-                $estimateService->workOrderId = $workorder->id;
-                $estimateService->qty = 1;
-                $estimateService->serviceId = $row->serviceId;
-                $estimateService->listPrice = $row->desc->charge;
-                $estimateService->chargedPrice = $row->chargedPrice;
-                $estimateService->status = 1;
-                $estimateService->save();
+            $invoice = new Invoice;
+
+            $invoice->companyId = Auth()->user()->companyId;
+            $invoice->customerId = $workorder->estimate->customerId;
+            $invoice->estimateId = $workorder->estimate->id;
+            $invoice->workOrderId = $workorder->id;
+            $invoice->detailType = $workorder->estimate->detailType;
+            $invoice->dateofService = $workorder->estimate->dateofService;
+            $invoice->total = $workorder->totalCharge;
+            $invoice->deposit = $estimate->deposit;
+            $invoice->status = 1;
+            $invoice->save();
+
+            $workorder->invoiceId = $invoice->id;
+            $workorder->save();
+
+            $estimate->invoiceId = $invoice->id;
+            $estimate->save();
+
+            if ($estimate->customer->email) {
+                Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new AcceptedEstimateEmail($estimate));
+                $userSchema = User::where('companyId', $estimate->companyId);
+
+                if (Mail::failures()) {
+                    $tracking = new EstimateTracking;
+                    $tracking->estimateId = $estimate->id;
+                    $tracking->note = 'Customer approved and signed email was not sent.';
+                    $tracking->save();
+
+                } else {
+                    $tracking = new EstimateTracking;
+                    $tracking->estimateId = $estimate->id;
+                    $tracking->note = 'You have successfully accepted the package and signed your estimate we attempted to email you a copy, unfortunately the email did not go through. One of our representative will contact you shortly..';
+                    $tracking->save();
+
+                }
             }
-        }
 
-        $invoice = new Invoice;
+            if ($invoice->deposit > 0) {
+                $amount = $invoice->deposit * 100;
+                $paymentDescription = 'Detail Deposit';
+                if ($invoice->company->acceptPayment == 1) {
+                    return view('estimate.payment', compact('invoice', 'amount', 'customer', 'paymentDescription'))->with('success', 'You have successfully accepted the package and signed your estimate a copy will be emailed to you. One of our representative will contact you shortly.');
+                } else {
+                    return view('invoice.summary', compact('invoice'));
+                }
 
-        $invoice->companyId = Auth()->user()->companyId;
-        $invoice->customerId = $workorder->estimate->customerId;
-        $invoice->estimateId = $workorder->estimate->id;
-        $invoice->workOrderId = $workorder->id;
-        $invoice->detailType = $workorder->estimate->detailType;
-        $invoice->dateofService = $workorder->estimate->dateofService;
-        $invoice->total = $workorder->totalCharge;
-        $invoice->deposit = $estimate->deposit;
-        $invoice->status = 1;
-        $invoice->save();
-
-        $workorder->invoiceId = $invoice->id;
-        $workorder->save();
-
-        $estimate->invoiceId = $invoice->id;
-        $estimate->save();
-
-        if($estimate->customer->email){
-            Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new AcceptedEstimateEmail($estimate));
-            $userSchema = User::where('companyId', $estimate->companyId);
-
-            if(Mail::failures()){
-                $tracking = new EstimateTracking;
-                $tracking->estimateId = $estimate->id;
-                $tracking->note = 'Customer approved and signed email was not sent.';
-                $tracking->save();
-
-            }else{
-                $tracking = new EstimateTracking;
-                $tracking->estimateId = $estimate->id;
-                $tracking->note = 'You have successfully accepted the package and signed your estimate we attempted to email you a copy, unfortunately the email did not go through. One of our representative will contact you shortly..';
-                $tracking->save();
-
-            }
-        }
-
-        if($invoice->deposit > 0){
-            $amount = $invoice->deposit * 100;
-            $paymentDescription = 'Detail Deposit';
-            if($invoice->company->acceptPayment == 1){
-                return view('estimate.payment', compact('invoice', 'amount', 'customer', 'paymentDescription'))->with('success', 'You have successfully accepted the package and signed your estimate a copy will be emailed to you. One of our representative will contact you shortly.');
-            }else{
+            } else {
                 return view('invoice.summary', compact('invoice'));
+
             }
 
-        }else{
-            return back()->with('success', 'You have successfully accepted the package and our representative will contact you shortly.');
-
         }
-
     }
 
     public function approved()
