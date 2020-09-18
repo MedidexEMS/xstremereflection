@@ -17,9 +17,10 @@
         </div>
         <div class="col-6">
             <address>
-                4663 State Route 784 <br/>
-                South Shore, Ky 41175 <br/>
-                (740) 207-2847
+                 <br/>
+                {{$estimate->customer->company->house ?? ''}} {{$estimate->customer->company->street ?? ''}}<br/>
+                {{$estimate->customer->company->city ?? ''}} {{$estimate->customer->company->state ?? ''}} {{$estimate->customer->company->zip ?? ''}} <br />
+                {{$estimate->customer->company->phone ?? ''}}
             </address>
             <h3>Estimate ID: {{$estimate->id ?? 'Unknown ID'}}</h3>
             <h3>Estimate Date: {{\Carbon\Carbon::parse($estimate->created_at)->format('M d Y')}}</h3>
