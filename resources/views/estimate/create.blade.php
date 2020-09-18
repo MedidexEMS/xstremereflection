@@ -175,7 +175,13 @@
                 @endif
                 @if($estimate->approvedPackage)
             <div class="col">
-                <a href="/estimate/workOrder/{{$estimate->id}}" ><button type="button" class="btn btn-primary" style="width: 100%">Convert to Work Order</button></a>
+                @if($estimate->workorder)
+                    <a href="/workOrder/{{$estimate->workorder->id}}/show" ><button type="button" class="btn btn-info" style="width: 100%">View The Work Order</button></a>
+
+                @else
+                    <a href="/estimate/workOrder/{{$estimate->id}}" ><button type="button" class="btn btn-primary" style="width: 100%">Convert to Work Order</button></a>
+
+                @endif
             </div>
                 @endif
             <div class="col">
