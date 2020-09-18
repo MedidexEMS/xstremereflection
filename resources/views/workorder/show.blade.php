@@ -22,7 +22,7 @@
                     @include('workorder.partials.statusButtons')
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-2">
                 <div class="col-xl-12">
                     <a href="/workorder/completed/{{$workOrder->id}}" class="btn btn-success btn-block">Complete Work Order</a>
                 </div>
