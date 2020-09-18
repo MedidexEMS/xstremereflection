@@ -495,79 +495,86 @@ class EstimateController extends Controller
 
     public function estimateMakeWorkOrder ($id)
     {
+
         $estimate= Estimate::find($id);
         $estimate->status = 4;
         $estimate->save();
 
-        $wo = new WorkOrder;
-        $wo->companyId = Auth()->user()->companyId;
-        $wo->estimateId = $id;
-        $wo->totalCharge = $estimate->total;
-        $wo->status = 1;
-        $wo->save();
+        if($estimate->workorder){
+            return redirect()->route('workorder.show', ['id' => $estimate->workorder->id])->with('success', 'The workorder already existed you are viewing it now.');
+        }else{
+            $wo = new WorkOrder;
+            $wo->companyId = Auth()->user()->companyId;
+            $wo->estimateId = $id;
+            $wo->totalCharge = $estimate->total;
+            $wo->status = 1;
+            $wo->save();
 
-        $tracking = new EstimateTracking;
-        $tracking->estimateId = $id;
-        $tracking->note = 'Estimate approved and work order created.';
-        $tracking->save();
+            $tracking = new EstimateTracking;
+            $tracking->estimateId = $id;
+            $tracking->note = 'Estimate approved and work order created.';
+            $tracking->save();
 
-        $wtracking = new WorkOrderTracking;
-        $wtracking->workOrderId = $wo->id;
-        $wtracking->note = 'Estimate approved and work order created.';
-        $wtracking->save();
+            $wtracking = new WorkOrderTracking;
+            $wtracking->workOrderId = $wo->id;
+            $wtracking->note = 'Estimate approved and work order created.';
+            $wtracking->save();
 
-        if($estimate->approvedPackage){
-            $array = explode(',', $estimate->acceptedPackage->package->includes);
-            $services = packageItem::whereIn('packageId', $array)->orWhere('packageId', $estimate->acceptedPackage->package->id)->get();
+            if($estimate->approvedPackage){
+                $array = explode(',', $estimate->acceptedPackage->package->includes);
+                $services = packageItem::whereIn('packageId', $array)->orWhere('packageId', $estimate->acceptedPackage->package->id)->get();
 
-            foreach($services as $service){
-                $estimateService = new WorkOrderServices;
-                $estimateService->estimateId = $estimate->id;
-                $estimateService->workOrderId = $wo->id;
-                $estimateService->qty = 1;
-                $estimateService->serviceId = $service->serviceId;
-                $estimateService->listPrice = $service->desc->charge;
-                $estimateService->chargedPrice = 0;
-                $estimateService->status = 1;
-                $estimateService->save();
+                foreach($services as $service){
+                    $estimateService = new WorkOrderServices;
+                    $estimateService->estimateId = $estimate->id;
+                    $estimateService->workOrderId = $wo->id;
+                    $estimateService->qty = 1;
+                    $estimateService->serviceId = $service->serviceId;
+                    $estimateService->listPrice = $service->desc->charge;
+                    $estimateService->chargedPrice = 0;
+                    $estimateService->status = 1;
+                    $estimateService->save();
+                }
+                $addons = AddOnService::where('packageId', $estimate->approvedPackage)->get();
+
+                foreach($addons as $row)
+                {
+                    $estimateService = new WorkOrderServices;
+                    $estimateService->estimateId = $estimate->id;
+                    $estimateService->workOrderId = $wo->id;
+                    $estimateService->qty = 1;
+                    $estimateService->serviceId = $row->serviceId;
+                    $estimateService->listPrice = $row->service->charge;
+                    $estimateService->chargedPrice = $row->price;
+                    $estimateService->status = 1;
+                    $estimateService->save();
+                }
             }
-            $addons = AddOnService::where('packageId', $estimate->approvedPackage)->get();
 
-            foreach($addons as $row)
-            {
-                $estimateService = new WorkOrderServices;
-                $estimateService->estimateId = $estimate->id;
-                $estimateService->workOrderId = $wo->id;
-                $estimateService->qty = 1;
-                $estimateService->serviceId = $row->serviceId;
-                $estimateService->listPrice = $row->service->charge;
-                $estimateService->chargedPrice = $row->price;
-                $estimateService->status = 1;
-                $estimateService->save();
-            }
+            $invoice = new Invoice;
+
+            $invoice->companyId = Auth()->user()->companyId;
+            $invoice->customerId = $wo->estimate->customerId;
+            $invoice->estimateId = $wo->estimate->id;
+            $invoice->workOrderId = $wo->id;
+            $invoice->detailType = $wo->estimate->detailType;
+            $invoice->dateofService = $wo->estimate->dateofService;
+            $invoice->total = $wo->totalCharge;
+            $invoice->deposit = $estimate->deposit;
+            $invoice->status = 1;
+            $invoice->save();
+
+            $wo->invoiceId = $invoice->id;
+            $wo->save();
+
+            $estimate->invoiceId = $invoice->id;
+            $estimate->save();
+
+
+            return redirect()->route('workorder.show', ['id' => $wo->id])->with('success', 'You have created a new work order.');
         }
 
-        $invoice = new Invoice;
 
-        $invoice->companyId = Auth()->user()->companyId;
-        $invoice->customerId = $wo->estimate->customerId;
-        $invoice->estimateId = $wo->estimate->id;
-        $invoice->workOrderId = $wo->id;
-        $invoice->detailType = $wo->estimate->detailType;
-        $invoice->dateofService = $wo->estimate->dateofService;
-        $invoice->total = $wo->totalCharge;
-        $invoice->deposit = $estimate->deposit;
-        $invoice->status = 1;
-        $invoice->save();
-
-        $wo->invoiceId = $invoice->id;
-        $wo->save();
-
-        $estimate->invoiceId = $invoice->id;
-        $estimate->save();
-
-
-        return redirect()->route('workorder.show', ['id' => $wo->id])->with('success', 'You have created a new work order.');
     }
 
     public function addPackageService (Request $request, $id)
