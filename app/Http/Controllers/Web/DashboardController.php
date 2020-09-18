@@ -51,7 +51,9 @@ class DashboardController extends Controller
         $workorder = count($workorders->where('status', '<', 8));
         $unpaidInvoices = count($invoiceYTD->where('status', 1));
 
-        $estimateHistory = EstimateTracking::orderBy('created_at', 'desc')->take('10')->get();
+        $estimateHistory = EstimateTracking::
+            where('companyId', Auth()->user()->companyId)
+            ->orderBy('created_at', 'desc')->take('10')->get();
 
 
         $estimateStatus = EstimateStatus::get();
