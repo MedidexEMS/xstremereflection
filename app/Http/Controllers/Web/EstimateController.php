@@ -182,7 +182,12 @@ class EstimateController extends Controller
         if($invoice->deposit > 0){
             $amount = $invoice->deposit * 100;
             $paymentDescription = 'Detail Deposit';
-            return view('estimate.payment', compact('invoice', 'amount', 'customer', 'paymentDescription'))->with('success', 'You have successfully accepted the package and signed your estimate a copy will be emailed to you. One of our representative will contact you shortly.');
+            if($invoice->company->acceptPayment == 1){
+                return view('estimate.payment', compact('invoice', 'amount', 'customer', 'paymentDescription'))->with('success', 'You have successfully accepted the package and signed your estimate a copy will be emailed to you. One of our representative will contact you shortly.');
+            }else{
+                return view('invoice.summary', compact('invoice'));
+            }
+
         }else{
             return back()->with('success', 'You have successfully accepted the package and our representative will contact you shortly.');
 

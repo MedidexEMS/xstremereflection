@@ -10,6 +10,7 @@ use Vanguard\Customer;
 use Vanguard\Estimate;
 use Vanguard\EstimateStatus;
 use Vanguard\EstimateTracking;
+use Vanguard\Http\Controllers\Api\Auth\AuthController;
 use Vanguard\Http\Controllers\Controller;
 use Vanguard\Invoice;
 use Vanguard\InvoicePayment;
@@ -38,7 +39,9 @@ class DashboardController extends Controller
         $invoiceYTD = Invoice::whereBetween('created_at', [
             Carbon::now()->startOfYear(),
             Carbon::now()->endOfYear(),
-        ])->get();
+        ])
+            ->where('companyId', Auth()->user()->companyId)
+            ->get();
 
         $invoiceTotal = $invoiceYTD->sum('total');
         $invoiceOutstanding =  $invoiceTotal - $invoiceYTD->sum('totalPaid');
