@@ -1,6 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('page-title', __($workOrder->estimate->customer->lastName .' Work Order'))
+@section('estimate-number', __('Estimate ID: '.$workOrder->estimate->eid))
 @section('page-heading', __($workOrder->estimate->customer->lastName .' Work Order'))
 
 @section('breadcrumbs')

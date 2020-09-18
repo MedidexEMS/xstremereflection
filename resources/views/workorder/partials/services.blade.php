@@ -1,6 +1,6 @@
 <div class="col-xl-4">
     <h2>Interior Services</h2>
-    <div class="card">
+    <div class="card full-height">
         <div class="card-body py-0 px-0 px-sm-3">
             <div class="list-wrapper">
                 <ul class="list-group list-unstyled">
@@ -50,7 +50,7 @@
 
 <div class="col-xl-4">
     <h2>Exterior Services</h2>
-    <div class="card">
+    <div class="card full-height">
         <div class="card-body py-0 px-0 px-sm-3">
             <div class="list-wrapper">
                 <ul class="list-group list-unstyled">
@@ -100,7 +100,7 @@
 
 <div class="col-xl-4">
     <h2>Other Services</h2>
-    <div class="card">
+    <div class="card full-height">
         <div class="card-body py-0 px-0 px-sm-3">
             <div class="list-wrapper">
                 <ul class="list-group list-unstyled">
