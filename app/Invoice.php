@@ -22,4 +22,8 @@ class Invoice extends Model
     {
         return $this->hasMany(InvoicePayment::class, 'invoiceId');
     }
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'companyId');
+    }
 }

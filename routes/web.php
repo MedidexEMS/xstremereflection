@@ -306,7 +306,7 @@ use Illuminate\Http\Request;
         $estimate->save();
 
         return back()->with('success', 'Customer problem description updated.');
-        return back()->with('success', 'Customer problem description updated.');
+
 
 });
 
@@ -322,6 +322,8 @@ use Illuminate\Http\Request;
        $estimate = \Vanguard\Estimate::find($id);
        $estimate->problem = $request->problem;
        $estimate->save();
+
+       return back()->with('success', 'Estimate customer description updated.');
     });
     Route::get('estimate/{id}/pdf', 'EstimateController@pdf');
     Route::post('/estimate/package/addservice/{id}', 'EstimateController@addPackageService');
