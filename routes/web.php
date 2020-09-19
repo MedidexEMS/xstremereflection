@@ -234,7 +234,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('package/store', 'PackageController@store');
     Route::get('package/edit/{id}', 'PackageController@edit');
     Route::put('package/store/{id}', 'PackageController@update');
-    Route::get('/package/{id}', 'PackageController@show');
+    Route::get('/package/{id}', 'PackageController@show')->name('package.show');
 
 /**
  * Square API Routes
@@ -266,6 +266,22 @@ Route::group(['prefix' => 'order'], function () {
     // Order with customer and merchant included
     Route::get('/{merchant}/{customer}', 'OrderController@orderWithCustomerAndMerchant');
 });
+
+/**
+ * Service Routes
+ */
+
+    Route::get('/service', 'ServicesController@index');
+
+/**
+ * Package Routes
+ */
+
+    Route::post('/package/storeService/{id}', 'PackageController@addService');
+    Route::get('/package/serviceItemRemove/{id}', 'PackageController@removeService');
+    Route::post('/package/storeIncludedPackage/{id}', 'PackageController@addIncludedPackage');
+    Route::get('/package/packageIncludeRemove/{rid}/{id}', 'PackageController@removePackageInclude');
+    Route::post('/package/storeUpsale/{id}', 'PackageController@addUpdsale');
 
 /**
  *Estimates

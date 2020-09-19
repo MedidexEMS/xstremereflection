@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.dashboard')
 
 @section('page-title', __('Packages'))
 @section('page-heading', __('My Packages'))
@@ -14,7 +14,7 @@
 
 <div class="row mb-4">
     <div class="col-xl-4">
-        <a href="/packages/create"><button class="btn btn-primary btn-block">Create New Package</button></a>
+        <a href=";javascript" data-toggle="modal" data-target="#newPackageModal"><button class="btn btn-primary btn-block">Create New Package</button></a>
     </div>
 </div>
 <div class="row">
@@ -22,7 +22,23 @@
 </div>
 
 @stop
-
+@include('packages.partials.modalNewPackage')
 @section('scripts')
 
+    <script>
+        $('#newPackageModal').on('shown.bs.modal', function (){
+
+            $('#summernote').summernote({
+                fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+                tabsize: 2,
+                height: 50
+            });
+
+                $('.select').select2({
+                    dropdownParent: $('#newPackageModal .modal-content'),
+                    theme: "bootstrap"
+                });
+
+        });
+    </script>
 @stop

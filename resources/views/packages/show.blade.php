@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.dashboard')
 
 @section('page-title', __('Package'))
 @section('page-heading', __('Package'))
@@ -60,10 +60,9 @@
     </div>
 
 @stop
-
+@include('packages.partials.modalServices')
+@include('packages.partials.modalIncludedPackage')
+@include('packages.partials.modalUpsale')
 @section('scripts')
-
-
-
-
+    @include('partials.messages2')
 @stop

@@ -29,9 +29,9 @@
                     $laborMargin = $laborPrice / $price * 100;
                     $costs = $laborPrice + $productPrice + $acquisitionPrice;
                     $gross = $price - $laborPrice - $productPrice - $acquisitionPrice;
-                    $profit = $gross / $price * 100;
+                    $profit = ($gross ?? 1) / ($price ?? 1) * 100;
                     $badProfit = 66 - $profit;
-                    $markup = $price - $gross / $costs;
+                    $markup = $price - $gross / ($costs ?? 1);
                     $bonus = $profit - 66 ;
                     $bonusAmount = ($bonus ?? 1)  / 100;
                     $bonusAmount = $bonusAmount * $gross;

@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.dashboard')
 
 @section('page-title', __('New Package'))
 @section('page-heading', __('New Packages'))

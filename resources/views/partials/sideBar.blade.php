@@ -124,10 +124,10 @@
                         <p>Services</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="packages">
+                    <div class="collapse" id="services">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="/services">
+                                <a href="/service">
                                     <span class="sub-item">Services List</span>
                                 </a>
                             </li>
