@@ -11,7 +11,7 @@
 </div>
 
 <div class="row mb-2">
-    <a class="btn btn-info btn-block" href="/invoice/{{$workOrder->invoiceId}}/pdf">View Invoice</a>
+    <a class="btn btn-info btn-block" href="/invoice/{{$workOrder->invoiceId}}">View Invoice</a>
 </div>
 
 @if($workOrder->invoiceId)

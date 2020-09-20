@@ -44,6 +44,7 @@
         "laravel/socialite": "^4.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
+        "nexmo/laravel": "^2.3",
         "proengsoft/laravel-jsvalidation": "^3.0.0",
         "spatie/laravel-query-builder": "^2.8",
         "stripe/stripe-php": "^7.51",

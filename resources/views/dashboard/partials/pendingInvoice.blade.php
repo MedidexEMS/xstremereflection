@@ -4,7 +4,7 @@
         <div class="card-body py-0 px-0 px-sm-3">
 
             <div class="list-group">
-                @foreach($invoices as $row)
+                @foreach($invoices->where('status', 1) as $row)
                     <a href="/workorder/{{$row->invoice->id}}/show" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{$row->firstName ?? 'Missing Customer Info'}} {{$row->lastName ?? 'Missing Customer Info'}} - {{$row->phoneNumber ?? 'Missing Contact Info'}}</h5>

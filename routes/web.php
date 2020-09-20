@@ -423,6 +423,15 @@ Route::post('/payment/{id}/{type}', 'PaymentController@paymentProcess');
     Route::get('/invoice/{id}/paymentModal', 'InvoiceController@paymentModal');
     Route::post('/invoice/payment/{id}', 'InvoiceController@payment');
 
+
+    Route::get('/testmessage', function (){
+       \Nexmo\Laravel\Facade\Nexmo::message()->send([
+            'to' => '17408215531',
+           'from' => '17408215531',
+           'text' => 'This is a test message'
+        ]);
+    });
+
 use GuzzleHttp\Client;
 
 Route::get('/vin-api/{vin}', function($vin) {
