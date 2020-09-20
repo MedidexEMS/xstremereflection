@@ -86,7 +86,10 @@ class DashboardController extends Controller
 
         $workorders = WorkOrder::where('companyId', Auth()->user()->companyId)->get();
 
-        $invoices = Customer::where('companyId', Auth()->user()->companyId)->whereHas('invoice', function($q){$q->where('status',  1);})->get() ;
+        $invoices = Invoice::
+            where('companyId', Auth()->user()->companyId)
+            ->where('status', 1)
+            ->get();
 
         $invoiceYTD = Invoice::whereBetween('created_at', [
             Carbon::now()->startOfYear(),
