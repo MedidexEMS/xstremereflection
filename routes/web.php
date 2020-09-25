@@ -76,8 +76,18 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('/dashboard/manage', 'DashboardController@manage')->name('dashboard.manage');
+    Route::get('/leads', function (){
+       \Vanguard\Estimate::
+       where('companyId', Auth()->user()->companyId)
+       ->whereNull('dateofService')->get();
+    });
 
+    /**
+     * Company Routes
+     */
 
+    Route::get('/company', 'CompanyController@index');
+    Route::get('/company/{id}', 'CompanyController@show');
     /**
      * User Profile
      */

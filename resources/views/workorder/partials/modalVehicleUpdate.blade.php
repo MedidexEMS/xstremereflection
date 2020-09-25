@@ -29,7 +29,7 @@
                         @csrf
                         <div class="form-group mb-2">
                             <label for="discount">Enter Vehicle VIN <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="vin" id="vin" placeholder="Type VIN Here" onchange="vinUpdate()" />
+                            <input type="text" class="form-control" name="vin" id="vin" placeholder="Type VIN Here" onkeyup="this.value = this.value.toUpperCase();" onchange="vinUpdate()" />
                         </div>
                         <div class="form-group mb-2">
                             <label for="year">Vehicle Year <span class="text-danger">*</span></label>
@@ -78,7 +78,7 @@
                         @csrf
                         <div class="form-group mb-2">
                             <label for="discount">Enter Vehicle VIN <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="vin" id="vin" placeholder="Type VIN Here" onchange="vinUpdate()" />
+                            <input type="text" class="form-control" name="vin" id="vin" placeholder="Type VIN Here" onkeyup="this.value = this.value.toUpperCase();" onchange="vinUpdate()" />
                         </div>
                         <div class="form-group mb-2">
                             <label for="year">Vehicle Year <span class="text-danger">*</span></label>

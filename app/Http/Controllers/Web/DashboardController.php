@@ -52,17 +52,19 @@ class DashboardController extends Controller
         $unpaidInvoices = count($invoiceYTD->where('status', 1));
 
         $estimateHistory = EstimateTracking::
-            with(['estimate' => function ($q){ $q->where('companyId', Auth()->user()->companyId);}])
+            whereHas('estimate' , function ($q){ $q->where('companyId', Auth()->user()->companyId);})
             ->orderBy('created_at', 'desc')->take('10')->get();
 
 
         $estimateStatus = EstimateStatus::get();
         $start = Carbon::now()->startOfYear();
         $end = Carbon::now()->endOfYear();
-        $invoiceChart = InvoicePayment::
-            whereBetween('created_at', [$start, $end])
-            ->groupBy(DB::raw('monthname(created_at)'))
-            ->get([DB::raw('SUM(pmtAmount) as count'),DB::raw('monthname(created_at) as date')])->pluck('date', 'count');
+        $invoiceChart = Invoice::
+            whereBetween('dateofService', [$start, $end])
+            ->where('companyId', Auth()->user()->companyId)
+            ->groupBy(DB::raw('monthname(dateofService)'))
+            ->orderBy(DB::raw('month(dateofService)'))
+            ->get([DB::raw('SUM(totalPaid) as count'),DB::raw('monthname(dateofService) as date')])->pluck('date', 'count');
 
         $chart = new MonthlyIncomeChart();
         $chart->labels($invoiceChart->values())

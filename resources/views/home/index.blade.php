@@ -587,7 +587,7 @@
                                             Very good detailer and really takes pride in doing the best job possible.
                                             <i class="fa fa-quote-right"></i>
                                         </blockquote>
-                                        <div class="name"> — <span class="text-primary">William Jarvis</span>, Winfield, Wv</div>
+                                        <div class="name"> — <span class="text-primary"></span>, Winfield, Wv</div>
                                     </div>
                                     <!-- end item -->
                                     <!-- begin item -->
