@@ -1,7 +1,9 @@
 @extends('layouts.loggedOut')
 
 @section('page-title', __('Customer Estimate'))
-@section('page-heading', __('Customer Estimate'))
+@section('customer-info', __($estimate->customer->firstName.' '.$estimate->customer->lastName))
+@section('estimate-number', __('Estimate ID: '.$estimate->eid))
+@section('page-heading', __('New Invoice'))
 
 @section('styles')
 
@@ -31,28 +33,55 @@
     </div>
 
     <div class="row">
+
+        <div class="col-xl-12">
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Package #</th>
                         <th>Description</th>
-                        <th>List Price</th>
-                        <th>Your Price</th>
+                        <th>List</th>
+                        <th>Charged</th>
                         <th>Deposit</th>
                         <th></th>
+                        <th>Available Addons</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($estimate->packages as $packages)
                         <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td style="width: 50px">
+
+                            <td style="width: 30%">
                                 <h6>{{$packages->package->description}}</h6>
                                 <div class="col-xl-12">
 
                                     <div class="row">
-                                        <div class="col-xl-10">
+                                        <div class="col-xl-12">
+                                            @if($packages->package->includes)
+                                            @php
+                                                $array = explode(',', $packages->package->includes);
+                                               $packageItems = \Vanguard\packageItem::whereIn('packageId', $array)->get();
+                                            @endphp
+                                            <small>
+
+                                                    @foreach($packageItems as $item)
+
+                                                       <span class="badge badge-primary">{{$item->desc->description}}</span>
+                                                    @endforeach
+
+                                                @endif</small>
+
+                                                @php
+                                                     $packageItems = \Vanguard\packageItem::where('packageId', $packages->package->id)->get();
+                                                @endphp
+                                                <small>
+                                                    @if($packageItems)
+                                                        @foreach($packageItems as $item)
+
+                                                            <span class="badge badge-success" >{{$item->desc->description}}</span>
+                                                        @endforeach
+
+                                                    @endif</small>
 
                                         </div>
                                     </div>
@@ -76,11 +105,30 @@
                             <td>${{$packages->chargedPrice ?? ''}}</td>
                             <td>${{$packages->deposit ?? ''}}</td>
                             <td><a href="/customerSignatureBody/{{$packages->id}}/{{$estimate->id}}"><button class="btn btn-success btn-block">Approve Package # {{$loop->iteration}}</button></a></td>
+                            <td style="width: 50%">
+                                <?php
+                                $array = explode(',', $packages->package->upsale);
+                                $addons = \Vanguard\Services::whereIn('id', $array)->get();
+                                ?>
+                                <ul class="list-group">
+                                    @foreach($addons as $row)
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            {{$row->description}}
+                                            <span class="badge badge-primary">+ ${{$row->charge}}</span>
+                                        </li>
+
+                                    @endforeach
+                                </ul>
+
+
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
             </div>
+        </div>
+
     </div>
 
     @include('estimate.partials.modalCustomerSignature')

@@ -20,7 +20,7 @@
             </ul>
         </nav>
         <div class="copyright ml-auto">
-            2020, made with <i class="fa fa-heart heart text-danger"></i> by <a href="#">Crescent Theme</a>
+            2020, by <a href="https://detaildex.com">DetailDex</a>
         </div>
     </div>
 </footer>

@@ -33,6 +33,11 @@ class EventServiceProvider extends ServiceProvider
         ],
         Verified::class => [
             ActivateUser::class
+        ],
+        'Vanguard\Events\NewEstimateCreated' => [
+            'Vanguard\Listeners\NewEstimateCreated',
+            'Vanguard\Listeners\MakeNotification',
+            'Vanguard\Listeners\EstimateTracker'
         ]
     ];
 

@@ -278,19 +278,21 @@ class EstimateController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->dateofService);
-        if($request->dateofService) {$serviceDate = date("Y-m-d", strtotime($request->dateofService)); } else {$serviceDate = null;}
+        // Check if Date of Service is completed to determine if estimate is a lead or estimate
+        if($request->dateofService) {$serviceDate = date("Y-m-d", strtotime($request->dateofService)); $status = 1; } else {$serviceDate = null; $status = 0;}
         if($request->arrivalTime == 0) {$arrivalTime = $request->arrivalTime; } else {$arrivalTime = null;}
 
+        // Get count of estimate to build estimate id
         $estimates = Estimate::whereBetween('created_at', [
             Carbon::now()->startOfYear(),
             Carbon::now()->endOfYear(),
         ])->get();
         $index = count($estimates) + 1;
 
+        //Build estimate ID
         $eid = Auth()->user()->companyId.'-'.Carbon::now()->format('y').'-'.$index;
 
-
+        //Check if customer exists in customer database and return error;
         if($request->customer == 0){
             $validatedData = $request->validate([
                 'email' => 'required_without_all:phoneNumber|sometimes:customers|max:255',
@@ -315,9 +317,9 @@ class EstimateController extends Controller
         $estimate->eid = $eid;
         $estimate->detailType = $request->detailType;
         $estimate->customerId = $customer->id;
-        $estimate->status = 1;
         $estimate->dateofService = $serviceDate;
         $estimate->arrivalTime = $arrivalTime;
+        $estimate->status = $status;
         $estimate->save();
 
         $tracking = new EstimateTracking;
