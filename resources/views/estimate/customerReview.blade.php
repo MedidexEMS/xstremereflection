@@ -43,7 +43,6 @@
                         <th>List</th>
                         <th>Charged</th>
                         <th>Deposit</th>
-                        <th></th>
                         <th>Available Addons</th>
                     </tr>
                     </thead>
@@ -104,7 +103,6 @@
                             <td>${{$packages->listPrice ?? ''}}</td>
                             <td>${{$packages->chargedPrice ?? ''}}</td>
                             <td>${{$packages->deposit ?? ''}}</td>
-                            <td><a href="/customerSignatureBody/{{$packages->id}}/{{$estimate->id}}"><button class="btn btn-success btn-block">Approve Package # {{$loop->iteration}}</button></a></td>
                             <td style="width: 50%">
                                 <?php
                                 $array = explode(',', $packages->package->upsale);
@@ -112,7 +110,13 @@
                                 ?>
                                 <ul class="list-group">
                                     @foreach($addons as $row)
+
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <!--
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" name="service" value="{{$row->id}}" class="form-check-input" data-id="{{$row->id}}" data-packageid="{{$packages->id}}" >
+                                            </div>
+                                            -->
                                             {{$row->description}}
                                             <span class="badge badge-primary">+ ${{$row->charge}}</span>
                                         </li>
@@ -122,6 +126,9 @@
 
 
                             </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><a href="/customerSignatureBody/{{$packages->id}}/{{$estimate->id}}"><button class="btn btn-success btn-block">Approve Package # {{$loop->iteration}}</button></a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -150,6 +157,30 @@
 
                 }
             });
+        });
+    </script>
+
+    <script>
+        $('input[name=service]').change(function (item) {
+            var id = $(this).data('id');
+            var packageid = $(this).data('packageid');
+            console.log(packageid);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            });
+            // AJAX request
+            /*
+            $.ajax({
+                url: '/workorder/serviceComplete/'+ id,
+                type: 'get',
+                success: function(response){
+
+                }
+            });
+             */
         });
     </script>
 @stop
