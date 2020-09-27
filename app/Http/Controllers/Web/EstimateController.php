@@ -741,6 +741,10 @@ class EstimateController extends Controller
     {
         $estimate = Estimate::with('packages', 'packages.package', 'vehicle', 'vehicle.vehicleInfo', 'vehicle.vehicleInfo.colorInfo', 'vehicle.vehicleInfo.condition')->find($id);
 
+        $tracking = new EstimateTracking;
+        $tracking->estimateId = $estimate->id;
+        $tracking->note = 'Customer has viewed the estimate.';
+        $tracking->save();
 
         return view('estimate.customerReview', compact('estimate'));
     }
