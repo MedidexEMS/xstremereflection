@@ -5,19 +5,19 @@
             <div class="row ">
                 <div class="col-xl-12">
                     <h4 class="mb-1 mb-sm-0">Customer Information</h4>
-                    <p class="mb-0 font-weight-normal d-none d-sm-block">
+                    <p class="mb-0 font-weight-normal ">
                         VIN Number: {!! $workOrder->estimate->vehicle->vehicleInfo->vin ?? '<a data-toggle="modal" data-target="#vehicleModal"><i class="fad fa-sort-numeric-up-alt"></i></a>' !!}
                     </p>
-                    <p class="mb-0 font-weight-normal d-none d-sm-block">
+                    <p class="mb-0 font-weight-normal ">
                         Vehicle Year: {{$workOrder->estimate->vehicle->vehicleInfo->year}}
                     </p>
-                    <p class="mb-0 font-weight-normal d-none d-sm-block">
+                    <p class="mb-0 font-weight-normal ">
                         Vehicle Make: {{$workOrder->estimate->vehicle->vehicleInfo->make}}
                     </p>
-                    <p class="mb-0 font-weight-normal d-none d-sm-block">
+                    <p class="mb-0 font-weight-normal">
                         Vehicle Model/Style: {{$workOrder->estimate->vehicle->vehicleInfo->model}} - {{$workOrder->estimate->vehicle->vehicleInfo->style}}
                     </p>
-                    <p class="mb-0 font-weight-normal d-none d-sm-block">
+                    <p class="mb-0 font-weight-normal">
                         Vehicle Color: {{$workOrder->estimate->vehicle->vehicleInfo->colorInfo->description ?? ''}}
                     </p>
                 </div>
