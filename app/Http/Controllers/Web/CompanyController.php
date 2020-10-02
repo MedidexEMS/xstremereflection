@@ -1,10 +1,13 @@
 <?php
 
 namespace Vanguard\Http\Controllers\Web;
+use Vanguard\Estimate;
 use Vanguard\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Vanguard\Company;
+use Vanguard\Invoice;
+use Vanguard\WorkOrder;
 
 class CompanyController extends Controller
 {
@@ -84,5 +87,33 @@ class CompanyController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function leads()
+    {
+        $leads = Estimate::where('status', 0)->where('companyId', Auth()->user()->companyId)->get();
+
+        return view('estimate.partials.modalLeadsBody', compact('leads'));
+    }
+
+    public function estimates()
+    {
+        $estimates = Estimate::where('status', 1)->where('companyId', Auth()->user()->companyId)->get();
+
+        return view('estimate.partials.modalEstimateBody', compact('estimates'));
+    }
+
+    public function workorders()
+    {
+        $workOrders = WorkOrder::where('status', 1)->where('companyId', Auth()->user()->companyId)->get();
+
+        return view('estimate.partials.modalWorkOrdersBody', compact('workOrders'));
+    }
+
+    public function invoices()
+    {
+        $invoices = Invoice::where('status', 1)->where('companyId', Auth()->user()->companyId)->get();
+
+        return view('estimate.partials.modalInvoiceBody', compact('invoices'));
     }
 }

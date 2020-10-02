@@ -12,6 +12,8 @@ use Vanguard\EstimatePackage;
 use Vanguard\EstimateService;
 use Vanguard\EstimateTracking;
 use Vanguard\EstimateVehicle;
+use Vanguard\Events\CustomerApprovedEstimateEvent;
+use Vanguard\Events\NewEstimateCreatedEvent;
 use Vanguard\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -67,58 +69,41 @@ class EstimateController extends Controller
             return back()->with('error', 'This estimate has already been approved please contact the shop');
 
         }else {
-           //dd('New Invoice');
-            $folderPath = public_path('customerSignature/');
-
-            $image_parts = explode(";base64,", $request->signed);
-
-            $image_type_aux = explode("image/", $image_parts[0]);
-
-            $image_type = $image_type_aux[1];
-
-            $image_base64 = base64_decode($image_parts[1]);
-
-            $fileName = uniqid() . '.' . $image_type;
-
-            $file = $folderPath . $fileName;
-
-            file_put_contents($file, $image_base64);
+            $file = $request->signed;
 
             $package = EstimatePackage::find($pid);
-
-            $estimate = Estimate::find($eid);
-
-            $customer = Customer::find($estimate->customerId);
-
-            $estimate->approvedPackage = $pid;
-            $estimate->signature = '/customerSignature/' . $fileName;
-            $estimate->signed = Carbon::now();
-            $estimate->total = $package->chargedPrice;
-            $estimate->deposit = $package->deposit;
-
-            $estimate->save();
-
             $package->approved = 1;
             $package->save();
 
+            $estimate = Estimate::find($eid);
+            // Update estimate to approved
+            $estimate->approvedPackage = $pid;
+            $estimate->signed = Carbon::now();
+            $estimate->total = $package->chargedPrice;
+            $estimate->deposit = $package->deposit;
+            $estimate->save();
 
+           //TODO work on making event work as intended ..... event(new CustomerApprovedEstimateEvent($file, $estimate));
+
+            $customer = Customer::find($estimate->customerId);
+            // Create New Work Order
             $workorder = new WorkOrder;
-            $workorder->companyId = Auth()->user()->companyId;
+            $workorder->companyId = $estimate->companyId;
             $workorder->estimateId = $estimate->id;
             $workorder->totalCharge = $estimate->total;
             $workorder->status = 1;
             $workorder->save();
 
-            $tracking = new EstimateTracking;
-            $tracking->estimateId = $eid;
-            $tracking->note = 'Estimate approved by customer and work order created.';
-            $tracking->save();
+            $estimate = Estimate::find($estimate->id);
+            $estimate->workOrderId = $workorder->id;
+            $estimate->save();
 
             $wtracking = new WorkOrderTracking;
             $wtracking->workOrderId = $workorder->id;
-            $wtracking->note = 'Estimate approved by customer and work order created.';
+            $wtracking->note = 'Estimate '. $estimate->eid .' approved by customer and work order created.';
             $wtracking->save();
 
+            //Add Services to work order
             if ($estimate->approvedPackage) {
                 $array = explode(',', $estimate->acceptedPackage->package->includes);
                 $services = packageItem::whereIn('packageId', $array)->get();
@@ -149,18 +134,25 @@ class EstimateController extends Controller
                 }
             }
 
-            $invoice = new Invoice;
+            //Check for invoice already created...
+            $invoice->where('estimateId', $estimate->id)->first();
 
-            $invoice->companyId = Auth()->user()->companyId;
-            $invoice->customerId = $workorder->estimate->customerId;
-            $invoice->estimateId = $workorder->estimate->id;
-            $invoice->workOrderId = $workorder->id;
-            $invoice->detailType = $workorder->estimate->detailType;
-            $invoice->dateofService = $workorder->estimate->dateofService;
-            $invoice->total = $workorder->totalCharge;
-            $invoice->deposit = $estimate->deposit;
-            $invoice->status = 1;
-            $invoice->save();
+            if(!$invoice){
+                // Create New Invoice
+                $invoice = new Invoice;
+
+                $invoice->companyId = $estimate->companyId;
+                $invoice->customerId = $workorder->estimate->customerId;
+                $invoice->estimateId = $workorder->estimate->id;
+                $invoice->workOrderId = $workorder->id;
+                $invoice->detailType = $workorder->estimate->detailType;
+                $invoice->dateofService = $workorder->estimate->dateofService;
+                $invoice->total = $workorder->totalCharge;
+                $invoice->deposit = $estimate->deposit;
+                $invoice->status = 1;
+                $invoice->save();
+            }
+
 
             $workorder->invoiceId = $invoice->id;
             $workorder->save();
@@ -308,10 +300,14 @@ class EstimateController extends Controller
             $customer->address = $request->address;
 
             $customer->save();
+
+            // TODO New Customer Created Event
+
         }else {
             $customer = Customer::find($request->customer);
         }
 
+        //Create the estimate
         $estimate = new Estimate;
         $estimate->companyId = Auth()->user()->companyId;
         $estimate->eid = $eid;
@@ -322,10 +318,9 @@ class EstimateController extends Controller
         $estimate->status = $status;
         $estimate->save();
 
-        $tracking = new EstimateTracking;
-        $tracking->estimateId = $estimate->id;
-        $tracking->note = 'Estimate created.';
-        $tracking->save();
+        event(new NewEstimateCreatedEvent($estimate));
+
+
 
         return redirect()->route('estimate.show', ['id' => $estimate->id]);
     }
@@ -553,18 +548,24 @@ class EstimateController extends Controller
                 }
             }
 
-            $invoice = new Invoice;
+            //Check if invoice exists...
 
-            $invoice->companyId = Auth()->user()->companyId;
-            $invoice->customerId = $wo->estimate->customerId;
-            $invoice->estimateId = $wo->estimate->id;
-            $invoice->workOrderId = $wo->id;
-            $invoice->detailType = $wo->estimate->detailType;
-            $invoice->dateofService = $wo->estimate->dateofService;
-            $invoice->total = $wo->totalCharge;
-            $invoice->deposit = $estimate->deposit;
-            $invoice->status = 1;
-            $invoice->save();
+            $invoice = Invoice::where('estimateId', $id)->first();
+
+            if(!$invoice){
+                $invoice = new Invoice;
+
+                $invoice->companyId = Auth()->user()->companyId;
+                $invoice->customerId = $wo->estimate->customerId;
+                $invoice->estimateId = $wo->estimate->id;
+                $invoice->workOrderId = $wo->id;
+                $invoice->detailType = $wo->estimate->detailType;
+                $invoice->dateofService = $wo->estimate->dateofService;
+                $invoice->total = $wo->totalCharge;
+                $invoice->deposit = $estimate->deposit;
+                $invoice->status = 1;
+                $invoice->save();
+            }
 
             $wo->invoiceId = $invoice->id;
             $wo->save();
@@ -843,4 +844,6 @@ class EstimateController extends Controller
 
         return back()->with('error', 'Estimate Voided.' );
     }
+
+
 }

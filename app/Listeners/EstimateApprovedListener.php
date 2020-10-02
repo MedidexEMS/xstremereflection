@@ -4,9 +4,9 @@ namespace Vanguard\Listeners;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use Vanguard\Events\NewEstimateCreated;
+use Vanguard\Events\CustomerApprovedEstimateEvent;
 
-class MakeNotification
+class EstimateApprovedListener
 {
     /**
      * Create the event listener.
@@ -21,10 +21,10 @@ class MakeNotification
     /**
      * Handle the event.
      *
-     * @param  NewEstimateCreated  $event
+     * @param  CustomerApprovedEstimateEvent  $event
      * @return void
      */
-    public function handle(NewEstimateCreated $event)
+    public function handle(CustomerApprovedEstimateEvent $event)
     {
         //
     }

@@ -50,6 +50,10 @@
 @stop
 
 @section('modals')
+    @include('estimate.partials.modalLeads')
+    @include('estimate.partials.modalEstimates')
+    @include('estimate.partials.modalWorkOrders')
+    @include('estimate.partials.modalInvoice')
     @include('dashboard.partials.modalUpdateEstimate')
 @stop
 
@@ -164,6 +168,62 @@
 
                         $( "#newDateForm" ).show();
                     }
+                }
+            });
+        });
+
+        $("#leadsModal").on("shown.bs.modal", function(e) {
+            var link = $(e.relatedTarget).data("link");
+
+            // AJAX request
+            $.ajax({
+                url: '/company/leads',
+                type: 'get',
+                success: function(response){
+                    // Add response in Modal body
+                    $('#leadsModal .modal-body').html(response);
+                }
+            });
+        });
+
+        $("#estimatesModal").on("shown.bs.modal", function(e) {
+            var link = $(e.relatedTarget).data("link");
+
+            // AJAX request
+            $.ajax({
+                url: '/company/estimates',
+                type: 'get',
+                success: function(response){
+                    // Add response in Modal body
+                    $('#estimatesModal .modal-body').html(response);
+                }
+            });
+        });
+
+        $("#workorderModal").on("shown.bs.modal", function(e) {
+            var link = $(e.relatedTarget).data("link");
+
+            // AJAX request
+            $.ajax({
+                url: '/company/workorders',
+                type: 'get',
+                success: function(response){
+                    // Add response in Modal body
+                    $('#workorderModal .modal-body').html(response);
+                }
+            });
+        });
+
+        $("#invoiceModal").on("shown.bs.modal", function(e) {
+            var link = $(e.relatedTarget).data("link");
+
+            // AJAX request
+            $.ajax({
+                url: '/company/invoices',
+                type: 'get',
+                success: function(response){
+                    // Add response in Modal body
+                    $('#invoiceModal .modal-body').html(response);
                 }
             });
         });

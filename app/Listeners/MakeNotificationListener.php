@@ -6,7 +6,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Vanguard\Events\NewEstimateCreated;
 
-class EstimateTracker
+class MakeNotificationListener
 {
     /**
      * Create the event listener.

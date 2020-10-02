@@ -6,7 +6,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Vanguard\Events\NewEstimateCreated;
 
-class NewEstimateCreated
+class NewEstimateCreatedListener
 {
     /**
      * Create the event listener.

@@ -42,4 +42,9 @@ class Estimate extends Model
     {
         return $this->hasMany(EstimateTracking::class, 'estimateId');
     }
+
+    public function company ()
+    {
+        return $this->belongsTo(Company::class, 'companyId');
+    }
 }

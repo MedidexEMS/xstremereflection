@@ -34,10 +34,19 @@ class EventServiceProvider extends ServiceProvider
         Verified::class => [
             ActivateUser::class
         ],
-        'Vanguard\Events\NewEstimateCreated' => [
-            'Vanguard\Listeners\NewEstimateCreated',
-            'Vanguard\Listeners\MakeNotification',
-            'Vanguard\Listeners\EstimateTracker'
+        'Vanguard\Events\NewEstimateCreatedEvent' => [
+            //'Vanguard\Listeners\NewEstimateCreatedListener',
+            //'Vanguard\Listeners\MakeNotificationListener',
+            'Vanguard\Listeners\EstimateTrackerListener'
+        ],
+        'Vanguard\Events\CustomerApprovedEstimateEvent' =>[
+            'Vanguard\Listeners\SaveApprovalSignatureListener',
+            'Vanguard\Listeners\EstimateApprovedListener',
+            'Vanguard\Listeners\CreateNewWorkOrderListener',
+            'Vanguard\Listeners\EstimateTrackerListener',
+            'Vanguard\Listeners\WorkOrderTrackerListener',
+            'Vanguard\Listeners\NewInvoiceListener'
+
         ]
     ];
 

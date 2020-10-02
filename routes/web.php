@@ -15,6 +15,13 @@ Route::get('/', [
 ]);
 //EndHome//
 
+//Company Routes //
+
+Route::get('/company/leads', 'CompanyController@leads');
+Route::get('/company/estimates', 'CompanyController@estimates');
+Route::get('/company/workorders', 'CompanyController@workorders');
+Route::get('/company/invoices', 'CompanyController@invoices');
+
 Route::get('/packageList', function (){
     $packageTypes = \Vanguard\PackageType::get();
     $packages = \Vanguard\Package::where('companyId', 0)->orWhere('companyId', 1)->get();
@@ -383,6 +390,7 @@ use Illuminate\Http\Request;
     Route::get('workorder/techenroute/{id}', 'WorkOrderController@techEnroute');
     Route::get('/workorder/addServices/{id}', 'WorkOrderController@addServices');
     Route::get('/workorder/serviceComplete/{id}', 'WorkOrderController@serviceComplete');
+
 
     ROUTE::get('email', function (){
         $title= 'Test';
