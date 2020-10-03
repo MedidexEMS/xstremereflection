@@ -3,6 +3,7 @@
 @section('page-title', __($workOrder->estimate->customer->lastName .' Work Order'))
 @section('estimate-number', __('Estimate ID: '.$workOrder->estimate->eid))
 @section('page-heading', __($workOrder->estimate->customer->lastName .' Work Order'))
+@section('service-date',__('Service Date: ' .($workOrder->dateofService ? \Carbon\Carbon::parse($workOrder->dateofService)->format('m-d-Y') : 'Date to Be Determined' )))
 
 @section('breadcrumbs')
     <li class="breadcrumb-item active">
@@ -11,7 +12,7 @@
 @stop
 
 @section('content')
-    @include('partials.messages')
+
     <div class="row mb-3">
         @include('workorder.partials.jobStats')
     </div>
