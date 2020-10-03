@@ -12,18 +12,24 @@ class HomeController extends Controller
 {
     public function index ()
     {
-        $packages = Package::
-        with('items', 'items.desc', 'items.desc.type')
-            ->where('mainPage', 1)
-            ->where('companyId', 0)
-            ->where('status', 1)->get();
-
-        $services = Services::get();
-
         $domain = request()->getHost();
 
         dd($domain);
 
-        return view('home.index', compact('packages'));
+        if($domain == 'xtremereflection.app')
+        {
+            $packages = Package::
+            with('items', 'items.desc', 'items.desc.type')
+                ->where('mainPage', 1)
+                ->where('companyId', 0)
+                ->where('status', 1)->get();
+
+            $services = Services::get();
+            return view('home.index', compact('packages'));
+        }else{
+            return view('home.detailDex');
+        }
+
+
     }
 }
