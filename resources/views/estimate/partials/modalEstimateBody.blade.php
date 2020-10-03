@@ -10,7 +10,7 @@
                         <div class="d-flex w-100 justify-content-between">
                             @if($estimate->status == 7) <h4> Pending Estimates </h4> @endif
                             <h5 class="mb-1">{{$estimate->customer->firstName ?? 'Missing Customer Info'}} {{$estimate->customer->lastName ?? ''}}</h5>
-
+                            <h6>Expires on: {{\Carbon\Carbon::parse($estimate->created_at)->addDays($estimate->days)->format('m-d-Y')}}</h6>
                             <button class="btn btn-primary" data-toggle="modal" data-link="/modal/estimateupdate/{{$estimate->id}}" data-target="#updateEstimateModal">
                                 Update
                             </button>
