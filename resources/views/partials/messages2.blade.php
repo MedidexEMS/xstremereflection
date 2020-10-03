@@ -9,7 +9,7 @@
 
 
             <script>
-                $( document ).ready(function() {
+
                     console.log( "ready!" );
                     //Notify
                     $.notify({
@@ -24,7 +24,7 @@
                         },
                         time: 5000,
                     });
-                });
+
             </script>
         @endforeach
 
