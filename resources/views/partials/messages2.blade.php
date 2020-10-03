@@ -5,7 +5,7 @@
         <script>
             //Notify
             $.notify({
-                icon: 'fas fa-shield-check',
+                icon: 'fas fa-bomb',
                 title: 'Action Completed',
                 message: '{{ $error }}',
             },{
