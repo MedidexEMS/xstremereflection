@@ -13,7 +13,7 @@
                     console.log( "ready!" );
                     //Notify
                     $.notify({
-                        icon: 'flaticon-alarm-1',
+                        icon: '<i class="fas fa-shield-check"></i>',
                         title: 'Action Completed',
                         message: '{{ $msg }}',
                     },{
@@ -35,11 +35,11 @@
                 console.log( "ready!" );
                 //Notify
                 $.notify({
-                    icon: 'flaticon-alarm-1',
+                    icon: '<i class="fas fa-shield-check"></i>',
                     title: 'Action Completed',
                     message: '{{ $data }}',
                 },{
-                    type: 'success',
+                    type: 'info',
                     placement: {
                         from: "bottom",
                         align: "right"
