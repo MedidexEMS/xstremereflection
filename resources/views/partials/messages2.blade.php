@@ -13,7 +13,7 @@
                     console.log( "ready!" );
                     //Notify
                     $.notify({
-                        icon: '<i class="fas fa-shield-check"></i>',
+                        icon: 'fas fa-shield-check',
                         title: 'Action Completed',
                         message: '{{ $msg }}',
                     },{
@@ -35,7 +35,7 @@
                 console.log( "ready!" );
                 //Notify
                 $.notify({
-                    icon: '<i class="fas fa-shield-check"></i>',
+                    icon: 'fas fa-shield-check',
                     title: 'Action Completed',
                     message: '{{ $data }}',
                 },{
