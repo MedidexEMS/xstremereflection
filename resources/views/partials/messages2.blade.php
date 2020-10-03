@@ -9,7 +9,8 @@
 
 
             <script>
-                window.addEventListener("load", function(){
+                $( document ).ready(function() {
+                    console.log( "ready!" );
                     //Notify
                     $.notify({
                         icon: 'flaticon-alarm-1',
@@ -24,14 +25,14 @@
                         time: 5000,
                     });
                 });
-
             </script>
         @endforeach
 
 
     @else
         <script>
-            window.addEventListener("load", function(){
+            $( document ).ready(function() {
+                console.log( "ready!" );
                 //Notify
                 $.notify({
                     icon: 'flaticon-alarm-1',
@@ -46,6 +47,7 @@
                     time: 5000,
                 });
             });
+
 
         </script>
        @endif
