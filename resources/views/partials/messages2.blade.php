@@ -15,7 +15,7 @@
                     $.notify({
                         icon: 'flaticon-alarm-1',
                         title: 'Action Completed',
-                        message: {{ $msg }},
+                        message: '{{ $msg }}',
                     },{
                         type: 'success',
                         placement: {
@@ -37,7 +37,7 @@
                 $.notify({
                     icon: 'flaticon-alarm-1',
                     title: 'Action Completed',
-                    message: {{ $data }},
+                    message: '{{ $data }}',
                 },{
                     type: 'success',
                     placement: {
