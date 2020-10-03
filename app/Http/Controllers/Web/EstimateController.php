@@ -410,7 +410,7 @@ class EstimateController extends Controller
 
 
 
-        return redirect()->route('estimate.show', ['id' => $id]);
+        return redirect()->route('estimate.show', ['id' => $id])->with('success', 'Package added successfully.');
     }
 
     public function estimateCancel ($id)

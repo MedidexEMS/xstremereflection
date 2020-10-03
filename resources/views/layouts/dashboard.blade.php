@@ -127,6 +127,7 @@
 
 <script src="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
+@include('partials.messages2')
 
 <script>
 
