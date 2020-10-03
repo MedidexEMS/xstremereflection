@@ -4,7 +4,28 @@
 @section('page-heading', __('Dashboard'))
 
 @section('styles')
+<style>
+    .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+    }
 
+    /* Safari */
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
 @stop
 
 
@@ -13,6 +34,7 @@
 
     <div class="page-inner mt--5">
         @include('dashboard.partials.overallStats')
+
             <div class="col-md-6">
                 <div class="card full-height">
                     <div class="card-body">
@@ -179,9 +201,16 @@
             $.ajax({
                 url: '/company/leads',
                 type: 'get',
+                beforeSend: function(){
+                    // Show image container
+                    $("#loader").show();
+                },
                 success: function(response){
                     // Add response in Modal body
                     $('#leadsModal .modal-body').html(response);
+                },
+                complete: function () {
+                    $("#loader").hide();
                 }
             });
         });
@@ -193,9 +222,16 @@
             $.ajax({
                 url: '/company/estimates',
                 type: 'get',
+                beforeSend: function(){
+                    // Show image container
+                    $("#loader").show();
+                },
                 success: function(response){
                     // Add response in Modal body
                     $('#estimatesModal .modal-body').html(response);
+                },
+                complete: function () {
+                    $("#loader").hide();
                 }
             });
         });
@@ -207,9 +243,16 @@
             $.ajax({
                 url: '/company/workorders',
                 type: 'get',
+                beforeSend: function(){
+                    // Show image container
+                    $("#loader").show();
+                },
                 success: function(response){
                     // Add response in Modal body
                     $('#workorderModal .modal-body').html(response);
+                },
+                complete: function () {
+                    $("#loader").hide();
                 }
             });
         });
@@ -221,9 +264,16 @@
             $.ajax({
                 url: '/company/invoices',
                 type: 'get',
+                beforeSend: function(){
+                    // Show image container
+                    $("#loader").show();
+                },
                 success: function(response){
                     // Add response in Modal body
                     $('#invoiceModal .modal-body').html(response);
+                },
+                complete: function () {
+                    $("#loader").hide();
                 }
             });
         });

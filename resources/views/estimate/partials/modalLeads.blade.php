@@ -9,7 +9,9 @@
                 </button>
             </div>
             <div class="modal-body" id="leads">
-
+                <div class="d-flex justify-content-center" id="loader">
+                    <div class="loader" id="loader"></div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

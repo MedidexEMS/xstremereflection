@@ -20,6 +20,10 @@ class HomeController extends Controller
 
         $services = Services::get();
 
+        $domain = request()->getHost();
+
+        dd($domain);
+
         return view('home.index', compact('packages'));
     }
 }

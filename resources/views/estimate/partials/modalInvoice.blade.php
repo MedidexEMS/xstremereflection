@@ -1,5 +1,6 @@
 <!-- Modal -->
-<div class="modal fade" id="invoiceModal" tabindex="-1" role="dialog" aria-labelledby="invoiceModalLabel" aria-hidden="true">
+<div class="modal fade" id="invoiceModal" tabindex="-1" role="dialog" aria-labelledby="invoiceModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,6 +10,9 @@
                 </button>
             </div>
             <div class="modal-body" id="invoices">
+                <div class="d-flex justify-content-center" id="loader">
+                    <div class="loader" id="loader"></div>
+                </div>
 
             </div>
             <div class="modal-footer">
