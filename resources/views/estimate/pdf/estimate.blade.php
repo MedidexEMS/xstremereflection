@@ -22,7 +22,7 @@
                 {{$estimate->customer->company->city ?? ''}} {{$estimate->customer->company->state ?? ''}} {{$estimate->customer->company->zip ?? ''}} <br />
                 {{$estimate->customer->company->phone ?? ''}}
             </address>
-            <h3>Estimate ID: {{$estimate->id ?? 'Unknown ID'}}</h3>
+            <h3>Estimate ID: {{$estimate->eid ?? 'Unknown ID'}}</h3>
             <h3>Estimate Date: {{\Carbon\Carbon::parse($estimate->created_at)->format('M d Y')}}</h3>
         </div>
     </div>
