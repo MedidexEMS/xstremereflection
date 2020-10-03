@@ -14,8 +14,6 @@ class HomeController extends Controller
     {
         $domain = request()->getHost();
 
-        dd($domain);
-
         if($domain == 'xtremereflection.app')
         {
             $packages = Package::
