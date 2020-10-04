@@ -306,6 +306,7 @@ Route::group(['prefix' => 'order'], function () {
     Route::get('/estimate/void/{id}', 'EstimateController@voidEstimate');
     Route::post('estimate/store', 'EstimateController@store');
     Route::get('/customer/form', 'CustomerController@customerForm');
+Route::get('/customer/edit/form/{eid}', 'EstimateController@customerEditForm');
     Route::get('/estimate/{id}/show', 'EstimateController@show')->name('estimate.show');
     Route::post('/estimate/{id}/addPackage', 'EstimateController@addPackage');
     Route::post('/estimate/addVehicle/{cid}/{eid}', 'EstimateController@addVehicle');

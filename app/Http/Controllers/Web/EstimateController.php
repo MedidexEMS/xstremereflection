@@ -413,6 +413,13 @@ class EstimateController extends Controller
         return redirect()->route('estimate.show', ['id' => $id])->with('success', 'Package added successfully.');
     }
 
+    public function customerEditForm($eid){
+        $customers = Customer::where('companyId', Auth()->user()->companyId)->get();
+        $estimate = Estimate::find($eid);
+
+        return view('estimate.partials.modalCustomerEditForm', compact('customers', 'estimate'));
+    }
+
     public function estimateCancel ($id)
     {
         $estimate = Estimate::find($id);

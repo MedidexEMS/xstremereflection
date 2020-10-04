@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="col-xl-4 text-right">
-                    <a href=";javascript" data-toggle="modal" data-target="#customerModal"><i class="fas fa-edit"></i></a>
+                    <a href=";javascript" data-toggle="modal" data-target="#customerEditModal"><i class="fas fa-edit"></i></a>
                 </div>
             </div>
         </div>

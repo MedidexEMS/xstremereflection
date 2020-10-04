@@ -261,9 +261,30 @@
 @include('estimate.partials.modalAddService')
 @include('estimate.partials.modalNote')
 @include('estimate.partials.updatePackageModal')
+@include('estimate.partials.modalCustomerEdit')
 
 
 @section('scripts')
+
+    <script>
+        $('#customerEditModal').on('shown.bs.modal', function (){
+
+            $('#datepicker-popup').datepicker({
+                todayHighlight: true,
+            });
+
+
+
+            $('#customerForm').load('/customer/edit/form/{{$estimate->id}}', function () {
+                $( "#newCustomer" ).hide();
+
+                $('.select').select2({
+                    dropdownParent: $('#customerModal .modal-content'),
+                    theme: "bootstrap"
+                });
+            });
+        });
+    </script>
 
     <script>
         $('#summernote').summernote({

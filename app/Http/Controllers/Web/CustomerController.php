@@ -35,6 +35,8 @@ class CustomerController extends Controller
         return view('invoice.partials.customerForm', compact('customers'));
     }
 
+
+
     /**
      * Store a newly created resource in storage.
      *
