@@ -153,7 +153,6 @@
 @stop
 
 @section('content')
-    @include('partials.messages')
 
     @if($estimate->status == 8)
         <div class="row mb-4">

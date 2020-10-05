@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/estimate/{{$estimate->id}}" method="PUT" id="customerForm" method="POST">
+                <form action="/estimate/{{$estimate->id}}/edit" method="POST" id="customerForm" method="POST">
                 @method('PUT')
 
 

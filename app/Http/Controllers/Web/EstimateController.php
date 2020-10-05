@@ -420,6 +420,27 @@ class EstimateController extends Controller
         return view('estimate.partials.modalCustomerEditForm', compact('customers', 'estimate'));
     }
 
+    public function customerEdit(Request $request, $id){
+        if($request->dateofService) {$serviceDate = date("Y-m-d", strtotime($request->dateofService)); $status = 1; } else {$serviceDate = null; $status = 0;}
+
+        $estimate = Estimate::find($id);
+
+            $estimate->customerId = $request->customer;
+            $estimate->dateofService = $serviceDate;
+            $estimate->detailType = $request->detailType;
+            $estimate->arrivalTime = $request->arrivalTime;
+            $estimate->update();
+
+            $etracking = new EstimateTracking;
+            $etracking->estimateId = $id;
+            $etracking->note = "Estimate details have been edited.";
+            $etracking->save();
+
+
+        return back()->with('success', 'Estimate updated successfully.');
+    }
+
+
     public function estimateCancel ($id)
     {
         $estimate = Estimate::find($id);

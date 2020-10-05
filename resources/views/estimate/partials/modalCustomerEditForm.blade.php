@@ -32,25 +32,25 @@
 
 <div class="form-group">
     <label for="serviceTime">Select Time (Arrival Window is 3 Hours)</label>
-    <select class="form-control select" id="arrivalTime" name="arrivalTime"  >
+    <select class="form-control" id="arrivalTime" name="arrivalTime">
         <option value="0" @if(!$estimate->arrivalTime) selected @endif > Select Time of Arrival </option>
 
-        <option value="06:00:00" @if($estimate->arrivalTime == '06:00:00') selected @endif > 6:00 AM</option>
-        <option value="07:00:00" @if($estimate->arrivalTime == '07:00:00') selected @endif > 7:00 AM</option>
-        <option value="08:00:00" @if($estimate->arrivalTime == '08:00:00') selected @endif > 8:00 AM</option>
-        <option value="09:00:00" @if($estimate->arrivalTime == '09:00:00') selected @endif > 9:00 AM</option>
-        <option value="10:00:00" @if($estimate->arrivalTime == '10:00:00') selected @endif > 10:00 AM</option>
-        <option value="11:00:00" @if($estimate->arrivalTime == '11:00:00') selected @endif > 11:00 AM</option>
-        <option value="12:00:00" @if($estimate->arrivalTime == '12:00:00') selected @endif > 12:00 AM</option>
-        <option value="13:00:00" @if($estimate->arrivalTime == '13:00:00') selected @endif > 1:00 PM</option>
-        <option value="14:00:00" @if($estimate->arrivalTime == '14:00:00') selected @endif > 2:00 PM</option>
-        <option value="15:00:00" @if($estimate->arrivalTime == '15:00:00') selected @endif > 3:00 PM</option>
-        <option value="16:00:00" @if($estimate->arrivalTime == '16:00:00') selected @endif > 4:00 PM</option>
-        <option value="17:00:00" @if($estimate->arrivalTime == '17:00:00') selected @endif > 5:00 PM</option>
-        <option value="18:00:00" @if($estimate->arrivalTime == '18:00:00') selected @endif > 6:00 PM</option>
-        <option value="19:00:00" @if($estimate->arrivalTime == '19:00:00') selected @endif > 7:00 PM</option>
-        <option value="20:00:00" @if($estimate->arrivalTime == '20:00:00') selected @endif > 8:00 PM</option>
-        <option value="21:00:00" @if($estimate->arrivalTime == '21:00:00') selected @endif > 9:00 PM</option>
+        <option value="06:00:00" @if($estimate->arrivalTime === '06:00:00') selected @endif > 6:00 AM</option>
+        <option value="07:00:00" @if($estimate->arrivalTime === '07:00:00') selected @endif > 7:00 AM</option>
+        <option value="08:00:00" @if($estimate->arrivalTime === '08:00:00') selected @endif > 8:00 AM</option>
+        <option value="09:00:00" @if($estimate->arrivalTime === '09:00:00') selected @endif > 9:00 AM</option>
+        <option value="10:00:00" @if($estimate->arrivalTime === '10:00:00') selected @endif > 10:00 AM</option>
+        <option value="11:00:00" @if($estimate->arrivalTime === '11:00:00') selected @endif > 11:00 AM</option>
+        <option value="12:00:00" @if($estimate->arrivalTime === '12:00:00') selected @endif > 12:00 AM</option>
+        <option value="13:00:00" @if($estimate->arrivalTime === '13:00:00') selected @endif > 1:00 PM</option>
+        <option value="14:00:00" @if($estimate->arrivalTime === '14:00:00') selected @endif > 2:00 PM</option>
+        <option value="15:00:00" @if($estimate->arrivalTime === '15:00:00') selected @endif > 3:00 PM</option>
+        <option value="16:00:00" @if($estimate->arrivalTime === '16:00:00') selected @endif > 4:00 PM</option>
+        <option value="17:00:00" @if($estimate->arrivalTime === '17:00:00') selected @endif > 5:00 PM</option>
+        <option value="18:00:00" @if($estimate->arrivalTime === '18:00:00') selected @endif > 6:00 PM</option>
+        <option value="19:00:00" @if($estimate->arrivalTime === '19:00:00') selected @endif > 7:00 PM</option>
+        <option value="20:00:00" @if($estimate->arrivalTime === '20:00:00') selected @endif > 8:00 PM</option>
+        <option value="21:00:00" @if($estimate->arrivalTime === '21:00:00') selected @endif > 9:00 PM</option>
 
     </select>
 </div>
