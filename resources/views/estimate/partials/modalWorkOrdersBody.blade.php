@@ -11,7 +11,7 @@
 
                             <h5 class="mb-1">{{$row->estimate->customer->firstName ?? 'Missing Customer Info'}} {{$row->estimate->customer->lastName ?? ''}}</h5>
 
-                            <button class="btn btn-primary" data-toggle="modal" data-link="/modal/workordereupdate/{{$row->id}}" data-target="#updateWorkOrderModal">
+                            <button class="btn btn-primary" data-toggle="modal" data-link="/modal/workorderupdate/{{$row->id}}" data-target="#updateWorkOrderModal">
                                 Update
                             </button>
 
