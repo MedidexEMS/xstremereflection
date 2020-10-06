@@ -316,6 +316,7 @@ Route::group(['prefix' => 'order'], function () {
     Route::get('/estimate/mail/{id}', 'EstimateController@estimateEmail');
     Route::get('/removePackage/{id}', 'EstimateController@destroyPackage');
     Route::get('/modal/estimateupdate/{id}', 'EstimateController@estimateRescheduleModal');
+    Route::get('/modal/workorderupdate/{id}', 'WorkOrderController@updateModal');
     Route::get('/estimate/cancel/{id}', 'EstimateController@estimateCancel');
     Route::post('/estimate/updatedate/{id}', 'EstimateController@updateDate');
     Route::get('/estimate/reschedulemail/{id}', 'EstimateController@rescheduleEmail');

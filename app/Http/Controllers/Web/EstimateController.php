@@ -486,6 +486,8 @@ class EstimateController extends Controller
 
         $wo = WorkOrder::where('estimateId', $id)->first();
 
+        //TODO Look to see if work order date needs updated
+
         if($wo){
             $wo->status = 1;
             $wo->save();

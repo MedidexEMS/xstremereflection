@@ -77,6 +77,7 @@
     @include('estimate.partials.modalWorkOrders')
     @include('estimate.partials.modalInvoice')
     @include('dashboard.partials.modalUpdateEstimate')
+    @include('dashboard.partials.modalUpdateWorkOrder')
 @stop
 
 @section('scripts')
@@ -179,6 +180,31 @@
                 success: function(response){
                     // Add response in Modal body
                     $('#updateEstimateModal .modal-body').html(response);
+
+                    $('#datepicker-popup-1').datepicker({
+                        todayHighlight: true,
+                    });
+
+                    $( "#newDateForm" ).hide();
+
+                    function showForm() {
+
+                        $( "#newDateForm" ).show();
+                    }
+                }
+            });
+        });
+
+        $("#updateWorkOrderModal").on("shown.bs.modal", function(e) {
+            var link = $(e.relatedTarget).data("link");
+
+            // AJAX request
+            $.ajax({
+                url: link,
+                type: 'get',
+                success: function(response){
+                    // Add response in Modal body
+                    $('#updateWorkOrderModal .modal-body').html(response);
 
                     $('#datepicker-popup-1').datepicker({
                         todayHighlight: true,
