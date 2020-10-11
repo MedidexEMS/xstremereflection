@@ -235,6 +235,8 @@ class WorkOrderController extends Controller
         $customerVehicle->customerCondition = $request->condition;
 
         $customerVehicle->save();
+
+        return back()->with('success', 'Vehicle data has been updated.');
     }
 
     public function completeOrder($id)

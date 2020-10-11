@@ -61,7 +61,7 @@
                     title: 'Action Completed',
                     message: '{{ $data }}',
                 },{
-                    type: 'info',
+                    type: 'success',
                     placement: {
                         from: "bottom",
                         align: "right"
