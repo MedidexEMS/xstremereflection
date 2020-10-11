@@ -137,7 +137,9 @@ class EstimateController extends Controller
             //Check for invoice already created...
             $invoice->where('estimateId', $estimate->id)->first();
 
-            if(!$invoice){
+            if(count($invoice)){
+
+            }else{
                 // Create New Invoice
                 $invoice = new Invoice;
 
