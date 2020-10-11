@@ -34,13 +34,17 @@ class DashboardController extends Controller
 
         $workorders = WorkOrder::where('companyId', Auth()->user()->companyId)->get();
 
-        $invoices = Customer::where('companyId', Auth()->user()->companyId)->whereHas('invoice', function($q){$q->where('status', '<=', 2);})->get() ;
-
+        $invoices = Customer::where('companyId', Auth()->user()->companyId)->whereHas('invoice', function($q){
+            $q->where('status', '<=', 2);
+            $q->where('status', '!=', 98);
+        })->get() ;
+        //TODO must figure out how to add tip functionality.
         $invoiceYTD = Invoice::whereBetween('created_at', [
             Carbon::now()->startOfYear(),
             Carbon::now()->endOfYear(),
         ])
             ->where('companyId', Auth()->user()->companyId)
+            ->where('status', '!=', 98)
             ->get();
 
         $invoiceTotal = $invoiceYTD->sum('total');

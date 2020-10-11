@@ -215,6 +215,8 @@ class EstimateController extends Controller
             ->where('status',  6)
             ->orderBy('dateofService', 'desc')->get();
 
+
+
         return view('estimate.index', compact('estimates'));
     }
 
@@ -870,9 +872,32 @@ class EstimateController extends Controller
 
     public function voidEstimate($id)
     {
-        $estimate = Estimate::find($id);
-        $estimate->status = 8;
-        $estimate->save();
+        $etracking = new EstimateTracking;
+        $etracking->estimateId = $id;
+        $etracking->status = 8;
+        $etracking->note = "Customer canceled the estimate / work Order";
+        $etracking->save();
+
+        $workOrder = WorkOrder::where('estimateId', $id)->first();
+
+        if($workOrder){
+            $workOrder->status = 9;
+            $workOrder->save();
+
+            $wtracking = new EstimateTracking;
+            $wtracking->estimateId = $id;
+            $wtracking->status = 6;
+            $wtracking->note = "Customer canceled the estimate / work Order";
+            $wtracking->save();
+        }
+
+        $invoice = Invoice::where('estimateId', $id)->first();
+
+        if($invoice){
+            $invoice->status = 98;
+            $invoice->save();
+
+        }
 
         return back()->with('error', 'Estimate Voided.' );
     }
