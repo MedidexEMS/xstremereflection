@@ -1,7 +1,7 @@
 @foreach($workorders as $row)
     <tr>
         <td>{{$row->estimate->customer->firstName ?? ''}} {{$row->estimate->customer->lastName ?? 'Unknown'}}</td>
-        <td class="text-center">@if($row->estimate->serviceAddress) {{$row->estimate->serviceAddress}} @else <i class="fad fa-address-card"></i> @endif</td>
+        <td class="text-center">@if($row->estimate->serviceAddress) {{$row->estimate->serviceAddress ?? ''}} @else <i class="fad fa-address-card"></i> @endif</td>
         <td>@if($row->vin) {{substr($row->vehicle->vin, -4)}} @else <i class="fad fa-sort-numeric-up-alt"></i> @endif</td>
         <td>{{$row->estimate->vehicle->vehicleInfo->year ?? ''}}</td>
         <td>{{$row->estimate->vehicle->vehicleInfo->make ?? ''}}</td>

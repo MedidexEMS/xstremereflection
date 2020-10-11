@@ -1,18 +1,17 @@
 
 <div class="row">
-    <a class="btn btn-light btn-lg btn-block mb-3" href="/workorder/{{$workOrder->id}}/show">View The Estimate</a>
-    @if($estimate->approvedPackage && !$estimate->workorder) <a class="btn btn-outline-success btn-lg btn-block mb-3" href="/estimate/workOrder/{{$estimate->id}}">Create Work Order</a> @endif
-    @if($estimate->customer->email)
-        <a type="button" href="/estimate/reschedulemail/{{$estimate->id}}" class="btn btn-primary btn-lg btn-block mb-3">Send Reminder Email</a>
-    @endif
+    <a class="btn btn-dark btn-lg btn-block mb-3" href="/workorder/{{$workOrder->id}}/show">View The Work Order</a>
+
     <a class="btn btn-danger btn-lg btn-block mb-3" href="/estimate/cancel/{{$workOrder->estimate->id}}" disabled>Canceled By Customer</a>
     <a type="button" class="btn btn-success btn-lg btn-block mb-3" onclick="showForm()">Enter New Date</a>
 </div>
 
 <form id="newDateForm" action="estimate/updatedate/{{$workOrder->estimate->id}}" method="POST">
     @csrf
+    <label for="dateofService" >Date of Service</label>
     <div id="datepicker-popup-1" class="input-group date datepicker">
-        <input type="text" name="dateofService" class="form-control">
+
+        <input type="text" id="dateofService" name="dateofService" class="form-control">
         <span class="input-group-addon input-group-append border-left">
         <span class="mdi mdi-calendar input-group-text"></span>
     </span>

@@ -272,5 +272,6 @@ class WorkOrderController extends Controller
         $workOrder = WorkOrder::find($id);
 
         return view('dashboard.partials.modalUpdateWorkOrderBody', compact('workOrder'));
+       // return 'Getting a response';
     }
 }
