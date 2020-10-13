@@ -23,11 +23,7 @@ class WorkOrderController extends Controller
     {
         $this->middleware('auth',['except' => ['customerReview', 'uploadSignature']]);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $workorders = WorkOrder::
@@ -37,6 +33,7 @@ class WorkOrderController extends Controller
 
         return view('workorder.index', compact('workorders'));
     }
+
     public function canceled()
     {
         $workorders = WorkOrder::
@@ -56,7 +53,6 @@ class WorkOrderController extends Controller
 
         return view('workorder.index', compact('workorders'));
     }
-
 
     public function completed($id)
     {
@@ -96,33 +92,16 @@ class WorkOrderController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $workOrder = WorkOrder::find($id);
@@ -198,24 +177,11 @@ class WorkOrderController extends Controller
         return 'Ok';
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
@@ -258,12 +224,6 @@ class WorkOrderController extends Controller
         return back()->with('success', 'Work Order Completed, and turned to invoice.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

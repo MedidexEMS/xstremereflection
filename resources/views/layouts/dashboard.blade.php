@@ -12,6 +12,7 @@
     <link rel="icon" href="/assets/indexial/img/favicon.png" type="image/x-icon"/>
     <!-- Fonts and icons -->
     <script src="/assets/indexial/js/plugin/webfont/webfont.min.js"></script>
+    <script src="/assets/css/vendors/sweetalert/sweetalert2.min.css"></script>
     <script>
         WebFont.load({
             google: {"families":["Work Sans:300,400,500,600,700,900"]},
@@ -59,6 +60,7 @@
 <script src="/assets/indexial/js/core/bootstrap.min.js"></script>
 
 <!-- jQuery UI -->
+<script src="/assets/vendors/sweetalert/sweetalert2.all.min.js"></script>
 <script src="/assets/indexial/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 <script src="/assets/indexial/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 

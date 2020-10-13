@@ -44,11 +44,7 @@ class EstimateController extends Controller
     {
         $this->middleware('auth',['except' => ['customerReview', 'uploadSignature']]);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $estimates = Estimate::with('workorder')
@@ -86,53 +82,66 @@ class EstimateController extends Controller
            //TODO work on making event work as intended ..... event(new CustomerApprovedEstimateEvent($file, $estimate));
 
             $customer = Customer::find($estimate->customerId);
-            // Create New Work Order
-            $workorder = new WorkOrder;
-            $workorder->companyId = $estimate->companyId;
-            $workorder->estimateId = $estimate->id;
-            $workorder->totalCharge = $estimate->total;
-            $workorder->status = 1;
-            $workorder->save();
 
-            $estimate = Estimate::find($estimate->id);
-            $estimate->workOrderId = $workorder->id;
-            $estimate->save();
+            //Check if work order already exists and not create a new one if one does.
+
+            $workorder = WorkOrder::where('estimateId', $estimate->id)->first();
+
+            if(!$workorder){
+                // Create New Work Order
+                $workorder = new WorkOrder;
+                $workorder->companyId = $estimate->companyId;
+                $workorder->estimateId = $estimate->id;
+                $workorder->totalCharge = $estimate->total;
+                $workorder->status = 1;
+                $workorder->save();
+
+                //Update estimate with new work order ID
+
+                $estimate = Estimate::find($estimate->id);
+                $estimate->workOrderId = $workorder->id;
+                $estimate->save();
+
+                //Add Services to work order
+                if ($estimate->approvedPackage) {
+                    $array = explode(',', $estimate->acceptedPackage->package->includes);
+                    $services = packageItem::whereIn('packageId', $array)->get();
+
+                    foreach ($services as $service) {
+                        $estimateService = new WorkOrderServices;
+                        $estimateService->estimateId = $estimate->id;
+                        $estimateService->workOrderId = $workorder->id;
+                        $estimateService->qty = 1;
+                        $estimateService->serviceId = $service->serviceId;
+                        $estimateService->listPrice = $service->desc->charge;
+                        $estimateService->chargedPrice = 0;
+                        $estimateService->status = 1;
+                        $estimateService->save();
+                    }
+                    $addons = AddOnService::where('packageId', $estimate->acceptedPackage)->get();
+
+                    foreach ($addons as $row) {
+                        $estimateService = new WorkOrderServices;
+                        $estimateService->estimateId = $estimate->id;
+                        $estimateService->workOrderId = $workorder->id;
+                        $estimateService->qty = 1;
+                        $estimateService->serviceId = $row->serviceId;
+                        $estimateService->listPrice = $row->desc->charge;
+                        $estimateService->chargedPrice = $row->chargedPrice;
+                        $estimateService->status = 1;
+                        $estimateService->save();
+                    }
+                }
+            }
+
+            //Update tracking of the work order.
 
             $wtracking = new WorkOrderTracking;
             $wtracking->workOrderId = $workorder->id;
             $wtracking->note = 'Estimate '. $estimate->eid .' approved by customer and work order created.';
             $wtracking->save();
 
-            //Add Services to work order
-            if ($estimate->approvedPackage) {
-                $array = explode(',', $estimate->acceptedPackage->package->includes);
-                $services = packageItem::whereIn('packageId', $array)->get();
 
-                foreach ($services as $service) {
-                    $estimateService = new WorkOrderServices;
-                    $estimateService->estimateId = $estimate->id;
-                    $estimateService->workOrderId = $workorder->id;
-                    $estimateService->qty = 1;
-                    $estimateService->serviceId = $service->serviceId;
-                    $estimateService->listPrice = $service->desc->charge;
-                    $estimateService->chargedPrice = 0;
-                    $estimateService->status = 1;
-                    $estimateService->save();
-                }
-                $addons = AddOnService::where('packageId', $estimate->acceptedPackage)->get();
-
-                foreach ($addons as $row) {
-                    $estimateService = new WorkOrderServices;
-                    $estimateService->estimateId = $estimate->id;
-                    $estimateService->workOrderId = $workorder->id;
-                    $estimateService->qty = 1;
-                    $estimateService->serviceId = $row->serviceId;
-                    $estimateService->listPrice = $row->desc->charge;
-                    $estimateService->chargedPrice = $row->chargedPrice;
-                    $estimateService->status = 1;
-                    $estimateService->save();
-                }
-            }
 
             //Check for invoice already created...
             $invoice->where('estimateId', $estimate->id)->first();
@@ -155,15 +164,18 @@ class EstimateController extends Controller
                 $invoice->save();
             }
 
+            //Update workorder with new invoice ID.
 
             $workorder->invoiceId = $invoice->id;
             $workorder->save();
 
+            // Update estimate with new invoice ID.
             $estimate->invoiceId = $invoice->id;
             $estimate->save();
 
+            //Send notification to customer and company admin that the estimate has been approved.
             if ($estimate->customer->email) {
-                Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new AcceptedEstimateEmail($estimate));
+                Mail::to([$estimate->customer->email, $estimate->company->email])->send(new AcceptedEstimateEmail($estimate));
                 $userSchema = User::where('companyId', $estimate->companyId);
 
                 if (Mail::failures()) {
@@ -215,8 +227,6 @@ class EstimateController extends Controller
             ->where('status',  6)
             ->orderBy('dateofService', 'desc')->get();
 
-
-
         return view('estimate.index', compact('estimates'));
     }
 
@@ -259,19 +269,6 @@ class EstimateController extends Controller
         //return view('estimate.pdf.upsale', compact('estimate', 'customer'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         // Check if Date of Service is completed to determine if estimate is a lead or estimate
@@ -444,7 +441,6 @@ class EstimateController extends Controller
         return back()->with('success', 'Estimate updated successfully.');
     }
 
-
     public function estimateCancel ($id)
     {
         $estimate = Estimate::find($id);
@@ -468,6 +464,14 @@ class EstimateController extends Controller
             $wtracking->status = 6;
             $wtracking->note = "Customer canceled the estimate / work Order";
             $wtracking->save();
+        }
+
+        $invoice = Invoice::where('estimateId', $id)->first();
+
+        if($invoice){
+            $invoice->status = 98;
+            $invoice->save();
+
         }
 
         return back()->withErrors('Customer Canceled Job');
@@ -784,40 +788,6 @@ class EstimateController extends Controller
         return view('estimate.customerReview', compact('estimate'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function destroyPackage ($id)
     {
         $package = EstimatePackage::find($id);
@@ -902,5 +872,11 @@ class EstimateController extends Controller
         return back()->with('error', 'Estimate Voided.' );
     }
 
-
+    public function upsaleRecommendationModal ($id)
+    {
+        $packages = EstimatePackage::find($id);
+        $estimate = EstimatePackage::where('id', $packages->estimateId)->first();
+        //dd($packages);
+        return view('estimate.partials.modalUpsaleRecommendationBody', compact('packages', 'estimate'));
+    }
 }

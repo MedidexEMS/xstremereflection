@@ -323,6 +323,7 @@ Route::group(['prefix' => 'order'], function () {
     Route::get('/estimate/completed', 'EstimateController@approved');
     Route::get('/estimate/canceled', 'EstimateController@canceled');
     Route::get('/upsale/{id}/pdf', 'EstimateController@upsalePdf');
+    Route::get('/estimate/package/{id}', 'EstimateController@upsaleRecommendationModal');
     Route::get('/modal/packageServices/{id}', function ($id){
         $package = \Vanguard\EstimatePackage::find($id);
 

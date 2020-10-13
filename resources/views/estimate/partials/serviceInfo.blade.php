@@ -6,7 +6,7 @@
                 <div class="col-xl-12">
                     <h4 class="mb-1 mb-sm-0">Vehicle Information</h4>
                     <p class="mb-0 font-weight-normal d-none d-sm-block">
-                        VIN Number: {{$estimate->vehicle->vehicleInfo->vin ?? '?'}}
+                        VIN Number: {!! $estimate->vehicle->vehicleInfo->vin ?? '<a data-toggle="modal" data-target="#vehicleModalUpdate"><i class="fad fa-sort-numeric-up-alt"></i></a>' !!}
                     </p>
                     <p class="mb-0 font-weight-normal">
                         Vehicle Year: {{$estimate->vehicle->vehicleInfo->year}}
