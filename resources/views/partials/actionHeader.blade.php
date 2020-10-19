@@ -8,6 +8,8 @@
                         <h3 class="text-white pb-2 fw-bold"> @yield('customer-info') </h3>
                         <h4 class="text-white pb-2 fw-bold"> @yield('estimate-number') </h4>
                         <h5 class="text-white op-7 mb-2">@yield('service-date')</h5>
+                        <h5 class="text-white op-7 mb-2">@yield('ceramic')</h5>
+
                     </div>
                     <div class="ml-md-auto py-2 py-md-0">
                         <a href="/dashboard/manage" class="btn btn-white btn-border btn-round mr-2">Manage</a>

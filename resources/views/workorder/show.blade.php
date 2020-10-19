@@ -62,6 +62,7 @@
 
 
     @include('invoice.partials.modalPayment')
+    @include('workorder.partials.modalAddWaranty')
 @stop
 @include('workorder.partials.modalVehicleUpdate')
 

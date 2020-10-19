@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="/assets/indexial/css/indexial.css">
 
     <link rel="stylesheet" href="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <!-- plugins:css -->
     <script src="https://kit.fontawesome.com/6c1803817f.js" crossorigin="anonymous" `SameSite=None`></script>
 
@@ -58,7 +59,7 @@
 <script src="/assets/indexial/js/core/jquery.3.2.1.min.js"></script>
 <script src="/assets/indexial/js/core/popper.min.js"></script>
 <script src="/assets/indexial/js/core/bootstrap.min.js"></script>
-
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <!-- jQuery UI -->
 <script src="/assets/vendors/sweetalert/sweetalert2.all.min.js"></script>
 <script src="/assets/indexial/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>

@@ -4,6 +4,7 @@
 @section('customer-info', __($customer->firstName.' '.$customer->lastName))
 @section('estimate-number', __('Estimate ID: '.$estimate->eid))
 @section('page-heading', __('New Invoice'))
+@section('ceramic', __(($estimate->ceramic ? 'Ceramic Install' : '')))
 
 @section('breadcrumbs')
     <li class="breadcrumb-item active">
@@ -220,11 +221,11 @@
                 </a>
             </div>
         </div>
-    @elseif($estimate->status == 4)
+    @elseif($estimate->status == 4 && $estimate->workorder->status != 8)
         <div class="row mb-3">
             <div class="col">
-                <a href="#">
-                    <button type="button" class="btn btn-primary" style="width: 100%">Allow Edit of Excepted Package
+                <a href="/estimate/clearselectedpackage/{{$estimate->id}}">
+                    <button type="button" class="btn btn-primary" style="width: 100%">Allow Edit of Accepted Package
                     </button>
                 </a>
             </div>

@@ -879,4 +879,49 @@ class EstimateController extends Controller
         //dd($packages);
         return view('estimate.partials.modalUpsaleRecommendationBody', compact('packages', 'estimate'));
     }
+
+    public function clearSelectedPackage($id)
+    {
+        //Update the estimate back to an estimate.
+        $estimate = Estimate::find($id);
+        $estimate->approvedPackage = Null;
+        $estimate->status = 1;
+        $estimate->save();
+
+        //get the workorder and remove services then delete
+
+        $wo = WorkOrder::where('estimateId', $id)->first();
+            $wos = WorkOrderServices::where('workOrderId', $wo->id)->get();
+            foreach($wos as $row){
+                $row->delete();
+            }
+            $wo->delete();
+
+        //Find and delete the invoice.
+        $invoice = Invoice::where('estimateId', $id)->first();
+            $invoice->delete();
+
+        $etracking = new EstimateTracking;
+        $etracking->estimateId = $id;
+        $etracking->status = 1;
+        $etracking->note = "Removed approved package and returned to estimate.";
+        $etracking->save();
+
+        return back()->with('success','Selected package cleared.');
+    }
+
+    public function addWarrantyCode(Request $request, $id)
+    {
+        //Find and update estimate
+        $estimate = Estimate::find($id);
+        $estimate->warrantyCode = $request->warrantyCode;
+        $estimate->save();
+
+        $etracking = new EstimateTracking;
+        $etracking->estimateId = $id;
+        $etracking->note = "Added warranty code.";
+        $etracking->save();
+
+        return back()->with('success', 'Warranty code has been added to the estimate.');
+    }
 }

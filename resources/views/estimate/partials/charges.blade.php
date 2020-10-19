@@ -93,10 +93,16 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="radio" class="form-check-input" name="package"
-                                                       id="package{{$packages->ic}}" value="{{$packages->id}}"
-                                                       onchange="selectedPackage()"
-                                                       @if($estimate->approvedPackage == $packages->id) checked="checked" @endif>
+
+                                                    @if($estimate->approvedPackage == $packages->id)
+                                                        <span class="text-success"><i class="fas fa-check-double"></i></span>
+                                                    @else
+                                                        <input type="radio" class="form-check-input" name="package"
+                                                               id="package{{$packages->ic}}" value="{{$packages->id}}"
+                                                               onchange="selectedPackage()"
+                                                               @if($estimate->approvedPackage == $packages->id) checked="checked" @endif>
+                                                    @endif
+
                                             </td>
                                             <td width="50%">
                                                 {{$packages->package->description ?? 'Unknown Package'}} <br/>

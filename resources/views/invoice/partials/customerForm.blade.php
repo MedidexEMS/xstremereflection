@@ -1,6 +1,10 @@
 
 @csrf
+<div class="form-group" >
+    <input type="checkbox" class="btn-block" data-toggle="toggle" data-on="Yes" data-off="No"  name="ceramic" value="1" />
+    <label for="ceramic">Is this a ceramic install estimate.</label>
 
+</div>
 <div class="form-group">
     <label for="customer">Select Customer</label>
     <select class="form-control select" id="customer" name="customer" style="width: 100%" onchange="customerChange()" >

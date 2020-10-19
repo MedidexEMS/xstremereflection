@@ -14,6 +14,11 @@
     <a class="btn btn-info btn-block" href="/invoice/{{$workOrder->invoiceId}}">View Invoice</a>
 </div>
 
+<div class="row mb-2">
+    <a class="btn btn-success btn-block" data-toggle="modal"
+       data-target="#warrantyModal" >Add Warranty Code</a>
+</div>
+
 @if($workOrder->invoiceId)
     <div class="row mb-2">
         <a class="btn btn-success btn-block" data-toggle="modal" data-link="/invoice/{{$workOrder->invoiceId}}/paymentModal"
