@@ -5,6 +5,15 @@
 @section('estimate-number', __('Estimate ID: '.$estimate->eid))
 @section('page-heading', __('New Invoice'))
 @section('ceramic', __(($estimate->ceramic ? 'Ceramic Install' : '')))
+@if($estimate->status == 4)
+    @section('back-ground', __('bg-dark-gradient'))
+@elseif($estimate->status >= 5 && $estimate->status <= 8)
+    @section('back-ground', __('bg-danger-gradient'))
+@elseif($estimate->status == 0)
+    @section('back-ground', __('bg-warning-gradient'))
+@else
+    @section('back-ground', __('bg-primary-gradient'))
+@endif
 
 @section('breadcrumbs')
     <li class="breadcrumb-item active">
@@ -216,9 +225,9 @@
                 </div>
             @endif
             <div class="col">
-                <a href="/estimate/void/{{$estimate->id}}">
-                    <button type="button" class="btn btn-danger" style="width: 100%">Void</button>
-                </a>
+
+                    <button type="button" class="btn btn-danger" style="width: 100%" onclick="voidEstimate()">Void</button>
+
             </div>
         </div>
     @elseif($estimate->status == 4 && $estimate->workorder->status != 8)
@@ -567,6 +576,48 @@
                             }
 
                         )
+                    }
+                }
+            )
+        }
+
+        function voidEstimate(e) {
+            Swal.fire({
+                title: '<strong>Confirm Selection</strong>',
+                icon: 'error',
+                html:
+                    'You have selected to void this estimate are you sure this is what you want to do?',
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText:
+                    '<i class="fa fa-thumbs-up"></i> Proceed!',
+                confirmButtonAriaLabel: 'Thumbs up, great!',
+                cancelButtonText:
+                    '<i class="fa fa-thumbs-down"></i>',
+                cancelButtonAriaLabel: 'Thumbs down'
+            }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        });
+// AJAX request
+                        $.ajax({
+                            url: '/estimate/void/{{$estimate->id}}',
+                            type: 'get',
+                            success: function (response) {
+                                Swal.fire('Saved!', '', 'success')
+                                window.location.reload(true);
+                            }
+                        });
+
+                    }else if(result.dismiss === Swal.DismissReason.cancel){
+
+
                     }
                 }
             )

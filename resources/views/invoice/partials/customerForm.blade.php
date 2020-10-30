@@ -1,9 +1,12 @@
 
 @csrf
-<div class="form-group" >
-    <input type="checkbox" class="btn-block" data-toggle="toggle" data-on="Yes" data-off="No"  name="ceramic" value="1" />
-    <label for="ceramic">Is this a ceramic install estimate.</label>
-
+<div class="form-group row">
+    <label for="ceramic" class="col-md-8" >Is this a ceramic install estimate.</label>
+    <input type="checkbox" class="col-md-2"  name="ceramic" value="1" />
+</div>
+<div class="form-group row">
+    <label for="ndp" class="col-md-8" >Is this estimate for National Detail Pro.</label>
+    <input type="checkbox" class="col-md-2"  name="ndp" value="1" />
 </div>
 <div class="form-group">
     <label for="customer">Select Customer</label>

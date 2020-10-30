@@ -1,6 +1,6 @@
 
 
-        <div class="panel-header bg-primary-gradient mb-4">
+        <div class="panel-header @yield('back-ground') mb-3">
             <div class="page-inner py-5">
                 <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                     <div>

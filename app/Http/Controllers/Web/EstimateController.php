@@ -230,7 +230,7 @@ class EstimateController extends Controller
         return view('estimate.index', compact('estimates'));
     }
 
-    public function estimateEmail ($id)
+    public function estimateEmail (\Nexmo\Client $nexmo, $id)
     {
         $estimate = Estimate::with('customer', 'services', 'packages')->find($id);
 
@@ -247,6 +247,17 @@ class EstimateController extends Controller
             $tracking->estimateId = $estimate->id;
             $tracking->note = 'Estimate emailed to the customer.';
             $tracking->save();
+
+            if($estimate->customer->phoneNumber)
+            {
+                $text = 'Your detail estimate is available at https://www.detaildex.com/estimate/customerReview/'.$estimate->id;
+                $message = $nexmo->message()->send([
+                    'to' => '1'.$estimate->customer->phoneNumber,
+                    'from' => '13147750809',
+                    'text' => $text
+                ]);
+            }
+
 
             return back()->with('success', 'Email has been sent.');
         }
@@ -317,6 +328,8 @@ class EstimateController extends Controller
         $estimate->dateofService = $serviceDate;
         $estimate->arrivalTime = $arrivalTime;
         $estimate->status = $status;
+        $estimate->ndp = $request->ndp;
+        $estimate->ceramic = $request->ceramic;
         $estimate->save();
 
         event(new NewEstimateCreatedEvent($estimate));
@@ -842,10 +855,14 @@ class EstimateController extends Controller
 
     public function voidEstimate($id)
     {
+        $estimate = Estimate::find($id);
+        $estimate->status = 8;
+        $estimate->save();
+
         $etracking = new EstimateTracking;
         $etracking->estimateId = $id;
         $etracking->status = 8;
-        $etracking->note = "Customer canceled the estimate / work Order";
+        $etracking->note = "This estimate has been voided";
         $etracking->save();
 
         $workOrder = WorkOrder::where('estimateId', $id)->first();
@@ -857,7 +874,7 @@ class EstimateController extends Controller
             $wtracking = new EstimateTracking;
             $wtracking->estimateId = $id;
             $wtracking->status = 6;
-            $wtracking->note = "Customer canceled the estimate / work Order";
+            $wtracking->note = "The estimate was voided.";
             $wtracking->save();
         }
 
@@ -869,7 +886,7 @@ class EstimateController extends Controller
 
         }
 
-        return back()->with('error', 'Estimate Voided.' );
+        return back()->with('success', 'Estimate Voided.' );
     }
 
     public function upsaleRecommendationModal ($id)
@@ -923,5 +940,13 @@ class EstimateController extends Controller
         $etracking->save();
 
         return back()->with('success', 'Warranty code has been added to the estimate.');
+    }
+
+    public function nextServiceEmail()
+    {
+        $date = Carbon::today()->subDays(30);
+        $estimates = Estimate::whereNull('nextServiceEmail')->get();
+
+        dd($estimates);
     }
 }
