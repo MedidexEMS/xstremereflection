@@ -234,7 +234,7 @@ class EstimateController extends Controller
     {
         $estimate = Estimate::with('customer', 'services', 'packages')->find($id);
 
-        Mail::to([$estimate->customer->email, 'jblevins@xtremereflection.app'])->send(new EstimateMailable($estimate));
+        Mail::to([$estimate->customer->email])->send(new EstimateMailable($estimate));
 
         if(Mail::failures()){
             $tracking = new EstimateTracking;
@@ -250,7 +250,7 @@ class EstimateController extends Controller
 
             if($estimate->customer->phoneNumber)
             {
-                $text = 'Your detail estimate is available at https://www.detaildex.com/estimate/customerReview/'.$estimate->id;
+                $text = 'Your detail estimate is available at https://www.detaildex.com/estimate/customerReview/'.$estimate->id.'/'.$estimate->customerCode;
                 $message = $nexmo->message()->send([
                     'to' => '1'.$estimate->customer->phoneNumber,
                     'from' => '13147750809',
@@ -789,14 +789,15 @@ class EstimateController extends Controller
         return view('estimate.create', compact('packages', 'customer', 'estimate', 'estimateTotal', 'colors', 'conditions', 'services'));
     }
 
-    public function customerReview($id)
+    public function customerReview($id, $code)
     {
         $estimate = Estimate::with('packages', 'packages.package', 'vehicle', 'vehicle.vehicleInfo', 'vehicle.vehicleInfo.colorInfo', 'vehicle.vehicleInfo.condition')->find($id);
 
-        $tracking = new EstimateTracking;
-        $tracking->estimateId = $estimate->id;
-        $tracking->note = 'Customer has viewed the estimate.';
-        $tracking->save();
+            $tracking = new EstimateTracking;
+            $tracking->estimateId = $estimate->id;
+            $tracking->note = 'Customer has viewed the estimate.';
+            $tracking->save();
+
 
         return view('estimate.customerReview', compact('estimate'));
     }

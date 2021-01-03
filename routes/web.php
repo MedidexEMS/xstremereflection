@@ -349,13 +349,15 @@ use Illuminate\Http\Request;
 
 
 });
+use Illuminate\Support\Str;
 
-    Route::get('/sms/send', function (\Nexmo\Client $nexmo){
-       $message = $nexmo->message()->send([
-           'to' => '17408215531',
-           'from' => '13147750809',
-           'text' => 'Sending a test message now.'
-       ]);
+    Route::get('/sms/send', function (){
+
+       $estimate = \Vanguard\Estimate::get();
+       foreach($estimate as $row){
+           $row->customerCode = Str::random(10);
+           $row->save();
+       }
     });
 
     Route::post('/estimate/note/{id}', function (Request $request, $id){
