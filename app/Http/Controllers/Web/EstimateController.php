@@ -247,7 +247,7 @@ class EstimateController extends Controller
             $tracking->estimateId = $estimate->id;
             $tracking->note = 'Estimate emailed to the customer.';
             $tracking->save();
-
+            /*
             if($estimate->customer->phoneNumber)
             {
                 $text = 'Your detail estimate is available at https://www.detaildex.com/estimate/customerReview/'.$estimate->id.'/'.$estimate->customerCode;
@@ -257,7 +257,7 @@ class EstimateController extends Controller
                     'text' => $text
                 ]);
             }
-
+        */
 
             return back()->with('success', 'Email has been sent.');
         }
@@ -704,7 +704,7 @@ class EstimateController extends Controller
         $customer = Customer::find($estimate->customerId);
 
 
-        /*
+
         $estimateTotal = 0;
         $downPmt = 0;
         if ($estimate->approvedPackage){
@@ -727,16 +727,17 @@ class EstimateController extends Controller
             $estimate->deposit = $downPmt;
             $estimate->save();
         }
-        */
+
         view()->share('customer',$customer);
         view()->share('estimate',$estimate);
+        view()->share('estimateTotal', $estimateTotal);
 
 
         $pdf = PDF::loadView('estimate.pdf.estimate');
 
-        return $pdf->stream('estimate.pdf');
+        //return $pdf->stream('estimate.pdf');
 
-        //return view('estimate.pdf.estimate', compact('customer', 'estimate', 'estimateTotal', 'colors', 'conditions'));
+        return view('estimate.pdf.estimate', compact('customer', 'estimate', 'estimateTotal'));
     }
 
     /**

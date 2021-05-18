@@ -27,7 +27,11 @@
 
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    EIN: {{$company->company_ein ?? 'Not Listed'}}
+                                    EIN: {{$company->ein ?? 'Not Listed'}}
+
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Sales Certificate: {{$company->salesCertificate ?? 'Not Listed'}}
 
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -39,11 +43,11 @@
 
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Phone {{$company->phone ?? ''}}
+                                    Phone: {{$company->phone ?? ''}}
 
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Main Contact {{$company->contact ?? ''}}
+                                    Main Contact: {{$company->primaryContact->first_name ?? ''}} {{$company->primaryContact->last_name ?? ''}}
 
                                 </li>
                             </ul>
@@ -107,13 +111,14 @@
     </div>
 
     <div class="row">
-        <div class="col-xl-4">
+        <!--
+        <div class="col">
             <div class="card full-height">
                 <div class="card-title">
                     <h2>Customer Email Templates</h2>
                 </div>
                 <div class="card-body">
-                    <button class="btn btn-primary btn-block mb-3">Estimate Approval</button>
+                    <a href="/estimateapproved/{{Auth()->user()->companyId}}"><button class="btn btn-primary btn-block mb-3">Estimate Approval</button></a>
 
                     <button class="btn btn-primary btn-block mb-3">Estimate Approved</button>
 
@@ -134,7 +139,7 @@
             </div>
         </div>
 
-        <div class="col-xl-4">
+        <div class="col">
             <div class="card full-height">
                 <div class="card-title">
                     <h2>Customer Text Templates</h2>
@@ -160,8 +165,8 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-xl-4">
+        -->
+        <div class="col">
             <div class="card full-height">
                 <div class="card-title">
                     <h2>Payment Processing</h2>

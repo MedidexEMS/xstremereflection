@@ -30,7 +30,7 @@
             <table class="content" width="100%" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
                 <tr>
                     <td>
-                        <a href="https://xtremereflection.app"> <img src="https://xtremereflection.app/assets/img/Logo1.png" width="400px" height="100px" alt="XtremeReflectionLog"> </a>
+                        <a href="https://xtremereflection.app"> <img src="{{$estimate->company->logo }}" width="400px" height="100px" alt="XtremeReflectionLog"> </a>
                     </td>
                 </tr>
             </table>

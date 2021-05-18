@@ -28,6 +28,10 @@ Route::get('/packageList', function (){
    return view('home.allpackage', compact('packages', 'packageTypes'));
 });
 
+//Email Templates//
+
+Route::get('/estimateapproved/{id}', 'EmailTemplateController@estimateApproved');
+
 //Package Ajax//
 
 Route::get('/packageData/{id}', function ($id){
@@ -496,6 +500,12 @@ Route::get('/vin-api/{vin}', function($vin) {
 
     return $body;
 });
+
+/**
+ * Inspection
+ */
+
+    Route::get('/inspection/{eid}/{vid}', 'InspectionController@show');
 
     /**
  * Installation

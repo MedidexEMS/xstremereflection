@@ -142,6 +142,15 @@
                     <h4 class="text-section">Web Site Settings</h4>
                 </li>
 
+                @role('business_admin')
+                <li class="nav-item">
+                    <a href="/company/{{Auth()->user()->companyId}}">
+                        <i class="fas fa-cogs"></i>
+                        <p>Company Settings</p>
+                    </a>
+                </li>
+                @endrole
+
             </ul>
         </div>
     </div>
