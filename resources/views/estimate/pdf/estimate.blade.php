@@ -202,7 +202,7 @@
 <div class="row">
     <div class="col-6">
         <small>
-            <strong>What do I need to do prior to the detail:</strong> Please be sure to have all personal belongings out of the vehicle prior to having it detailed.
+            <strong> do I need to do prior to the detail:</strong> Please be sure to have all personal belongings out of the vehicle prior to having it detailed.
             We respect your belongings and wish that nothing happens to them. Belongings left in the vehicle will be placed in a box for your retrieval
             after the detail is completed. If the technician has to remove large amounts of trash or belongings there is a $25.00 fee added to your estimate. <p />
             <strong>Just had your car detailed by a Pro?</strong> - Now that your professional detailer has restored your car to like new condition, learn how to keep
