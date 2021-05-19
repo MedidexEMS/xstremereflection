@@ -92,18 +92,8 @@
                     <td>{{$estimate->approvedPackage}}</td>
                     <td width="50%">
                         <h6>{{$estimate->acceptedPackage->package->description}}</h6>
-                        {!! $estimate->acceptedPackage->package->details !!} <br />
 
-                        @php
-                            $array = explode(',', $estimate->acceptedPackage->package->includes);
-                           $packageItems = \Vanguard\packageItem::whereIn('packageId', $array)->get();
-                        @endphp
-                        <small>
-                            @if($packageItems)
-                                @foreach($packageItems as $item)
-                                    {{$item->desc->description}} @if($loop->last) @else , @endif
-                                @endforeach
-                            @endif</small>
+
                         @if($estimate->acceptedPackage->addOnService)
                             <table class="table table-sm">
                                 <tr>
